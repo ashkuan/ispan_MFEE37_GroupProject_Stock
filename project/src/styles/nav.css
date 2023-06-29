@@ -16,3 +16,12 @@
   --border-radius-med: 10px;
   --border-radius-small: 6px;
 }
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+.navbar {
+  background-color: var(--IronGray-Deep);
+  height: 107px;
+}
