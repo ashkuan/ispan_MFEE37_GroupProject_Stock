@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
+const StockIndex = () => {
+  return <div>StockIndex</div>;
+};
 
-const stockIndex = () =>{
-  return
-}
-export default stockIndex
+export default StockIndex;

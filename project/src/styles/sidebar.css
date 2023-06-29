@@ -1,0 +1,99 @@
+:root {
+  --IronGray-Deep: #2c3e50;
+  --IronGray: #57687c;
+  --IronGray-Light: #b4c7dd;
+  --Pink: #f7cac9;
+  --Pink-Deep: #f58b82;
+  --Brown: #926b6a;
+  --Red: #f17064;
+  --Green: #77be6b;
+  --Green-Light: #d1faca;
+  --White: #ffffff;
+  --bg-Primary-Gray: #f3f3f3;
+  --bg-Second-Gray: #dddddd;
+  --black-Word: #333333;
+  --border-radius-big: 20px;
+  --border-radius-med: 10px;
+  --border-radius-small: 6px;
+}
+
+.sidebar {
+  position: fixed;
+  top: 107px;
+  padding-top: 50px;
+  width: 30%;
+  height: 100%;
+  max-width: 320px;
+  min-width: 200px;
+  background: var(--bg-Primary-Gray);
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.sidebar #user {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.sidebar #user .avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #ccc;
+}
+.sidebar #user .avatar .sidebar-userphoto {
+  width: 50px;
+}
+.sidebar #userName {
+  font-size: 1.8rem;
+  display: flex;
+  justify-content: center;
+}
+.sidebar a {
+  color: #878787;
+  font-size: 1.4rem;
+}
+.sidebar .nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  --bs-nav-link-hover-color: var(--IronGray-Deep) !important;
+}
+
+.sidebar .nav:hover + svg {
+  color: var(--IronGray-Deep);
+}
+.sidebar .nav .nav-item svg:hover + a {
+  color: var(--IronGray-Deep);
+}
+
+.sidebar .nav .nav-item {
+  display: flex;
+  align-items: center;
+}
+
+.sidebar .nav .nav-item:hover > svg {
+  color: var(--bg-Primary-Gray);
+  background-color: var(--IronGray-Deep);
+}
+
+.sidebar .nav .nav-item svg {
+  width: 45px;
+  color: var(--White);
+  background-color: #ccc;
+  border-radius: var(--border-radius-small);
+  padding: 10px;
+  margin: 5px;
+}
+.sidebar .nav .subitem {
+  margin-left: 80px;
+  display: flex;
+}
+.sidebar .nav .subitem a {
+  font-size: 1.3rem;
+}
+.sidebar .logout {
+  margin-top: 50px;
+} /*# sourceMappingURL=sidebar.css.map */

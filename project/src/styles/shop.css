@@ -1,0 +1,52 @@
+.main-content {
+  position: absolute;
+  top: 100px;
+  width: 65%;
+  margin-left: 27%;
+}
+.main-content #title {
+  margin-top: 30px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--IronGray-Deep);
+}
+.main-content .row {
+  margin-bottom: 15px;
+}
+.main-content .row .card {
+  height: 290px;
+  background-color: var(--bg-Second-Gray);
+  border: none;
+}
+.main-content .row .card .card-title {
+  font-size: 1.5rem;
+}
+.main-content .row .card .card-text {
+  font-size: 1.3rem;
+}
+.main-content .row .card img {
+  height: 150px;
+}
+.main-content .row .card .btnRed {
+  font-size: 1.2rem;
+  background-color: var(--Red);
+  color: var(--White);
+}
+.main-content .page .page-link {
+  font-size: 1.4rem;
+  border: none;
+  color: var(--IronGray-Deep);
+  margin: 0;
+}
+.main-content .page .page-link:hover {
+  color: var(--Red);
+  background-color: var(--bg-Second-Gray);
+}
+.main-content .page .page-link:active {
+  border: none;
+}
+.main-content .page .page-link:focus {
+  box-shadow: none;
+  background-color: var(--IronGray);
+  color: white;
+}/*# sourceMappingURL=shop.css.map */
