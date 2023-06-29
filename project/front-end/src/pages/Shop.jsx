@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Sidebar from "../components/Sidebar";
-import Background from "../img/background.svg";
+import Background from "../img/navbar/background.svg";
 import "../styles/shop.css";
 import "bootstrap/dist/js/bootstrap";
 import axios from "axios";

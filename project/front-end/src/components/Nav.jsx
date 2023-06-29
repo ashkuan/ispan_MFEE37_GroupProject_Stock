@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/index.css';
+import '../styles/nav.css';
 // import '../img/index/bg.svg';
 import { NavLink } from 'react-router-dom';
 
