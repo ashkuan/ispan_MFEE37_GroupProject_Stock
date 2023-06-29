@@ -1,0 +1,164 @@
+:root {
+  --IronGray-Deep: #2C3E50;
+  --IronGray: #57687C;
+  --IronGray-Light: #B4C7DD;
+  --Pink: #F7CAC9;
+  --Pink-Deep: #F58B82;
+  --Brown: #926B6A;
+  --Red: #F17064;
+  --Green: #77BE6B;
+  --White: #FFFFFF;
+  --bg-Primary-Gray: #F3F3F3;
+  --bg-Second-Gray: #DDDDDD;
+  --black-Word: #333333;
+}
+
+.sidebar {
+  position: fixed;
+  top: 59px;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  padding: 48px 0;
+  overflow-x: hidden;
+  overflow-y: visible;
+  background: #f8f9fa;
+  transition: all 0.3s;
+  border-right:1px solid rgb(124, 122, 122)  
+}
+.sidebar.collapsed {
+  width: 72px;
+}
+.sidebar.collapsed .nav-link-text {
+  display: none;
+}
+.nav-link{
+  margin-left: 0px;
+}
+.main-content {
+  transition: all 0.3s;
+  margin-left: 250px;
+  padding: 20px;
+  margin-top: 80px;
+}
+.main-content.collapsed {
+  margin-left: 72px;
+}
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  /* background-color: #ccc; */
+  margin: 20px auto;
+}
+.wordhover:hover{
+  color: var(--IronGray-Deep)
+}
+
+
+.my-sidesbar-img{
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  margin-top: 20px;
+
+}
+
+.my-sidesbar{
+  /* background-color: #333333; */
+  width: 320px;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 107px;
+
+}
+.sidebar-row{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.username{
+  font-size: 1.7rem;
+}
+.my-sidesbar  a{
+  color: rgba(142, 135, 135, 1);
+  margin-left: 40px;
+  margin-left: -5px;
+  /* font-family:  */
+}
+.sidebar-userphoto{
+  width: 80px;
+}
+.bghover{
+  width: 50px;
+  height: 50px;
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */ 
+  margin-bottom: 30px;
+}
+/* 
+.bghover:hover{
+  border-radius: 10px;
+  background-color: #2C3E50;
+} */
+.subitem {
+  margin-top: -30px;
+  margin-left: 60px;
+  font-size: 1.2rem;
+}
+.logout{
+  margin-top: 20px;
+}
+.member-info{
+  margin-left: 100px;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+.memberpage-info{
+  /* margin-left: 100px; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.memberpic{
+  width: 150px;
+  height: 150px;
+  border-radius: 80px;
+  background-color: rgba(216, 211, 211, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.memberpic img{
+  width: 124px;
+}
+.memberpage-info span{
+  font-size: 2rem;
+  font-weight: bold;
+  margin-right: 20px;
+  columns: var(--black-Word);
+}
+.memberpage-info input{
+  width: 550px;
+  height: 67px;
+  border-style: none;
+  border-radius: 20px;
+  font-size: 2rem;
+  background-color: rgba(216, 211, 211, 1);
+}
+
+.edit-btn{
+  display: flex;
+  justify-content:space-around;
+}
+.edit-btn button{
+  font-size: 1.5rem;
+  width: 175px;
+  height: 40px;
+  border-radius: 50px;
+  border-style: none;
+  background-color: rgba(180, 199, 221, 1)
+}

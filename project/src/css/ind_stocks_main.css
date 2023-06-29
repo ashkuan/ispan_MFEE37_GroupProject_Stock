@@ -1,0 +1,519 @@
+:root {
+  --IronGray-Deep: #2c3e50;
+  --IronGray: #57687c;
+  --IronGray-Light: #b4c7dd;
+  --Pink: #f7cac9;
+  --Pink-Deep: #f58b82;
+  --Brown: #926b6a;
+  --Red: #f17064;
+  --Green: #77be6b;
+  --Green-Light: #d1faca;
+  --White: #ffffff;
+  --bg-Primary-Gray: #f3f3f3;
+  --bg-Second-Gray: #dddddd;
+  --black-Word: #333333;
+  --border-radius-big: 20px;
+  --border-radius-med: 10px;
+  --border-radius-small: 6px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Noto Sans TC";
+}
+
+#navbar {
+  padding: 0 10px 0 0;
+  height: 107px;
+  background-color: var(--IronGray-Deep);
+  color: var(--White);
+  letter-spacing: 0.25rem;
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+#navbar .container-fluid .navbar-brand {
+  font-size: 2rem;
+}
+#navbar .container-fluid .navbar-toggler {
+  color: var(--IronGray-Deep);
+  background-color: var(--White);
+}
+#navbar .container-fluid a {
+  color: var(--White);
+  font-size: 1.7rem;
+}
+#navbar .container-fluid a:active {
+  transform: scale(0.9);
+}
+#navbar .container-fluid .collapse {
+  background-color: var(--IronGray-Deep);
+}
+#navbar .container-fluid .collapse .nav-member-icon,
+#navbar .container-fluid .collapse .cart-icon {
+  height: 2.5rem;
+}
+#navbar .container-fluid .collapse .nav-member-icon:hover,
+#navbar .container-fluid .collapse .cart-icon:hover {
+  transform: scale(1.1);
+}
+#navbar .container-fluid .collapse .nav-member-icon:active,
+#navbar .container-fluid .collapse .cart-icon:active {
+  transform: scale(0.9);
+}
+#navbar .container-fluid .collapse .nav-item {
+  color: var(--White);
+  display: inline-block;
+  background-image: linear-gradient(#ffffff 0 0);
+  background-position: 0 100%; /*OR bottom left*/
+  background-size: 0% 0.125rem;
+  background-repeat: no-repeat;
+  transition: background-size 0.3s, background-position 0s 0.3s; /*change after the size immediately*/
+}
+#navbar .container-fluid .collapse .nav-item .dropdown-menu {
+  background-color: var(--IronGray-Deep);
+}
+#navbar .container-fluid .collapse .nav-item .dropdown-menu .dropdown-item {
+  font-size: 1.6rem;
+}
+#navbar .container-fluid .collapse .nav-item .dropdown-toggle::after {
+  margin-left: -0.355em;
+}
+#navbar .container-fluid .collapse .nav-item .dropdown-menu :hover {
+  background-color: var(--IronGray);
+}
+#navbar .container-fluid .collapse .nav-item:hover {
+  color: var(--White);
+  font-weight: bold;
+  background-position: 100% 100%;
+  background-size: 100% 0.125rem;
+}
+#navbar .container-fluid #search {
+  display: flex;
+}
+#navbar .container-fluid #search .search__input {
+  height: 2.5rem;
+  background-color: #f4f2f2;
+  border: none;
+  border-radius: var(--border-radius-big);
+  width: 18vw;
+  margin-right: -2.5rem;
+  padding-left: 10px;
+  font-size: 1.15rem;
+}
+#navbar .container-fluid #search .search__input:focus {
+  outline: none;
+}
+#navbar .container-fluid #search .search__button svg {
+  color: var(--IronGray-Deep);
+  margin-bottom: 7px;
+  width: 30px;
+}
+#navbar .container-fluid #search .search__button:hover {
+  transform: scale(1.1);
+}
+#navbar .container-fluid #search .search__button:active {
+  transform: scale(0.9);
+}
+
+#cartModal .modal-footer #payBtn {
+  background-color: var(--Red);
+  color: white;
+  border: none;
+}
+#cartModal .modal-footer #payBtn:hover {
+  background-color: rgb(233, 79, 65);
+}
+#cartModal .modal-body .deleteBtn {
+  color: gray;
+  width: 40px;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+}
+#cartModal .modal-body .deleteBtn:hover {
+  transform: scale(1.1);
+}
+#cartModal .modal-body .deleteBtn:active {
+  transform: scale(0.9);
+}
+#cartModal .modal-body .addBtn:hover,
+#cartModal .modal-body .minusBtn:hover {
+  background-color: var(--IronGray-Light);
+}
+
+#memberModal .jump-title {
+  font-size: 2.5rem;
+  margin-bottom: -40px;
+  font-weight: bold;
+}
+#memberModal .member-account {
+  font-size: 1.5rem;
+  margin: 20px;
+}
+#memberModal .member-account .member-inp {
+  border-radius: 10px;
+}
+#memberModal .btn-login {
+  font-size: 1.5rem;
+  color: var(--White);
+  background-color: var(--Red);
+}
+#memberModal .btn-login:hover {
+  background-color: rgb(233, 79, 65);
+}
+#memberModal .btn-register {
+  font-size: 1.5rem;
+  color: var(--White);
+  background-color: rgb(115, 115, 115);
+}
+#memberModal .btn-register:hover {
+  background-color: rgb(99, 99, 99);
+}
+
+#footer {
+  background-color: var(--IronGray-Deep);
+  color: var(--White);
+  margin-top: 100px;
+}
+#footer .linksIcon a {
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+#footer .linksIcon a svg {
+  width: 2.2rem;
+}
+#footer .links .container {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-around !important;
+}
+#footer .links .row {
+  width: 100%;
+}
+#footer .links .linksTitle {
+  font-size: 1.7rem;
+}
+#footer .links .linksContent {
+  font-size: 1.4rem;
+}
+#footer .links .linksContent a {
+  text-decoration: none;
+}
+#footer .links .linksContent svg {
+  width: 1.5rem;
+}
+
+#searchContainer {
+  margin-top: 150px;
+}
+#searchContainer label {
+  display: flex;
+  justify-content: center;
+  color: var(--IronGray-Deep);
+  font-size: 3rem;
+  font-weight: bold;
+}
+#searchContainer #searchInput {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+#searchContainer #searchInput input {
+  padding-left: 30px;
+  font-size: 1.3rem;
+  width: 550px;
+  height: 60px;
+  display: inline-block;
+  justify-content: center;
+  border: 2px solid #2c3e50;
+  border-radius: var(--border-radius-big);
+}
+#searchContainer #searchInput #searchBtn {
+  background-color: var(--White);
+  border: none;
+  margin-left: 15px;
+}
+#searchContainer #searchInput #searchBtn svg {
+  display: flex;
+  align-items: center;
+  width: 50px;
+}
+#searchContainer #searchInput #searchBtn:hover {
+  transform: scale(1.2);
+  color: var(--Red);
+}
+#searchContainer #searchInput #searchBtn:active {
+  transform: scale(0.8);
+}
+
+#carouselContainer {
+  margin-top: 60px;
+  height: 500px;
+  display: grid;
+  grid-template-rows: 300px;
+  grid-template-columns: 1fr 50px 50px 50px 50px 50px 1fr;
+  align-items: center;
+  justify-items: center;
+  color: var(--IronGray-Deep);
+}
+#carouselContainer input {
+  width: 25px;
+  height: 25px;
+}
+#carouselContainer input:checked {
+  width: 32px;
+  height: 32px;
+}
+#carouselContainer input:nth-of-type(1) {
+  grid-column: 2/3;
+  grid-row: 2/3;
+}
+#carouselContainer input:nth-of-type(1):checked ~ main#carousel {
+  --position: 1;
+}
+#carouselContainer input:nth-of-type(2) {
+  grid-column: 3/4;
+  grid-row: 2/3;
+}
+#carouselContainer input:nth-of-type(2):checked ~ main#carousel {
+  --position: 2;
+}
+#carouselContainer input:nth-of-type(3) {
+  grid-column: 4/5;
+  grid-row: 2/3;
+}
+#carouselContainer input:nth-of-type(3):checked ~ main#carousel {
+  --position: 3;
+}
+#carouselContainer input:nth-of-type(4) {
+  grid-column: 5/6;
+  grid-row: 2/3;
+}
+#carouselContainer input:nth-of-type(4):checked ~ main#carousel {
+  --position: 4;
+}
+#carouselContainer input:nth-of-type(5) {
+  grid-column: 6/7;
+  grid-row: 2/3;
+}
+#carouselContainer input:nth-of-type(5):checked ~ main#carousel {
+  --position: 5;
+}
+#carouselContainer main#carousel {
+  grid-row: 1/2;
+  grid-column: 1/8;
+  width: 100%;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+  perspective: 600px;
+  --items: 5;
+  --middle: 3;
+  --position: 1;
+  pointer-events: none;
+}
+#carouselContainer main#carousel div.item {
+  position: absolute;
+  width: 250px;
+  height: 300px;
+  --r: calc(var(--position) - var(--offset));
+  --abs: max(calc(var(--r) * -1), var(--r));
+  transition: all 0.25s linear;
+  transform: rotateY(calc(-10deg * var(--r))) translateX(calc(-400px * var(--r)));
+  border-radius: var(--border-radius-med);
+  background-color: var(--bg-Second-Gray);
+  box-shadow: 0px 10px 10px 3px #808080;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+}
+#carouselContainer main#carousel div.item #stockNumber {
+  font-size: 2rem;
+}
+#carouselContainer main#carousel div.item #stockName {
+  font-size: 1.5rem;
+}
+#carouselContainer main#carousel div.item #stock3m {
+  font-size: 1rem;
+  color: var(--Red);
+}
+#carouselContainer main#carousel div.item #stockPercent {
+  font-size: 1.5rem;
+}
+#carouselContainer main#carousel div.item #price {
+  font-size: 1.5rem;
+}
+#carouselContainer main#carousel div.item #percent {
+  height: 10%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+#carouselContainer main#carousel div.item #percent p,
+#carouselContainer main#carousel div.item #percent svg {
+  color: var(--Red);
+}
+#carouselContainer main#carousel div.item #percent p {
+  margin-bottom: 0px;
+}
+#carouselContainer main#carousel div.item #priceContainer {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#carouselContainer main#carousel div.item #priceContainer #price {
+  font-size: 2rem;
+}
+#carouselContainer main#carousel div.item #priceContainer svg {
+  color: var(--White);
+}
+#carouselContainer main#carousel div.item:nth-of-type(1) {
+  --offset: 1;
+}
+#carouselContainer main#carousel div.item:nth-of-type(2) {
+  --offset: 2;
+}
+#carouselContainer main#carousel div.item:nth-of-type(3) {
+  --offset: 3;
+}
+#carouselContainer main#carousel div.item:nth-of-type(4) {
+  --offset: 4;
+}
+#carouselContainer main#carousel div.item:nth-of-type(5) {
+  --offset: 5;
+}
+
+#indStocksPK {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#indStocksPK #indStocksPKTitle {
+  color: var(--IronGray-Deep);
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 3rem;
+  margin: 70px 0 50px 0;
+}
+#indStocksPK .time {
+  display: flex;
+  justify-content: end;
+  margin-right: 20px;
+}
+#indStocksPK .time button {
+  border: none;
+  background-color: transparent;
+  letter-spacing: 0.2rem;
+  padding-left: 20px;
+  display: inline;
+  font-size: 2rem;
+  color: var(--black-Word);
+}
+#indStocksPK .time button:hover {
+  transform: scale(1.1);
+}
+#indStocksPK .time button:active {
+  transform: scale(0.9);
+}
+
+#indStocksPKGrid {
+  color: var(--IronGray-Deep);
+  margin-top: 100px !important;
+}
+#indStocksPKGrid #rowTitle {
+  background-color: var(--IronGray-Light);
+  margin: 5px;
+  border-radius: var(--border-radius-med);
+}
+#indStocksPKGrid #rowTitle #edit {
+  cursor: pointer;
+}
+#indStocksPKGrid #rowTitle #edit button:hover {
+  color: var(--Red);
+  transform: scale(1.1);
+}
+#indStocksPKGrid #rowTitle #edit button:active {
+  transform: scale(0.9);
+}
+#indStocksPKGrid .row {
+  background-color: var(--bg-Second-Gray);
+  margin: 5px;
+  border-radius: var(--border-radius-med);
+  padding: 10px;
+}
+#indStocksPKGrid .col {
+  font-size: 1.7rem;
+  border-radius: var(--border-radius-med);
+}
+
+.row .nav-pills .nav-link.active {
+  background-color: var(--IronGray-Deep);
+}
+.row .col-8 {
+  background-color: var(--IronGray-Light);
+  padding: 50px;
+  border-radius: var(--border-radius-big);
+}
+.row .nav-link:focus {
+  color: var(--IronGray-Deep);
+}
+.row .nav-link {
+  font-size: 1.5rem !important;
+  color: var(--IronGray-Deep);
+}
+.row .nav-link:hover {
+  color: var(--Red);
+}
+.row p {
+  font-size: 1.2rem;
+}
+.row .title-1 {
+  font-size: 2rem;
+}
+.row .title-2 {
+  font-size: 1.7rem;
+}
+
+.explainCard {
+  width: 30%;
+  background-color: var(--IronGray-Deep) !important;
+  color: white !important;
+  border-radius: var(--border-radius-med) !important;
+  margin-top: 50px;
+  padding: 10px 20px;
+}
+.explainCard .card-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+}
+.explainCard .card-body .card-title {
+  font-size: 2rem;
+}
+.explainCard .card-body .card-subtitle {
+  font-size: 1.4rem;
+  color: #b4c7dd;
+}
+.explainCard .card-body .card-text {
+  font-size: 1rem;
+}
+.explainCard .card-body .card-link {
+  font-size: 1.3rem;
+  color: var(--IronGray-Light);
+}
+.explainCard .card-body .card-link:hover {
+  color: var(--Red);
+}/*# sourceMappingURL=ind_stocks_main.css.map */

@@ -1,0 +1,6 @@
+/* 載入 Google Fonts - Noto Sans TC  */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url(../../plugins/bootstrap/bootstrap.css);
+@import url(../nav/navbar&footer.css);
+@import url(./news_main.css);
+@import url(./news_tag.css);

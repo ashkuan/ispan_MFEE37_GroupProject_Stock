@@ -1,0 +1,317 @@
+import React from 'react';
+import '../css/index.css';
+// import '../img/index/bg.svg';
+import { NavLink } from 'react-router-dom';
+
+const Navbar = () => {
+  return (
+    // nav bar
+    <>
+      <nav className="navbar navbar-expand-lg" id="navbar">
+        <div className="container-fluid">
+          <a className="navbar-brand me-4 logoName" href="#">
+            <svg
+              width="70"
+              height="70"
+              viewBox="0 0 40 57"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect x="7" y="29.5273" width="5" height="7" fill="#F58B82" />
+              <rect x="14" y="26.5273" width="5" height="10" fill="#F58B82" />
+              <rect x="21" y="22.5273" width="5" height="14" fill="#F58B82" />
+              <rect x="28" y="18.5273" width="5" height="18" fill="#F58B82" />
+              <path
+                id="navbar-brand-img"
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M0.998112 34.8662C0.967175 34.8208 0.904987 34.8096 0.860147 34.8414C0.836459 34.8581 0.821399 34.8845 0.819098 34.9135C0.797449 35.1858 0.781191 35.4597 0.770434 35.7351C0.344999 46.6287 8.68585 55.7988 19.4002 56.2173C30.1146 56.6357 39.1452 48.144 39.5707 37.2504C39.631 35.7056 39.5151 34.1955 39.2411 32.7401C39.2335 32.7001 39.1784 32.6957 39.1644 32.7339C39.1568 32.7547 39.1337 32.7655 39.1129 32.7578L35.1404 31.305C35.0019 31.2543 34.8471 31.3119 34.7753 31.4407L32.2083 36.0494L32.0701 36.2976C31.9691 36.4789 31.7189 36.5054 31.5822 36.3491L31.3952 36.1353L28.5957 32.9353C28.4712 32.793 28.2476 32.7999 28.1322 32.9498L25.8866 35.8659L25.6845 36.1284C25.5468 36.3072 25.2683 36.2756 25.1741 36.0704L25.036 35.7693L23.0652 31.4735C22.9747 31.2761 22.7109 31.2373 22.5674 31.4004L20.7952 33.4138L20.6546 33.5736C20.5403 33.7035 20.3401 33.71 20.2176 33.5878L20.0668 33.4375L15.9621 29.3437C15.8329 29.2149 15.6195 29.2302 15.5101 29.3763L11.0853 35.2824L10.8836 35.5515C10.7472 35.7336 10.4657 35.7035 10.3709 35.4968L10.2307 35.1911L8.141 30.6362C8.06357 30.4674 7.85294 30.4088 7.69945 30.5133L1.20873 34.9339C1.14665 34.9761 1.06206 34.9601 1.01978 34.898L0.998112 34.8662Z"
+                fill="#EEEEEE"
+              />
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M3.84407 20.7353C3.85278 20.9917 4.16037 21.111 4.34324 20.931L9.56315 15.7925L9.73802 15.6203C9.87343 15.487 10.0971 15.5116 10.2003 15.6711L10.3337 15.8771L12.6635 19.4767C12.7896 19.6715 13.0797 19.6555 13.1836 19.4479L16.0871 13.6462L16.1944 13.4319C16.2781 13.2646 16.493 13.2139 16.6427 13.3263L16.8344 13.4701L21.1875 16.7367C21.3296 16.8434 21.5329 16.8038 21.6245 16.6515L23.0798 14.2339L23.245 13.9594C23.3594 13.7694 23.6333 13.7649 23.7538 13.9511L23.9279 14.22L26.2691 17.8372C26.3943 18.0306 26.6817 18.0166 26.7875 17.8119L28.1841 15.1098L28.3005 14.8847C28.3895 14.7124 28.6161 14.6686 28.763 14.7953L28.9549 14.9608L31.7982 17.4135C31.9589 17.552 32.2087 17.4846 32.2778 17.284L33.746 13.0233L33.8033 12.8572C33.8524 12.7148 33.9995 12.6308 34.1471 12.6611L34.3192 12.6964L37.7693 13.4037C38.0051 13.452 38.1976 13.2171 38.099 12.9976C34.846 5.75063 27.4862 1.12803 19.5892 2.09063C10.31 3.2217 3.51639 11.0792 3.84407 20.7353Z"
+                fill="#EEEEEE"
+              />
+            </svg>
+            <span className='logoname'>股估績</span>
+          </a>
+          
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                <li className="nav-item">
+                  <a className="nav-link" aria-current="page" href="#">首頁</a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link pagetitle" href="#">大盤產業</a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link" href="#">討論區</a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link" href="#">新手上路</a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link" href="#">購物商城</a>
+                </li>
+              </ul>
+              {/*右邊*/}
+              <div className="d-flex align-items-center justify-content-around">
+                <div id="search">
+                  <input
+                    type="text"
+                    className="search__input"
+                    placeholder="搜尋台股代號/名稱"
+                  />
+                  <a className="search__button" href="#">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="currentColor"
+                      className="bi bi-search"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+                      />
+                    </svg>
+                  </a>
+                </div>
+                <span className="d-flex mb-3 mx-2 cart-icon">
+                  <button
+                    id="cartBtn"
+                    type="button"
+                    className="btn"
+                    data-bs-toggle="modal"
+                    data-bs-target="#cartModal"
+                  >
+                    <svg
+                      width="46"
+                      height="41"
+                      viewBox="0 0 46 41"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M40.3073 25.625H16.8964L17.4191 28.1875H38.8552C40.0852 28.1875 40.9968 29.3327 40.7242 30.5353L40.2836 32.4793C41.7763 33.2058 42.8056 34.7401 42.8056 36.5156C42.8056 39.0142 40.7676 41.0355 38.2675 40.9995C35.8858 40.9652 33.9271 39.0271 33.8628 36.6395C33.8277 35.3353 34.3488 34.1532 35.2047 33.3124H18.462C19.2907 34.1265 19.8056 35.2605 19.8056 36.5156C19.8056 39.0631 17.687 41.1146 15.1201 40.995C12.8409 40.8889 10.9872 39.0423 10.8674 36.7575C10.7749 34.9931 11.7009 33.4379 13.1076 32.6266L7.4976 5.125H1.91667C0.858108 5.125 0 4.26456 0 3.20312V1.92187C0 0.860439 0.858108 0 1.91667 0H10.1047C11.0152 0 11.8 0.642307 11.9825 1.5367L12.7145 5.125H44.0825C45.3125 5.125 46.2241 6.2702 45.9515 7.47281L42.1763 24.1291C41.978 25.0041 41.2022 25.625 40.3073 25.625ZM32.5833 13.4531H28.75V10.25C28.75 9.54235 28.178 8.96875 27.4722 8.96875H26.1945C25.4887 8.96875 24.9167 9.54235 24.9167 10.25V13.4531H21.0833C20.3776 13.4531 19.8056 14.0267 19.8056 14.7344V16.0156C19.8056 16.7233 20.3776 17.2969 21.0833 17.2969H24.9167V20.5C24.9167 21.2076 25.4887 21.7812 26.1945 21.7812H27.4722C28.178 21.7812 28.75 21.2076 28.75 20.5V17.2969H32.5833C33.2891 17.2969 33.8611 16.7233 33.8611 16.0156V14.7344C33.8611 14.0267 33.2891 13.4531 32.5833 13.4531Z"
+                        fill="#F3F3F3"
+                      />
+                    </svg>
+                  </button>
+                </span>
+                <span className="d-flex mb-3 nav-member-icon">
+                <button
+                  id="memberbtn"
+                  type="button"
+                  className="btn "
+                  data-bs-toggle="modal"
+                  data-bs-target="#memberModal"
+                >
+                  <svg
+                    width="43"
+                    height="43"
+                    viewBox="0 0 43 43"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M21.5 0C9.62298 0 0 9.62298 0 21.5C0 33.377 9.62298 43 21.5 43C33.377 43 43 33.377 43 21.5C43 9.62298 33.377 0 21.5 0ZM21.5 8.32258C25.7133 8.32258 29.129 11.7383 29.129 15.9516C29.129 20.1649 25.7133 23.5806 21.5 23.5806C17.2867 23.5806 13.871 20.1649 13.871 15.9516C13.871 11.7383 17.2867 8.32258 21.5 8.32258ZM21.5 38.1452C16.4111 38.1452 11.851 35.8391 8.7994 32.2327C10.4292 29.1637 13.6196 27.0484 17.3387 27.0484C17.5468 27.0484 17.7548 27.0831 17.9542 27.1438C19.0813 27.5079 20.2603 27.7419 21.5 27.7419C22.7397 27.7419 23.9274 27.5079 25.0458 27.1438C25.2452 27.0831 25.4532 27.0484 25.6613 27.0484C29.3804 27.0484 32.5708 29.1637 34.2006 32.2327C31.149 35.8391 26.5889 38.1452 21.5 38.1452Z"
+                      fill="#F3F3F3"
+                    />
+                  </svg>
+                </button>
+              </span>
+              </div>
+          </div>
+        </div>
+      </nav>
+      {/* 購物車的彈跳視窗 */}
+      <div
+      className="modal fade cartModal"
+      id="cartModal"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabIndex="-1"
+      aria-labelledby="cartModalLabel"
+      aria-hidden="true"
+      >
+        <div className="modal-dialog modal-lg modal-dialog-scrollable">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h1 className="modal-title fs-2" id="cartModalLabel">您的購物車</h1>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+              {/* 購物車內容 */}
+            <div className="modal-body d-flex flex-column">
+              <div
+              className="card d-flex flex-row align-items-start"
+              // style="border: none"
+              >
+                {/* 購物車左邊圖 */}
+                <div className="d-flex align-items-center">
+                  {/* <img src="../img/index/bg.svg" className="card-img-top" /> */}
+                </div>
+                {/* 中間文字 */}
+                <div className="card-body d-flex flex-column align-items-start mx-2">
+                  <p className="card-title fs-4 fw-bold">全方位股票分析法</p>
+                  <p
+                  className="card-text"
+                  >
+                    積極主動地追求高效率投資，就是學習專業的股票分析師手法，
+                    掌握關鍵的分析面向：基本面找到體質優良的好公司，技術面找到
+                    蓄勢待發動能充沛的起漲股，籌碼面找到大戶吃貨主力鎖碼的口袋股，
+                    這堂課讓投資人實戰演練面面俱到。
+                  </p>
+                  {/* 垃圾桶 */}
+                  <div className="d-flex justify-content-first">
+                    <button className="btn deleteBtn">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="currentColor"
+                        className="bi bi-trash3-fill"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                {/* 購物車 右邊數量價格 */}
+                <div
+                  className="d-flex flex-column justify-content-between mt-2 cart-right"
+                >
+                  {/* 商品數量 */}
+                  <div
+                  className="btn-group"
+                  role="group"
+                  aria-label="Basic mixed styles example"
+                  >
+                    <button
+                      type="button"
+                      className="addBtn btn btn-outline-secondary fs-4"
+                    >
+                      +
+                    </button>
+                    <button
+                    type="button"
+                    className="amount btn btn-outline-secondary disabled fs-4 cart-quantity"
+                    >
+                    1
+                    </button>
+                    <button
+                    type="button"
+                    className="minusBtn btn btn-outline-secondary fs-4"
+                    >
+                    -
+                    </button>
+                  </div>
+                  {/* 商品價格 */}
+                  <div className="total fw-bold">
+                  NT$ 399
+                  </div>
+                </div>
+              </div>
+              <hr></hr>
+            </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary fs-4"
+                data-bs-dismiss="modal"
+              >
+                關閉
+              </button>
+              <button id="payBtn" type="button" className="btn fs-4 mx-3">
+                結帳 →
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* 會員的彈跳視窗 */}
+      <div
+      className="modal fade"
+      id="memberModal"
+      tabIndex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+     >
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header member-spacing">
+              <p className="modal-title jump-title" id="exampleModalLabel">
+                會員登入
+              </p>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body">
+              
+              <div className="text-center">
+                {/* <img src="../img/sidebar/Mask Group.svg" alt="no" /> */}
+              </div>
+              <div>
+                <div className="member-account text-center">
+                  <div>會員帳號</div>
+                  <input className="member-inp" type="text" />
+                </div>
+                <div className="member-account text-center">
+                  <div>會員密碼</div>
+                  <input className="member-inp" type="text" />
+                </div>
+              </div>
+              
+            </div>
+            <div className='modal-footer'>
+              <a href="">
+                <button
+                  type='button'
+                  className='btn btn-register'
+                  data-bs-dismiss = 'modal'
+                >
+                  註冊
+                </button>
+              </a>
+              <a href="">
+                <button
+                type='button'
+                className='btn btn-login'
+                >
+                  登入
+                </button>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    
+    </>
+  );
+};
+
+export default Navbar;
