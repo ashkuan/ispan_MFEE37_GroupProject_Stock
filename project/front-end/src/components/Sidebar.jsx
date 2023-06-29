@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../styles/sidebar.css";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   return (
@@ -79,18 +80,17 @@ const Sidebar = () => {
           >
             <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z" />
           </svg>
-
-          <a className="nav-link" href="#">
+          <Link to="/shop" className="nav-link">
             商城
-          </a>
+          </Link>
         </li>
         <li className="nav-item subitem d-flex flex-column">
           <a className="nav-link" href="#">
             &gt; 訂單狀況
           </a>
-          <a className="nav-link" href="#">
+          <Link to="/shop/history" className="nav-link">
             &gt; 歷史訂單
-          </a>
+          </Link>
         </li>
         <li className="nav-item navItem d-flex logout">
           <svg

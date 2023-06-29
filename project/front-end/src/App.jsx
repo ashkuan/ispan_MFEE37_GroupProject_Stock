@@ -5,29 +5,29 @@ import StockIndex from "./pages/StockIndex";
 import IndStock from "./pages/IndStock";
 import Forum from "./pages/Forum";
 import Member from "./pages/Member";
-import Cart from "./pages/Cart";
+import Shop from "./pages/Shop";
+import History from "./pages/History";
 import Checkout from "./pages/Checkout";
 import Rookie from "./pages/Rookie";
-import Footer from "./components/Footer";
 
 function App() {
   return (
-
     <Router>
       <Nav></Nav>
       <Routes>
-        <Route path="/" element={<Homepage />} exact/>
+        <Route path="/" element={<Homepage />} />
         <Route path="/stock-index" element={<StockIndex />} />
         <Route path="/indStock" element={<IndStock />} />
         <Route path="/forum" element={<Forum />} />
         <Route path="/memeber" element={<Member />} />
-        <Route path="/cart">
-          <Route index element={<Cart />} />
-          <Route path="/checkout" element={<Checkout />} />
+        <Route path="/shop">
+          <Route index element={<Shop></Shop>} />
+          <Route path="/shop/history" element={<History />} />
         </Route>
+        <Route path="/checkout" element={<Checkout />} />
         <Route path="/rookie" element={<Rookie />} />
       </Routes>
-      <Footer></Footer>
+      {/* <Footer></Footer> */}
     </Router>
   );
 }

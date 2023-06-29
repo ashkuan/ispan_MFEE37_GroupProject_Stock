@@ -1,0 +1,55 @@
+:root {
+  --IronGray-Deep: #2c3e50;
+  --IronGray: #57687c;
+  --IronGray-Light: #b4c7dd;
+  --Pink: #f7cac9;
+  --Pink-Deep: #f58b82;
+  --Brown: #926b6a;
+  --Red: #f17064;
+  --Green: #77be6b;
+  --Green-Light: #d1faca;
+  --White: #ffffff;
+  --bg-Primary-Gray: #f3f3f3;
+  --bg-Second-Gray: #dddddd;
+  --black-Word: #333333;
+  --border-radius-big: 20px;
+  --border-radius-med: 10px;
+  --border-radius-small: 6px;
+}
+
+.history_container {
+  position: absolute;
+  top: 130px;
+  right: 8%;
+  max-width: 65% !important;
+  color: var(--IronGray-Deep);
+}
+.history_container .title {
+  font-size: 2.5rem;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 50px;
+}
+.history_container .card {
+  border: none;
+}
+.history_container .card .card-img-top {
+  width: 25%;
+}
+.history_container .card .card-body {
+  padding-left: 40px;
+  display: flex;
+  justify-content: space-around;
+}
+.history_container .card .card-body .card-title {
+  font-size: 2rem;
+}
+.history_container .card .card-body .amount {
+  font-size: 1.3rem;
+}
+.history_container .card .card-body .date {
+  font-size: 1.3rem;
+}
+.history_container .card .total {
+  font-size: 1.5rem;
+}/*# sourceMappingURL=history.css.map */
