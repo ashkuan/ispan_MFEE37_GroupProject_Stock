@@ -22,6 +22,10 @@
   margin: 0;
 }
 .navbar {
+  z-index: 1;
+  position: fixed !important;
+  top: 0;
+  width: 100%;
   background-color: var(--IronGray-Deep);
   height: 107px;
 }
