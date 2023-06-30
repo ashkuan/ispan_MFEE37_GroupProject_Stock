@@ -2,10 +2,6 @@
   background-color: var(--IronGray-Deep);
   color: var(--White);
   margin-top: 200px;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
 }
 #footer .linksIcon a {
   text-decoration: none;
@@ -27,11 +23,11 @@
   width: 1.5rem;
 }
 
-.footer-left{
+.footer-left {
   margin-bottom: 24px;
 }
-.footer-row{
-  color: white
+.footer-row {
+  color: white;
 }
 @media screen and (max-width: 1339px) {
   #search .search__input {

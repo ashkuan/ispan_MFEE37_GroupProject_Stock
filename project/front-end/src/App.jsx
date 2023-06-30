@@ -29,7 +29,6 @@ function App() {
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/rookie" element={<Rookie />} />
       </Routes>
-      <Footer></Footer>
     </Router>
   );
 }
