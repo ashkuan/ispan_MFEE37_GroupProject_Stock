@@ -1,7 +1,6 @@
 import mysql from "mysql";
-import express from "express";
-
-var app = express();
+// import express from "express";
+// var app = express();
 
 var connToDBHelper = mysql.createConnection({
   port: "3306",
@@ -11,9 +10,10 @@ var connToDBHelper = mysql.createConnection({
   database: "MFEE37",
 });
 
+// 連接資料庫
 connToDBHelper.connect((err) => {
   if (err) {
-    console.log("連接失敗" + err);
+    console.log("資料庫連接失敗" + err);
     console.log(err instanceof AggregateError);
     console.log(err.errors);
     console.log(err.message);
@@ -23,6 +23,7 @@ connToDBHelper.connect((err) => {
   }
 });
 
+// 測試用 實際上這行要放在其他js檔案
 // app.listen(3000, () => {
 //   console.log("port 3000連接完成" + new Date().toLocaleTimeString());
 // });

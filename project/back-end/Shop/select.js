@@ -12,7 +12,7 @@ app.get("/", function (req, res) {
 app.get("/shop", function (req, res) {
   connToDBHelper.query("SELECT * FROM Shop", [], function (err, data) {
     if (err) {
-      console.log("查無資料");
+      return "查無資料";
     } else {
       return res.json(data);
     }

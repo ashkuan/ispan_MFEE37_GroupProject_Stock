@@ -2,7 +2,6 @@ import React from "react";
 import { Nav } from "react-bootstrap";
 import Sidebar from "../components/Sidebar";
 import "../styles/history.css";
-import Background from "../img/navbar/background.svg";
 
 const History = () => {
   return (
@@ -15,11 +14,13 @@ const History = () => {
         <hr />
         <div className="card d-flex flex-row align-items-start">
           {/* <!-- 購物車 - 左 -->
-        <!-- 購物車內容-圖 --> */}
-          <img src={Background} className="card-img-top" />
-
+          <!-- 購物車內容-圖 --> */}
+          <img
+            src="/public/img/navbar/background.svg"
+            className="card-img-top"
+          />
           {/* <!-- 購物車 - 中 -->
-        <!-- 購物車內容-文字 --> */}
+          <!-- 購物車內容-文字 --> */}
           <div className="card-body d-flex flex-column align-items-start mx-1">
             <p className="card-title fw-bold">全方位股票分析法</p>
             <p className="amount">2項商品</p>
@@ -39,10 +40,12 @@ const History = () => {
         <div className="card d-flex flex-row align-items-start">
           {/* <!-- 購物車 - 左 --> */}
           {/* <!-- 購物車內容-圖 --> */}
-          <img src={Background} className="card-img-top" />
-
+          <img
+            src="/public/img/navbar/background.svg"
+            className="card-img-top"
+          />
           {/* <!-- 購物車 - 中 -->
-        <!-- 購物車內容-文字 --> */}
+          <!-- 購物車內容-文字 --> */}
           <div className="card-body d-flex flex-column align-items-start mx-1">
             <p className="card-title fw-bold">全方位股票分析法</p>
             <p className="amount">2項商品</p>
@@ -61,11 +64,13 @@ const History = () => {
         <hr />
         <div className="card d-flex flex-row align-items-start">
           {/* <!-- 購物車 - 左 -->
-        <!-- 購物車內容-圖 --> */}
-          <img src={Background} className="card-img-top" />
-
+          <!-- 購物車內容-圖 --> */}
+          <img
+            src="/public/img/navbar/background.svg"
+            className="card-img-top"
+          />
           {/* <!-- 購物車 - 中 -->
-        <!-- 購物車內容-文字 --> */}
+          <!-- 購物車內容-文字 --> */}
           <div className="card-body d-flex flex-column align-items-start mx-1">
             <p className="card-title fw-bold">全方位股票分析法</p>
             <p className="amount">2項商品</p>

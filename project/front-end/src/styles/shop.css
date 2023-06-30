@@ -1,8 +1,27 @@
+:root {
+  --IronGray-Deep: #2c3e50;
+  --IronGray: #57687c;
+  --IronGray-Light: #b4c7dd;
+  --Pink: #f7cac9;
+  --Pink-Deep: #f58b82;
+  --Brown: #926b6a;
+  --Red: #f17064;
+  --Green: #77be6b;
+  --Green-Light: #d1faca;
+  --White: #ffffff;
+  --bg-Primary-Gray: #f3f3f3;
+  --bg-Second-Gray: #dddddd;
+  --black-Word: #333333;
+  --border-radius-big: 20px;
+  --border-radius-med: 10px;
+  --border-radius-small: 6px;
+}
+
 .main-content {
   position: absolute;
   top: 100px;
-  width: 65%;
-  margin-left: 27%;
+  width: 70%;
+  margin-left: 25%;
 }
 .main-content #title {
   margin-top: 30px;
@@ -14,39 +33,76 @@
   margin-bottom: 15px;
 }
 .main-content .row .card {
-  height: 290px;
+  height: 300px;
   background-color: var(--bg-Second-Gray);
   border: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-top: 15px;
 }
-.main-content .row .card .card-title {
-  font-size: 1.5rem;
+.main-content .row .card .book-title {
+  font-size: 1.2rem;
+  width: 225px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .main-content .row .card .card-text {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 }
 .main-content .row .card img {
-  height: 150px;
+  width: 115px;
+  height: 140px;
 }
 .main-content .row .card .btnRed {
   font-size: 1.2rem;
   background-color: var(--Red);
   color: var(--White);
 }
-.main-content .page .page-link {
+.main-content .row .card .btnGray {
+  font-size: 1.2rem;
+}
+.main-content .row .card .modal .modal-dialog .modal-content {
+  height: 800px;
+}
+.main-content .row .card .modal .modal-dialog .modal-content .modal-body .card {
+  height: 100%;
+}
+.main-content .row .card .modal .modal-dialog .modal-content .modal-body .card .card-img-top {
+  width: 280px;
+  height: 280px;
+}
+.main-content .row .card .modal .modal-dialog .modal-content .modal-body .card .card-body .card-title {
+  font-size: 2rem;
+  padding: 15px 0 20px 0;
+}
+.main-content .row .card .modal .modal-dialog .modal-content .modal-body .card .card-body .card-text {
+  height: 100%;
+  max-height: 800px;
+  overflow-y: auto;
+}
+.main-content .page {
+  cursor: pointer;
+}
+.main-content .page .pagination {
+  color: var(--IronGray-Deep) !important;
+  --bs-pagination-color: var(--IronGray-Deep);
+}
+.main-content .page .pagination .page-link {
   font-size: 1.4rem;
   border: none;
-  color: var(--IronGray-Deep);
   margin: 0;
-}
-.main-content .page .page-link:hover {
-  color: var(--Red);
   background-color: var(--bg-Second-Gray);
 }
-.main-content .page .page-link:active {
-  border: none;
+.main-content .page .pagination .page-link:hover {
+  color: var(--White);
+  background-color: var(--IronGray-Deep);
 }
-.main-content .page .page-link:focus {
-  box-shadow: none;
-  background-color: var(--IronGray);
-  color: white;
+.main-content .page .pagination .page-link:focus {
+  background-color: var(--IronGray-Deep);
 }
+.main-content .page .pagination .page-link.active,
+.main-content .page .pagination .active > .page-link {
+  background-color: var(--IronGray-Deep);
+}/*# sourceMappingURL=shop.css.map */
