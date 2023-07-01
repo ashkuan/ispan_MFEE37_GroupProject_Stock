@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
 import "../styles/shop.css";
-import "bootstrap/dist/js/bootstrap";
-
 import axios from "axios";
 
 const Shop = () => {

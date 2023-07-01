@@ -9,8 +9,6 @@ import Shop from "./pages/Shop";
 import History from "./pages/History";
 import Checkout from "./pages/Checkout";
 import Rookie from "./pages/Rookie";
-import Sidebar from "./components/Sidebar";
-import Footer from "./components/Footer";
 
 function App() {
   return (

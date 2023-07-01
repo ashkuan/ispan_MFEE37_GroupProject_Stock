@@ -120,54 +120,106 @@
 #navbar .container-fluid #search .search__button:active {
   transform: scale(0.9);
 }
-#cartBtn{
+#cartBtn {
   border: none;
 }
-.card-text{
+.card-text {
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2; 
+  -webkit-line-clamp: 2;
 }
-.cart-right{
+
+.cart-right {
   height: 200px;
 }
-.cart-quantity{
+.cart-quantity {
   width: 50px;
 }
-.total{
-  font-size: 1.9rem
+.total {
+  font-size: 1.9rem;
 }
-.cartModal .modal-footer #payBtn {
+
+#cartModal .modal-title {
+  font-size: 2.2rem;
+}
+#cartModal .modal-footer #payBtn {
   background-color: var(--Red);
   color: white;
   border: none;
 }
-.cartModal .modal-footer #payBtn:hover {
+#cartModal .modal-footer #payBtn:hover {
   background-color: rgb(233, 79, 65);
 }
-.cartModal .modal-body .deleteBtn {
+#cartModal .modal-footer .btn {
+  font-size: 1.8rem;
+}
+#cartModal .modal-footer .btn:hover {
+  transform: scale(1.05);
+}
+#cartModal .modal-footer .btn:active {
+  transform: scale(0.9);
+}
+#cartModal .modal-body .deleteBtn {
   color: gray;
   width: 40px;
   border: none;
   background-color: transparent;
   padding: 0;
 }
-.cartModal .modal-body .deleteBtn:hover {
+#cartModal .modal-body .deleteBtn:hover {
   transform: scale(1.1);
 }
-.cartModal .modal-body .deleteBtn:active {
+#cartModal .modal-body .deleteBtn:active {
   transform: scale(0.9);
 }
-.cartModal .modal-body .addBtn:hover,
-.cartModal .modal-body .minusBtn:hover {
+#cartModal .modal-body .addBtn:hover,
+#cartModal .modal-body .minusBtn:hover {
   background-color: var(--IronGray-Light);
 }
-.member-spacing{
+#cartModal #recommend-card {
+  margin-top: 50px;
+}
+#cartModal #recommend-card .title {
+  font-size: 1.5rem;
+  padding-left: 20px;
+  font-weight: bold;
+}
+#cartModal #recommend-card .card {
+  width: 30%;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 15px;
+}
+#cartModal #recommend-card .card img {
+  width: 75%;
+}
+#cartModal #recommend-card .card p {
+  font-size: 1.2rem;
+}
+#cartModal #recommend-card .card .recommend-card-btn {
+  border: none;
+  padding: 10px;
+  border-radius: var(--border-radius-small);
+  background-color: var(--Pink-Deep);
+  color: white;
+  font-size: 1.1rem;
+}
+#cartModal #recommend-card .card .recommend-card-btn:hover {
+  transform: scale(1.1);
+  background-color: var(--Red);
+}
+#cartModal #recommend-card .card .recommend-card-btn:active {
+  transform: scale(0.9);
+}
+.member-spacing {
   height: 80px;
   margin-bottom: 10px;
 }
-#memberbtn{
+#memberbtn {
   border: none;
 }
 #memberModal .jump-title {
