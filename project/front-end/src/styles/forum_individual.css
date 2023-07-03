@@ -1,0 +1,64 @@
+@import url(./forum_main.css);
+
+.user-img-circle {
+    width: 3.4375rem;
+    height: 3.4375rem;
+    border-radius: 3.4375rem;
+    background-image: url(../img/forum/user-Img.jpg);
+}
+
+.modal {
+    --bs-modal-width: 730px;
+    --bs-modal-margin: 0;
+    --bs-modal-bg: #f3f3f3;
+    --bs-modal-border-radius: 0;
+}
+
+.emoji-overlay {
+    margin-right: -1rem;
+}
+
+#backdropBlur {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(5px);
+}
+
+.btn-IronGray-Deep {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: var(--IronGray-Deep);
+    --bs-btn-border-color: var(--IronGray-Deep);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: var(--IronGray);
+    --bs-btn-hover-border-color: var(--IronGray);
+    --bs-btn-focus-shadow-rgb: 49, 132, 253;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: var(--IronGray-Deep);
+    --bs-btn-active-border-color: var(--IronGray-Deep);
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: var(--IronGray-Deep);
+    --bs-btn-disabled-border-color: var(--IronGray-Deep);
+}
+
+.btn-IronGray-Deep:active {
+    transform: scale(0.99);
+}
+
+.dropdown-menu-IronGray-Deep {
+    --bs-dropdown-color: #dee2e6;
+    --bs-dropdown-bg: var(--IronGray-Deep);
+    --bs-dropdown-border-color: var(--bs-border-color-translucent);
+    --bs-dropdown-box-shadow: ;
+    --bs-dropdown-link-color: #dee2e6;
+    --bs-dropdown-link-hover-color: #fff;
+    --bs-dropdown-divider-bg: var(--bs-border-color-translucent);
+    --bs-dropdown-link-hover-bg: rgba(255, 255, 255, 0.15);
+    --bs-dropdown-link-active-color: var(--IronGray-Deep);
+    --bs-dropdown-link-active-bg: var(--IronGray-Light);
+    --bs-dropdown-link-disabled-color: #adb5bd;
+    --bs-dropdown-header-color: #adb5bd;
+  }
