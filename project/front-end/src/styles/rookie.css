@@ -206,7 +206,7 @@ ol li .answer {
 
 
 .accordion-button::after {
-    background-image: url(../../../public/img/rookie/close.svg);
+    background-image: url(../../../public/img/rookie/plus.svg);
 
 }
 
