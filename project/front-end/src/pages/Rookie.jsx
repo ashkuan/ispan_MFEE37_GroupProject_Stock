@@ -2,7 +2,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import AccordionOpen from "../components/rookie/AccordionOpen.jsx";
 import "../styles/rookie.css";
-import RookieOpenBank from "../components/rookie/RookieOpenBank.jsx";
+// import RookieOpenBank from "../components/rookie/RookieOpenBank.jsx";
 import RookieListBtn from "../components/rookie/RookieListBtn.jsx";
 import Footer from "../components/Footer.jsx";
 import axios from "axios";
@@ -50,7 +50,7 @@ const Rookie = () => {
 
         <div className="m-45"><AccordionEtf/></div>
       </div>
-      <RookieOpenBank />
+      {/* <RookieOpenBank /> */}
       <Footer />
     </>
   );
