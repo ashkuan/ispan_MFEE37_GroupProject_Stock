@@ -20,7 +20,7 @@ const Rookie = () => {
           <div id="rookie"> 新手上路</div>
         </h1>
         
-        <div className="text-center"><RookieQuiz/></div>
+        <div className="text-center m-45"><RookieQuiz/></div>
         <RookieListBtn />
         <span className="d-flex justify-content-around title" id="openbank">
           <span className="titlebox">證券開戶</span>
