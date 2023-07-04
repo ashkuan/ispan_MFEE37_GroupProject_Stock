@@ -31,7 +31,7 @@ const AccordionEtf = () => {
             <Accordion.Header>
               <div className="articalword">{res.title}</div>
             </Accordion.Header>
-            <Accordion.Body className="articalword">{res.article}</Accordion.Body>
+            <Accordion.Body className="articalword"><pre>{res.article}</pre></Accordion.Body>
           </Accordion.Item>
         </Accordion>
       ))}

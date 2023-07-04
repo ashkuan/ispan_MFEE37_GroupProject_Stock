@@ -132,4 +132,4 @@ const RookieOpenBank = () => {
   );
 };
 
-// export default RookieOpenBank;
+export default RookieOpenBank;
