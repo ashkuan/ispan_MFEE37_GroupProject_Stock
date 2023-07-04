@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/nav.css';
+import Shop from '../pages/Shop';
 // import '../img/index/bg.svg';
 import { NavLink } from 'react-router-dom';
 
@@ -286,7 +287,7 @@ const Navbar = () => {
               
             </div>
             <div className='modal-footer'>
-              <a href="">
+              <NavLink to='/register'>
                 <button
                   type='button'
                   className='btn btn-register'
@@ -294,15 +295,19 @@ const Navbar = () => {
                 >
                   註冊
                 </button>
-              </a>
-              <a href="">
+              </NavLink>
+              <NavLink to='/member'>
                 <button
-                type='button'
-                className='btn btn-login'
-                >
-                  登入
+                  type='button'
+                  className='btn btn-login'
+                  data-bs-dismiss = 'modal'
+                  >
+                    登入
                 </button>
-              </a>
+              </NavLink>
+              
+              
+              
             </div>
           </div>
 

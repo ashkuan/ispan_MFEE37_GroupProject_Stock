@@ -5,6 +5,9 @@ import StockIndex from "./pages/StockIndex";
 import IndStock from "./pages/IndStock";
 import Forum from "./pages/Forum";
 import Member from "./pages/Member";
+import MemberMail from "./pages/memberMail";
+import MemberArtical from "./pages/MemberArtical";
+import Register from "./pages/register";
 import Shop from "./pages/Shop";
 import History from "./pages/History";
 import Checkout from "./pages/Checkout";
@@ -21,7 +24,10 @@ function App() {
         <Route path="/stock-index" element={<StockIndex />} />
         <Route path="/indStock" element={<IndStock />} />
         <Route path="/forum" element={<Forum />} />
-        <Route path="/memeber" element={<Member />} />
+        <Route path="/member" element={<Member />} />
+        <Route path="/member/mail" element={<MemberMail />} />
+        <Route path="/member/artical" element={<MemberArtical />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/shop">
           <Route index element={<Shop></Shop>} />
           <Route path="/shop/history" element={<History />} />
