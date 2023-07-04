@@ -1,0 +1,75 @@
+.part1-text-container{
+  margin-top: 200px;
+}
+.inchart{
+  width: 65%;
+}
+.part1-text{
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+.date-text{
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: rgba(44, 62, 80, 1);
+  letter-spacing: 5px;
+  margin-top: -30px;
+}
+.part1-row{
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  
+}
+.first-row{
+  margin-top: 20px;
+  margin-left: 20px;
+  
+}
+.part1-card{
+  font-size: 2rem;
+  width: 100px;
+  height: 100px;
+  background-color: rgba(87, 104, 124, 1);
+  /* width: 25%; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  margin-right: 20px;
+}
+.part1-card-text{
+  
+  /* padding: 15px; */
+  text-align: center;
+  font-size: 2rem;
+  color: white;
+}
+
+.part1-chart-container{
+  
+  /* margin-left: 20px; */
+}
+.part1-row-percent{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.5rem;
+  width: 25%;
+  margin-left: 10px;
+}
+.part1-row-number{
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  width: 25%;
+  font: bold;
+}
+.go-up{
+  color: rgba(241, 112, 100, 1);
+}
+.go-down{
+  color: rgba(119, 190, 107, 1);
+}
