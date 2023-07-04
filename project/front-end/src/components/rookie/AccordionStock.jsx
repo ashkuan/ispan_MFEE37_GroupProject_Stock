@@ -13,7 +13,6 @@ const AccordionStock = () => {
         );
         console.log(filteredData);
         setRookie(filteredData)
-        // window.location.reload()
         // console.log(res);
       } catch (err) {
         console.log(err);
