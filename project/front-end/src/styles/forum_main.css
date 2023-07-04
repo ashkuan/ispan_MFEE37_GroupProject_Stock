@@ -1,3 +1,6 @@
+/* Noto Sans TC */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap');
+
 :root {
     --IronGray-Deep: #2C3E50;
     --IronGray: #57687C;
@@ -31,7 +34,7 @@ html {
 
 body {
     font-family: 'Noto Sans TC', sans-serif;
-    letter-spacing: 0.075rem;
+    letter-spacing: 0.11rem;
     background-color: var(--bg-Primary-Gray);
 }
 
