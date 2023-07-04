@@ -5,6 +5,7 @@ import ForumIndividual from "../components/Forum/ForumIndividual";
 import "../styles/forum_individual.css";
 import SidebarTag from "../components/Forum/SidebarTag.jsx";
 import SidebarNews from "../components/Forum/SidebarNews.jsx";
+import Post from "../components/Forum/Post.jsx";
 
 const Forum = () => {
   return (
@@ -25,6 +26,7 @@ const Forum = () => {
           </div>
         </div>
         {/* <ForumIndividual /> */}
+        {/* <Post/> */}
       </div>
       <Footer />
     </>
