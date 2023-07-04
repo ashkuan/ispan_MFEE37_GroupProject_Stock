@@ -1,7 +1,25 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import "../../styles/forum_sidebar.css";
+import axios from "axios";
+
 
 function SidebarNews() {
+  const [data, setData] = useState([]);
+  const auth =
+    "https://newsapi.org/v2/top-headlines?country=tw&category=business&apiKey=f374144203e945949ad1d7bcb499deef";
+  const search = async (url) => {
+    let result = await axios.get(url, {
+      //獲取伺服器的授權訪問權限
+      headers: { Authorization: auth },
+    });
+    console.log(result);
+    //抓api前3筆資料
+    setData(result.data.articles.slice(0, 3)); 
+  };
+
+  useEffect(() => {
+    search(auth);
+  }, []);
   return (
     <div
       className="card mt-4 rounded-4 IronGray"
@@ -16,7 +34,7 @@ function SidebarNews() {
         </a>
       </div>
       <div className="card-body">
-        <div
+        {/* <div
           className="bg-Primary-Gray rounded-3 p-3"
           style={{ boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)" }}
         >
@@ -36,7 +54,21 @@ function SidebarNews() {
         >
           <div className="fz-3">普丁政權若被推翻 這些股票可能會飆升...</div>
           <div className="fz-4 pt-3">鉅亨網 · 1 小時前</div>
-        </div>
+        </div> */}
+        {data.map((article, index) => (
+          <a href={article.url} target="_blank">
+            <div
+              key={index}
+              className="bg-Primary-Gray rounded-3 p-3 m-1"
+              style={{ boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)" }}
+            >
+              <div className="fz-3">{article.title}</div>
+              <div className="fz-4 pt-3">
+               {article.publishedAt}
+              </div>
+            </div>
+          </a>
+        ))}
       </div>
     </div>
   );

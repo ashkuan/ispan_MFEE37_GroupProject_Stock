@@ -171,3 +171,7 @@
       content: " (" attr(data-weight) ")";
       font-size: 1rem;
     }
+
+   .card-body a{
+      color: var(--black-Word);
+    }
