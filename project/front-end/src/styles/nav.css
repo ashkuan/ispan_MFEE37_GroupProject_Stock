@@ -17,13 +17,6 @@
   --border-radius-small: 6px;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Noto Sans TC";
-}
-
 #navbar {
   padding: 0 10px 0 0;
   height: 107px;
@@ -60,7 +53,7 @@
 }
 #navbar .container-fluid .collapse .nav-member-icon:hover,
 #navbar .container-fluid .collapse .cart-icon:hover {
-  transform: scale(1.1);
+  /* transform: scale(1.1); */
 }
 #navbar .container-fluid .collapse .nav-member-icon:active,
 #navbar .container-fluid .collapse .cart-icon:active {
@@ -123,13 +116,34 @@
 #cartBtn {
   border: none;
 }
+#cartBtn:hover svg {
+  transform: scale(1.1);
+}
+#cartBtn .totalCartItemAmount {
+  background-color: #a6cffd;
+  color: var(--IronGray-Deep);
+  border-radius: 50%;
+  width: 35px;
+  height: 35xpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid #a6cffd;
+  font-weight: bold;
+  font-size: 1.2rem;
+  position: absolute;
+  top: 18px;
+  right: 90px;
+}
 .card-text {
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
-
+.card .card-img-top {
+  width: 200px;
+}
 .cart-right {
   height: 200px;
 }
@@ -152,13 +166,27 @@
   background-color: rgb(233, 79, 65);
 }
 #cartModal .modal-footer .btn {
+  background-color: gray;
   font-size: 1.8rem;
 }
 #cartModal .modal-footer .btn:hover {
   transform: scale(1.05);
+  background-color: rgb(105, 105, 105);
 }
 #cartModal .modal-footer .btn:active {
   transform: scale(0.9);
+}
+
+#cartModal .modal-body .amount {
+  background-color: var(--bg-Primary-Gray);
+  color: var(--black-Word);
+  text-align: center;
+  border: none;
+  width: 50px;
+  margin: 0 1px 0 0;
+}
+#cartModal .modal-body .amount:focus {
+  border: none;
 }
 #cartModal .modal-body .deleteBtn {
   color: gray;
@@ -172,6 +200,11 @@
 }
 #cartModal .modal-body .deleteBtn:active {
   transform: scale(0.9);
+}
+
+#cartModal .modal-body .addBtn,
+#cartModal .modal-body .minusBtn {
+  background-color: var(--bg-Second-Gray);
 }
 #cartModal .modal-body .addBtn:hover,
 #cartModal .modal-body .minusBtn:hover {

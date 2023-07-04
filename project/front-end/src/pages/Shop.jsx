@@ -1,27 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
 import "../styles/shop.css";
-import axios from "axios";
 import { Product } from "./Product";
+import { ShopContext } from "../../context/ShopContext";
 
-const Shop = () => {
-  const [products, setProducts] = useState([]);
-
-  // 購物車
-  const [cart, setCart] = useState({});
-
-  useEffect(() => {
-    const fetchShop = async () => {
-      try {
-        // 商品
-        const res = await axios.get(`http://localhost:3000/shop`);
-        setProducts(res.data); // 把後端所有商品資料放入state;
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchShop();
-  }, []);
+export const Shop = () => {
+  const { products, totalAmount, cartItems, addToCart, removeFromCart } =
+    useContext(ShopContext);
 
   return (
     <>
@@ -29,7 +14,7 @@ const Shop = () => {
       <div className="d-flex flex-column text-center main-content">
         <p id="title">商城</p>
         <hr />
-        <Product data={{ products }}></Product>
+        <Product data={{ products, cartItems }}></Product>
       </div>
     </>
   );

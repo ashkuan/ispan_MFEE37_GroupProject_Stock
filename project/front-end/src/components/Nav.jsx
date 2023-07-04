@@ -1,16 +1,24 @@
-<<<<<<< HEAD
-import React from 'react';
-import '../styles/nav.css';
-import Shop from '../pages/Shop';
-// import '../img/index/bg.svg';
-import { NavLink } from 'react-router-dom';
-=======
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../styles/nav.css";
 import { Link } from "react-router-dom";
->>>>>>> 989a37d00dc1b99170dfc4952798de4895954562
+import { Cart } from "./Cart";
+import { ShopContext } from "../../context/ShopContext";
 
 const Navbar = () => {
+  const { products, cartItems } = useContext(ShopContext);
+  const [totalCartItemAmount, setTotalCartItemAmount] = useState(0);
+
+  // 計算總數
+  useEffect(() => {
+    let totalAmount = 0;
+    products.map((product) => {
+      const { pid } = product;
+      const cartItemAmount = cartItems[pid];
+      totalAmount += cartItemAmount;
+    });
+    setTotalCartItemAmount(totalAmount);
+  }, [cartItems]);
+
   return (
     <>
       <nav className="navbar navbar-expand-lg" id="navbar">
@@ -122,6 +130,11 @@ const Navbar = () => {
                       fill="#F3F3F3"
                     />
                   </svg>
+                  {totalCartItemAmount > 0 && (
+                    <div className="totalCartItemAmount">
+                      {totalCartItemAmount}
+                    </div>
+                  )}
                 </button>
               </span>
               <span className="d-flex mb-3 nav-member-icon">
@@ -171,107 +184,7 @@ const Navbar = () => {
                 aria-label="Close"
               />
             </div>
-            <div className="modal-body d-flex flex-column">
-              {/* 購物車內容(卡片) */}
-              <div
-                className="card d-flex flex-row align-items-start"
-                style={{ border: "none" }}
-              >
-                {/* 購物車 - 左邊圖*/}
-                <div className="d-flex align-items-center">
-                  <img
-                    src="/public/img/shop/p01.png"
-                    className="card-img-top"
-                  />
-                </div>
-                {/* 購物車 - 中間文字*/}
-                <div className="card-body d-flex flex-column align-items-start mx-2">
-                  <p className="card-title fs-4 fw-bold">全方位股票分析法</p>
-                  <p
-                    className="card-text"
-                    style={{
-                      overflow: "hidden",
-                      display: "-webkit-box",
-                      WebkitBoxOrient: "vertical",
-                      WebkitLineClamp: 2,
-                    }}
-                  >
-                    積極主動地追求高效率投資，就是學習專業的股票分析師手法，掌握關鍵的分析面向：基本面找到體質優良的好公司，技術面找到蓄勢待發動能充沛的起漲股，籌碼面找到大戶吃貨主力鎖碼的口袋股，這堂課讓投資人實戰演練面面俱到。
-                  </p>
-                  {/* 垃圾桶 */}
-                  <div className="d-flex justify-content-first">
-                    <button className="btn deleteBtn">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="currentColor"
-                        className="bi bi-trash3-fill"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-                {/* 購物車 - 右邊價格和數量 */}
-                <div
-                  className="d-flex flex-column justify-content-between mt-2"
-                  style={{ height: 200 }}
-                >
-                  {/* 商品數量 */}
-                  <div
-                    className="btn-group"
-                    role="group"
-                    aria-label="Basic mixed styles example"
-                  >
-                    <button
-                      type="button"
-                      className=" minusBtn  btn btn-outline-secondary fs-4"
-                    >
-                      -
-                    </button>
-                    <button
-                      type="button"
-                      className="amount btn btn-outline-secondary disabled fs-4"
-                      style={{ width: 50 }}
-                    >
-                      1
-                    </button>
-                    <button
-                      type="button"
-                      className="addBtn btn btn-outline-secondary fs-4"
-                    >
-                      +
-                    </button>
-                  </div>
-                  {/* 商品價格 */}
-                  <div className="total fw-bold" style={{ fontSize: "1.9rem" }}>
-                    NT$ 399
-                  </div>
-                </div>
-              </div>
-              <hr />
-              {/* 推薦商品 */}
-              <div id="recommend-card">
-                <p className="title">您可能也會喜歡：</p>
-                <div className="d-flex justify-content-center">
-                  <div className="card">
-                    <img src="/public/img/shop/p02.png" />
-                    <p>推薦一</p>
-                    <button className="recommend-card-btn">加入購物車</button>
-                  </div>
-                  <div className="card">
-                    <img src="/public/img/shop/p03.png" />
-                    <p>推薦二</p>
-                    <button className="recommend-card-btn">加入購物車</button>
-                  </div>
-                  <div className="card">
-                    <img src="/public/img/shop/p04.png" />
-                    <p>推薦三</p>
-                    <button className="recommend-card-btn">加入購物車</button>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <Cart></Cart>
             <div className="modal-footer">
               <button
                 type="button"
@@ -329,13 +242,8 @@ const Navbar = () => {
                 </div>
               </div>
             </div>
-<<<<<<< HEAD
-            <div className='modal-footer'>
-              <NavLink to='/register'>
-=======
             <div className="modal-footer">
               <a href="">
->>>>>>> 989a37d00dc1b99170dfc4952798de4895954562
                 <button
                   type="button"
                   className="btn btn-register"
@@ -343,26 +251,12 @@ const Navbar = () => {
                 >
                   註冊
                 </button>
-<<<<<<< HEAD
-              </NavLink>
-              <NavLink to='/member'>
-                <button
-                  type='button'
-                  className='btn btn-login'
-                  data-bs-dismiss = 'modal'
-                  >
-                    登入
-=======
               </a>
               <a href="">
                 <button type="button" className="btn btn-login">
                   登入
->>>>>>> 989a37d00dc1b99170dfc4952798de4895954562
                 </button>
-              </NavLink>
-              
-              
-              
+              </a>
             </div>
           </div>
         </div>

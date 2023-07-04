@@ -33,35 +33,81 @@
   margin-bottom: 15px;
 }
 .main-content .row .card {
-  height: 300px;
+  height: 280px;
   background-color: var(--bg-Second-Gray);
   border: none;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  overflow: hidden;
   padding-top: 15px;
 }
+.main-content .row .card:hover .toggleBtn {
+  animation: slideUp 0.5s ease forwards;
+  display: flex;
+}
 .main-content .row .card .book-title {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   width: 225px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 .main-content .row .card .card-text {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 }
 .main-content .row .card img {
-  width: 115px;
-  height: 140px;
+  width: 140px;
+  height: 170px;
 }
-.main-content .row .card .btnRed {
-  font-size: 1.2rem;
+.main-content .row .card .toggleBtn {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(128, 128, 128, 0.941);
+  width: 100%;
+  height: 100px;
+  border: none;
+  display: none;
+  justify-content: space-around;
+  align-items: center;
+}
+.main-content .row .card .toggleBtn .addInCartBtn {
+  background-color: transparent;
+  border: none;
+  display: flex;
+}
+.main-content .row .card .toggleBtn .addInCartBtn:hover {
+  transform: scale(1.1);
+}
+.main-content .row .card .toggleBtn .addInCartBtn:active {
+  transform: scale(0.9);
+}
+.main-content .row .card .toggleBtn .addInCartBtn .cartItemAmount {
   background-color: var(--Red);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
   color: var(--White);
+  position: relative;
+  top: -10px;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.main-content .row .card .toggleBtn .seeMoreBtn {
+  padding: 10px 12px;
+  font-size: 1.2rem;
+}
+.main-content .row .card .toggleBtn .seeMoreBtn:hover {
+  transform: scale(1.08);
 }
 .main-content .row .card .btnGray {
   font-size: 1.2rem;
+  background-color: gray;
+}
+.main-content .row .card .btnGray:hover {
+  background-color: rgb(114, 114, 114);
 }
 .main-content .row .card .modal .modal-dialog .modal-content {
   height: 800px;
@@ -81,6 +127,16 @@
   height: 100%;
   max-height: 800px;
   overflow-y: auto;
+}
+.main-content .row .card .modal .modal-dialog .modal-content .modal-footer .addInCartRedBtn {
+  background-color: var(--Pink-Deep);
+  font-size: 1.4rem;
+}
+.main-content .row .card .modal .modal-dialog .modal-content .modal-footer .addInCartRedBtn:hover {
+  background-color: var(--Red);
+}
+.main-content .row .card .modal .modal-dialog .modal-content .modal-footer .btnGray {
+  font-size: 1.4rem;
 }
 .main-content .page {
   cursor: pointer;
@@ -105,4 +161,15 @@
 .main-content .page .pagination .page-link.active,
 .main-content .page .pagination .active > .page-link {
   background-color: var(--IronGray-Deep);
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }/*# sourceMappingURL=shop.css.map */
