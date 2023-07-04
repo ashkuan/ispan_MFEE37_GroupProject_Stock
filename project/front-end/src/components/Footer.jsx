@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/footer.css";
+import { Link } from "react-router-dom";
 const footer = () => {
   return (
     <footer id="footer" className="text-center text-lg-start ">
@@ -87,24 +88,24 @@ const footer = () => {
                 快速連結
               </p>
               <p className="linksContent">
-                <a href="#!" className="text-reset">
+                <Link to="/stock-index" className="text-reset">
                   大盤產業
-                </a>
+                </Link>
               </p>
               <p className="linksContent">
-                <a href="#!" className="text-reset">
+                <Link to="/forum" className="text-reset">
                   討論區
-                </a>
+                </Link>
               </p>
               <p className="linksContent">
-                <a href="#!" className="text-reset">
+                <Link to="/rookie" className="text-reset">
                   新手上路
-                </a>
+                </Link>
               </p>
               <p className="linksContent">
-                <a href="#!" className="text-reset">
+                <Link to="/shop" className="text-reset">
                   購物商城
-                </a>
+                </Link>
               </p>
             </div>
             <div className="col-md-3 col-lg-3 col-xl-3 mx-auto ">
@@ -141,12 +142,8 @@ const footer = () => {
                   className="bi bi-house-fill"
                   viewBox="0 0 16 16"
                 >
-                  <path
-                    d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5Z"
-                  />
-                  <path
-                    d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6Z"
-                  />
+                  <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5Z" />
+                  <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6Z" />
                 </svg>
                 台中市南屯區公益路二段51號18樓
               </p>
@@ -157,9 +154,7 @@ const footer = () => {
                   className="bi bi-envelope-fill"
                   viewBox="0 0 16 16"
                 >
-                  <path
-                    d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"
-                  />
+                  <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z" />
                 </svg>
                 info@example.com
               </p>

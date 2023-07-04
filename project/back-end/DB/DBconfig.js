@@ -2,7 +2,7 @@ import mysql from "mysql";
 // import express from "express";
 // var app = express();
 
-var connToDBHelper = mysql.createConnection({
+var db = mysql.createConnection({
   port: "3306",
   host: "127.0.0.1",
   user: "allyoucan1t",
@@ -11,7 +11,7 @@ var connToDBHelper = mysql.createConnection({
 });
 
 // 連接資料庫
-connToDBHelper.connect((err) => {
+db.connect((err) => {
   if (err) {
     console.log("資料庫連接失敗" + err);
     console.log(err instanceof AggregateError);
@@ -29,4 +29,4 @@ connToDBHelper.connect((err) => {
 // });
 
 // 給其他檔案連結DB
-export default connToDBHelper;
+export default db;

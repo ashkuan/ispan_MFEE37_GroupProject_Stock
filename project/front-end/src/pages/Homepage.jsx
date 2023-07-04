@@ -6,8 +6,6 @@ import "../styles/homepage.css";
 const Homepage = () => {
   return (
     <>
-      <Navbar></Navbar>
-
       {/* 首頁內容 */}
       <div className="container">
         <div className="part1 d-flex flex-column justify-content-center align-items-center">
@@ -189,7 +187,12 @@ const Homepage = () => {
           viewBox="0 0 1440 997"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          style={{ position: "absolute", top: 200, zIndex: -1, width: "100%" }}
+          style={{
+            position: "absolute",
+            top: 200,
+            zIndex: -1,
+            width: "100%",
+          }}
         >
           <g opacity="0.2">
             <path
@@ -1692,7 +1695,12 @@ const Homepage = () => {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           xmlnsXlink="http://www.w3.org/1999/xlink"
-          style={{ position: "absolute", top: 2100, zIndex: -1, width: "45%" }}
+          style={{
+            position: "absolute",
+            top: 2100,
+            zIndex: -1,
+            width: "45%",
+          }}
         >
           <g opacity="0.6" filter="url(#filter0_bddddii_330_2280)">
             <path
@@ -1870,7 +1878,12 @@ const Homepage = () => {
           viewBox="0 0 1440 736"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          style={{ position: "absolute", top: 1300, zIndex: -1, width: "100%" }}
+          style={{
+            position: "absolute",
+            top: 1300,
+            zIndex: -1,
+            width: "100%",
+          }}
         >
           <path
             opacity="0.8"
@@ -1886,10 +1899,10 @@ const Homepage = () => {
           />
         </svg>
         <img
-          src="./虛擬投資旁的bg.svg"
+          src="/public/img/index/bg.svg"
           style={{
             position: "absolute",
-            top: 3100,
+            top: 3300,
             right: 0,
             zIndex: -1,
             width: "40%",
@@ -2013,7 +2026,6 @@ const Homepage = () => {
           </svg>
         </a>
       </div>
-
       <Footer></Footer>
     </>
   );

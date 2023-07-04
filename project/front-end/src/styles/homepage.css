@@ -1,29 +1,3 @@
-:root {
-  --IronGray-Deep: #2c3e50;
-  --IronGray: #57687c;
-  --IronGray-Light: #b4c7dd;
-  --Pink: #f7cac9;
-  --Pink-Deep: #f58b82;
-  --Brown: #926b6a;
-  --Red: #f17064;
-  --Green: #77be6b;
-  --Green-Light: #d1faca;
-  --White: #ffffff;
-  --bg-Primary-Gray: #f3f3f3;
-  --bg-Second-Gray: #dddddd;
-  --black-Word: #333333;
-  --border-radius-big: 20px;
-  --border-radius-med: 10px;
-  --border-radius-small: 6px;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Noto Sans TC";
-}
-
 @keyframes slide-up {
   0% {
     transform: translate3d(0, 100%, 0);
@@ -37,6 +11,8 @@
 }
 .container {
   color: var(--black-Word);
+  display: flex;
+  flex-direction: column;
 }
 .container .part1 {
   @import url("https://fonts.googleapis.com/css?family=Roboto:300");

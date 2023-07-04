@@ -7,7 +7,10 @@ const Sidebar = () => {
     <div className="sidebar">
       <div id="user">
         <div className="avatar d-flex justify-content-center">
-          <img className="sidebar-userphoto" src="" />
+          <img
+            className="sidebar-userphoto"
+            src="/public/img/memberimg/Mask Group.svg"
+          />
         </div>
         <p id="userName">AR Jakir</p>
       </div>

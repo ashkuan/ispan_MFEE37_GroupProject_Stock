@@ -1,0 +1,115 @@
+:root {
+  --IronGray-Deep: #2c3e50;
+  --IronGray: #57687c;
+  --IronGray-Light: #b4c7dd;
+  --Pink: #f7cac9;
+  --Pink-Deep: #f58b82;
+  --Brown: #926b6a;
+  --Red: #f17064;
+  --Green: #77be6b;
+  --Green-Light: #d1faca;
+  --White: #ffffff;
+  --bg-Primary-Gray: #f3f3f3;
+  --bg-Second-Gray: #dddddd;
+  --black-Word: #333333;
+  --border-radius-big: 20px;
+  --border-radius-med: 10px;
+  --border-radius-small: 6px;
+}
+
+.checkoutContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  margin-top: 107px;
+  flex-direction: row;
+}
+.checkoutContainer #left {
+  width: 45%;
+}
+.checkoutContainer #left #user {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 40px;
+}
+.checkoutContainer #left #user .sidebar-userphoto {
+  background-color: #ccc;
+  padding: 15px;
+  border-radius: 50%;
+}
+.checkoutContainer #left .form-label {
+  font-size: 2.3rem;
+  font-weight: bold;
+}
+.checkoutContainer #left .form-check-label {
+  font-size: 1.8rem;
+}
+.checkoutContainer #left .form-select {
+  font-size: 1.7rem;
+}
+.checkoutContainer #left input,
+.checkoutContainer #left .form-control {
+  font-size: 1.4rem;
+}
+.checkoutContainer #left #sendOrderBtn {
+  background-color: #f17064;
+  color: white;
+  width: 100%;
+}
+.checkoutContainer #right {
+  margin-top: 50px;
+  width: 55%;
+  background: var(--bg-Second-Gray);
+  padding: 5px;
+  border-radius: var(--border-radius-big);
+}
+.checkoutContainer #right .card {
+  background: var(--bg-Second-Gray);
+  border: none;
+  padding: 30px;
+}
+.checkoutContainer #right .card .card-img-top {
+  width: 25%;
+}
+.checkoutContainer #right .card .card-body {
+  width: 50%;
+}
+.checkoutContainer #right .card .card-body .card-title {
+  font-size: 2rem;
+}
+.checkoutContainer #right .card .card-body .card-text {
+  font-size: 1.2rem;
+}
+.checkoutContainer #right .card .count {
+  font-size: 1.5rem;
+}
+.checkoutContainer #right .card .total {
+  font-size: 2rem;
+}
+.checkoutContainer #right .price {
+  padding: 10px 30px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.8rem;
+}
+.checkoutContainer #right #discount {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  padding: 0px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.checkoutContainer #right #discount input {
+  font-size: 1.3rem;
+  width: 50%;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  margin-right: 5%;
+}
+.checkoutContainer #right #finalSum {
+  font-weight: bold;
+  font-size: 2.2rem;
+  margin-top: 0px;
+}/*# sourceMappingURL=checkout.css.map */
