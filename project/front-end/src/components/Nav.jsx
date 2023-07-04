@@ -253,7 +253,11 @@ const Navbar = () => {
                 </button>
               </Link>
               <Link to="member">
-                <button type="button" className="btn btn-login">
+                <button
+                  type="button"
+                  className="btn btn-login"
+                  data-bs-dismiss="modal"
+                >
                   登入
                 </button>
               </Link>
