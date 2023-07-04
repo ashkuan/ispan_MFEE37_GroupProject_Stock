@@ -1,14 +1,14 @@
 import React from "react";
-import openbank from "/public/image/rookie/openbank.svg";
-import tree from "/public/image/rookie/tree.svg";
-import skis from "/public/image/rookie/skis.svg";
-import kgi from "/public/image/rookie/kgi.svg";
-import sino from "/public/image/rookie/sino.svg";
-import mountaion from "/public/image/rookie/mountaion.svg";
-import fong from "/public/image/rookie/fong.svg";
-import ctbc from "/public/image/rookie/ctbc.svg";
-import big from "/public/image/rookie/big.svg";
-import fubon from "/public/image/rookie/fubon.svg";
+import openbank from "/img/rookie/openbank.svg";
+import tree from "/img/rookie/tree.svg";
+import skis from "/img/rookie/skis.svg";
+import kgi from "/img/rookie/kgi.svg";
+import sino from "/img/rookie/sino.svg";
+import mountaion from "/img/rookie/mountaion.svg";
+import fong from "/img/rookie/fong.svg";
+import ctbc from "/img/rookie/ctbc.svg";
+import big from "/img/rookie/big.svg";
+import fubon from "/img/rookie/fubon.svg";
 const RookieOpenBank = () => {
   return (
     <>
