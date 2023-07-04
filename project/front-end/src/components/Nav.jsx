@@ -243,7 +243,7 @@ const Navbar = () => {
               </div>
             </div>
             <div className="modal-footer">
-              <a href="">
+              <Link to="register">
                 <button
                   type="button"
                   className="btn btn-register"
@@ -251,12 +251,12 @@ const Navbar = () => {
                 >
                   註冊
                 </button>
-              </a>
-              <a href="">
+              </Link>
+              <Link to="member">
                 <button type="button" className="btn btn-login">
                   登入
                 </button>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

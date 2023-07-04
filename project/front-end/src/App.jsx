@@ -9,6 +9,9 @@ import Shop from "./pages/Shop";
 import History from "./pages/History";
 import Checkout from "./pages/Checkout";
 import Rookie from "./pages/Rookie";
+import Register from "./pages/Register";
+import MemberMail from "./pages/memberMail";
+import MemberArtical from "./pages/MemberArtical";
 import { ShopContextProvider } from "../context/ShopContext";
 
 function App() {
@@ -21,7 +24,10 @@ function App() {
           <Route path="/stock-index" element={<StockIndex />} />
           <Route path="/indStock" element={<IndStock />} />
           <Route path="/forum" element={<Forum />} />
-          <Route path="/memeber" element={<Member />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/member" element={<Member />} />
+          <Route path="/member/mail" element={<MemberMail />} />
+          <Route path="/member/artical" element={<MemberArtical />} />
           <Route path="/shop">
             <Route index element={<Shop></Shop>} />
             <Route path="/shop/history" element={<History />} />
