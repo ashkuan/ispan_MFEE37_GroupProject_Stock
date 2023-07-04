@@ -15,7 +15,7 @@ export const Cart = () => {
 
   return (
     <>
-      <div className="modal-body d-flex flex-column">
+      <div id="myCart" className="modal-body d-flex flex-column">
         {/* 購物車內容(卡片) */}
         {products.map((product) => {
           const { pid, pname, pimage, pprice, pdesc } = product;
@@ -35,17 +35,7 @@ export const Cart = () => {
                   {/* 購物車 - 中間文字*/}
                   <div className="card-body d-flex flex-column align-items-start mx-2">
                     <p className="card-title fs-4 fw-bold">{pname}</p>
-                    <p
-                      className="card-text"
-                      style={{
-                        overflow: "hidden",
-                        display: "-webkit-box",
-                        WebkitBoxOrient: "vertical",
-                        WebkitLineClamp: 2,
-                      }}
-                    >
-                      {pdesc}
-                    </p>
+                    <p className="card-text">{pdesc}</p>
                     {/* 垃圾桶 */}
                     <div className="d-flex justify-content-first">
                       <button className="btn deleteBtn">
@@ -61,10 +51,7 @@ export const Cart = () => {
                     </div>
                   </div>
                   {/* 購物車 - 右邊價格和數量 */}
-                  <div
-                    className="d-flex flex-column justify-content-between mt-2"
-                    style={{ height: 200 }}
-                  >
+                  <div className="cart-right d-flex flex-column justify-content-between mt-2">
                     {/* 商品數量 */}
                     <div
                       className="btn-group"
@@ -99,12 +86,7 @@ export const Cart = () => {
                       </button>
                     </div>
                     {/* 商品價格 */}
-                    <div
-                      className="total fw-bold"
-                      style={{ fontSize: "1.9rem" }}
-                    >
-                      NT$ 399
-                    </div>
+                    <div className="total fw-bold">NT$ 399</div>
                   </div>
                 </div>
                 <hr />
