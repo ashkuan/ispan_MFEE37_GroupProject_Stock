@@ -19,7 +19,7 @@
 
 .main-content {
   position: absolute;
-  top: 100px;
+  top: 130px;
   width: 70%;
   margin-left: 18%;
 }
@@ -28,7 +28,8 @@
   font-size: 2.5rem;
   font-weight: bold;
   color: var(--IronGray-Deep);
-  margin-left: 10%;
+  margin-left: 13% !important;
+  margin-bottom: 30px !important;
 }
 .main-content .row {
   margin-bottom: 15px;
