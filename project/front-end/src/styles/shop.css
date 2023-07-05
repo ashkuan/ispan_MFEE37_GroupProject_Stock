@@ -142,6 +142,9 @@
 }
 .main-content .page {
   cursor: pointer;
+  position: fixed;
+  bottom: 0;
+  right: 35%;
 }
 .main-content .page .pagination {
   color: var(--IronGray-Deep) !important;
@@ -152,6 +155,13 @@
   border: none;
   margin: 0;
   background-color: var(--bg-Second-Gray);
+  padding: 6px 15px;
+}
+.main-content .page .pagination .page-link span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0px;
 }
 .main-content .page .pagination .page-link:hover {
   color: var(--White);
@@ -159,6 +169,11 @@
 }
 .main-content .page .pagination .page-link:focus {
   background-color: var(--IronGray-Deep);
+}
+.main-content .page .pagination .page-number {
+  height: 60px;
+  display: flex;
+  align-items: center;
 }
 .main-content .page .pagination .page-link.active,
 .main-content .page .pagination .active > .page-link {
