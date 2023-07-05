@@ -6,6 +6,7 @@ import "../styles/forum_individual.css";
 import SidebarTag from "../components/Forum/SidebarTag.jsx";
 import SidebarNews from "../components/Forum/SidebarNews.jsx";
 import Post from "../components/Forum/Post.jsx";
+import ArticleSort from "../components/Forum/ArticleSort.jsx";
 
 const Forum = () => {
   return (
@@ -22,7 +23,9 @@ const Forum = () => {
               <SidebarTag />
               <SidebarNews />
             </div>
-            <div className="col-8"></div>
+            <div className="col-8">
+              <ArticleSort />
+            </div>
           </div>
         </div>
         {/* <ForumIndividual /> */}
