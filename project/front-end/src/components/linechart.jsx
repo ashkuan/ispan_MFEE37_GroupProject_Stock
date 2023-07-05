@@ -1,18 +1,16 @@
 import React from 'react';
 import Chart from 'react-apexcharts';
 
-function LineChart() {
+const AreaChart = () => {
   const options = {
     chart: {
-      type: 'line',
-      
+      type: 'area',
       toolbar: {
-        show: false, 
+        show: false,
       },
     },
     series: [
       {
-        
         data: [
           12, 19, 16, 14, 13, 17, 24, 28, 29, 30, 34, 28,
           35, 34, 24, 32, 45, 40, 34, 27, 45, 47, 49, 52,
@@ -23,6 +21,9 @@ function LineChart() {
       },
     ],
     xaxis: {
+      labels: {
+        show: true,
+      },
       categories: [
         '5', '10', '15', '20', '25', '30', '35', '40', '45', '50', '55', '10點',
         '5', '10', '15', '20', '25', '30', '35', '40', '45', '50', '55', '11點',
@@ -32,31 +33,30 @@ function LineChart() {
       ],
     },
     fill: {
-      type: 'solid', // Set to 'solid' for solid fill
-      colors: ['#f17064'], // Fill color
-      backgroundColor: 'rgba(241, 112, 100, 1)'
+      colors: ['#f17064'],
     },
     stroke: {
-      colors: ['#f17064'], 
-      width: 1,
+      curve: 'smooth',
+      colors: ['#f17064'],
+      width: 2,
     },
     yaxis: {
+      labels: {
+        show: true,
+      },
       min: 0,
+    },
+    dataLabels: {
+      enabled: false, 
     },
   };
 
   return (
     <div className="container-fluid mt-3 mb-3">
       <h2>大盤指數</h2>
-      <Chart
-        options={options}
-        series={options.series}
-        type="line"
-        width={800}
-        height={360}
-      />
+      <Chart options={options} series={options.series} type="area" width={800} height={360} />
     </div>
   );
-}
+};
 
-export default LineChart;
+export default AreaChart;

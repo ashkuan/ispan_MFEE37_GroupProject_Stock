@@ -1,7 +1,6 @@
 import React from "react";
 import Sidebar from "../components/Sidebar";
 import "../styles/member.css";
-import { Link } from "react-router-dom";
 const Member = () => {
   return (
     <>
@@ -31,11 +30,8 @@ const Member = () => {
           </div>
           <div className="mb-4 edit-btn">
             <div />
-            <div />
-            <Link to="/member/edit">
-              <button>編輯資料</button>
-            </Link>
-
+            <div />         
+              <button>儲存編輯</button>
             <div />
           </div>
         </div>

@@ -56,8 +56,8 @@ label{
   margin-left: -60px;
 }
 .register-btn{
-  width: 332px;
-  height: 79px;
+  width: 250px;
+  height: 60px;
   background-color: rgb(233, 79, 65);
   color: white;
   border-radius: 100px;
@@ -72,7 +72,7 @@ label{
   right: 30px;
 }
 .register-fast-row{
-  width: 200px;
+  width: 250px;
   display: flex;
   align-items: center;
   justify-content: center;

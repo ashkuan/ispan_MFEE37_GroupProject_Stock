@@ -3,29 +3,10 @@
   font-size: 2.5rem;
   font-weight: bold;
 }
-.my-art{
-  font-size: 2rem;
-}
-.table1 {
-  width: 100%;
-  border-collapse: collapse;
-  /* margin-left: 100px;
-  padding-right: 100px; */
-}
-.art-list{
-  font-size: 1.8rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 .header-row th,
 .stock-row td {
   padding: 10px;
-  /* border: 1px solid black; */
-}
-.art-title{
-  font-weight: bold;
-  color: #1b3248;
+  
 }
 .del-btn {
   background-color: rgb(229, 90, 90);
@@ -37,11 +18,52 @@
   border-radius: 50px;
   margin-right: 50px;
 }
-.art-row{
-  margin-bottom: 30px;
-  padding-bottom: 30px;
-}
 td{
   padding-left: 80px;
   padding-bottom: 40px;
+}
+.art-title{
+  /* background-color: aqua; */
+  width: 400px;
+  margin-left: -50px;
+  margin-right: 50px;
+  margin-top: 10px;
+}
+
+.art-td-header{
+  /* background-color: red; */
+
+  font-weight: bold;
+}
+.art-td-contant{
+  /* background-color: aqua; */
+  width: 400px;
+  margin-left: -50px;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+.art-td-time{
+  /* background-color: #1b3248; */
+  margin-left: -90px;
+  margin-top: 10px;
+}
+.art-btn{
+  margin-top: 10px;
+}
+.art-page-btn-container{
+  display: flex;
+  justify-content: center;
+}
+.art-page-btn-container-2{
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+  
+}
+.art-page-btn{
+  border-radius: 40px;
+  padding: 5px 20px;
+  background-color: rgb(105, 104, 104);
+  color: white;
+  border-style: none;
 }

@@ -8,8 +8,11 @@ const ApexChart = () => {
       chart: {
         type: 'donut',
       },
-      labels: ['My First Dataset'],
+      labels: ['漲:45%','跌:45%'],
       colors: ['#F17064', '#77BE6B'],
+      stroke: {
+        width: 4, // 設置線條寬度為 4
+      },
     },
   };
 

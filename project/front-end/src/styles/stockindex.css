@@ -11,11 +11,13 @@
   margin-bottom: 40px;
 }
 .date-text{
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: bold;
   color: rgba(44, 62, 80, 1);
-  letter-spacing: 5px;
-  margin-top: -30px;
+  letter-spacing: 3px;
+  margin-top: -50px;
+  margin-bottom: 80px;
+  
 }
 .part1-row{
   width: 35%;
@@ -41,17 +43,12 @@
   margin-right: 20px;
 }
 .part1-card-text{
-  
-  /* padding: 15px; */
+  /* padding: 0px; */
   text-align: center;
   font-size: 2rem;
   color: white;
 }
 
-.part1-chart-container{
-  
-  /* margin-left: 20px; */
-}
 .part1-row-percent{
   display: flex;
   flex-direction: column;
@@ -64,12 +61,47 @@
   display: flex;
   align-items: center;
   font-size: 2rem;
-  width: 25%;
+  width: 20%;
   font: bold;
 }
-.go-up{
-  color: rgba(241, 112, 100, 1);
+.finance-text-area{
+  width: 60%;
+  /* background-color: #77BE6B; */
 }
-.go-down{
-  color: rgba(119, 190, 107, 1);
+.finance-canvas{
+  width: 40%;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  /* background-color: #F17064; */
+  margin-top: 100px;
+}
+.industry-title{
+  font-size: 2.5rem;
+  /* margin-bottom: 40px; */
+}
+.finance-stats{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+.svgcontainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--Pink-Deep);
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+}
+.stock-content{
+  font-size: 1.5rem;
+}
+.stock-prescent{
+  color: var(--Pink-Deep);
+}
+.stock-rows{
+  margin-top: 60px;
 }
