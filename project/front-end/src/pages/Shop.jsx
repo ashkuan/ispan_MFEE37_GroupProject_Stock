@@ -7,6 +7,7 @@ import { ShopContext } from "../../context/ShopContext";
 export const Shop = () => {
   const { products, totalAmount, cartItems, addToCart, removeFromCart } =
     useContext(ShopContext);
+  // console.log(cartItems);
 
   return (
     <>

@@ -7,7 +7,7 @@ export const Product = () => {
   const [pages, setPages] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
-  const totalPages = totalAmount / itemsPerPage;
+  const totalPages = Math.ceil(totalAmount / itemsPerPage);
 
   // console.log(cartItems);
 
@@ -162,10 +162,13 @@ export const Product = () => {
             return (
               // 如果是在目前頁面, 就設active換style
               <li
-                className={`page-item ${page === currentPage ? "active" : ""}`}
+                className={` page-item ${page === currentPage ? "active" : ""}`}
                 key={page}
               >
-                <a className="page-link" onClick={() => handlePageClick(page)}>
+                <a
+                  className="page-number page-link"
+                  onClick={() => handlePageClick(page)}
+                >
                   {page}
                 </a>
               </li>
@@ -174,7 +177,7 @@ export const Product = () => {
           {/* 如果目前頁面是最後一頁的話就不能點 */}
           <li
             className={`page-item ${
-              currentPage === totalPages ? "disabled" : ""
+              currentPage == totalPages ? "disabled" : ""
             }`}
           >
             {/* 點擊後執行handlePageClick到下一頁 */}
