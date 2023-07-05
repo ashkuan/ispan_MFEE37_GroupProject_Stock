@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
-import "../../styles/post.css"
+import "../../styles/post.css";
 
 const Post = () => {
   const [lgShow, setLgShow] = useState(false);
