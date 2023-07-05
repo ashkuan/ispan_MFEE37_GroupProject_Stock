@@ -28,7 +28,7 @@
   font-size: 2.5rem;
   font-weight: bold;
   color: var(--IronGray-Deep);
-  margin-left: 13% !important;
+  margin-left: 11% !important;
   margin-bottom: 30px !important;
 }
 .main-content .row {
@@ -145,7 +145,7 @@
   cursor: pointer;
   position: fixed;
   bottom: 0;
-  right: 35%;
+  right: 36%;
 }
 .main-content .page .pagination {
   color: var(--IronGray-Deep) !important;
