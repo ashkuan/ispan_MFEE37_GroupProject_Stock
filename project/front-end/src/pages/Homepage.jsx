@@ -1908,49 +1908,7 @@ const Homepage = () => {
             width: "40%",
           }}
         />
-        <svg
-          width={790}
-          height={727}
-          viewBox="0 0 790 727"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          style={{ position: "absolute", top: 4200, right: 0, zIndex: -1 }}
-        >
-          <g filter="url(#filter0_f_330_2105)">
-            <rect
-              x="761.273"
-              y="442.006"
-              width={424}
-              height={424}
-              rx={212}
-              transform="rotate(131.15 761.273 442.006)"
-              fill="#B4C7DD"
-            />
-          </g>
-          <defs>
-            <filter
-              id="filter0_f_330_2105"
-              x="0.134766"
-              y="0.132812"
-              width="924.006"
-              height="924.008"
-              filterUnits="userSpaceOnUse"
-              colorInterpolationFilters="sRGB"
-            >
-              <feFlood floodOpacity={0} result="BackgroundImageFix" />
-              <feBlend
-                mode="normal"
-                in="SourceGraphic"
-                in2="BackgroundImageFix"
-                result="shape"
-              />
-              <feGaussianBlur
-                stdDeviation={125}
-                result="effect1_foregroundBlur_330_2105"
-              />
-            </filter>
-          </defs>
-        </svg>
+     
         {/* back to the top */}
         <a href="#" id="backtothetop">
           <svg
@@ -2026,7 +1984,7 @@ const Homepage = () => {
           </svg>
         </a>
       </div>
-      <Footer></Footer>
+      <Footer style={{position:"sticky",top:"100vh"}}></Footer>
     </>
   );
 };
