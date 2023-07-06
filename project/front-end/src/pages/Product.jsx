@@ -2,14 +2,12 @@ import React, { useContext, useEffect, useState } from "react";
 import { ShopContext } from "../../context/ShopContext";
 
 export const Product = () => {
-  const { products, totalAmount, cartItems, addToCart, removeFromCart } =
+  const { products, totalAmount, cartItems, addToCart } =
     useContext(ShopContext);
   const [pages, setPages] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
   const totalPages = Math.ceil(totalAmount / itemsPerPage);
-
-  // console.log(cartItems);
 
   // 頁籤
   useEffect(() => {

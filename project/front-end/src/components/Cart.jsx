@@ -4,11 +4,11 @@ import { ShopContext } from "../../context/ShopContext";
 export const Cart = () => {
   const {
     products,
-    totalAmount,
     cartItems,
     addToCart,
     removeFromCart,
     updateCartItemAmount,
+    trashCan,
   } = useContext(ShopContext);
 
   //   console.log(cartItems);
@@ -38,7 +38,12 @@ export const Cart = () => {
                     <p className="card-text">{pdesc}</p>
                     {/* 垃圾桶 */}
                     <div className="d-flex justify-content-first">
-                      <button className="btn deleteBtn">
+                      <button
+                        className="btn deleteBtn"
+                        onClick={() => {
+                          trashCan(pid);
+                        }}
+                      >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           fill="currentColor"
@@ -86,7 +91,9 @@ export const Cart = () => {
                       </button>
                     </div>
                     {/* 商品價格 */}
-                    <div className="total fw-bold">NT$ 399</div>
+                    <div className="total fw-bold">
+                      NT$ {cartItemAmount * pprice}
+                    </div>
                   </div>
                 </div>
                 <hr />

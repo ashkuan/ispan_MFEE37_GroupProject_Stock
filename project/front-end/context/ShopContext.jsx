@@ -12,25 +12,11 @@ const getDefaultCart = () => {
   return cart;
 };
 
-// 傳入後端
-const addItemsToDB = async (cartItems) => {
-  console.log("執行addItemsToDB()");
+// 更新資料到資料庫
+const updateCartItemsToDB = async (cartItems) => {
   console.log(cartItems);
   try {
-    // 執行fetch請求將cartItems傳送到後端API進行資料庫儲存
-    const res = await axios.post("http://localhost:3000/shop/cart/add", {
-      data: cartItems,
-    });
-  } catch (error) {
-    console.error("傳入後端失敗:", error);
-  }
-};
-const removeItemsFromDB = async (cartItems) => {
-  console.log("執行removeItemsFromDB()");
-  console.log(cartItems);
-  try {
-    // 執行fetch請求將cartItems傳送到後端API進行資料庫儲存
-    const res = await axios.delete("http://localhost:3000/shop/cart", {
+    const res = await axios.post("http://localhost:3000/cart/edit", {
       data: cartItems,
     });
   } catch (error) {
@@ -41,19 +27,18 @@ const removeItemsFromDB = async (cartItems) => {
 export const ShopContextProvider = (props) => {
   const [products, setProducts] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
-  const [cartItems, setCartItems] = useState(getDefaultCart());
-  const [DBItems, setDBItems] = useState([]);
+  const [cartItems, setCartItems] = useState();
 
-  // select from
+  // 載入所有書籍
   useEffect(() => {
     const fetchShop = async () => {
       try {
         // 商品
         const res = await axios.get(`http://localhost:3000/shop`);
-        setProducts(res.data); // 把後端所有商品資料放入state;
-        setTotalAmount(res.data.length); // 商品總數
-        // setCartItems(getDefaultCart()); // 一開始預設的商品和商品數
-        console.log(cartItems);
+        // console.log(res.data);
+        setProducts(res.data); // 把後端所有商品資料放入state, 要傳到<Product>使用;
+        setTotalAmount(res.data.length); // 商品總數, 要製作頁籤
+        // console.log(cartItems);
       } catch (err) {
         console.log(err);
       }
@@ -61,49 +46,63 @@ export const ShopContextProvider = (props) => {
     fetchShop();
   }, []);
 
-  // insert into；cartItems更新時要執行以下，但無法成功執行，因此改為設定定時更新
-  // useEffect(() => {
-  // console.log(cartItems);
-  // cartItems是物件，所以要用entries和forEach抓出key和value
-  // Object.entries(cartItems).forEach(([pid, paccount]) => {
-  //   const item = [pid, paccount];
-  //   DBItems.push(item); // [key,value]
-  //   setDBItems(DBItems);
-  // });
-
-  // 設定定時更新
-  // const saveInterval = setInterval(() => {
-  // saveCartItemsToDB(DBItems);
-  // }, 1000);
-  //  定時功能在元件渲染時執行，等元件卸載時就清除
-  // return () => {
-  // clearInterval(saveInterval);
-  // };
-  // }, [cartItems]);
+  // 載入購物車
+  useEffect(() => {
+    const fetchCart = async () => {
+      try {
+        // 商品
+        const res = await axios.get(`http://localhost:3000/cart`);
+        // console.log(res.data.length);
+        // 如果資料庫都沒有資料，那就全部預設為0
+        if (res.data.length == 0) {
+          setCartItems(getDefaultCart()); // 一開始預設的商品和商品數
+          console.log(cartItems);
+        } else {
+          // 如果資料庫有資料，就把有資料的部分替換
+          // console.log(res.data);
+          const items = res.data;
+          const updatedCart = getDefaultCart();
+          items.forEach((item) => {
+            const { pid, paccount } = item;
+            updatedCart[pid] = paccount;
+          });
+          setCartItems(updatedCart);
+          console.log(cartItems);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchCart();
+  }, []);
 
   const addToCart = (pid) => {
-    console.log("點擊新增按鈕");
-    // 找到cartItems目前的值(預設為0) => 1. 顯示出所有cartItems  2. [將點擊的id]:原本的[商品]數量+1
-    setCartItems((prev) => ({ ...prev, [pid]: prev[pid] + 1 }));
     console.log("新增cartItems");
+    // 找到cartItems目前的值(預設為0) => 1. 顯示出所有cartItems  2. [將點擊的id]:原本的[商品]數量+1
+    // 這是前端網頁要先減掉，會透過react傳送到其他地方，前端會即時更新
+    setCartItems((cartItems) => ({ ...cartItems, [pid]: cartItems[pid] + 1 }));
+    // 後端才去操作
     const updatedCartItems = { ...cartItems, [pid]: cartItems[pid] + 1 };
-    addItemsToDB(updatedCartItems);
+    updateCartItemsToDB(updatedCartItems);
   };
 
   const removeFromCart = (pid) => {
-    console.log("點擊刪除按鈕");
-    setCartItems((prev) => ({ ...prev, [pid]: prev[pid] - 1 }));
     console.log("刪除cartItems");
+    setCartItems((cartItems) => ({ ...cartItems, [pid]: cartItems[pid] - 1 }));
     const updatedCartItems = { ...cartItems, [pid]: cartItems[pid] - 1 };
-    removeItemsFromDB(updatedCartItems);
+    updateCartItemsToDB(updatedCartItems);
   };
 
   const updateCartItemAmount = (newAmount, pid) => {
-    setCartItems((prev) => ({ ...prev, [pid]: newAmount }));
+    setCartItems((cartItems) => ({ ...cartItems, [pid]: newAmount }));
   };
 
   const trashCan = (pid) => {
-    setCartItems((prev) => ({ ...prev, [pid]: 0 }));
+    // console.log("點擊垃圾桶");
+    // console.log(pid);
+    setCartItems((cartItems) => ({ ...cartItems, [pid]: 0 }));
+    const updatedCartItems = { ...cartItems, [pid]: 0 };
+    updateCartItemsToDB(updatedCartItems);
   };
 
   const contextValue = {
@@ -115,8 +114,6 @@ export const ShopContextProvider = (props) => {
     updateCartItemAmount,
     trashCan,
   };
-
-  // console.log(cartItems);
 
   return (
     <ShopContext.Provider value={contextValue}>
