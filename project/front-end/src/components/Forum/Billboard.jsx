@@ -7,11 +7,12 @@ import HelpIcon from "@mui/icons-material/Help";
 import QueryStatsIcon from "@mui/icons-material/QueryStats";
 import TipsAndUpdatesIcon from "@mui/icons-material/TipsAndUpdates";
 import ReadMoreIcon from "@mui/icons-material/ReadMore";
+import { Button } from "@mui/material";
 
 function Billboard() {
   return (
     <div className="billboard p-4 d-flex justify-content-between fz-2">
-      <div className="board p-4">
+      <div className="board mr-2 p-4">
         <QuestionAnswerIcon />
         閒聊
       </div>
@@ -39,6 +40,9 @@ function Billboard() {
         <ReadMoreIcon />
         其他
       </div>
+      <Button className="toRight">
+        <img className="arrowRight" src="./img/forum/arrow-right.svg" alt="" />
+      </Button>
     </div>
   );
 }
