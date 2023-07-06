@@ -29,28 +29,20 @@ app.get("/cart", function (req, res) {
   });
 });
 
-app.post("/cart/edit", function (req, res) {
-  const cartItems = req.body.data;
-  // 過濾為0的pid, 減少資料庫的更動
-  const filteredItems = Object.entries(cartItems);
-  // .filter(
-  //   ([pid, paccount]) => paccount !== 0
-  // );
-  const VALUES = filteredItems.map(([pid, paccount]) => [pid, paccount]);
-  console.log(VALUES);
-
-  db.query(
-    "INSERT INTO Cart (pid, paccount) VALUES ? ON DUPLICATE KEY UPDATE paccount = VALUES(paccount)",
-    [VALUES],
-    function (err, data) {
-      if (err) {
-        console.error("資料庫新增失敗:", err);
-      } else {
-        console.log("資料庫新增成功");
+app.get("/checkout"),
+  function (req, res) {
+    db.query(
+      "SELECT Shop.pname, Shop.pimage, Shop.pprice, Shop.pdesc FROM Cart JOIN Shop ON Cart.pid = Shop.pid WHERE Cart.pid = ?",
+      [],
+      function (err, data) {
+        if (err) {
+          return "查無資料";
+        } else {
+          console.log(json(data));
+        }
       }
-    }
-  );
-});
+    );
+  };
 
 app.listen(3000, () => {
   console.log("Shop 的 port 3000 連接完成 " + new Date().toLocaleTimeString());

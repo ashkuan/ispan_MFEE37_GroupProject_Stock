@@ -166,7 +166,12 @@
 #myCart .cart-right .total {
   font-size: 1.6rem;
 }
-
+#myCart #cartTotal {
+  font-size: 1.8rem;
+  text-align: right;
+  font-weight: bold;
+  padding: 10px;
+}
 #cartModal .modal-title {
   font-size: 2.2rem;
 }

@@ -28,6 +28,7 @@ export const ShopContextProvider = (props) => {
   const [products, setProducts] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
   const [cartItems, setCartItems] = useState();
+  const [dataLoaded, setDataLoaded] = useState(false); //判斷資料是否加載完成
 
   // 載入所有書籍
   useEffect(() => {
@@ -38,9 +39,8 @@ export const ShopContextProvider = (props) => {
         // console.log(res.data);
         setProducts(res.data); // 把後端所有商品資料放入state, 要傳到<Product>使用;
         setTotalAmount(res.data.length); // 商品總數, 要製作頁籤
-        // console.log(cartItems);
       } catch (err) {
-        console.log(err);
+        console.log("商城初始化載入失敗" + err);
       }
     };
     fetchShop();
@@ -64,16 +64,18 @@ export const ShopContextProvider = (props) => {
           const updatedCart = getDefaultCart();
           items.forEach((item) => {
             const { pid, paccount } = item;
+            // console.log(item);
             updatedCart[pid] = paccount;
           });
           setCartItems(updatedCart);
-          console.log(cartItems);
+          setDataLoaded(true);
         }
       } catch (err) {
         console.log(err);
       }
     };
     fetchCart();
+    console.log(cartItems);
   }, []);
 
   const addToCart = (pid) => {
@@ -95,14 +97,26 @@ export const ShopContextProvider = (props) => {
 
   const updateCartItemAmount = (newAmount, pid) => {
     setCartItems((cartItems) => ({ ...cartItems, [pid]: newAmount }));
+    const updatedCartItems = { ...cartItems, [pid]: newAmount };
+    updateCartItemsToDB(updatedCartItems);
   };
 
   const trashCan = (pid) => {
-    // console.log("點擊垃圾桶");
-    // console.log(pid);
     setCartItems((cartItems) => ({ ...cartItems, [pid]: 0 }));
     const updatedCartItems = { ...cartItems, [pid]: 0 };
     updateCartItemsToDB(updatedCartItems);
+  };
+
+  // 計算總額
+  const calculateCartTotal = () => {
+    let cartTotal = 0;
+    products.forEach((product) => {
+      const { pid, pprice } = product;
+      const cartItemAmount = cartItems[pid];
+      // console.log(cartItemAmount);
+      cartTotal += cartItemAmount * pprice;
+    });
+    return cartTotal;
   };
 
   const contextValue = {
@@ -113,11 +127,12 @@ export const ShopContextProvider = (props) => {
     removeFromCart,
     updateCartItemAmount,
     trashCan,
+    calculateCartTotal,
   };
 
   return (
     <ShopContext.Provider value={contextValue}>
-      {props.children}
+      {dataLoaded ? props.children : <div>Loading...</div>}
     </ShopContext.Provider>
   );
 };

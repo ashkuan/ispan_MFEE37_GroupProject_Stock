@@ -10,7 +10,7 @@ import Checkout from "./pages/Checkout";
 import Rookie from "./pages/Rookie";
 import Register from "./pages/Register";
 import Member from "./pages/Member";
-import MemberEdit from "./pages/MemberEdit"
+import MemberEdit from "./pages/MemberEdit";
 import MemberMail from "./pages/memberMail";
 import MemberArtical from "./pages/MemberArtical";
 import MemberCol from "./pages/Membercol";

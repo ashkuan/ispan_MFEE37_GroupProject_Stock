@@ -4,14 +4,14 @@ import { ShopContext } from "../../context/ShopContext";
 export const Cart = () => {
   const {
     products,
+    totalAmount,
     cartItems,
     addToCart,
     removeFromCart,
     updateCartItemAmount,
     trashCan,
+    calculateCartTotal,
   } = useContext(ShopContext);
-
-  //   console.log(cartItems);
 
   return (
     <>
@@ -41,7 +41,7 @@ export const Cart = () => {
                       <button
                         className="btn deleteBtn"
                         onClick={() => {
-                          trashCan(pid);
+                          trashCan();
                         }}
                       >
                         <svg
@@ -123,6 +123,7 @@ export const Cart = () => {
             </div>
           </div>
         </div>
+        <div id="cartTotal">總金額： NT$ {calculateCartTotal()}</div>
       </div>
     </>
   );

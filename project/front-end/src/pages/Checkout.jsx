@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import Navbar from "../components/Nav";
 import "../styles/checkout.css";
+import { ShopContext } from "../../context/ShopContext";
 
 const Checkout = () => {
+  const { products, cartItems, calculateCartTotal } = useContext(ShopContext);
+  // 要把cartItems的paccount不為0的pid抓出來後，拿去找products中的所有資料
+  const filteredCartItems = Object.entries(cartItems).filter(
+    (item) => item[1] !== 0
+  );
+  // console.log(filteredCartItems);
+
   return (
     <>
       <Navbar></Navbar>
@@ -184,41 +192,65 @@ const Checkout = () => {
         </div>
         {/* 結帳右邊 */}
         <div id="right" className="my-5">
-          <div className="card d-flex flex-row align-items-start">
-            {/* 購物車 - 左 */}
-            {/* 購物車內容-圖 */}
-            <img src="/public/img/shop/p01.png" className="card-img-top" />
-            {/* 購物車 - 中 */}
-            {/* 購物車內容-文字 */}
-            <div className="card-body d-flex flex-column align-items-start mx-1">
-              <p className="card-title fw-bold">全方位股票分析法</p>
-              <p
-                className="card-text"
-                style={{
-                  overflow: "hidden",
-                  display: "-webkit-box",
-                  WebkitBoxOrient: "vertical",
-                  WebkitLineClamp: 2,
-                }}
-              >
-                積極主動地追求高效率投資，就是學習專業的股票分析師手法，掌握關鍵的分析面向：基本面找到體質優良的好公司，技術面找到蓄勢待發動能充沛的起漲股，籌碼面找到大戶吃貨主力鎖碼的口袋股，這堂課讓投資人實戰演練面面俱到。
-              </p>
-            </div>
-            {/* 購物車 - 右 */}
-            <div
-              className="d-flex flex-column justify-content-between align-items-end mt-3"
-              style={{ height: 140 }}
-            >
-              {/* 商品數量 */}
-              <div className="count d-flex fw-bold">
-                數量：
-                <p>1</p>
-              </div>
-              {/* 商品價格 */}
-              <div className="total fw-bold">NT$ 399</div>
-            </div>
-          </div>
-          <hr />
+          {filteredCartItems.map((item1) => {
+            // console.log(item1);
+            const pid = item1[0];
+            const paccount = item1[1];
+            // console.log(pid);
+            // Array.prototype.some()是JS中的陣列方法，可檢查陣列中是否至少有一個元素符合指定的條件。
+            const filteredProducts = products.filter(
+              (product) => product.pid == pid
+            );
+            // console.log(filteredProducts);
+            const pname = filteredProducts[0].pname;
+            const pimage = filteredProducts[0].pimage;
+            const pdesc = filteredProducts[0].pdesc;
+            const pprice = filteredProducts[0].pprice;
+            // console.log(pname);
+            // console.log(pimage);
+            return (
+              <>
+                <div
+                  id={pid}
+                  className="card d-flex flex-row align-items-start"
+                >
+                  {/* 購物車 - 左 */}
+                  {/* 購物車內容-圖 */}
+                  <img src={pimage} className="card-img-top" />
+                  {/* 購物車 - 中 */}
+                  {/* 購物車內容-文字 */}
+                  <div className="card-body d-flex flex-column align-items-start mx-1">
+                    <p className="card-title fw-bold">{pname}</p>
+                    <p
+                      className="card-text"
+                      style={{
+                        overflow: "hidden",
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 2,
+                      }}
+                    >
+                      {pdesc}
+                    </p>
+                  </div>
+                  {/* 購物車 - 右 */}
+                  <div
+                    className="d-flex flex-column justify-content-between align-items-end mt-3"
+                    style={{ height: 140 }}
+                  >
+                    {/* 商品數量 */}
+                    <div className="count d-flex fw-bold">
+                      數量：
+                      <p>{paccount}</p>
+                    </div>
+                    {/* 商品價格 */}
+                    <div className="total fw-bold">NT$ {paccount * pprice}</div>
+                  </div>
+                </div>
+                <hr />
+              </>
+            );
+          })}
           {/* 價格 */}
           <div id="discount">
             <span>優惠碼</span>
@@ -227,7 +259,7 @@ const Checkout = () => {
           </div>
           <div id="sum" className="price">
             <p>合計</p>
-            <p>NT$ 399</p>
+            <p>NT$ {calculateCartTotal()}</p>
           </div>
           <div id="fee" className="price">
             <p>運費</p>
