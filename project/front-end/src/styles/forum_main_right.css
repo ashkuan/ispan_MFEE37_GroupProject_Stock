@@ -46,18 +46,6 @@
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
-.billboard{
-    color: var(--IronGray-Deep);
-    overflow:auto;
-}
-
-.board{
-    border-radius: 0.625rem;
-    background-color: white;
-    border: #333333 solid 1px;
-    width: 30%;
-}
-
 .arrowRight{
     display: inline-flex;
     padding: 0.625rem;
@@ -74,3 +62,42 @@
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+  
+.carousel {
+    display: flex;
+    align-items: center;
+  }
+  
+  .carousel-items {
+    display: flex;
+    margin-right: 20px; /* 调整 div 之间的间距 */
+  }
+  
+  .billboard {
+    color: var(--IronGray-Deep);
+    display: flex;
+    align-items: center;
+  }
+  
+  .board {
+    color: var(--IronGray-Deep);
+    border-radius: 0.625rem;
+    background-color: white;
+    border: #333333 solid 1px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    margin-right: 20px;
+  }
+  
+  .carousel-arrow {
+    margin-left: auto;
+    display: flex; /* 添加此行 */
+    align-items: center; /* 添加此行 */
+  }
+
+  .board .icon {
+    margin-bottom: 5px; /* 调整图标和标签之间的间距 */
+  }
