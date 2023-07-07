@@ -7,6 +7,7 @@ import SidebarTag from "../components/Forum/SidebarTag.jsx";
 import SidebarNews from "../components/Forum/SidebarNews.jsx";
 import Post from "../components/Forum/Post.jsx";
 import ArticleSort from "../components/Forum/ArticleSort.jsx";
+import LineChart from "../components/linechart";
 
 const Forum = () => {
   return (
@@ -22,6 +23,9 @@ const Forum = () => {
           <div className="row d-flex justify-content-between">
             <div className="col-3">
               <SidebarTag />
+             
+              <div style={{width:"10px"}} ><LineChart/></div>
+              
               <SidebarNews />
             </div>
             <div className="col-8">
