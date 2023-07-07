@@ -29,7 +29,7 @@ export const ShopContextProvider = (props) => {
   const [totalAmount, setTotalAmount] = useState(0);
   const [cartItems, setCartItems] = useState();
   const [dataLoaded, setDataLoaded] = useState(true); //判斷資料是否加載完成
-
+  // 
   // 載入所有書籍
   useEffect(() => {
     const fetchShop = async () => {
