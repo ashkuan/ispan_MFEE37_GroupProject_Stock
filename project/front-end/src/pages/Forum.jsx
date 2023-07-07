@@ -16,6 +16,7 @@ const Forum = () => {
       <br />
       <br />
       <br />
+      <br />
       <div className="forum">
         <div className="container mt-4">
           <div className="row d-flex justify-content-between">

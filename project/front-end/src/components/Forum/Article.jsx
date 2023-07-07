@@ -45,17 +45,15 @@ function Article() {
         <div className="d-flex justify-content-between px-4">
           <div className="d-flex align-items-center">
             <img className="userImg" src="./img/forum/user-Img.jpg" alt="" />
-            <span className="me-3 mb-1 fz-3">大神帶你飛</span>
-            <span className="me-3 mb-1 fz-4">・3小時前</span>
+            <span className="me-3 mb-1 fz-3">菜鳥操盤手</span>
+            <span className="me-3 mb-1 fz-4">・6/22</span>
           </div>
           <MoreVertIcon />
         </div>
         <div className="px-4">
-          <p className="fz-1 mt-3">為什麼經濟不景氣股票卻飆這麼高</p>
+          <p className="fz-1 mt-3">新手媽咪：求穩定獲利股票</p>
           <p className="ellipsis mt-3 fz-2">
-            各位年薪千萬大神好 小妹初入股市沒多久還只是個小韭菜
-            看到最近大盤指數一直在飆 已經快飆到上次高點萬八了
-            各大ETF也跟著存股變飆股
+            本人新手媽媽孩子不滿一歲，因覺得生孩子後整個花費太大，孩子需要良善的照顧，儘可能給他最好的，所以覺得4萬月薪不夠用，想請問股票大神意見
           </p>
         </div>
         <div className="px-4 mt-3 d-flex">
