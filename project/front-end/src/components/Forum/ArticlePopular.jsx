@@ -1,6 +1,6 @@
 import React from "react";
 import Billboard from "./Billboard";
-import Article from "./Article";
+import ArticlePart from "./ArticlePart";
 import "../../styles/forum_main_right.css";
 
 function ArticlePopular() {
@@ -13,7 +13,7 @@ function ArticlePopular() {
         </div>
       </div>
       <hr className="forumHr mx-4" />
-      <Article />
+      <ArticlePart />
     </div>
   );
 }
