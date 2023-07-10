@@ -1,4 +1,3 @@
-import React from "react";
 import "../../styles/forum_main_right.css";
 import QuestionAnswerIcon from "@mui/icons-material/QuestionAnswer";
 import NewspaperIcon from "@mui/icons-material/Newspaper";
@@ -8,50 +7,53 @@ import QueryStatsIcon from "@mui/icons-material/QueryStats";
 import TipsAndUpdatesIcon from "@mui/icons-material/TipsAndUpdates";
 import ReadMoreIcon from "@mui/icons-material/ReadMore";
 import { Button } from "@mui/material";
+import React, { useState } from "react";
 
-function Billboard() {
-  return (
-    <>
-      <div className="p-4 fz-1">看板分類</div>
-      <div className="billboard d-flex justify-content-between fz-2">
-        <div className="board mr-2 p-4">
-          <QuestionAnswerIcon />
-          閒聊
-        </div>
-        <div className="board p-4">
-          <NewspaperIcon />
-          新聞
-        </div>
-        <div className="board p-4">
-          <AdsClickIcon />
-          標的
-        </div>
-        <div className="board p-4">
-          <HelpIcon />
-          請益
-        </div>
-        <div className="board p-4">
-          <QueryStatsIcon />
-          情報
-        </div>
-        <div className="board p-4">
-          <TipsAndUpdatesIcon />
-          心得
-        </div>
-        <div className="board p-4">
-          <ReadMoreIcon />
-          其他
-        </div>
-        <Button className="toRight">
-          <img
-            className="arrowRight"
-            src="./img/forum/arrow-right.svg"
-            alt=""
-          />
-        </Button>
+const Billboard = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 4;
+  const totalItems = 7; // 根據需要的總數量調整
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
+
+  function handleRightClick() {
+    setCurrentPage((prevPage) => {
+      if (prevPage === totalPages) {
+        return 1; // 返回到第一頁
+      } else {
+        return prevPage + 1; // 前進到下一頁
+      }
+    });
+  }
+
+  function getItems() {
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const data = [
+      { icon: <QuestionAnswerIcon />, label: "閒聊" },
+      { icon: <NewspaperIcon />, label: "新聞" },
+      { icon: <AdsClickIcon />, label: "標的" },
+      { icon: <HelpIcon />, label: "請益" },
+      { icon: <QueryStatsIcon />, label: "情報" },
+      { icon: <TipsAndUpdatesIcon />, label: "心得" },
+      { icon: <ReadMoreIcon />, label: "其他" },
+    ];
+
+    return data.slice(startIndex, endIndex).map((item, index) => (
+      <div className="board p-4" key={index}>
+        {item.icon}
+        {item.label}
       </div>
-    </>
+    ));
+  }
+
+  return (
+    <div className="carousel">
+      <div className="carousel-items">{getItems()}</div>
+      <Button className="carousel-arrow" onClick={handleRightClick}>
+        <img className="arrowRight" src="./img/forum/arrow-right.svg" alt="" />
+      </Button>
+    </div>
   );
-}
+};
 
 export default Billboard;

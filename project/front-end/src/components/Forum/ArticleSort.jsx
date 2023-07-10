@@ -55,6 +55,13 @@ export default function ArticleSort() {
             >
               追蹤中
             </MDBTabsLink>
+            <MDBTabsLink
+              className="articleSort mx-2"
+              onClick={() => handleBasicClick("tab1")}
+              active={basicActive === "tab1"}
+            >
+              123
+            </MDBTabsLink>
           </MDBTabsItem>
         </MDBTabs>
       </div>
