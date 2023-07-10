@@ -50,6 +50,7 @@
 }
 .main-content .row .card .book-title {
   font-size: 1.3rem;
+  font-weight: bold;
   width: 225px;
   overflow: hidden;
   white-space: nowrap;
