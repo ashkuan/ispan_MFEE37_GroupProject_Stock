@@ -84,11 +84,29 @@ export const Cart = () => {
                         type="button"
                         className="addBtn btn btn-outline-secondary fs-4"
                         onClick={() => {
-                          addToCart(pid);
+                          addToCart(pid, 1);
                         }}
                       >
                         +
                       </button>
+                      <div
+                        class="toast align-items-center"
+                        role="alert"
+                        aria-live="assertive"
+                        aria-atomic="true"
+                      >
+                        <div class="d-flex">
+                          <div class="toast-body">
+                            Hello, world! This is a toast message.
+                          </div>
+                          <button
+                            type="button"
+                            class="btn-close me-2 m-auto"
+                            data-bs-dismiss="toast"
+                            aria-label="Close"
+                          ></button>
+                        </div>
+                      </div>
                     </div>
                     {/* 商品價格 */}
                     <div className="total fw-bold">

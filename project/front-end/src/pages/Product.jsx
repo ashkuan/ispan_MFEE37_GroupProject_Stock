@@ -32,12 +32,12 @@ export const Product = () => {
         {products
           .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
           .map((product) => {
-            const { pid, pname, pimage, pprice, pdesc } = product;
+            const { pid, pname, pimage1, pprice, pdesc } = product;
             const cartItemAmount = cartItems[pid];
             return (
               <div className="col" key={pid}>
                 <div className="card">
-                  <img src={pimage} className="card-img-top" />
+                  <img src={pimage1} className="card-img-top" />
                   <div className="card-body">
                     <h5 className="card-title book-title">{pname}</h5>
                     <p className="card-text">${pprice}</p>
@@ -53,7 +53,7 @@ export const Product = () => {
                       <button
                         className="addInCartBtn"
                         onClick={() => {
-                          addToCart(pid);
+                          addToCart(pid, 1);
                         }}
                       >
                         <svg

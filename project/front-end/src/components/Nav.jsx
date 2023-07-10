@@ -170,7 +170,6 @@ const Navbar = () => {
         tabIndex={-1}
         aria-labelledby="cartModalLabel"
         aria-hidden="true"
-        data-bs-toggle="modal"
       >
         <div className="modal-dialog modal-lg modal-dialog-scrollable">
           <div className="modal-content">
