@@ -263,4 +263,15 @@
 }
 #myproductContainer #desc {
   font-size: 1.6rem;
+}
+
+#toast {
+  background-color: var(--IronGray-Light);
+  width: 500px;
+  padding: 15px;
+  border-radius: var(--border-radius-small);
+  font-size: 1.5rem;
+  position: fixed;
+  left: 38%;
+  top: 50%;
 }/*# sourceMappingURL=shop.css.map */

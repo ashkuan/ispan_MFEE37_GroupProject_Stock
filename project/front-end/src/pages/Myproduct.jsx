@@ -2,11 +2,16 @@ import React, { useContext, useState } from "react";
 import Footer from "../components/Footer";
 import { ShopContext } from "../../context/ShopContext";
 import { Product } from "./Product";
+import { Toast } from "react-bootstrap";
 
-const Myproduct = (props) => {
+const Myproduct = () => {
   const { products, addToCart } = useContext(ShopContext);
   const [quantity, setQuantity] = useState(1);
+  const [showToast, setShowToast] = useState(false);
 
+  const handleButtonClick = () => {
+    setShowToast(true);
+  };
   // 抓出url，找到pid參數的值
   const queryParams = new URLSearchParams(window.location.search);
   const URLpid = queryParams.get("pid");
@@ -103,6 +108,7 @@ const Myproduct = (props) => {
                       id="addToCart"
                       onClick={() => {
                         addToCart(pid, Number(quantity));
+                        handleButtonClick();
                       }}
                     >
                       加入購物車
@@ -110,6 +116,17 @@ const Myproduct = (props) => {
                   </div>
                 </div>
               </div>
+
+              <Toast
+                id="toast"
+                show={showToast}
+                onClose={() => setShowToast(false)}
+              >
+                <Toast.Header>
+                  <strong className="me-auto"></strong>
+                </Toast.Header>
+                <Toast.Body>已新增到購物車</Toast.Body>
+              </Toast>
               <div id="desc">
                 <p className="fs-3 fw-bold">內容介紹</p>
                 <hr />

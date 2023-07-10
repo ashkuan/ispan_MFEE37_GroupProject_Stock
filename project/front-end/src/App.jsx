@@ -32,12 +32,12 @@ function App() {
           <Route path="/stock-index" element={<StockIndex />} />
           <Route path="/indStock" element={<IndStock />} />
           <Route path="/forum">
-          <Route index element={<Forum></Forum>} />
-          <Route path="/forum/chats" element={<Chats />} />
-          <Route path="/forum/news" element={<News />} />
-          <Route path="/forum/targets" element={<Targets />} />
-          <Route path="/forum/questions" element={<Questions />} />
-          <Route path="/forum/notes" element={<Notes />} />
+            <Route index element={<Forum></Forum>} />
+            <Route path="/forum/chats" element={<Chats />} />
+            <Route path="/forum/news" element={<News />} />
+            <Route path="/forum/targets" element={<Targets />} />
+            <Route path="/forum/questions" element={<Questions />} />
+            <Route path="/forum/notes" element={<Notes />} />
           </Route>
           <Route path="/register" element={<Register />} />
           <Route path="/member" element={<Member />} />

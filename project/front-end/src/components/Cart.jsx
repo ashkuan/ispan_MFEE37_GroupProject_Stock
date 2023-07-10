@@ -18,7 +18,7 @@ export const Cart = () => {
       <div id="myCart" className="modal-body d-flex flex-column">
         {/* 購物車內容(卡片) */}
         {products.map((product) => {
-          const { pid, pname, pimage, pprice, pdesc } = product;
+          const { pid, pname, pimage1, pprice, pdesc } = product;
           const cartItemAmount = cartItems[pid];
           return (
             cartItemAmount > 0 && (
@@ -30,7 +30,7 @@ export const Cart = () => {
                 >
                   {/* 購物車 - 左邊圖*/}
                   <div className="d-flex align-items-center">
-                    <img src={pimage} className="card-img-top" />
+                    <img src={pimage1} className="card-img-top" />
                   </div>
                   {/* 購物車 - 中間文字*/}
                   <div className="card-body d-flex flex-column align-items-start mx-2">
@@ -89,24 +89,6 @@ export const Cart = () => {
                       >
                         +
                       </button>
-                      <div
-                        class="toast align-items-center"
-                        role="alert"
-                        aria-live="assertive"
-                        aria-atomic="true"
-                      >
-                        <div class="d-flex">
-                          <div class="toast-body">
-                            Hello, world! This is a toast message.
-                          </div>
-                          <button
-                            type="button"
-                            class="btn-close me-2 m-auto"
-                            data-bs-dismiss="toast"
-                            aria-label="Close"
-                          ></button>
-                        </div>
-                      </div>
                     </div>
                     {/* 商品價格 */}
                     <div className="total fw-bold">

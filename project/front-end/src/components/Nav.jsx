@@ -195,7 +195,7 @@ const Navbar = () => {
               </button>
               <button id="payBtn" type="button" className="btn mx-3">
                 <Link
-                  to="checkout"
+                  to="/shop/checkout"
                   style={{ color: "white", textDecoration: "none" }}
                 >
                   結帳 →
