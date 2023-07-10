@@ -1,5 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ShopContext } from "../../context/ShopContext";
+import Myproduct from "./Myproduct";
+import { Link } from "react-router-dom";
 
 export const Product = () => {
   const { products, totalAmount, cartItems, addToCart } =
@@ -46,7 +48,7 @@ export const Product = () => {
                         data-bs-toggle="modal"
                         data-bs-target={`#exampleModal-${pid}`}
                       >
-                        點我瀏覽
+                        <Link to={`/shop/Myproduct?pid=${pid}`}>瀏覽</Link>
                       </button>
                       <button
                         className="addInCartBtn"
@@ -75,67 +77,6 @@ export const Product = () => {
                           </>
                         )}
                       </button>
-                    </div>
-                    {/* <!-- Modal --> */}
-                    <div
-                      className="modal fade"
-                      id={`exampleModal-${pid}`}
-                      tabIndex="-1"
-                      role="dialog"
-                      aria-labelledby="exampleModalLabel"
-                      aria-hidden="true"
-                    >
-                      <div className="modal-dialog modal-lg">
-                        <div className="modal-content">
-                          <div className="modal-header">
-                            <h1
-                              className="modal-title fs-5"
-                              id="exampleModalLabel"
-                            >
-                              書籍瀏覽
-                            </h1>
-                            <button
-                              type="button"
-                              className="btn-close"
-                              data-bs-dismiss="modal"
-                              aria-label="Close"
-                            ></button>
-                          </div>
-                          <div className="modal-body">
-                            {/* <!-- card --> */}
-                            <div className="card mx-5">
-                              <img src={pimage} className="card-img-top" />
-                              <div className="card-body">
-                                <h5 className="card-title">{pname}</h5>
-                                <pre
-                                  className="card-text"
-                                  style={{ height: "200px", width: "600px" }}
-                                >
-                                  <pre>{pdesc}</pre>
-                                </pre>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="modal-footer">
-                            <button
-                              type="button"
-                              className="btn btnGray btn-secondary"
-                              data-bs-dismiss="modal"
-                            >
-                              取消
-                            </button>
-                            <button
-                              type="button"
-                              className="btn addInCartRedBtn"
-                              onClick={() => {
-                                addToCart(pid);
-                              }}
-                            >
-                              加入購物車
-                            </button>
-                          </div>
-                        </div>
-                      </div>
                     </div>
                   </div>
                 </div>

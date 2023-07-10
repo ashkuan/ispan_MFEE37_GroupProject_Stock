@@ -76,17 +76,17 @@ const Navbar = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="forum" className="nav-link" href="#">
+                <Link to="/forum" className="nav-link" href="#">
                   討論區
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="rookie" className="nav-link" href="#">
+                <Link to="/rookie" className="nav-link" href="#">
                   新手上路
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="shop" className="nav-link" href="#">
+                <Link to="/shop" className="nav-link" href="#">
                   購物商城
                 </Link>
               </li>
@@ -170,6 +170,7 @@ const Navbar = () => {
         tabIndex={-1}
         aria-labelledby="cartModalLabel"
         aria-hidden="true"
+        data-bs-toggle="modal"
       >
         <div className="modal-dialog modal-lg modal-dialog-scrollable">
           <div className="modal-content">

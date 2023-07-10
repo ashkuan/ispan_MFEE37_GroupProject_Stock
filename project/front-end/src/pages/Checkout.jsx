@@ -255,7 +255,7 @@ const Checkout = () => {
           <div id="discount">
             <span>優惠碼</span>
             <input type="text" placeholder="請輸入優惠碼" />
-            <span style={{ color: "red" }}>-NT$ 60</span>
+            <span>-NT$ 60</span>
           </div>
           <div id="sum" className="price">
             <p>合計</p>
@@ -268,7 +268,7 @@ const Checkout = () => {
           <hr />
           <div id="finalSum" className="price">
             <p>總金額</p>
-            <p>NT$ 399</p>
+            <p>NT$ {calculateCartTotal() - 60}</p>
           </div>
         </div>
       </div>

@@ -105,6 +105,9 @@
 .main-content .row .card .toggleBtn .seeMoreBtn:hover {
   transform: scale(1.08);
 }
+.main-content .row .card .toggleBtn .seeMoreBtn a {
+  color: white;
+}
 .main-content .row .card .btnGray {
   font-size: 1.2rem;
   background-color: gray;
@@ -190,4 +193,69 @@
     transform: translateY(0);
     opacity: 1;
   }
+}
+#myproductContainer {
+  margin-top: 180px;
+}
+#myproductContainer #myproduct {
+  display: flex;
+  gap: 100px;
+  margin-bottom: 50px;
+}
+#myproductContainer #myproduct #myproductLeft {
+  width: 50%;
+  align-items: center;
+  gap: 20px;
+}
+#myproductContainer #myproduct #myproductLeft #myproductLeftSmall {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+#myproductContainer #myproduct #myproductLeft #myproductLeftSmall .imageBox {
+  background-color: var(--bg-Second-Gray);
+  border-radius: var(--border-radius-med);
+  padding: 10px 25px;
+  border: 2px solid var(--bg-Second-Gray);
+  cursor: pointer;
+}
+#myproductContainer #myproduct #myproductLeft #myproductLeftSmall .imageBox img {
+  width: 130px;
+}
+#myproductContainer #myproduct #myproductRight {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-top: 20px;
+  gap: 20px;
+}
+#myproductContainer #myproduct #myproductRight #amount {
+  display: flex;
+  height: 50px;
+  font-size: 1.5rem;
+  margin-left: 30px;
+}
+#myproductContainer #myproduct #myproductRight #amount #minusBtn,
+#myproductContainer #myproduct #myproductRight #amount #plusBtn {
+  width: 50px;
+  border: 1px solid var(--bg-Primary-Gray);
+  background-color: var(--bg-Second-Gray);
+  color: gray;
+  border-radius: 2px;
+}
+#myproductContainer #myproduct #myproductRight #amount input {
+  width: 70px;
+  border: 1px solid var(--bg-Second-Gray);
+}
+#myproductContainer #myproduct #myproductRight #addInCart {
+  border: none;
+  background-color: var(--Red);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+#myproductContainer #desc {
+  font-size: 1.4rem;
 }/*# sourceMappingURL=shop.css.map */

@@ -93,9 +93,8 @@
   font-size: 1.8rem;
 }
 .checkoutContainer #right #discount {
-  font-size: 1.8rem;
   margin-bottom: 20px;
-  padding: 0px 30px;
+  padding: 0px 10px 0 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -107,6 +106,11 @@
   border: none;
   border-radius: 10px;
   margin-right: 5%;
+}
+.checkoutContainer #right #discount span {
+  font-size: 1.8rem;
+  color: red;
+  font-weight: normal;
 }
 .checkoutContainer #right #finalSum {
   font-weight: bold;

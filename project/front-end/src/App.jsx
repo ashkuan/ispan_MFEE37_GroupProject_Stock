@@ -14,6 +14,7 @@ import MemberEdit from "./pages/MemberEdit";
 import MemberMail from "./pages/memberMail";
 import MemberArtical from "./pages/MemberArtical";
 import MemberCol from "./pages/Membercol";
+import Myproduct from "./pages/Myproduct";
 import { ShopContextProvider } from "../context/ShopContext";
 
 function App() {
@@ -34,9 +35,10 @@ function App() {
           <Route path="/member/artical" element={<MemberArtical />} />
           <Route path="/shop">
             <Route index element={<Shop></Shop>} />
+            <Route path="/shop/myproduct" element={<Myproduct />} />
             <Route path="/shop/history" element={<History />} />
+            <Route path="/shop/checkout" element={<Checkout />} />
           </Route>
-          <Route path="/checkout" element={<Checkout />} />
           <Route path="/rookie" element={<Rookie />} />
         </Routes>
       </Router>

@@ -14,7 +14,7 @@ export const Shop = () => {
       <Sidebar></Sidebar>
       <div className="d-flex flex-column text-center main-content">
         <p id="title">商城</p>
-        <Product data={{ products, cartItems }}></Product>
+        <Product></Product>
       </div>
     </>
   );
