@@ -44,7 +44,7 @@ span {
   transform: scale(0.9);
 }
 .container .name {
-  margin: 50px 0 80px 0;
+  margin-bottom: 10px;
 }
 .container .time {
   display: flex;

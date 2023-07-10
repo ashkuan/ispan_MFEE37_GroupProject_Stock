@@ -1,5 +1,6 @@
 import React from "react";
 import Linechart from "../components/linechart";
+import Footer from "../components/Footer";
 import "../styles/indStock.css";
 
 const IndStock = () => {
@@ -138,7 +139,7 @@ const IndStock = () => {
                 style={{ fontSize: "1.4rem", color: "#dddddd" }}
               >
                 台積電（TSMC）是全球領先的半導體製造公司之一，成立於1987年，以製造先進的積體電路為主要業務。
-                作為全球最大的晶圓代工廠商，台積電提供給全球各種規模的半導體設計公司製造高品質的晶圓產品。公司擁有先進的製程技術，包括16納米、7納米、5納米等。這些製程技術能夠生產出高性能、低功耗的芯片，廣泛應用於各種領域，包括個人電腦、智能手機、物聯網、人工智慧、高效能伺服器等。
+                作為全球最大的晶圓代工廠商，台積電提供給全球各種規模的半導體設計公司製造高品質的晶圓產品。
               </p>
             </div>
           </div>
@@ -219,6 +220,7 @@ const IndStock = () => {
           </div>
         </div>
       </div>
+      <Footer></Footer>
     </>
   );
 };
