@@ -11,6 +11,9 @@ const Myproduct = () => {
 
   const handleButtonClick = () => {
     setShowToast(true);
+    setTimeout(() => {
+      setShowToast(false);
+    }, 3000);
   };
   // 抓出url，找到pid參數的值
   const queryParams = new URLSearchParams(window.location.search);
@@ -116,16 +119,29 @@ const Myproduct = () => {
                   </div>
                 </div>
               </div>
-
               <Toast
                 id="toast"
                 show={showToast}
                 onClose={() => setShowToast(false)}
               >
-                <Toast.Header>
+                <Toast.Header
+                  style={{ backgroundColor: "#b4c7dd", border: "none" }}
+                >
                   <strong className="me-auto"></strong>
                 </Toast.Header>
-                <Toast.Body>已新增到購物車</Toast.Body>
+                <Toast.Body>
+                  <b>{pname}</b>，已加入購物車。
+                  <p
+                    style={{
+                      fontSize: "1rem",
+                      color: "gray",
+                      textAlign: "right",
+                      paddingTop: "30px",
+                    }}
+                  >
+                    可至右上角購物車查看
+                  </p>
+                </Toast.Body>
               </Toast>
               <div id="desc">
                 <p className="fs-3 fw-bold">內容介紹</p>

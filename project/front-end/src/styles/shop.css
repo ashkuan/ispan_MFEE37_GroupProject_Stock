@@ -273,6 +273,7 @@
   border-radius: var(--border-radius-small);
   font-size: 1.5rem;
   position: fixed;
-  left: 38%;
-  top: 50%;
+  right: 5%;
+  top: 65%;
+  z-index: 10;
 }/*# sourceMappingURL=shop.css.map */

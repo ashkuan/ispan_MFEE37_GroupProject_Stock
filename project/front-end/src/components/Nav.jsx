@@ -23,7 +23,7 @@ const Navbar = () => {
     <>
       <nav className="navbar navbar-expand-lg" id="navbar">
         <div className="container-fluid">
-          <Link to="/" className="navbar-brand me-4 logoName" href="#">
+          <Link to="/" className="navbar-brand logoName" href="#">
             <svg
               width="70"
               height="70"
