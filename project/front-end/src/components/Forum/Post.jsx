@@ -4,10 +4,36 @@ import "../../styles/post.css";
 
 const Post = () => {
   const [lgShow, setLgShow] = useState(false);
-
   const handleClose = () => setLgShow(false);
   const handleShow = () => setLgShow(true);
 
+  const [posts, setPosts] = useState({
+    fatitle: "",
+    farticle: "",
+    faimage: "",
+    fboard: "",
+    createTime: "",
+  });
+  // const navigate = useNavigate()
+  const handleChange = (e) => {
+    setPosts((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+  console.log(posts);
+
+  const handleClick = async (e) => {
+    e.preventDefault();
+    try {
+      const currentTime = new Date().toLocaleTimeString();
+      setPosts((prev) => ({ ...prev, fadate: currentTime }));
+      await axios.post("http://localhost:3000/posts", posts);
+      handleClose();
+      // navigate("/")
+      console.log("上傳成功");
+      console.log(posts);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <>
       <div id="post" className="container mt-4">
@@ -51,7 +77,13 @@ const Post = () => {
           </div>
           <div className="mt-4 d-flex">
             <form action="" className="col-2 ">
-              <select className="form-select" id="billboard" required="">
+              <select
+                className="form-select"
+                id="billboard"
+                required=""
+                name="fboard"
+                onChange={handleChange}
+              >
                 <option
                   // selected="selected"
                   disabled="disabled"
@@ -76,6 +108,8 @@ const Post = () => {
               className="form-control"
               id="postTitle"
               placeholder="標題"
+              name="fatitle"
+              onChange={handleChange}
             />
           </form>
           {/* 圖片上傳 */}
@@ -88,6 +122,8 @@ const Post = () => {
                   multiple=""
                   data-max_length={20}
                   className="upload__inputfile"
+                  name="faimage"
+                  onChange={handleChange}
                 />
               </label>
             </div>
@@ -108,17 +144,22 @@ const Post = () => {
                 // ref={c => (this.myInputRef = c)}
                 // onClick={areaClick}
                 placeholder="內容"
+                name="farticle"
+                onChange={handleChange}
               />
             </Form.Group>
           </Form>
+          {/* 標籤 */}
           <div className=" d-flex">
             <input
               type="text"
               defaultValue="#"
               className="col-2 m-2"
               id="hashtag"
+              // name="fboard"
+              // onChange={handleChange}
             />
-            <Button
+            {/* <Button
               type="button"
               className="btn m-2 hashtagbtn"
               variant="secondary"
@@ -138,14 +179,16 @@ const Post = () => {
               variant="secondary"
             >
               公園留位置給我
-            </Button>
+            </Button> */}
           </div>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary">Understood</Button>
+          <Button variant="primary" onClick={handleClick}>
+            提交
+          </Button>
         </Modal.Footer>
       </Modal>
     </>
