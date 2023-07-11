@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { ShopContext } from "../../../context/ShopContext";
 import { Link } from "react-router-dom";
+import "../../styles/shop.css";
 
 export const RecommendShop = () => {
   const { products, cartItems, addToCart } = useContext(ShopContext);
@@ -28,13 +29,15 @@ export const RecommendShop = () => {
           const pimage1 = book[0].pimage1;
           const pprice = book[0].pprice;
           return (
-            <Link
+            <div
               to={`/shop/Myproduct?pid=${pid}`}
               className="card"
-              style={{ display: "flex", justifyContent: "space-around" }}
+              style={{ display: "flex", justifyContent: "space-between" }}
               key={pid}
             >
-              <img src={pimage1} style={{ width: "100px" }} />
+              <Link id="hoverImg" to={`/shop/Myproduct?pid=${pid}`}>
+                <img src={pimage1} style={{ width: "100px" }} />
+              </Link>
               <p className="fw-bold my-4">{pname}</p>
               <p className="mb-3">NT$ {pprice}</p>
               <button
@@ -45,7 +48,7 @@ export const RecommendShop = () => {
               >
                 加入購物車
               </button>
-            </Link>
+            </div>
           );
         })}
       </div>
