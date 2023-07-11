@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { ShopContext } from "../../../context/ShopContext";
+import { Link } from "react-router-dom";
 
 export const RecommendShop = () => {
   const { products, cartItems, addToCart } = useContext(ShopContext);

@@ -1,104 +1,103 @@
 @import url(./forum_sidebar.css);
 
-.articleSort{
-    background-color:var(--IronGray-Light) ;
-    color: white;
+.articleSort {
+  background-color: var(--IronGray-Light);
+  color: white;
 }
 
-.articleSort:hover{
-    color: var(--IronGray) ;
+.articleSort:hover {
+  color: var(--IronGray);
 }
 
-.postBtn{
-    width: 100%;
-    border: none;
-    border-radius: 1rem;
-    background: var(--IronGray-Deep);
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+.postBtn {
+  width: 100%;
+  border: none;
+  border-radius: 1rem;
+  background: var(--IronGray-Deep);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
-.userImg{
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 10px;
+.userImg {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
 }
 
-.articleShare{
-    background-color: white;
-    border-radius: 0.375rem;
-    width: 70%;
-    border: var(--IronGray-Deep);
+.articleShare {
+  background-color: white;
+  border-radius: 0.375rem;
+  width: 70%;
+  border: var(--IronGray-Deep);
 }
 
-.articleBtn{
-    border: none;
-    border-radius: 0.375rem;
-    background: var(--IronGray-Light);
-    color: white;
+.articleBtn {
+  border: none;
+  border-radius: 0.375rem;
+  background: var(--IronGray-Light);
+  color: white;
 }
 
-.articlePopular{
-    border-radius: 1rem;
-    background: #DDD;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+.articlePopular {
+  border-radius: 1rem;
+  background: #ddd;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
-.arrowRight{
-    display: inline-flex;
-    padding: 0.625rem;
-    justify-content: center;
-    align-items: center;
-    gap: 0.625rem;
-    border-radius: 0.5rem;
-    background: var(--iron-gray, #57687C);
-    box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.12);
+.arrowRight {
+  display: inline-flex;
+  padding: 0.625rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+  border-radius: 0.5rem;
+  background: var(--iron-gray, #57687c);
+  box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.12);
 }
 
-.ellipsis{
-    overflow:hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+.ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
-  
+
 .carousel {
-    display: flex;
-    align-items: center;
-  }
-  
-  .carousel-items {
-    display: flex;
-    /* margin-right: 10px; 调整 div 之间的间距 */
-  }
-  
-  .billboard {
-    color: var(--IronGray-Deep);
-    display: flex;
-    align-items: center;
-  }
-  
-  .board {
-    color: var(--IronGray-Deep);
-    border-radius: 0.625rem;
-    background-color: white;
-    border: #333333 solid 1.4px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 125px;
-    width: 125px;
-    margin-right: 20px;
-  }
-  
-  .carousel-arrow {
-    margin-left: auto;
-    display: flex; /* 添加此行 */
-    align-items: center; /* 添加此行 */
-  }
+  display: flex;
+  align-items: center;
+}
 
-  .board .icon {
-    margin-bottom: 5px; /* 调整图标和标签之间的间距 */
-  }
+.carousel-items {
+  display: flex;
+  /* margin-right: 10px; 调整 div 之间的间距 */
+}
 
+.billboard {
+  color: var(--IronGray-Deep);
+  display: flex;
+  align-items: center;
+}
+
+.board {
+  color: var(--IronGray-Deep);
+  border-radius: 0.625rem;
+  background-color: white;
+  border: #333333 solid 1.4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 125px;
+  width: 125px;
+  margin-right: 20px;
+}
+
+.carousel-arrow {
+  margin-left: auto;
+  display: flex; /* 添加此行 */
+  align-items: center; /* 添加此行 */
+}
+
+.board .icon {
+  margin-bottom: 5px; /* 调整图标和标签之间的间距 */
+}
