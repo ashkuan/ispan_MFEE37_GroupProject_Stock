@@ -28,7 +28,7 @@ export const ShopContextProvider = (props) => {
   const [products, setProducts] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
   const [cartItems, setCartItems] = useState();
-  const [dataLoaded, setDataLoaded] = useState(false); //判斷資料是否加載完成
+  const [dataLoaded, setDataLoaded] = useState(true); //判斷資料是否加載完成
   const [quantity, setQuantity] = useState(1);
 
   // 載入所有書籍
