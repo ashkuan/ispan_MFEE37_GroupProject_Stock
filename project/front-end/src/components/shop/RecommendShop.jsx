@@ -28,7 +28,12 @@ export const RecommendShop = () => {
           const pimage1 = book[0].pimage1;
           const pprice = book[0].pprice;
           return (
-            <Link to="" className="card" key={pid}>
+            <Link
+              to={`/shop/Myproduct?pid=${pid}`}
+              className="card"
+              style={{ display: "flex", justifyContent: "space-around" }}
+              key={pid}
+            >
               <img src={pimage1} style={{ width: "100px" }} />
               <p className="fw-bold my-4">{pname}</p>
               <p className="mb-3">NT$ {pprice}</p>
