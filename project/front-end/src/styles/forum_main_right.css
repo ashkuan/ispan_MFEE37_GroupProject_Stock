@@ -9,7 +9,6 @@
     color: var(--IronGray) ;
 }
 
-
 .postBtn{
     width: 100%;
     border: none;
@@ -70,7 +69,7 @@
   
   .carousel-items {
     display: flex;
-    margin-right: 20px; /* 调整 div 之间的间距 */
+    /* margin-right: 10px; 调整 div 之间的间距 */
   }
   
   .billboard {
@@ -83,12 +82,13 @@
     color: var(--IronGray-Deep);
     border-radius: 0.625rem;
     background-color: white;
-    border: #333333 solid 1px;
+    border: #333333 solid 1.4px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100px;
+    height: 125px;
+    width: 125px;
     margin-right: 20px;
   }
   
@@ -101,3 +101,4 @@
   .board .icon {
     margin-bottom: 5px; /* 调整图标和标签之间的间距 */
   }
+

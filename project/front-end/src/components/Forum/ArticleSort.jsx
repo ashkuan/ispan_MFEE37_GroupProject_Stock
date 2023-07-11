@@ -27,7 +27,7 @@ export default function ArticleSort() {
   return (
     <>
       <div className="d-flex justify-content-end">
-        <span className="fz-3 text-IronGray-Deep">文章排序依:</span>
+        <span className="fz-3 text-IronGray-Deep mt-2">文章排序依:</span>
         <MDBTabs pills className="mb-3 fz-3">
           <MDBTabsItem>
             <MDBTabsLink
@@ -55,13 +55,13 @@ export default function ArticleSort() {
             >
               追蹤中
             </MDBTabsLink>
-            <MDBTabsLink
+            {/* <MDBTabsLink
               className="articleSort mx-2"
               onClick={() => handleBasicClick("tab1")}
               active={basicActive === "tab1"}
             >
               123
-            </MDBTabsLink>
+            </MDBTabsLink> */}
           </MDBTabsItem>
         </MDBTabs>
       </div>
