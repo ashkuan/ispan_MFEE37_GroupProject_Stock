@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
-import { ShopContext } from "../../context/ShopContext";
-import Myproduct from "./Myproduct";
+import { ShopContext } from "../../../context/ShopContext";
+import Myproduct from "../../pages/Myproduct";
 import { Link } from "react-router-dom";
 
 export const Product = () => {

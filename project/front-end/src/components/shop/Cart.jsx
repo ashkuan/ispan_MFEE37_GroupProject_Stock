@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { ShopContext } from "../../context/ShopContext";
+import { ShopContext } from "../../../context/ShopContext";
+import { RecommendShop } from "./RecommendShop";
 
 export const Cart = () => {
   const {
     products,
-    totalAmount,
     cartItems,
     addToCart,
     removeFromCart,
@@ -26,7 +26,7 @@ export const Cart = () => {
                 <div
                   className="card d-flex flex-row align-items-start"
                   style={{ border: "none" }}
-                  id={pid}
+                  key={pid}
                 >
                   {/* 購物車 - 左邊圖*/}
                   <div className="d-flex align-items-center">
@@ -101,28 +101,7 @@ export const Cart = () => {
             )
           );
         })}
-
-        {/* 推薦商品 */}
-        <div id="recommend-card">
-          <p className="title">您可能也會喜歡：</p>
-          <div className="d-flex justify-content-center">
-            <div className="card">
-              <img src="/public/img/shop/p02.png" />
-              <p>推薦一</p>
-              <button className="recommend-card-btn">加入購物車</button>
-            </div>
-            <div className="card">
-              <img src="/public/img/shop/p03.png" />
-              <p>推薦二</p>
-              <button className="recommend-card-btn">加入購物車</button>
-            </div>
-            <div className="card">
-              <img src="/public/img/shop/p04.png" />
-              <p>推薦三</p>
-              <button className="recommend-card-btn">加入購物車</button>
-            </div>
-          </div>
-        </div>
+        <RecommendShop></RecommendShop>
         <div id="cartTotal">總金額： NT$ {calculateCartTotal()}</div>
       </div>
     </>

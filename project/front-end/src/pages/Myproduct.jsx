@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import Footer from "../components/Footer";
 import { ShopContext } from "../../context/ShopContext";
-import { Product } from "./Product";
+import { Product } from "../components/shop/Product";
 import { Toast } from "react-bootstrap";
 
 const Myproduct = () => {

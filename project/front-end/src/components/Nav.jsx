@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import "../styles/nav.css";
 import { Link } from "react-router-dom";
-import { Cart } from "./Cart";
+import { Cart } from "./shop/Cart";
 import { ShopContext } from "../../context/ShopContext";
 
 const Navbar = () => {

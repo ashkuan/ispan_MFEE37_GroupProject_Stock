@@ -76,7 +76,7 @@ export const ShopContextProvider = (props) => {
       }
     };
     fetchCart();
-    console.log(cartItems);
+    // console.log(cartItems);
   }, []);
 
   const addToCart = (pid, quantity) => {
