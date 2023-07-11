@@ -65,6 +65,6 @@ app.get("/checkout"),
     );
   };
 
-app.listen(3000, () => {
-  console.log("Shop 的 port 3000 連接完成 " + new Date().toLocaleTimeString());
+app.listen(5566, () => {
+  console.log("Shop 的 port 5566 連接完成 " + new Date().toLocaleTimeString());
 });

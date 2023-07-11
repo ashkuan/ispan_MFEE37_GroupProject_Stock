@@ -16,7 +16,7 @@ const getDefaultCart = () => {
 const updateCartItemsToDB = async (cartItems) => {
   console.log(cartItems);
   try {
-    const res = await axios.post("http://localhost:3000/cart/edit", {
+    const res = await axios.post("http://localhost:5566/cart/edit", {
       data: cartItems,
     });
   } catch (error) {
@@ -28,7 +28,7 @@ export const ShopContextProvider = (props) => {
   const [products, setProducts] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
   const [cartItems, setCartItems] = useState();
-  const [dataLoaded, setDataLoaded] = useState(true); //判斷資料是否加載完成
+  const [dataLoaded, setDataLoaded] = useState(false); //判斷資料是否加載完成
   const [quantity, setQuantity] = useState(1);
 
   // 載入所有書籍
@@ -36,7 +36,7 @@ export const ShopContextProvider = (props) => {
     const fetchShop = async () => {
       try {
         // 商品
-        const res = await axios.get(`http://localhost:3000/shop`);
+        const res = await axios.get(`http://localhost:5566/shop`);
         // console.log(res.data);
         setProducts(res.data); // 把後端所有商品資料放入state, 要傳到<Product>使用;
         setTotalAmount(res.data.length); // 商品總數, 要製作頁籤
@@ -52,7 +52,7 @@ export const ShopContextProvider = (props) => {
     const fetchCart = async () => {
       try {
         // 商品
-        const res = await axios.get(`http://localhost:3000/cart`);
+        const res = await axios.get(`http://localhost:5566/cart`);
         // console.log(res.data.length);
         // 如果資料庫都沒有資料，那就全部預設為0
         if (res.data.length == 0) {
