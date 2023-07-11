@@ -17,10 +17,10 @@ import MemberCol from "./pages/Membercol";
 import Myproduct from "./pages/Myproduct";
 import { ShopContextProvider } from "../context/ShopContext";
 import Chats from "./pages/Chats";
-import News from "./pages/News";
-import Targets from "./pages/Targets";
-import Questions from "./pages/Questions";
-import Notes from "./pages/Notes";
+import News from "./components/Forum/News";
+import Targets from "./components/Forum/Targets";
+import Questions from "./components/Forum/Questions";
+import Notes from "./components/Forum/Notes";
 
 function App() {
   return (
