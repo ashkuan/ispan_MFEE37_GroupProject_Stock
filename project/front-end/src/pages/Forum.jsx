@@ -23,9 +23,9 @@ const Forum = () => {
           <div className="row d-flex justify-content-between">
             <div className="col-3">
               <SidebarTag />
-             
-              <div style={{width:"10px"}} ><LineChart/></div>
-              
+
+              {/* <div style={{width:"10px"}} ><LineChart/></div> */}
+
               <SidebarNews />
             </div>
             <div className="col-8">

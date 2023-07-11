@@ -175,3 +175,12 @@
    .card-body a{
       color: var(--black-Word);
     }
+
+    body{
+      background-image: url(../../../public/img/forum/bg-forum.svg);
+    }
+
+    .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+      color: var(--bs-nav-pills-link-active-color);
+      background-color: var(--IronGray-Deep);
+    }
