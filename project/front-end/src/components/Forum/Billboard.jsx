@@ -14,6 +14,7 @@ const Billboard = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const itemsPerPage = 5;
   const totalItems = 7; // 根据需要的总数量进行调整
+  let navigate = useNavigate();
 
   function handleRightClick() {
     setCurrentSlide((prevSlide) => (prevSlide + 1) % totalItems);
@@ -25,23 +26,48 @@ const Billboard = () => {
 
     const items = [
       {
-        icon: <QuestionAnswerIcon sx={{ color: "#FFC857", fontSize: 48 }} />,
+        icon: (
+          <QuestionAnswerIcon
+            sx={{ color: "#FFC857", fontSize: 48 }}
+            onClick={() => navigate("/forum/chats")}
+          />
+        ),
         label: "閒聊",
       },
       {
-        icon: <NewspaperIcon sx={{ color: "#119DA4", fontSize: 48 }} />,
+        icon: (
+          <NewspaperIcon
+            sx={{ color: "#119DA4", fontSize: 48 }}
+            onClick={() => navigate("/forum/news")}
+          />
+        ),
         label: "新聞",
       },
       {
-        icon: <AdsClickIcon sx={{ color: "#FF6B6B", fontSize: 48 }} />,
+        icon: (
+          <AdsClickIcon
+            sx={{ color: "#FF6B6B", fontSize: 48 }}
+            onClick={() => navigate("/forum/targets")}
+          />
+        ),
         label: "標的",
       },
       {
-        icon: <HelpIcon sx={{ color: "#4ECDC4", fontSize: 48 }} />,
+        icon: (
+          <HelpIcon
+            sx={{ color: "#4ECDC4", fontSize: 48 }}
+            onClick={() => navigate("/forum/questions")}
+          />
+        ),
         label: "請益",
       },
       {
-        icon: <QueryStatsIcon sx={{ color: "#FFB86F", fontSize: 48 }} />,
+        icon: (
+          <QueryStatsIcon
+            sx={{ color: "#FFB86F", fontSize: 48 }}
+            onClick={() => navigate("/forum/notes")}
+          />
+        ),
         label: "情報",
       },
       {

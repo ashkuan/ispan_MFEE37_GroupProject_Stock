@@ -198,8 +198,4 @@ ul.cloud[data-show-value] a::after {
   background-repeat: no-repeat;
 }
 
-.nav-pills .nav-link.active,
-.nav-pills .show > .nav-link {
-  color: var(--bs-nav-pills-link-active-color);
-  background-color: var(--IronGray-Deep);
-}
+
