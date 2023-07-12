@@ -20,7 +20,7 @@ function ForumIndividual() {
 
   return (
     <>
-      <Button onClick={modalShow}>這裡是modal要連結個別貼文</Button>
+      <Button >這裡是modal要連結個別貼文</Button>
 
       <Modal show={show} onHide={modalClose}>
         <div className="container">
