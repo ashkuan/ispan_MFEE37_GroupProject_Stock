@@ -27,7 +27,6 @@ const Forum = () => {
             </div>
           </div>
         </div>
-        <ForumIndividual />
         {/* <Post/> */}
       </div>
       <Footer />

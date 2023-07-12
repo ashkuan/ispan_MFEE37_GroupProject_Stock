@@ -101,3 +101,7 @@
 .board .icon {
   margin-bottom: 5px; /* 调整图标和标签之间的间距 */
 }
+
+.articleCont{
+  cursor: pointer;
+}
