@@ -5,9 +5,6 @@ function ArticlePart() {
   return (
     <div className="article">
       <Article />
-      <Article />
-      <Article />
-      <Article />
     </div>
   );
 }

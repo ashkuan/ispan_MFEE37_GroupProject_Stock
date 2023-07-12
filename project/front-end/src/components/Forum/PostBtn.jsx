@@ -62,7 +62,7 @@ function PostBtn() {
         <div className="d-flex p-4 justify-content-between">
           <img
             className="userImg d-flex align-items-center"
-            src="./img/forum/userImg.svg"
+            src="../public/img/forum/userImg.svg"
             alt=""
           />
           <div className="articleShare d-flex align-items-center p-2 pr-1">

@@ -6,11 +6,11 @@ import { ShopContext } from "../../context/ShopContext";
 import Validation from "./loginValidation";
 import axios from "axios";
 
-
 const Navbar = () => {
   const { products, cartItems } = useContext(ShopContext);
   const [totalCartItemAmount, setTotalCartItemAmount] = useState(0);
 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [values, setValues] = useState({
     email: "",
     password: "",
@@ -26,18 +26,23 @@ const Navbar = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     setErrors(Validation(values));
-    if(errors.email === '' && errors.password === ''){
-      axios.post('http://localhost:3000',values,{ withCredentials: true })
-      .then(res => {
-        if(res.data === 'success'){
-          navigate('/member');
-        }else{
-          alert('No record existed');
-        }
-      })
-      .catch(err => console.log(err))
+    if (errors.email === "" && errors.password === "") {
+      axios
+        .post("http://localhost:3000", values, { withCredentials: true })
+        .then((res) => {
+          if (res.data === "success") {
+            // 變更登入狀態
+            setIsLoggedIn(true);
+
+            navigate("/member");
+          } else {
+            alert("No record existed");
+          }
+        })
+        .catch((err) => console.log(err));
     }
   };
+
   // 計算總數
   useEffect(() => {
     let totalAmount = 0;
@@ -169,11 +174,15 @@ const Navbar = () => {
               </span>
               <span className="d-flex mb-3 nav-member-icon">
                 <button
-                  id="memberbtn"
                   type="button"
-                  className="btn "
-                  data-bs-toggle="modal"
-                  data-bs-target="#memberModal"
+                  className="btn"
+                  data-bs-toggle={isLoggedIn ? "" : "modal"}
+                  data-bs-target={isLoggedIn ? "" : "#memberModal"}
+                  onClick={() => {
+                    if (isLoggedIn) {
+                      navigate("/member");
+                    }
+                  }}
                 >
                   <svg
                     width="43"

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import PostUser from "./PostUser";
 import BoardTag from "./BoardTag";
@@ -13,10 +13,17 @@ import NotifyShareDropdown from "./NotifyShareDropdown";
 import AddMessage from "./AddMessage";
 import ArticleTitle from "./ArticleTitle";
 
-function ForumIndividual() {
+function FormTest() {
+  const [show, setShow] = useState(false);
+
+  const modalClose = () => setShow(false);
+  const modalShow =  () => setShow(true) 
+
   return (
     <>
-      <Modal>
+      <Button onClick={modalShow}>這裡是modal要連結個別貼文</Button>
+
+      <Modal show={show} onHide={modalClose}>
         <div className="container">
           <div className="p-2 d-flex flex-column justify-content-between">
             <Modal.Header closeButton>
@@ -65,4 +72,4 @@ function ForumIndividual() {
   );
 }
 
-export default ForumIndividual;
+export default FormTest

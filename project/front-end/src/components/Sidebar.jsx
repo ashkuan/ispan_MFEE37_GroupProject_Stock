@@ -1,20 +1,26 @@
 import React, { useState } from "react";
 import "../styles/sidebar.css";
 import { Link } from "react-router-dom";
-
 import axios from "axios";
 
+
 const Sidebar = () => {
-  // const history = useHistory();
-  // const handleLogout = ()=>{
-  //   axios
-  //     .post("http://localhost:3000/logout", { withCredentials: true })
-  //     .then(() => {
-  //       // 清空会话
-  //       history.push("/"); // 重定向到首页
-  //     })
-  //     .catch((err) => console.log(err));
-  // }
+  const handleLogout = () => {
+    axios
+      .post("http://localhost:3000/logout") // 发送 POST 请求到 /logout 路由
+      .then((response) => {
+        // 登出成功的处理逻辑
+        console.log(response.data); // 可根据需要处理返回的响应数据
+        // 进行重定向或其他操作
+        window.location.href = "/";
+      })
+      .catch((error) => {
+        // 登出失败的处理逻辑
+        console.error(error);
+        // 进行错误处理或其他操作
+      });
+  };
+
   return (
     <div className="sidebar">
       <div id="user">
@@ -66,10 +72,9 @@ const Sidebar = () => {
           >
             <path d="M1 11a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3zm5-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V2z" />
           </svg>
-          <Link to="/member/col" className="nav-link ">         
+          <Link to="/member/col" className="nav-link ">
             我的收藏
           </Link>
-
         </li>
         <li className="nav-item navItem d-flex">
           <svg
@@ -121,9 +126,8 @@ const Sidebar = () => {
               d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"
             />
           </svg>
-          <button className="nav-link logout-btn" >
-            登出
-          </button>
+          <button className="nav-link logout-btn" onClick={handleLogout}
+          >登出</button>
         </li>
       </ul>
     </div>

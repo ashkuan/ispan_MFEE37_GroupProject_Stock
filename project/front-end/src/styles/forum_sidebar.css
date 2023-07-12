@@ -194,12 +194,8 @@ ul.cloud[data-show-value] a::after {
 }
 
 .forum {
-  background-image: url(../../../public/img/forum/bg-forum.svg);
+  background-image: url(../../../img/forum/bg-forum.svg);
   background-repeat: no-repeat;
 }
 
-.nav-pills .nav-link.active,
-.nav-pills .show > .nav-link {
-  color: var(--bs-nav-pills-link-active-color);
-  background-color: var(--IronGray-Deep);
-}
+

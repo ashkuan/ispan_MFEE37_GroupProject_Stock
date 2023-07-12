@@ -8,8 +8,12 @@ import SidebarNews from "../Forum/SidebarNews.jsx";
 import Post from "../Forum/Post.jsx";
 import ArticleSort from "../Forum/ArticleSort.jsx";
 import LineChart from "../linechart";
+import ArticlePart from "./ArticlePart";
+import PostBtn from "./PostBtn";
+import { useNavigate } from "react-router-dom";
 
 const Chats = () => {
+  let navigate = useNavigate();
   return (
     <>
       <div className="forum" style={{ paddingTop: "180px" }}>
@@ -17,18 +21,26 @@ const Chats = () => {
           <div className="row d-flex justify-content-between">
             <div className="col-3">
               <SidebarTag />
-
-              {/* <div style={{width:"10px"}} ><LineChart/></div> */}
-
               <SidebarNews />
             </div>
             <div className="col-8">
-              <ArticleSort />
+              <div className="d-flex justify-content-between mb-3">
+                <p className="baf fz-2 pt-2 fw-bolder">閒聊版</p>
+                <button
+                  className="baBtn fz-3 p-2 px-3"
+                  onClick={() => navigate("/forum")}
+                >
+                  回討論區
+                </button>
+              </div>
+
+              <PostBtn className="mt-4" />
+              <div className="BArticle mt-4 pt-4">
+                <ArticlePart />
+              </div>
             </div>
           </div>
         </div>
-        {/* <ForumIndividual /> */}
-        {/* <Post/> */}
       </div>
       <Footer />
     </>
