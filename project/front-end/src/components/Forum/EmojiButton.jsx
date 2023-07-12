@@ -24,7 +24,7 @@ const EmojiButton = () => {
         "http://localhost:3000/posts/likeCount"
       );
       const likeStatus = response.data.likeStatus;
-      console.log(likeStatus);
+      // console.log(likeStatus);
       //追蹤按讚數量
       setLikeCount(likeStatus);
       //判斷按讚圖片為何
@@ -38,7 +38,7 @@ const EmojiButton = () => {
           ? "public/img/forum/likeClick.svg"
           : "public/img/forum/like.svg";
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 

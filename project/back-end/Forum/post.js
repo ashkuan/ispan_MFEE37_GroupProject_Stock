@@ -60,7 +60,7 @@ app.post("/posts", multer({ storage }).single("faimage"), (req, res) => {
 });
 
 app.get("/posts",(req,res)=>{
-  const sql = "SELECT  `fatitle`, `farticle`, `faimage`, `likeCount`, `fboard`, `fhashtag`, `createTime`, `updateTime` FROM `ForumArticle` WHERE `faid` = 'c0eedb53-61ea-95d9-1b8d-8ee4798e7ed4'"
+  const sql = "SELECT  `fatitle`, `farticle`, `faimage`, `likeCount`, `fboard`, `fhashtag`, `createTime`, `updateTime` FROM `ForumArticle` "
   connToDBHelper.query(sql,[],(err,data)=>{
     if (err) {
       return "無法成功顯示發文";
@@ -73,7 +73,7 @@ app.get("/posts",(req,res)=>{
 //獲取按讚狀態
 app.get("/posts/likeCount", (req, res) => {
   const sql =
-    "SELECT likeCount FROM ForumArticle WHERE faid = 'c0eedb53-61ea-95d9-1b8d-8ee4798e7ed4'";
+    "SELECT likeCount FROM ForumArticle ";
   connToDBHelper.query(sql, (err, data) => {
     if (err) {
       console.log(err);
@@ -89,7 +89,7 @@ app.get("/posts/likeCount", (req, res) => {
 app.post("/posts/like", (req, res) => {
   const { likeCount } = req.body;
   const getSql =
-    "SELECT likeCount FROM ForumArticle WHERE faid = 'c0eedb53-61ea-95d9-1b8d-8ee4798e7ed4'";
+    "SELECT likeCount FROM ForumArticle  ";
   connToDBHelper.query(getSql, (err, data) => {
     if (err) {
       console.log(err);
@@ -98,7 +98,7 @@ app.post("/posts/like", (req, res) => {
       const currentLikeCount = data[0].likeCount;
       const newLikeCount = currentLikeCount + likeCount;
       const updateSql =
-        "UPDATE ForumArticle SET likeCount = ? WHERE faid = 'c0eedb53-61ea-95d9-1b8d-8ee4798e7ed4'";
+        "UPDATE ForumArticle SET likeCount = ?";
       const values = [newLikeCount];
       connToDBHelper.query(updateSql, values, (err, data) => {
         if (err) {
