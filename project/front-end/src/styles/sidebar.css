@@ -97,3 +97,7 @@
 .sidebar .logout {
   margin-top: 50px;
 }
+.logout-btn{
+  color: #878787;
+  font-size: 1.4rem;
+}

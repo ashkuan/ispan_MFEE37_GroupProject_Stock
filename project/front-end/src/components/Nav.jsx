@@ -1,13 +1,43 @@
 import React, { useContext, useEffect, useState } from "react";
 import "../styles/nav.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Cart } from "./Cart";
 import { ShopContext } from "../../context/ShopContext";
+import Validation from "./loginValidation";
+import axios from "axios";
+
 
 const Navbar = () => {
   const { products, cartItems } = useContext(ShopContext);
   const [totalCartItemAmount, setTotalCartItemAmount] = useState(0);
 
+  const [values, setValues] = useState({
+    email: "",
+    password: "",
+  });
+  const navigate = useNavigate();
+  const [errors, setErrors] = useState({});
+  const handleInput = (event) => {
+    setValues((prev) => ({
+      ...prev,
+      [event.target.name]: event.target.value,
+    }));
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setErrors(Validation(values));
+    if(errors.email === '' && errors.password === ''){
+      axios.post('http://localhost:3000',values,{ withCredentials: true })
+      .then(res => {
+        if(res.data === 'success'){
+          navigate('/member');
+        }else{
+          alert('No record existed');
+        }
+      })
+      .catch(err => console.log(err))
+    }
+  };
   // 計算總數
   useEffect(() => {
     let totalAmount = 0;
@@ -207,7 +237,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* 會員的彈跳視窗 */}
+      {/* 會員登入的彈跳視窗 */}
       <div
         className="modal fade"
         id="memberModal"
@@ -216,8 +246,8 @@ const Navbar = () => {
         aria-hidden="true"
       >
         <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header member-spacing">
+          <div className="modal-content d-flex justify-content align-items">
+            <div className="modal-header member-spacing ">
               <p className="modal-title jump-title" id="exampleModalLabel">
                 會員登入
               </p>
@@ -228,40 +258,51 @@ const Navbar = () => {
                 aria-label="Close"
               ></button>
             </div>
-            <div className="modal-body">
-              <div className="text-center">
-                {/* <img src="../img/sidebar/Mask Group.svg" alt="no" /> */}
-              </div>
+            <div className="modal-body bg-white ">
               <div>
-                <div className="member-account text-center">
-                  <div>會員帳號</div>
-                  <input className="member-inp" type="text" />
-                </div>
-                <div className="member-account text-center">
-                  <div>會員密碼</div>
-                  <input className="member-inp" type="text" />
-                </div>
+                <form onSubmit={handleSubmit} className="text-center m-3">
+                  <div>
+                    <label htmlFor="emial" className="m-3">
+                      會員信箱
+                    </label>
+                    <p></p>
+                    <input
+                      onChange={handleInput}
+                      type="email"
+                      name="email"
+                      className="member-inp"
+                      placeholder="輸入您的信箱"
+                    />
+                    {errors.email && (
+                      <p className="text-danger">{errors.email}</p>
+                    )}
+                  </div>
+                  <div>
+                    <label htmlFor="password" className="m-3">
+                      會員密碼
+                    </label>
+                    <p></p>
+                    <input
+                      onChange={handleInput}
+                      type="password"
+                      name="password"
+                      className="member-inp "
+                      placeholder="輸入您的密碼"
+                    />
+                    {errors.password && (
+                      <p className="text-danger">{errors.password}</p>
+                    )}
+                  </div>
+                  <div className="modal-footer">
+                    <button type="submit" className="btn btn-login">
+                      登入
+                    </button>
+                    <Link to="/register" className="btn btn-register">
+                      註冊
+                    </Link>
+                  </div>
+                </form>
               </div>
-            </div>
-            <div className="modal-footer">
-              <Link to="register">
-                <button
-                  type="button"
-                  className="btn btn-register"
-                  data-bs-dismiss="modal"
-                >
-                  註冊
-                </button>
-              </Link>
-              <Link to="member">
-                <button
-                  type="button"
-                  className="btn btn-login"
-                  data-bs-dismiss="modal"
-                >
-                  登入
-                </button>
-              </Link>
             </div>
           </div>
         </div>
