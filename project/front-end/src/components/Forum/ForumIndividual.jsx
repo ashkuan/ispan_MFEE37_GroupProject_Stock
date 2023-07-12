@@ -1,27 +1,27 @@
 import React, { useState } from "react";
-import { Button, Modal } from "react-bootstrap";
-import PostUser from "./PostUser";
-import BoardTag from "./BoardTag";
-import ArticleContent from "./ArticleContent";
-import HitoHashTags from "./HitoHashTags";
-import Emoji from "./Emoji";
-import MessageQuantity from "./MessageQuantity";
-import EmojiButton from "./EmojiButton";
-import KeepButton from "./KeepButton";
-import HotNewMessageTabs from "./HotNewMessageTabs";
-import NotifyShareDropdown from "./NotifyShareDropdown";
-import AddMessage from "./AddMessage";
-import ArticleTitle from "./ArticleTitle";
+import { Button, Modal } from 'react-bootstrap';
+import PostUser from './PostUser';
+import BoardTag from './BoardTag';
+import ArticleContent from './ArticleContent';
+import HitoHashTags from './HitoHashTags';
+import Emoji from './Emoji';
+import MessageQuantity from './MessageQuantity';
+import EmojiButton from './EmojiButton';
+import KeepButton from './KeepButton';
+import HotNewMessageTabs from './HotNewMessageTabs';
+import NotifyShareDropdown from './NotifyShareDropdown';
+import AddMessage from './AddMessage';
 
 function ForumIndividual() {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
 
   const modalClose = () => setShow(false);
-  const modalShow = () => setShow(true);
 
   return (
     <>
-      <Button onClick={modalShow}>這裡是modal要連結個別貼文</Button>
+      <Button onClick={modalShow}>
+        這裡是modal要連結個別貼文
+      </Button>
 
       <Modal show={show} onHide={modalClose}>
         <div className="container">

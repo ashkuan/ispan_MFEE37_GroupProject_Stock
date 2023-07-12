@@ -16,11 +16,11 @@ import MemberArtical from "./pages/MemberArtical";
 import MemberCol from "./pages/Membercol";
 import Myproduct from "./pages/Myproduct";
 import { ShopContextProvider } from "../context/ShopContext";
-import Chats from "./pages/Chats";
-import News from "./pages/News";
-import Targets from "./pages/Targets";
-import Questions from "./pages/Questions";
-import Notes from "./pages/Notes";
+import Chats from "../src/components/Forum/Chats";
+import News from "../src/components/Forum/News";
+import Targets from "../src/components/Forum/Targets";
+import Questions from "../src/components/Forum/Questions";
+import Notes from "../src/components/Forum/Notes";
 
 function App() {
   return (

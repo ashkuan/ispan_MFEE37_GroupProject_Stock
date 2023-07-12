@@ -6,8 +6,9 @@ import HelpIcon from "@mui/icons-material/Help";
 import QueryStatsIcon from "@mui/icons-material/QueryStats";
 import TipsAndUpdatesIcon from "@mui/icons-material/TipsAndUpdates";
 import ReadMoreIcon from "@mui/icons-material/ReadMore";
-import { Button } from "@mui/material";
+import { Button, CardHeader } from "@mui/material";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Billboard = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -21,6 +22,7 @@ const Billboard = () => {
   function getItems() {
     const startIndex = currentSlide % totalItems;
     const endIndex = (startIndex + itemsPerPage) % totalItems;
+
     const items = [
       {
         icon: <QuestionAnswerIcon sx={{ color: "#FFC857", fontSize: 48 }} />,

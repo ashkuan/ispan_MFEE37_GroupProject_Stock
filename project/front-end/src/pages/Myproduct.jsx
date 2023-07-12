@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import { ShopContext } from "../../context/ShopContext";
 import { Product } from "../components/shop/Product";

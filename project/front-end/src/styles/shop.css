@@ -276,4 +276,8 @@
   right: 5%;
   top: 65%;
   z-index: 10;
+}
+
+#hoverImg:hover {
+  transform: scale(1.1);
 }/*# sourceMappingURL=shop.css.map */
