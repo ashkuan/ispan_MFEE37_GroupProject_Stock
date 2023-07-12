@@ -1,37 +1,55 @@
 import React, { useState, useRef } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
+import uuid, { v4 as uuidv4 } from "react-uuid";
 import "../../styles/post.css";
 import "../../styles/forum_main_right.css";
 import axios from "axios";
-
 
 function PostBtn() {
   const [lgShow, setLgShow] = useState(false);
   const handleClose = () => setLgShow(false);
   const handleShow = () => setLgShow(true);
+  const v4Id = uuid();
+  console.log("我在這" + v4Id);
   const [posts, setPosts] = useState({
     fatitle: "",
     farticle: "",
     faimage: "",
+    faid: "",
     fboard: "",
     createTime: "",
+    fhashtag: "",
   });
   const handleChange = (e) => {
-    setPosts((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    // setPosts((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    if (e.target.name === "faimage") {
+      setPosts((prev) => ({ ...prev, faimage: e.target.files[0] }));
+    } else {
+      setPosts((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    }
   };
   console.log(posts);
 
   const handleClick = async (e) => {
     e.preventDefault();
     try {
-      // const currentTime = new Date().toLocaleTimeString();
-      setPosts((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-      console.log("這是posts")
-      console.log(posts)
-      await axios.post("http://localhost:3000/posts", posts);
-      // await axios.post("http://localhost:3000/posts", {data:posts});
+      const currentTime = new Date().toDateString();
+      setPosts((prev) => ({ ...prev, createTime: currentTime }));
+      // setPosts((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+      const formData = new FormData();
+      formData.append("fatitle", posts.fatitle);
+      formData.append("farticle", posts.farticle);
+      formData.append("faimage", posts.faimage);
+      formData.append("fboard", posts.fboard);
+      formData.append("fhashtag", posts.fhashtag);
+      formData.append("createTime", currentTime);
+      formData.append("faid", v4Id);
+      console.log("這是posts");
+      console.log(posts);
+
+      await axios.post("http://localhost:3000/posts", formData);
       console.log("上傳成功123");
-      console.log(posts); 
+      console.log(posts);
       handleClose();
     } catch (err) {
       console.log(err);
@@ -64,12 +82,14 @@ function PostBtn() {
           <Modal.Title>我要發文</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+          {/* 發文者資訊 */}
           <div className="d-flex align-items-center">
             <div id="memberpic" />
             <div id="memberid" className="ms-2 ">
               韭菜是我
             </div>
           </div>
+          {/* 看板 */}
           <div className="mt-4 d-flex">
             <form action="" className="col-2 ">
               <select
@@ -86,6 +106,10 @@ function PostBtn() {
                 >
                   選擇看板
                 </option>
+                {/* <option>請選擇看板</option> */}
+                <option selected="selected" disabled="disabled">
+                  看板
+                </option>
                 <option>閒聊</option>
                 <option>新聞</option>
                 <option>標的</option>
@@ -96,6 +120,7 @@ function PostBtn() {
               </select>
             </form>
           </div>
+          {/* 標題 */}
           <form action="">
             <label htmlFor="postTitle" className="m-2 fw-bold " />
             <input
@@ -124,6 +149,7 @@ function PostBtn() {
             </div>
             <div className="upload__img-wrap" />
           </div>
+          {/* 文章內容 */}
           <Form>
             <Form.Group>
               <Form.Control
@@ -147,6 +173,8 @@ function PostBtn() {
               defaultValue="#"
               className="col-2 m-2"
               id="hashtag"
+              name="fhashtag"
+              onChange={handleChange}
             />
             {/* <Button
               type="button"
@@ -175,7 +203,9 @@ function PostBtn() {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary"  onClick={handleClick}>提交</Button>
+          <Button variant="primary" name="createTime" onClick={handleClick}>
+            提交
+          </Button>
         </Modal.Footer>
       </Modal>
     </>

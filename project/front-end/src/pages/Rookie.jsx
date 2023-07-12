@@ -16,20 +16,20 @@ const Rookie = () => {
   return (
     <>
       <div className="container mt-3">
-        <h1 className="ml1 title d-flex justify-content-around mb-5">
+        <h1 className="ml1 title d-flex justify-content-around ">
           <div id="rookie"> 新手上路</div>
         </h1>
         
         <div className="text-center m-45"><RookieQuiz/></div>
         <RookieListBtn />
-        <span className="d-flex justify-content-around title" id="openbank">
-          <span className="titlebox">證券開戶</span>
+        <span className="d-flex justify-content-around mt-5" id="openbank">
+          <span className="titlebox " >證券開戶</span>
         </span>
         <div className="m-45">
           <AccordionOpen />
         </div>
         <span
-          className="d-flex justify-content-around title "
+          className="d-flex justify-content-around  "
           style={{ paddingTop: "10%", margin: 0 }}
           id="stockdoor"
         >
@@ -41,7 +41,7 @@ const Rookie = () => {
         </div>
         
         <span
-          className="d-flex justify-content-around title "
+          className="d-flex justify-content-around  "
           style={{ paddingTop: "10%" }}
           
         >
