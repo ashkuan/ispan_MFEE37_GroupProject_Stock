@@ -56,13 +56,11 @@ function Article() {
 
             <div className="px-4">
               <p className="fz-1 mt-3">{post.fatitle}</p>
-              <p className="ellipsis mt-3 fz-2">
-                {post.farticle}
-              </p>
+              <p className="ellipsis mt-3 fz-2">{post.farticle}</p>
             </div>
             <div className="px-4 mt-3 d-flex">
               <div className="d-flex">
-                <Emoji />
+                <img src="./img/forum/likeClick.svg" alt="" />
                 <span className="fz-5 d-flex align-content-center mt-1 mx-1">
                   {post.likeCount}
                 </span>
