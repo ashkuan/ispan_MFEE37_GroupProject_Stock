@@ -17,7 +17,7 @@ app.use(
     saveUninitialized: true,
     cookie: {
       secure: false,
-      maxAge: 3600000,
+      maxAge: 600000,
     },
   }),
 );
@@ -69,6 +69,11 @@ app.get('/member', (req, res) => {
   } else {
     return res.status(401).json('Unauthorized');
   }
+});
+// 登出路由
+app.post('/logout', (req, res) => {
+  req.session.destroy(); // 清除会话数据
+  return res.json('success');
 });
 
 app.listen(3000, () => {
