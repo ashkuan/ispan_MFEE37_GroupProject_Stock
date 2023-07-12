@@ -1,9 +1,61 @@
-import React from "react";
-import Navbar from "../components/Nav";
+import React, { useContext, useState } from "react";
 import Footer from "../components/Footer";
 import "../styles/homepage.css";
+import axios from "axios";
+import { StockContext } from "../../context/StockContext";
+// 跳轉頁面
+import { Navigate } from "react-router-dom";
 
 const Homepage = () => {
+  const [inputValue, setInputValue] = useState("");
+  const { setStockInfo } = useContext(StockContext);
+  const [redirectToIndStock, setRedirectToIndStock] = useState(false);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(inputValue);
+    axios
+      .post("http://localhost:5678/stock", { data: inputValue })
+      .then((res) => {
+        setRedirectToIndStock(true);
+        console.log(res.data);
+        const shortname = res.data.price.shortName;
+        const website = res.data.summaryProfile.website;
+        const regularMarketOpen = res.data.price.regularMarketOpen.fmt;
+        const regularMarketDayHigh = res.data.price.regularMarketDayHigh.fmt;
+        const regularMarketDayLow = res.data.price.regularMarketDayLow.fmt;
+        const regularMarketPrice = res.data.price.regularMarketPrice.fmt;
+        const regularMarketVolume = res.data.price.regularMarketVolume.longFmt;
+        const regularMarketPreviousClose =
+          res.data.price.regularMarketPreviousClose.fmt;
+        console.log(shortname);
+        setStockInfo({
+          inputValue,
+          shortname,
+          website,
+          regularMarketOpen,
+          regularMarketDayHigh,
+          regularMarketDayLow,
+          regularMarketPrice,
+          regularMarketVolume,
+          regularMarketPreviousClose,
+        });
+      })
+      .catch((err) => {
+        console.log("stock傳送失敗");
+        console.log(err);
+      });
+  };
+
+  // 跳轉頁面
+  if (redirectToIndStock) {
+    return <Navigate to="/indstock" />;
+  }
+
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
+  };
+
   return (
     <>
       {/* 首頁內容 */}
@@ -56,21 +108,25 @@ const Homepage = () => {
             <p className="t2">股市擁有好成績</p>
           </div>
           <div id="search">
-            <input
-              type="text"
-              className="search__input text-center"
-              placeholder="點我查詢台灣股票"
-            />
-            <a className="search__button" href="#">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                className="bi bi-search"
-                viewBox="0 0 16 16"
-              >
-                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-              </svg>
-            </a>
+            <form onSubmit={handleSubmit}>
+              <input
+                type="text"
+                className="search__input text-center"
+                placeholder="點我查詢台灣股票"
+                value={inputValue}
+                onChange={handleInputChange}
+              />
+              <button type="submit" className="search__button" href="#">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  className="bi bi-search"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                </svg>
+              </button>
+            </form>
           </div>
           <div className="suggestStock mt-5">
             <div className="row">
@@ -1908,7 +1964,7 @@ const Homepage = () => {
             width: "40%",
           }}
         />
-     
+
         {/* back to the top */}
         <a href="#" id="backtothetop">
           <svg
@@ -1984,7 +2040,7 @@ const Homepage = () => {
           </svg>
         </a>
       </div>
-      <Footer style={{position:"sticky",top:"100vh"}}></Footer>
+      <Footer style={{ position: "sticky", top: "100vh" }}></Footer>
     </>
   );
 };

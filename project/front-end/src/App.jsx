@@ -21,39 +21,42 @@ import News from "../src/components/Forum/News";
 import Targets from "../src/components/Forum/Targets";
 import Questions from "../src/components/Forum/Questions";
 import Notes from "../src/components/Forum/Notes";
+import { StockContextProvider } from "../context/StockContext";
 
 function App() {
   return (
     <ShopContextProvider>
-      <Router>
-        <Nav></Nav>
-        <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/stock-index" element={<StockIndex />} />
-          <Route path="/indStock" element={<IndStock />} />
-          <Route path="/forum">
-            <Route index element={<Forum></Forum>} />
-            <Route path="/forum/chats" element={<Chats />} />
-            <Route path="/forum/news" element={<News />} />
-            <Route path="/forum/targets" element={<Targets />} />
-            <Route path="/forum/questions" element={<Questions />} />
-            <Route path="/forum/notes" element={<Notes />} />
-          </Route>
-          <Route path="/register" element={<Register />} />
-          <Route path="/member" element={<Member />} />
-          <Route path="/member/edit" element={<MemberEdit />} />
-          <Route path="/member/mail" element={<MemberMail />} />
-          <Route path="/member/col" element={<MemberCol />} />
-          <Route path="/member/artical" element={<MemberArtical />} />
-          <Route path="/shop">
-            <Route index element={<Shop></Shop>} />
-            <Route path="/shop/myproduct" element={<Myproduct />} />
-            <Route path="/shop/history" element={<History />} />
-            <Route path="/shop/checkout" element={<Checkout />} />
-          </Route>
-          <Route path="/rookie" element={<Rookie />} />
-        </Routes>
-      </Router>
+      <StockContextProvider>
+        <Router>
+          <Nav></Nav>
+          <Routes>
+            <Route path="/" element={<Homepage />} />
+            <Route path="/stock-index" element={<StockIndex />} />
+            <Route path="/indStock" element={<IndStock />} />
+            <Route path="/forum">
+              <Route index element={<Forum></Forum>} />
+              <Route path="/forum/chats" element={<Chats />} />
+              <Route path="/forum/news" element={<News />} />
+              <Route path="/forum/targets" element={<Targets />} />
+              <Route path="/forum/questions" element={<Questions />} />
+              <Route path="/forum/notes" element={<Notes />} />
+            </Route>
+            <Route path="/register" element={<Register />} />
+            <Route path="/member" element={<Member />} />
+            <Route path="/member/edit" element={<MemberEdit />} />
+            <Route path="/member/mail" element={<MemberMail />} />
+            <Route path="/member/col" element={<MemberCol />} />
+            <Route path="/member/artical" element={<MemberArtical />} />
+            <Route path="/shop">
+              <Route index element={<Shop></Shop>} />
+              <Route path="/shop/myproduct" element={<Myproduct />} />
+              <Route path="/shop/history" element={<History />} />
+              <Route path="/shop/checkout" element={<Checkout />} />
+            </Route>
+            <Route path="/rookie" element={<Rookie />} />
+          </Routes>
+        </Router>
+      </StockContextProvider>
     </ShopContextProvider>
   );
 }

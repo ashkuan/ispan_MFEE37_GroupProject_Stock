@@ -31,6 +31,18 @@
   margin-left: 11% !important;
   margin-bottom: 30px !important;
 }
+.main-content .smallbar .shopSorting {
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 70px;
+}
+.main-content .smallbar .shopSorting button {
+  border: none;
+  padding: 10px;
+  background-color: var(--bg-Second-Gray);
+}
 .main-content .row {
   margin-bottom: 15px;
   margin-left: 10%;

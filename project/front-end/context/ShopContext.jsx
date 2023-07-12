@@ -30,6 +30,7 @@ export const ShopContextProvider = (props) => {
   const [cartItems, setCartItems] = useState();
   const [dataLoaded, setDataLoaded] = useState(false); //判斷資料是否加載完成
   const [quantity, setQuantity] = useState(1);
+  const [stockData, setStockData] = useState({}); // 存個股資訊
 
   // 載入所有書籍
   useEffect(() => {
@@ -136,6 +137,7 @@ export const ShopContextProvider = (props) => {
     updateCartItemAmount,
     trashCan,
     calculateCartTotal,
+    stockData,
   };
 
   return (

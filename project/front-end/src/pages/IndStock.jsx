@@ -1,105 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import Linechart from "../components/linechart";
 import Footer from "../components/Footer";
 import "../styles/indStock.css";
+import { StockContext } from "../../context/StockContext";
 
 const IndStock = () => {
+  const { stockInfo } = useContext(StockContext);
+
   return (
     <>
-      {/* 背景 */}
-      <svg
-        width={616}
-        height={1091}
-        viewBox="0 0 616 1091"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        style={{ position: "fixed", top: 0, zIndex: -1 }}
-      >
-        <g filter="url(#filter0_f_447_2649)">
-          <rect
-            x="483.46"
-            y="510.051"
-            width="594.895"
-            height="572.997"
-            rx="286.498"
-            transform="rotate(131.15 483.46 510.051)"
-            fill="#B4C7DD"
-          />
-        </g>
-        <defs>
-          <filter
-            id="filter0_f_447_2649"
-            x="-471.708"
-            y="0.753906"
-            width="1087.42"
-            height="1089.49"
-            filterUnits="userSpaceOnUse"
-            colorInterpolationFilters="sRGB"
-          >
-            <feFlood floodOpacity={0} result="BackgroundImageFix" />
-            <feBlend
-              mode="normal"
-              in="SourceGraphic"
-              in2="BackgroundImageFix"
-              result="shape"
-            />
-            <feGaussianBlur
-              stdDeviation={125}
-              result="effect1_foregroundBlur_447_2649"
-            />
-          </filter>
-        </defs>
-      </svg>
-      <svg
-        width={494}
-        height={777}
-        viewBox="0 0 494 777"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        style={{ position: "fixed", right: 0, bottom: 0, zIndex: -1 }}
-      >
-        <g filter="url(#filter0_f_447_2648)">
-          <rect
-            x={250}
-            y={250}
-            width={424}
-            height={424}
-            rx={212}
-            fill="#F58B82"
-          />
-        </g>
-        <defs>
-          <filter
-            id="filter0_f_447_2648"
-            x={0}
-            y={0}
-            width={924}
-            height={924}
-            filterUnits="userSpaceOnUse"
-            colorInterpolationFilters="sRGB"
-          >
-            <feFlood floodOpacity={0} result="BackgroundImageFix" />
-            <feBlend
-              mode="normal"
-              in="SourceGraphic"
-              in2="BackgroundImageFix"
-              result="shape"
-            />
-            <feGaussianBlur
-              stdDeviation={125}
-              result="effect1_foregroundBlur_447_2648"
-            />
-          </filter>
-        </defs>
-      </svg>
-      {/* 主要內容 */}
       <div className="container">
         {/* 個股名稱 */}
         <div className="name text-center d-flex align-items-center">
           <div style={{ width: "100%" }}>
-            <span id="indStocksNumber">2330</span>
+            <span id="indStocksNumber">{stockInfo.inputValue}</span>
             <span className="mx-2"> - </span>
-            <span id="indStocksName">台灣積體電路製造</span>
+            <span id="indStocksName">{stockInfo.shortname}</span>
           </div>
           <svg
             id="heart"
@@ -162,13 +78,15 @@ const IndStock = () => {
             <div className="card col-3">
               <div className="card-body">
                 <p className="card-title">昨收</p>
-                <p className="card-text">568</p>
+                <p className="card-text">
+                  {stockInfo.regularMarketPreviousClose}
+                </p>
               </div>
             </div>
             <div className="card col-3">
               <div className="card-body">
                 <p className="card-title">最低</p>
-                <p className="card-text">568</p>
+                <p className="card-text">{stockInfo.regularMarketDayLow}</p>
               </div>
             </div>
             <div className="card col-3">
@@ -182,13 +100,13 @@ const IndStock = () => {
             <div className="card col-3">
               <div className="card-body">
                 <p className="card-title">開盤</p>
-                <p className="card-text">568</p>
+                <p className="card-text">{stockInfo.regularMarketOpen}</p>
               </div>
             </div>
             <div className="card col-3">
               <div className="card-body">
                 <p className="card-title">交易量</p>
-                <p className="card-text">568476</p>
+                <p className="card-text">{stockInfo.regularMarketVolume}</p>
               </div>
             </div>
             <div className="card col-3">
@@ -202,7 +120,7 @@ const IndStock = () => {
             <div className="card col-3">
               <div className="card-body">
                 <p className="card-title">最高</p>
-                <p className="card-text">568</p>
+                <p className="card-text">{stockInfo.regularMarketDayHigh}</p>
               </div>
             </div>
             <div className="card col-3">

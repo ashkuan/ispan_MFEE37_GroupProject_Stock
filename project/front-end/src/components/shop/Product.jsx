@@ -27,6 +27,14 @@ export const Product = () => {
 
   return (
     <>
+      {/* <div className="smallbar">
+        <div className="shopSorting">
+          排序
+          <button>價格高</button>
+          <button>價格低</button>
+          <button>最新</button>
+        </div>
+      </div> */}
       <div className="row row-cols-1 row-cols-md-4 g-4">
         {/* 從陣列中選出頁面要顯示的商品資料範圍, 上一頁的商品數～這頁的商品數 */}
         {products

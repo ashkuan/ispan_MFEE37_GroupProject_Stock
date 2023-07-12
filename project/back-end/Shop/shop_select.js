@@ -50,20 +50,19 @@ app.post("/cart/edit", function (req, res) {
   );
 });
 
-app.get("/checkout"),
-  function (req, res) {
-    db.query(
-      "SELECT Shop.pname, Shop.pimage, Shop.pprice, Shop.pdesc FROM Cart JOIN Shop ON Cart.pid = Shop.pid WHERE Cart.pid = ?",
-      [],
-      function (err, data) {
-        if (err) {
-          return "查無資料";
-        } else {
-          console.log(json(data));
-        }
+app.get("/checkout", function (req, res) {
+  db.query(
+    "SELECT Shop.pname, Shop.pimage, Shop.pprice, Shop.pdesc FROM Cart JOIN Shop ON Cart.pid = Shop.pid WHERE Cart.pid = ?",
+    [],
+    function (err, data) {
+      if (err) {
+        return "查無資料";
+      } else {
+        console.log(json(data));
       }
-    );
-  };
+    }
+  );
+});
 
 app.listen(5566, () => {
   console.log("Shop 的 port 5566 連接完成 " + new Date().toLocaleTimeString());
