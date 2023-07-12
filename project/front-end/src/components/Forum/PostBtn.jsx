@@ -108,7 +108,7 @@ function PostBtn() {
                 </option>
                 {/* <option>請選擇看板</option> */}
                 <option selected="selected" disabled="disabled">
-                  看板
+                  請選看板
                 </option>
                 <option>閒聊</option>
                 <option>新聞</option>
