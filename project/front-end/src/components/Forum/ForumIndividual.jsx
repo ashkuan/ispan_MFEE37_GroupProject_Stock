@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button, Modal } from "react-bootstrap";
 import PostUser from "./PostUser";
 import BoardTag from "./BoardTag";
@@ -14,15 +14,9 @@ import AddMessage from "./AddMessage";
 import ArticleTitle from "./ArticleTitle";
 
 function ForumIndividual() {
-  const [show, setShow] = useState(true);
-
-  const modalClose = () => setShow(false);
-
   return (
     <>
-      {/* <Button onClick={modalShow}>這裡是modal要連結個別貼文</Button> */}
-
-      <Modal show={show} onHide={modalClose}>
+      <Modal>
         <div className="container">
           <div className="p-2 d-flex flex-column justify-content-between">
             <Modal.Header closeButton>

@@ -1,15 +1,32 @@
 import React, { useState } from "react";
 import Emoji from "./Emoji";
-import ForumIndividual from "./ForumIndividual";
+import { Button, Modal } from "react-bootstrap";
+import PostUser from "./PostUser";
+import BoardTag from "./BoardTag";
+import ArticleContent from "./ArticleContent";
+import HitoHashTags from "./HitoHashTags";
+import MessageQuantity from "./MessageQuantity";
+import EmojiButton from "./EmojiButton";
+import KeepButton from "./KeepButton";
+import HotNewMessageTabs from "./HotNewMessageTabs";
+import NotifyShareDropdown from "./NotifyShareDropdown";
+import AddMessage from "./AddMessage";
+import ArticleTitle from "./ArticleTitle";
 
 function Article() {
-  const [showComponent, setShowComponent] = useState(false);
-  const handleClick = () => {
-    setShowComponent(true);
+  const [showModal, setShowModal] = useState(false);
+
+  const handleArticleClick = () => {
+    setShowModal(true);
   };
+
+  const handleModalClose = () => {
+    setShowModal(false);
+  };
+
   return (
     <>
-      <div className="articleCont" onClick={handleClick}>
+      <div className="articleCont" onClick={handleArticleClick}>
         <div className="d-flex justify-content-between px-4">
           <div className="d-flex align-items-center">
             <img className="userImg" src="./img/forum/user-Img.jpg" alt="" />
@@ -17,6 +34,7 @@ function Article() {
             <span className="me-3 mb-1 fz-4">・3小時前</span>
           </div>
         </div>
+
         <div className="px-4">
           <p className="fz-1 mt-3">為什麼經濟不景氣股票卻飆這麼高</p>
           <p className="ellipsis mt-3 fz-2">
@@ -44,13 +62,54 @@ function Article() {
         </div>
       </div>
       <hr className="forumHr mx-4 p-1" />
-      {showComponent && <AnotherComponent />}
+
+      <Modal show={showModal} onHide={handleModalClose}>
+        <div className="container">
+          <div className="p-2 d-flex flex-column justify-content-between">
+            <Modal.Header closeButton>
+              <Modal.Title>
+                <div className="d-flex align-items-center">
+                  <PostUser />
+                </div>
+              </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <div className="p-4">
+                <div className="p-2 pb-4">
+                  {/* 看板 */}
+                  <BoardTag />
+                </div>
+                <div className="p-3 fs-5">
+                  {/* 文章內容 */}
+                  <ArticleTitle />
+                  <ArticleContent />
+                </div>
+                <div className="p-3 d-flex">
+                  {/* hashtag */}
+                  <HitoHashTags />
+                </div>
+                <div className="text-secondary fs-5 p-4 d-flex justify-content-between">
+                  <div className="d-flex">
+                    {/* <Emoji /> */}
+                    <EmojiButton />
+                    <MessageQuantity />
+                  </div>
+                  <div className="d-flex">
+                    <KeepButton />
+                    <NotifyShareDropdown />
+                  </div>
+                </div>
+                <HotNewMessageTabs />
+              </div>
+            </Modal.Body>
+            <Modal.Footer className="p-4 d-flex justify-content-between align-items-center">
+              <AddMessage />
+            </Modal.Footer>
+          </div>
+        </div>
+      </Modal>
     </>
   );
-
-  function AnotherComponent() {
-    return <ForumIndividual />;
-  }
 }
 
 export default Article;
