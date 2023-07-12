@@ -15,7 +15,7 @@ export const RecommendShop = () => {
   // console.log(firstThreeItems);
 
   return (
-    <div id="recommend-card">
+    <div id="recommend-card" style={{ marginTop: "100px" }}>
       <p className="title">您可能也會喜歡：</p>
       <div className="d-flex justify-content-center">
         {firstThreeItems.map((item) => {
@@ -33,7 +33,7 @@ export const RecommendShop = () => {
               to={`/shop/Myproduct?pid=${pid}`}
               className="card"
               style={{ display: "flex", justifyContent: "space-between" }}
-              key={pid}
+              key={mypid}
             >
               <Link id="hoverImg" to={`/shop/Myproduct?pid=${pid}`}>
                 <img src={pimage1} style={{ width: "100px" }} />

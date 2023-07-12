@@ -223,7 +223,7 @@ const Navbar = () => {
                 aria-label="Close"
               />
             </div>
-            <Cart></Cart>
+            <Cart key="1sdgw549ye0grja"></Cart>
             <div className="modal-footer">
               <button
                 type="button"
