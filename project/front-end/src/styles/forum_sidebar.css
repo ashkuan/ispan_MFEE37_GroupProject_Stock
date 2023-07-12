@@ -32,7 +32,6 @@ html {
 body {
   font-family: "Noto Sans TC", sans-serif;
   letter-spacing: 0.075rem;
-  background-color: var(--bg-Primary-Gray);
 }
 
 .fz-0 {
