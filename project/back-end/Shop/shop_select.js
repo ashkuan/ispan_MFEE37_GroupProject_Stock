@@ -29,6 +29,27 @@ app.get("/cart", function (req, res) {
   });
 });
 
+app.post("/cart/edit", function (req, res) {
+  const items = req.body.data;
+  console.log("這是items");
+  console.log(items);
+  const updateValues = Object.entries(items).map(([pid, paccount]) => [
+    pid,
+    paccount,
+  ]);
+  db.query(
+    "INSERT INTO Cart (pid, paccount) VALUES ? ON DUPLICATE KEY UPDATE paccount = VALUES(paccount)",
+    [updateValues],
+    function (err, data) {
+      if (err) {
+        console.error("購物車儲存失敗:", err);
+      } else {
+        console.log("購物車儲存成功");
+      }
+    }
+  );
+});
+
 app.get("/checkout"),
   function (req, res) {
     db.query(
@@ -44,6 +65,6 @@ app.get("/checkout"),
     );
   };
 
-app.listen(3000, () => {
-  console.log("Shop 的 port 3000 連接完成 " + new Date().toLocaleTimeString());
+app.listen(5566, () => {
+  console.log("Shop 的 port 5566 連接完成 " + new Date().toLocaleTimeString());
 });

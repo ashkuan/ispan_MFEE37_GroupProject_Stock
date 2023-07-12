@@ -1,14 +1,14 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
 import "../styles/shop.css";
-import { Product } from "./Product";
+import { Product } from "../components/shop/Product";
 import { ShopContext } from "../../context/ShopContext";
 
 export const Shop = () => {
-  const { products, totalAmount, cartItems, addToCart, removeFromCart } =
-    useContext(ShopContext);
+  // const { products, totalAmount, cartItems, addToCart, removeFromCart } =
+  useContext(ShopContext);
   // console.log(cartItems);
-
+  // console.log(products);
   return (
     <>
       <Sidebar></Sidebar>

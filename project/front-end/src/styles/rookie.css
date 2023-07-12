@@ -147,7 +147,7 @@ ol li .answer {
 
 
 .connectbtn {
-    margin-top: 6%;
+    margin-top: 3%;
     margin-bottom: 6%;
     margin-right: 15rem;
     margin-left: 15rem;
@@ -227,9 +227,10 @@ ol li .answer {
 }
 
 .titlebox {
-    margin-bottom: 5rem;
+    margin-bottom: 2rem;
     border-bottom: var(--black-Word) 5px solid;
     border-top: var(--black-Word) 5px solid;
+    font-size: 2.8rem;
 
 }
 
@@ -428,14 +429,14 @@ border-top-left-radius: var(--border-radius-big) !important;
 }
 
 
-.heading-txt{
+.heading-text{
     color:white;
     /* color:#276272; */
     font-size: 30px;
     font-weight: bold;
     margin: 10px;
     text-align: center;  
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
   }
   .question{
     font-size:var(--f-med-2);
@@ -456,15 +457,16 @@ border-top-left-radius: var(--border-radius-big) !important;
   }
 
   .option-btn{
-    box-shadow: 0px 0px 3px 1px rgb(150, 145, 145);
+    box-shadow: 0px 0px 3px 1px rgb(186, 183, 183);
     padding: 5px;
-    border-radius: 3px;
+    border-radius: 5px;
     border:none;
     outline: none;
     transition: 0.3s;
     margin: 5px;
     min-height: 30px;
     background-color: white;
+    font-size: 20px;
   }
   
   .checked{

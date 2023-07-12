@@ -1,177 +1,205 @@
 :root {
-    --IronGray-Deep: #2C3E50;
-    --IronGray: #57687C;
-    --IronGray-Light: #B4C7DD;
-    --Pink: #F7CAC9;
-    --Pink-Deep: #F58B82;
-    --Brown: #926B6A;
-    --Red: #F17064;
-    --Green: #77BE6B;
-    --Green-Light: #D1FACA;
-    --White: #FFFFFF;
-    --bg-Primary-Gray: #F3F3F3;
-    --bg-Second-Gray: #DDDDDD;
-    --black-Word: #333333;
-    --border-radius-big: 1.25rem;
-    --border-radius-med: 0.625rem;
-    --border-radius-small: 0.375rem;
-    --fz-0: 2.5rem;
-    --fz-1: 2rem;
-    --fz-2: 1.5rem;
-    --fz-3: 1.17rem;
-    --fz-4: 1rem;
-    --fz-5: 0.875rem;
-    --fz-6: 0.75rem;
-  }
-  
-  html {
-    margin: 0;
-    padding: 0;
-  }
-  
-  body {
-    font-family: 'Noto Sans TC', sans-serif;
-    letter-spacing: 0.075rem;
-    background-color: var(--bg-Primary-Gray);
-  }
-  
-  .fz-0 {
-    font-size: var(--fz-0);
-  }
-  
-  .fz-1 {
-    font-size: var(--fz-1);
-  }
-  
-  .fz-2 {
-    font-size: var(--fz-2);
-  }
-  
-  .fz-3 {
-    font-size: var(--fz-3);
-  }
-  
-  .fz-4 {
-    font-size: var(--fz-4);
-  }
-  
-  .fz-5 {
-    font-size: var(--fz-5);
-  }
-  
-  .fz-6 {
-    font-size: var(--fz-6);
-  }
-  
-  .pd-0 {
-    padding: var(--fz-0);
-  }
-  
-  .pd-1 {
-    padding: var(--fz-1);
-  }
-  
-  .pd-2 {
-    padding: var(--fz-2);
-  }
-  
-  .pd-3 {
-    padding: var(--fz-3);
-  }
-  
-  .pd-4 {
-    padding: var(--fz-4);
-  }
-  
-  .pd-5 {
-    padding: var(--fz-5);
-  }
-  
-  .pd-6 {
-    padding: var(--fz-6);
-  }
-  
-  .text-IronGray-Deep {
-    color: var(--IronGray-Deep);
-  }
-  
-  .text-Pink-Deep {
-    color: var(--Pink-Deep);
-  }
-  
-  .text-Green {
-    color: var(--Green);
-  }
-  
-  .IronGray-Deep {
-    background-color: var(--IronGray-Deep);
-  }
-  
-  .IronGray {
-    background-color: var(--IronGray);
-  }
-  
-  .IronGray-Light {
-    background-color: var(--IronGray-Light);
-  }
-  
-  .Pink {
-    background-color: var(--Pink);
-  }
-  
-  .bg-Primary-Gray {
-    background-color: var(--bg-Primary-Gray);
-  }
-  
-  .rounded-top-xl {
-    border-top-left-radius: var(--bs-border-radius-xl);
-    border-top-right-radius: var(--bs-border-radius-xl);
-  }
-  
-    ul.cloud {
-      list-style: none;
-      padding-left: 0;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      line-height: 2.5rem;
-    }
-  
-    ul.cloud a {
-      color:var(--IronGray-Deep);
-      display: block;
-      font-size: 1.5rem;
-      padding: 0.125rem 0.25rem;
-      text-decoration: none;
-      position: relative;
-    }  
-  
-    ul.cloud a {
-      --size: attr(data-weight number, 2); 
-      font-size: calc(var(--size) * 1rem);
-    }
-  
-    ul.cloud a[data-weight="1"] { --size: 1; }
-    ul.cloud a[data-weight="2"] { --size: 2; }
-    ul.cloud a[data-weight="3"] { --size: 3; }
-    ul.cloud a[data-weight="4"] { --size: 4; }
-    ul.cloud a[data-weight="5"] { --size: 5; }
-    ul.cloud a[data-weight="6"] { --size: 6; }
-    ul.cloud a[data-weight="7"] { --size: 7; }
-    ul.cloud a[data-weight="8"] { --size: 8; }
-    ul.cloud a[data-weight="9"] { --size: 9; }
-  
-    ul.cloud a {
-      --size: 4;
-      font-size: calc(var(--size) * 0.25rem + 0.5rem);
-    }
-  
-    ul.cloud[data-show-value] a::after {
-      content: " (" attr(data-weight) ")";
-      font-size: 1rem;
-    }
+  --IronGray-Deep: #2c3e50;
+  --IronGray: #57687c;
+  --IronGray-Light: #b4c7dd;
+  --Pink: #f7cac9;
+  --Pink-Deep: #f58b82;
+  --Brown: #926b6a;
+  --Red: #f17064;
+  --Green: #77be6b;
+  --Green-Light: #d1faca;
+  --White: #ffffff;
+  --bg-Primary-Gray: #f3f3f3;
+  --bg-Second-Gray: #dddddd;
+  --black-Word: #333333;
+  --border-radius-big: 1.25rem;
+  --border-radius-med: 0.625rem;
+  --border-radius-small: 0.375rem;
+  --fz-0: 2.5rem;
+  --fz-1: 2rem;
+  --fz-2: 1.5rem;
+  --fz-3: 1.17rem;
+  --fz-4: 1rem;
+  --fz-5: 0.875rem;
+  --fz-6: 0.75rem;
+}
 
-   .card-body a{
-      color: var(--black-Word);
-    }
+html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Noto Sans TC", sans-serif;
+  letter-spacing: 0.075rem;
+}
+
+.fz-0 {
+  font-size: var(--fz-0);
+}
+
+.fz-1 {
+  font-size: var(--fz-1);
+}
+
+.fz-2 {
+  font-size: var(--fz-2);
+}
+
+.fz-3 {
+  font-size: var(--fz-3);
+}
+
+.fz-4 {
+  font-size: var(--fz-4);
+}
+
+.fz-5 {
+  font-size: var(--fz-5);
+}
+
+.fz-6 {
+  font-size: var(--fz-6);
+}
+
+.pd-0 {
+  padding: var(--fz-0);
+}
+
+.pd-1 {
+  padding: var(--fz-1);
+}
+
+.pd-2 {
+  padding: var(--fz-2);
+}
+
+.pd-3 {
+  padding: var(--fz-3);
+}
+
+.pd-4 {
+  padding: var(--fz-4);
+}
+
+.pd-5 {
+  padding: var(--fz-5);
+}
+
+.pd-6 {
+  padding: var(--fz-6);
+}
+
+.text-IronGray-Deep {
+  color: var(--IronGray-Deep);
+}
+
+.text-Pink-Deep {
+  color: var(--Pink-Deep);
+}
+
+.text-Green {
+  color: var(--Green);
+}
+
+.IronGray-Deep {
+  background-color: var(--IronGray-Deep);
+}
+
+.IronGray {
+  background-color: var(--IronGray);
+}
+
+.IronGray-Light {
+  background-color: var(--IronGray-Light);
+}
+
+.Pink {
+  background-color: var(--Pink);
+}
+
+.bg-Primary-Gray {
+  background-color: var(--bg-Primary-Gray);
+}
+
+.rounded-top-xl {
+  border-top-left-radius: var(--bs-border-radius-xl);
+  border-top-right-radius: var(--bs-border-radius-xl);
+}
+
+ul.cloud {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  line-height: 2.5rem;
+}
+
+ul.cloud a {
+  color: var(--IronGray-Deep);
+  display: block;
+  font-size: 1.5rem;
+  padding: 0.125rem 0.25rem;
+  text-decoration: none;
+  position: relative;
+}
+
+ul.cloud a {
+  --size: attr(data-weight number, 2);
+  font-size: calc(var(--size) * 1rem);
+}
+
+ul.cloud a[data-weight="1"] {
+  --size: 1;
+}
+ul.cloud a[data-weight="2"] {
+  --size: 2;
+}
+ul.cloud a[data-weight="3"] {
+  --size: 3;
+}
+ul.cloud a[data-weight="4"] {
+  --size: 4;
+}
+ul.cloud a[data-weight="5"] {
+  --size: 5;
+}
+ul.cloud a[data-weight="6"] {
+  --size: 6;
+}
+ul.cloud a[data-weight="7"] {
+  --size: 7;
+}
+ul.cloud a[data-weight="8"] {
+  --size: 8;
+}
+ul.cloud a[data-weight="9"] {
+  --size: 9;
+}
+
+ul.cloud a {
+  --size: 4;
+  font-size: calc(var(--size) * 0.25rem + 0.5rem);
+}
+
+ul.cloud[data-show-value] a::after {
+  content: " (" attr(data-weight) ")";
+  font-size: 1rem;
+}
+
+.card-body a {
+  color: var(--black-Word);
+}
+
+.forum {
+  background-image: url(../../../public/img/forum/bg-forum.svg);
+  background-repeat: no-repeat;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  color: var(--bs-nav-pills-link-active-color);
+  background-color: var(--IronGray-Deep);
+}

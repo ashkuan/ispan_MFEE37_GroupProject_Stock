@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import "../styles/nav.css";
 import { Link, useNavigate } from "react-router-dom";
-import { Cart } from "./Cart";
+import { Cart } from "./shop/Cart";
 import { ShopContext } from "../../context/ShopContext";
 import Validation from "./loginValidation";
 import axios from "axios";
@@ -53,7 +53,7 @@ const Navbar = () => {
     <>
       <nav className="navbar navbar-expand-lg" id="navbar">
         <div className="container-fluid">
-          <Link to="/" className="navbar-brand me-4 logoName" href="#">
+          <Link to="/" className="navbar-brand logoName" href="#">
             <svg
               width="70"
               height="70"
@@ -200,7 +200,6 @@ const Navbar = () => {
         tabIndex={-1}
         aria-labelledby="cartModalLabel"
         aria-hidden="true"
-        data-bs-toggle="modal"
       >
         <div className="modal-dialog modal-lg modal-dialog-scrollable">
           <div className="modal-content">
@@ -226,7 +225,7 @@ const Navbar = () => {
               </button>
               <button id="payBtn" type="button" className="btn mx-3">
                 <Link
-                  to="checkout"
+                  to="/shop/checkout"
                   style={{ color: "white", textDecoration: "none" }}
                 >
                   結帳 →

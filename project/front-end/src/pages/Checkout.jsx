@@ -203,7 +203,7 @@ const Checkout = () => {
             );
             // console.log(filteredProducts);
             const pname = filteredProducts[0].pname;
-            const pimage = filteredProducts[0].pimage;
+            const pimage1 = filteredProducts[0].pimage1;
             const pdesc = filteredProducts[0].pdesc;
             const pprice = filteredProducts[0].pprice;
             // console.log(pname);
@@ -216,7 +216,7 @@ const Checkout = () => {
                 >
                   {/* 購物車 - 左 */}
                   {/* 購物車內容-圖 */}
-                  <img src={pimage} className="card-img-top" />
+                  <img src={pimage1} className="card-img-top" />
                   {/* 購物車 - 中 */}
                   {/* 購物車內容-文字 */}
                   <div className="card-body d-flex flex-column align-items-start mx-1">

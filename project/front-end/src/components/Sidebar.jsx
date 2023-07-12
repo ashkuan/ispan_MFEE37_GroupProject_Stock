@@ -98,9 +98,9 @@ const Sidebar = () => {
           </Link>
         </li>
         <li className="nav-item subitem d-flex flex-column">
-          <a className="nav-link" href="#">
+          {/* <a className="nav-link" href="#">
             &gt; 訂單狀況
-          </a>
+          </a> */}
           <Link to="/shop/history" className="nav-link">
             &gt; 歷史訂單
           </Link>

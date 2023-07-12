@@ -9,14 +9,6 @@ app.get("/", function (req, res) {
   res.send("rookie連接成功");
 });
 
-connToDBHelper.connect(function (err) {
-  if (err) {
-    console.log("資料庫連線失敗", err);
-  } else {
-    console.log("資料庫連線成功");
-  }
-});
-
 app.get("/rookie", function (req, res) {
   connToDBHelper.query("SELECT * FROM `rookie` ", [], function (err, data) {
     if (err) {

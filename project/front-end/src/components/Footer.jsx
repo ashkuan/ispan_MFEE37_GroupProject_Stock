@@ -53,7 +53,7 @@ const footer = () => {
           <div className="row footer-row">
             {/* Footer - 中 - logo */}
             <div className="col-md-2 col-lg-3 col-xl-2 mx-auto my-auto">
-              <p className="linksTitle text-uppercase fw-bold mb-4">
+              <p className="linksTitle text-uppercase fw-bold">
                 <i className="fas fa-gem me-3"></i>股估績
               </p>
               <svg
@@ -84,7 +84,7 @@ const footer = () => {
             </div>
             {/* Footer - 中 - 內容 */}
             <div className="col-md-3 col-lg-3 col-xl-3 mx-auto">
-              <p className="linksTitle text-uppercase fw-bold -mb4 footer-left">
+              <p className="linksTitle text-uppercase fw-bold  footer-left">
                 快速連結
               </p>
               <p className="linksContent">
@@ -109,7 +109,7 @@ const footer = () => {
               </p>
             </div>
             <div className="col-md-3 col-lg-3 col-xl-3 mx-auto ">
-              <p className="linksTitle text-uppercase fw-bold mb-4 footer-mid">
+              <p className="linksTitle text-uppercase fw-bold  footer-mid">
                 會員專屬
               </p>
               <p className="linksContent">
@@ -134,7 +134,7 @@ const footer = () => {
               </p>
             </div>
             <div className="col-md-5 col-lg-4 col-xl-4 mx-auto mb-md-0">
-              <p className="linksTitle text-uppercase fw-bold mb-4">聯絡我們</p>
+              <p className="linksTitle text-uppercase fw-bold">聯絡我們</p>
               <p className="linksContent">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

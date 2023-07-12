@@ -12,20 +12,14 @@ import LineChart from "../components/linechart";
 const Forum = () => {
   return (
     <>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <div className="forum">
+      <div className="forum" style={{ paddingTop: "180px" }}>
         <div className="container mt-4">
           <div className="row d-flex justify-content-between">
             <div className="col-3">
               <SidebarTag />
-             
-              <div style={{width:"10px"}} ><LineChart/></div>
-              
+
+              {/* <div style={{width:"10px"}} ><LineChart/></div> */}
+
               <SidebarNews />
             </div>
             <div className="col-8">
@@ -33,7 +27,7 @@ const Forum = () => {
             </div>
           </div>
         </div>
-        {/* <ForumIndividual /> */}
+        <ForumIndividual />
         {/* <Post/> */}
       </div>
       <Footer />

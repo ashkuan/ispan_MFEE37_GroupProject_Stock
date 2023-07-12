@@ -6,49 +6,71 @@ import HelpIcon from "@mui/icons-material/Help";
 import QueryStatsIcon from "@mui/icons-material/QueryStats";
 import TipsAndUpdatesIcon from "@mui/icons-material/TipsAndUpdates";
 import ReadMoreIcon from "@mui/icons-material/ReadMore";
-import { Button } from "@mui/material";
+import { Button, CardHeader } from "@mui/material";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Billboard = () => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 4;
-  const totalItems = 7; // 根據需要的總數量調整
-  const totalPages = Math.ceil(totalItems / itemsPerPage);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const itemsPerPage = 5;
+  const totalItems = 7; // 根据需要的总数量进行调整
 
   function handleRightClick() {
-    setCurrentPage((prevPage) => {
-      if (prevPage === totalPages) {
-        return 1; // 返回到第一頁
-      } else {
-        return prevPage + 1; // 前進到下一頁
-      }
-    });
+    setCurrentSlide((prevSlide) => (prevSlide + 1) % totalItems);
   }
 
   function getItems() {
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    const data = [
-      { icon: <QuestionAnswerIcon />, label: "閒聊" },
-      { icon: <NewspaperIcon />, label: "新聞" },
-      { icon: <AdsClickIcon />, label: "標的" },
-      { icon: <HelpIcon />, label: "請益" },
-      { icon: <QueryStatsIcon />, label: "情報" },
-      { icon: <TipsAndUpdatesIcon />, label: "心得" },
-      { icon: <ReadMoreIcon />, label: "其他" },
+    const startIndex = currentSlide % totalItems;
+    const endIndex = (startIndex + itemsPerPage) % totalItems;
+
+    const items = [
+      {
+        icon: <QuestionAnswerIcon sx={{ color: "#FFC857", fontSize: 48 }} />,
+        label: "閒聊",
+      },
+      {
+        icon: <NewspaperIcon sx={{ color: "#119DA4", fontSize: 48 }} />,
+        label: "新聞",
+      },
+      {
+        icon: <AdsClickIcon sx={{ color: "#FF6B6B", fontSize: 48 }} />,
+        label: "標的",
+      },
+      {
+        icon: <HelpIcon sx={{ color: "#4ECDC4", fontSize: 48 }} />,
+        label: "請益",
+      },
+      {
+        icon: <QueryStatsIcon sx={{ color: "#FFB86F", fontSize: 48 }} />,
+        label: "情報",
+      },
+      {
+        icon: <TipsAndUpdatesIcon sx={{ color: "#845EC2 ", fontSize: 48 }} />,
+        label: "心得",
+      },
+      {
+        icon: <ReadMoreIcon sx={{ color: "#FF869A", fontSize: 48 }} />,
+        label: "其他",
+      },
     ];
 
-    return data.slice(startIndex, endIndex).map((item, index) => (
-      <div className="board p-4" key={index}>
-        {item.icon}
-        {item.label}
-      </div>
-    ));
+    if (startIndex < endIndex) {
+      return items.slice(startIndex, endIndex);
+    } else {
+      return items.slice(startIndex).concat(items.slice(0, endIndex));
+    }
   }
 
   return (
     <div className="carousel">
-      <div className="carousel-items">{getItems()}</div>
+      <div className="carousel-items">
+        {getItems().map((item, index) => (
+          <div className="board p-4" key={index}>
+            {item.icon}
+            {item.label}
+          </div>
+        ))}
+      </div>
       <Button className="carousel-arrow" onClick={handleRightClick}>
         <img className="arrowRight" src="./img/forum/arrow-right.svg" alt="" />
       </Button>

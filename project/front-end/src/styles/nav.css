@@ -30,6 +30,12 @@
 }
 #navbar .container-fluid .navbar-brand {
   font-size: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+#navbar .container-fluid .navbar-brand .logoname {
+  color: white;
 }
 #navbar .container-fluid .navbar-toggler {
   color: var(--IronGray-Deep);

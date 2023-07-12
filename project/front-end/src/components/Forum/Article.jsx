@@ -1,19 +1,21 @@
-import React from "react";
-import NotifyShareDropdown from "./NotifyShareDropdown";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
+import React, { useState } from "react";
 import Emoji from "./Emoji";
+import ForumIndividual from "./ForumIndividual";
 
 function Article() {
+  const [showComponent, setShowComponent] = useState(false);
+  const handleClick = () => {
+    setShowComponent(true);
+  };
   return (
     <>
-      <div className="articleCont">
+      <div className="articleCont" onClick={handleClick}>
         <div className="d-flex justify-content-between px-4">
           <div className="d-flex align-items-center">
             <img className="userImg" src="./img/forum/user-Img.jpg" alt="" />
             <span className="me-3 mb-1 fz-3">大神帶你飛</span>
             <span className="me-3 mb-1 fz-4">・3小時前</span>
           </div>
-          <MoreVertIcon />
         </div>
         <div className="px-4">
           <p className="fz-1 mt-3">為什麼經濟不景氣股票卻飆這麼高</p>
@@ -32,6 +34,7 @@ function Article() {
           </div>
           <div className="mx-4">
             <img src="./img/forum/Chat.svg" alt="" />
+
             <span className="fz-5 mx-1">25</span>
           </div>
           <div className="mx-4">
@@ -41,8 +44,13 @@ function Article() {
         </div>
       </div>
       <hr className="forumHr mx-4 p-1" />
+      {showComponent && <AnotherComponent />}
     </>
   );
+
+  function AnotherComponent() {
+    return <ForumIndividual />;
+  }
 }
 
 export default Article;
