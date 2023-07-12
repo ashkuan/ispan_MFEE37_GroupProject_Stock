@@ -15,11 +15,12 @@ import RookieQuiz from "../components/rookie/RookieQuiz.jsx";
 const Rookie = () => {
   return (
     <>
+   
       <div className="container mt-3">
         <h1 className="ml1 title d-flex justify-content-around ">
           <div id="rookie"> 新手上路</div>
         </h1>
-        
+       
         <div className="text-center m-45"><RookieQuiz/></div>
         <RookieListBtn />
         <span className="d-flex justify-content-around mt-5" id="openbank">
