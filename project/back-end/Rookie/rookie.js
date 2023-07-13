@@ -19,8 +19,8 @@ app.get("/rookie", function (req, res) {
   });
 });
 
-app.listen(3000, () => {
-  console.log("rookie開始拉" + new Date().toLocaleTimeString());
+app.listen(5432, () => {
+  console.log("rookie5432開始拉" + new Date().toLocaleTimeString());
 });
 
 // 讓外界可以使用路由

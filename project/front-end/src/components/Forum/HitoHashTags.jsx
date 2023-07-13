@@ -5,7 +5,7 @@ const HitoHashTags = () => {
   useEffect(() => {
     const fetchAllTag = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/posts");
+        const res = await axios.get("http://localhost:5789/posts");
         setTags(res.data);
       } catch (err) {
         console.log(err);
