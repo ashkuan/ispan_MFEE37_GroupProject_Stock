@@ -66,8 +66,8 @@ const IndStock = () => {
         </div>
         {/* 個股股市 */}
         <div id="indStocksIndex" className="mt-5">
-          <div
-            className="row mb-5"
+          <p
+            className="mb-5 text-center"
             style={{
               fontSize: "2.5rem",
               color: "#2c3e50",
@@ -75,8 +75,30 @@ const IndStock = () => {
             }}
           >
             股市
-          </div>
+          </p>
           <div className="row">
+            <div className="card col-3">
+              <div className="card-body">
+                <p className="card-title">現價</p>
+                <p className="card-text">{stockInfo.regularMarketPrice}</p>
+              </div>
+            </div>
+            <div className="card col-3">
+              <div className="card-body">
+                <p className="card-title">最低</p>
+                <p className="card-text">{stockInfo.regularMarketDayLow}</p>
+              </div>
+            </div>
+            <div className="card col-5">
+              <div className="card-body">
+                <p className="card-title">ROC價格變動率</p>
+                <p className="card-text">
+                  {stockInfo.regularMarketChangePercent}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="row my-5">
             <div className="card col-3">
               <div className="card-body">
                 <p className="card-title">昨收</p>
@@ -87,34 +109,16 @@ const IndStock = () => {
             </div>
             <div className="card col-3">
               <div className="card-body">
-                <p className="card-title">最低</p>
-                <p className="card-text">{stockInfo.regularMarketDayLow}</p>
-              </div>
-            </div>
-            <div className="card col-3">
-              <div className="card-body">
-                <p className="card-title">目前股價報酬率</p>
-                <p className="card-text">23.78%</p>
-              </div>
-            </div>
-          </div>
-          <div className="row my-5">
-            <div className="card col-3">
-              <div className="card-body">
-                <p className="card-title">開盤</p>
-                <p className="card-text">{stockInfo.regularMarketOpen}</p>
-              </div>
-            </div>
-            <div className="card col-3">
-              <div className="card-body">
                 <p className="card-title">交易量</p>
                 <p className="card-text">{stockInfo.regularMarketVolume}</p>
               </div>
             </div>
-            <div className="card col-3">
+            <div className="card col-5">
               <div className="card-body">
-                <p className="card-title">一年股價報酬率</p>
-                <p className="card-text">23.78%</p>
+                <p className="card-title">3個月平均每日交易量</p>
+                <p className="card-text">
+                  {stockInfo.averageDailyVolume3Month}
+                </p>
               </div>
             </div>
           </div>
@@ -127,14 +131,14 @@ const IndStock = () => {
             </div>
             <div className="card col-3">
               <div className="card-body">
-                <p className="card-title">殖利率</p>
-                <p className="card-text">23.78%</p>
+                <p className="card-title">開盤</p>
+                <p className="card-text">{stockInfo.regularMarketOpen} </p>
               </div>
             </div>
-            <div className="card col-3">
+            <div className="card col-5">
               <div className="card-body">
-                <p className="card-title">三年股價報酬率</p>
-                <p className="card-text">23.78%</p>
+                <p className="card-title">10日平均每日交易量</p>
+                <p className="card-text">{stockInfo.averageDailyVolume10Day}</p>
               </div>
             </div>
           </div>
