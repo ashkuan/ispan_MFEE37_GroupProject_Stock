@@ -10,6 +10,7 @@ const Member = () => {
   const [name, setName] = useState(""); // 用于存储姓名的状态
   const [email, setEmail] = useState(""); 
   const [password, setPassword] = useState(""); 
+  const [photopath, setPhotopath] = useState(""); 
   
 
   useEffect(() => {
@@ -20,6 +21,7 @@ const Member = () => {
         setName(res.data.name); // 存储姓名到 name 状态
         setEmail(res.data.email)
         setPassword(res.data.password)
+        setPhotopath(res.data.photopath)
       })
       .catch((err) => console.log(err));
   }, []);
@@ -32,7 +34,7 @@ const Member = () => {
         <hr />
         <div className="memberpage-info ">
           <div className="mb-4 memberpic">
-            <img src="./img/sidesbar/Mask Group.svg" alt="" />
+          <img src={photopath.replace("http://localhost:5173/",'')} alt="1234" />
           </div>
           <div className="mb-4">
             <span>會員姓名:</span>
