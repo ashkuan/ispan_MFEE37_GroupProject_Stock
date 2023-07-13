@@ -1,6 +1,7 @@
 //
 
 import React, { useState, useEffect } from "react";
+import "../../styles/forum_main.css";
 import "../../styles/forum_sidebar.css";
 import axios from "axios";
 import cycle from "/public/img/sidesbar/rotate-left-solid.svg";
@@ -52,23 +53,20 @@ function SidebarNews() {
           />
         </a>
       </div>
-      <div className="card-body">
+      <div className="p-3">
         {data.map((article, index) => (
-          <a href={article.url} target="_blank" rel="noopener noreferrer">
-            <div
-              key={index}
-              className="bg-Primary-Gray rounded-3 p-3 m-1"
-              style={{ boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)" }}
-            >
-              <div className="fz-3">{article.title}</div>
-              <div className="fz-4 pt-3">
-                {article.source.author} · {article.publishedAt.substr(0, 10)}
+          <div className="card border-1 mb-3 p-3 text-decoration-none">
+            <a href={article.url} target="_blank" rel="noopener noreferrer">
+              <div key={index}>
+                <div className="fz-4 mb-2 text-IronGray-Deep"> {article.author} </div>
+                <div className="news-title fz-3 mb-2 fw-bold text-IronGray-Deep"> {article.title} </div>
+                <div className="fz-4 text-IronGray-Deep">{article.publishedAt.substr(0, 10)} {article.publishedAt.substr(11, 5)}</div>
               </div>
-            </div>
-          </a>
+            </a>
+          </div>
         ))}
       </div>
-    </div>
+    </div >
   );
 }
 
