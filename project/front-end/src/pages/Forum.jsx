@@ -14,8 +14,8 @@ const Forum = () => {
     <>
       <div className="forum" style={{ paddingTop: "180px" }}>
         <div className="container mt-4">
-          <div className="row d-flex justify-content-between">
-            <div className="col-3">
+          <div className="row d-flex justify-content-center g-5">
+            <div className="col-4">
               <SidebarTag />
 
               {/* <div style={{width:"10px"}} ><LineChart/></div> */}

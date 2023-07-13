@@ -9,7 +9,7 @@ function SidebarTag() {
     >
       <div className="card-title IronGray-Deep rounded-top-xl p-3">
         <a
-          className="d-flex text-decoration-none text-white fz-2 align-items-center"
+          className="d-flex text-decoration-none text-white p-3 fs-3 align-items-center"
           href="#"
         >
           熱門關鍵字 &gt;

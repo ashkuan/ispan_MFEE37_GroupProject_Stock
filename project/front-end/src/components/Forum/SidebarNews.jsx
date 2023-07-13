@@ -42,7 +42,7 @@ function SidebarNews() {
       style={{ filter: "drop-shadow(0px 20px 30px rgba(0, 0, 0, 0.1))" }}
     >
       <div className="card-title bg-Primary-Gray rounded-top-xl p-3">
-        <a className="d-flex text-decoration-none text-IronGray-Deep fz-2 align-items-center">
+        <a className="d-flex fs-3 m-2 text-decoration-none text-IronGray-Deep fz-2 align-items-center">
           今日要聞{" "}
           <img
             onClick={() => search(auth)}
@@ -58,9 +58,9 @@ function SidebarNews() {
           <div className="card border-1 mb-3 p-3 text-decoration-none">
             <a href={article.url} target="_blank" rel="noopener noreferrer">
               <div key={index}>
-                <div className="fz-4 mb-2 text-IronGray-Deep"> {article.author} </div>
-                <div className="news-title fz-3 mb-2 fw-bold text-IronGray-Deep"> {article.title} </div>
-                <div className="fz-4 text-IronGray-Deep">{article.publishedAt.substr(0, 10)} {article.publishedAt.substr(11, 5)}</div>
+                <div className="fz-3 mb-2 text-IronGray-Deep"> {article.author} </div>
+                <div className="news-title fz-2 mb-2 fw-bold text-IronGray-Deep"> {article.title} </div>
+                <div className="fz-3 text-IronGray-Deep">{article.publishedAt.substr(0, 10)} {article.publishedAt.substr(11, 5)}</div>
               </div>
             </a>
           </div>
