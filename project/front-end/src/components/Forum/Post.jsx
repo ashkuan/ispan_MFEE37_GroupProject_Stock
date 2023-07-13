@@ -25,7 +25,7 @@ const Post = () => {
     try {
       const currentTime = new Date().toLocaleTimeString();
       setPosts((prev) => ({ ...prev, fadate: currentTime }));
-      await axios.post("http://localhost:3000/posts", posts);
+      await axios.post("http://localhost:5789/posts", posts);
       handleClose();
       // navigate("/")
       console.log("上傳成功");

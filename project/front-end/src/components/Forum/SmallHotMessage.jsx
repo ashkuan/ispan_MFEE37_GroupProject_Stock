@@ -10,7 +10,7 @@ const SmallHotMessage = () => {
             likeImageUrl: './img/forum/like.svg',
             likeCount: 60,
             ranking: 'B1',
-            messageContent: '沒單沒真相，會問就是不要玩啦'
+            fmContent: '沒單沒真相，會問就是不要玩啦'
         },
         {
             fmid: 3,
@@ -20,7 +20,7 @@ const SmallHotMessage = () => {
             likeImageUrl: './img/forum/like.svg',
             likeCount: 36,
             ranking: 'B20',
-            messageContent: '哈哈哈 韭菜gg'
+            fmContent: '哈哈哈 韭菜gg'
         },
         {
             fmid: 4,
@@ -30,7 +30,7 @@ const SmallHotMessage = () => {
             likeImageUrl: './img/forum/like.svg',
             likeCount: 32,
             ranking: 'B25',
-            messageContent: '其實還是要看外資的臉色，還有分檢的臉色尤其是有沒有當日沖在裡面，所以如果真的要投資股市的話很多面向都要考慮包括有無借卷或者是融資在裡面，或許有很多事情都需要多方面的思考才能夠看到答案所以一起努力，鼓勵大戶可以再多觀察大戶的籌碼'
+            fmContent: '其實還是要看外資的臉色，還有分檢的臉色尤其是有沒有當日沖在裡面，所以如果真的要投資股市的話很多面向都要考慮包括有無借卷或者是融資在裡面，或許有很多事情都需要多方面的思考才能夠看到答案所以一起努力，鼓勵大戶可以再多觀察大戶的籌碼'
         },
         {
             fmid: 1,
@@ -40,7 +40,7 @@ const SmallHotMessage = () => {
             likeImageUrl: './img/forum/like.svg',
             likeCount: 1,
             ranking: 'B2',
-            messageContent: '我知道你還有辦法弄到錢錢'
+            fmContent: '我知道你還有辦法弄到錢錢'
         }
     ]
 
@@ -64,7 +64,7 @@ const SmallHotMessage = () => {
                         {/* message-content */}
                         <div className="fs-5 pt-3">
                             <a href="#" className="text-decoration-none text-IronGray mx-2">{hotMessage.ranking}</a>
-                            <span className="fs-5 fw-normal">{hotMessage.messageContent}</span>
+                            <span className="fs-5 fw-normal">{hotMessage.fmContent}</span>
                         </div>
                     </div>
                 ))

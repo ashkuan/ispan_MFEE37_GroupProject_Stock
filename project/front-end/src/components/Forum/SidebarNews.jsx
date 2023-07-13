@@ -28,6 +28,7 @@ function SidebarNews() {
 
     // 使用 shuffle 函式進行隨機排序並選取前 3 篇文章
     setData(shuffle(result.data.articles).slice(0, 3));
+    console.log(result.data.articles);
   };
 
   useEffect(() => {
@@ -61,7 +62,7 @@ function SidebarNews() {
             >
               <div className="fz-3">{article.title}</div>
               <div className="fz-4 pt-3">
-                {article.source.name} · {article.publishedAt}
+                {article.source.author} · {article.publishedAt.substr(0, 10)}
               </div>
             </div>
           </a>

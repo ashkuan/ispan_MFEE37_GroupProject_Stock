@@ -6,7 +6,10 @@ const BoardTag = () => {
   useEffect(() => {
     const fetchAllBoard = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/posts");
+        const faidRes = await axios.get("http://localhost:5789/getFaid");
+        const faid = faidRes.data;
+
+        const res = await axios.get(`http://localhost:5789/getFboard/${faid}`);
         console.log(res);
         setBoards(res.data);
       } catch (err) {

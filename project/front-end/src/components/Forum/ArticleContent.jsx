@@ -5,10 +5,10 @@ const ArticleContent = () => {
     useEffect(()=>{
         const fetchAllArticle = async()=>{
             try{
-                const res = await axios.get("http://localhost:3000/posts")
+                const res = await axios.get("http://localhost:5789/posts")
                 setArticles(res.data)
             }catch(err){
-                console.log(err);
+                console.log("錯誤"+err);
             }
         }
         fetchAllArticle()

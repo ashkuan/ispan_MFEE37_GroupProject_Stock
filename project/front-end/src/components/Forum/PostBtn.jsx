@@ -47,7 +47,7 @@ function PostBtn() {
       console.log("這是posts");
       console.log(posts);
 
-      await axios.post("http://localhost:3000/posts", formData);
+      await axios.post("http://localhost:5789/posts", formData);
       console.log("上傳成功123");
       console.log(posts);
       handleClose();
@@ -108,7 +108,7 @@ function PostBtn() {
                 </option>
                 {/* <option>請選擇看板</option> */}
                 <option selected="selected" disabled="disabled">
-                  看板
+                  請選看板
                 </option>
                 <option>閒聊</option>
                 <option>新聞</option>
