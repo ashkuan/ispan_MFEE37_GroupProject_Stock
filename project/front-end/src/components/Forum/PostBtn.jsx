@@ -47,7 +47,7 @@ function PostBtn() {
       console.log("這是posts");
       console.log(posts);
 
-      await axios.post("http://localhost:3000/posts", formData);
+      await axios.post("http://localhost:5789/posts", formData);
       console.log("上傳成功123");
       console.log(posts);
       handleClose();

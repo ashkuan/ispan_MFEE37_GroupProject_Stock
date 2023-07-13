@@ -86,3 +86,22 @@ label{
   font-size: 2rem;
   padding: 3px 10px;
 }
+.member-photo{
+  position: absolute;
+  top: 100px;
+  left: 30px;
+  width: 180px;
+  height: 180px;
+  
+}
+.photo{
+  /* border: 5px solid rgb(121, 119, 119); */
+  /* border-radius: 100px; */
+  width: 150px;
+  height: 150px;
+}
+.photo-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

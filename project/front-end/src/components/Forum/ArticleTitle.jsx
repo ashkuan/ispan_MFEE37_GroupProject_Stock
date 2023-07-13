@@ -6,7 +6,7 @@ const ArticleTitle = () => {
   useEffect(()=>{
     const fetchAllArticle = async()=>{
       try{
-        const res = await axios.get("http://localhost:3000/posts")
+        const res = await axios.get("http://localhost:5789/posts")
         setTitles(res.data)
       }catch(err){
         console.log(err)

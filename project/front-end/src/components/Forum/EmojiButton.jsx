@@ -74,7 +74,7 @@ const EmojiButton = () => {
     }
     try {
       // 用post更新按讚狀態
-      await axios.post("http://localhost:3000/posts/like", {
+      await axios.post("http://localhost:5789/posts/like", {
         likeCount: heart === 0 ? 1 : -1,
       });
 

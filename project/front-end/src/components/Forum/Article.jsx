@@ -20,7 +20,7 @@ function Article() {
   useEffect(() => {
     const fetchAllPost = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/posts");
+        const res = await axios.get("http://localhost:5789/posts");
         setPosts(res.data);
       } catch (err) {
         console.log(err);
@@ -40,7 +40,7 @@ function Article() {
   return (
     <>
       {posts.map((post, index) => (
-        <div>
+        <div key={index}>
           <div className="articleCont" onClick={handleArticleClick}>
             <div className="d-flex justify-content-between px-4">
               <div className="d-flex align-items-center">

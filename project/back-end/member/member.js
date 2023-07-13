@@ -23,11 +23,12 @@ app.use(
 );
 
 app.post('/register', (req, res) => {
-  const sql = "INSERT INTO login (`name`,`email`,`password`) VALUES (?)";
+  const sql = "INSERT INTO login (`name`,`email`,`password`,`photopath`) VALUES (?)";
   const values = [
     req.body.name,
     req.body.email,
-    req.body.password
+    req.body.password,
+    req.body.photopath,
   ];
   db.query(sql, [values], (err, data) => {
     if (err) {
@@ -49,7 +50,9 @@ app.post('/', (req, res) => {
       req.session.user = data[0];
       console.log('uid = ' + req.session.user.uid,
         'name = ' + req.session.user.name,
-        'email = ' + req.session.user.email);
+        'email = ' + req.session.user.email,
+        'photopath = ' + req.session.user.photopath,
+        );
       return res.json('success');
     } else {
       return res.json('fail');
@@ -63,7 +66,8 @@ app.get('/member', (req, res) => {
       uid: req.session.user.uid,
       name: req.session.user.name,
       email: req.session.user.email,
-      password: req.session.user.password
+      password: req.session.user.password,
+      photopath: req.session.user.photopath
     };
     return res.json(user);
   } else {
@@ -72,7 +76,7 @@ app.get('/member', (req, res) => {
 });
 // 登出路由
 app.post('/logout', (req, res) => {
-  req.session.destroy(); // 清除会话数据
+  req.session.destroy(); 
   return res.json('success');
 });
 

@@ -7,7 +7,7 @@ const AccordionStock = () => {
   useEffect(() => {
     const fetchAllRookie = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/rookie");
+        const res = await axios.get("http://localhost:5432/rookie");
         const filteredData = res.data.filter(
           (item) => item.id >= 5 && item.id <= 20
         );
