@@ -18,6 +18,7 @@ function Article() {
   const [showModal, setShowModal] = useState(false);
   const [posts, setPosts] = useState([]);
   const [faid, setFaid] = useState([]);
+  const [collects,setCollects]=useState(0)
 
   useEffect(() => {
     const fetchAllPost = async () => {
@@ -40,13 +41,23 @@ function Article() {
     setShowModal(false);
   };
 
+  const collectClick = (e)=>{
+    e.preventDefault();
+    if(collects === 0 ){
+      setCollects(1)
+    }else{
+      setCollects(0)
+    }
+  }
+
   return (
     <>
       {posts.map((post, index) => (
         <div key={index}>
-          <div className="articleCont" onClick={handleArticleClick}>
+          <div className="articleCont" >
             <div className="d-flex justify-content-between px-4">
               <div className="d-flex align-items-center">
+              {/* 用戶 */}
                 <img className="userImg" src={post.image} alt="" />
                 <span className="me-3 mb-1 fz-3">{post.name}</span>
                 <span className="me-3 mb-1 fz-4">
@@ -65,6 +76,7 @@ function Article() {
               onClick={(e) => {
                 // console.log(e.target.id);
                 setFaid(e.target.id);
+                handleArticleClick()
               }}
               style={{ backgroundColor: "black" }}
             >
@@ -87,8 +99,12 @@ function Article() {
 
                 <span className="fz-5 mx-1">25</span>
               </div>
-              <div className="mx-4">
-                <img src="../public/img/forum/collect-Article.svg" alt="" />
+              <div className="mx-4" onClick={collectClick}>
+                <img src={
+                  collects !==0
+                  ? "public/img/forum/collect.svg"
+                  : "public/img/forum/collect-Article.svg"
+                } />
                 <span className="fz-5 mx-1">3</span>
               </div>
             </div>
