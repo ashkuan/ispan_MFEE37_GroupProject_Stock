@@ -2,6 +2,11 @@ import express from "express";
 import cors from "cors";
 import db from "../DB/DBconfig.js";
 import session from "express-session";
+import multer from 'multer';
+import path from "path";
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
 
 const app = express();
 app.use(cors({
@@ -22,18 +27,36 @@ app.use(
   }),
 );
 
-app.post('/register', (req, res) => {
-  const sql = "INSERT INTO login (`name`,`email`,`password`,`photopath`) VALUES (?)";
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "./img"); // 设置文件存储目录
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
+    cb(null, "memo-" + uniqueSuffix + ".png"); // 设置文件名
+  },
+});
+
+const upload = multer({ storage: storage });
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+app.use(express.static(path.join(__dirname, "img")));
+
+app.post("/register", upload.single("avatar"), (req, res) => {
+  const sql =
+    "INSERT INTO login (`name`,`email`,`password`,`photopath`) VALUES (?,?,?,?)";
   const values = [
     req.body.name,
     req.body.email,
     req.body.password,
-    req.body.photopath,
+    req.file ? req.file.filename : null,
   ];
-  db.query(sql, [values], (err, data) => {
+  db.query(sql, values, (err, data) => {
     if (err) {
+      console.log(err);
       return res.json('Error');
     }
+    console.log("註冊成功");
     return res.json(data);
   });
 });
@@ -73,6 +96,9 @@ app.get('/member', (req, res) => {
   } else {
     return res.status(401).json('Unauthorized');
   }
+});
+app.get('/', (req, res) => {
+  res.send('Server is running successfully.');
 });
 // 登出路由
 app.post('/logout', (req, res) => {
