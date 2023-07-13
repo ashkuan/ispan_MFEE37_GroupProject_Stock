@@ -228,9 +228,9 @@ ol li .answer {
 
 .titlebox {
     margin-bottom: 2rem;
-    border-bottom: var(--black-Word) 5px solid;
-    border-top: var(--black-Word) 5px solid;
-    font-size: 2.8rem;
+    border-bottom: var(--black-Word) 0.4rem solid;
+    border-top: var(--black-Word) 0.4rem solid;
+    font-size: 2.7rem;
 
 }
 
@@ -288,8 +288,8 @@ border-top-left-radius: var(--border-radius-big) !important;
 
 
 .ml1 {
-    font-weight: 1000;
-    font-size: 3.5em;
+    font-weight: bold;
+    font-size: 3.5rem;
 }
 
 .ml1 .letter {

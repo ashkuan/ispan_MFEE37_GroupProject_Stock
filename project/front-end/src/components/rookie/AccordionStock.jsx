@@ -3,7 +3,7 @@ import { Accordion } from "react-bootstrap";
 import axios from "axios";
 
 const AccordionStock = () => {
-    const [rookie, setRookie] = useState([]);
+  const [rookie, setRookie] = useState([]);
   useEffect(() => {
     const fetchAllRookie = async () => {
       try {
@@ -30,10 +30,11 @@ const AccordionStock = () => {
             <Accordion.Header>
               <div className="articalword">{res.title}</div>
             </Accordion.Header>
-            <Accordion.Body className="articalword">
-            {res.article}
-            <div className=" d-flex justify-content-evenly"> <img src={res.image} /></div>
-           
+            <Accordion.Body className="articalword text-wrap">
+              {res.article}
+              <div className="d-flex justify-content-evenly">
+                <img src={res.image} fluid/>
+              </div>
             </Accordion.Body>
           </Accordion.Item>
         </Accordion>
