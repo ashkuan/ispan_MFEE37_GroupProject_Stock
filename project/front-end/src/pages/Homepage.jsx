@@ -10,41 +10,47 @@ const Homepage = () => {
   const [inputValue, setInputValue] = useState("");
   const { setStockInfo } = useContext(StockContext);
   const [redirectToIndStock, setRedirectToIndStock] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(inputValue);
-    axios
-      .post("http://localhost:5678/stock", { data: inputValue })
-      .then((res) => {
-        setRedirectToIndStock(true);
-        console.log(res.data);
-        const shortname = res.data.price.shortName;
-        const website = res.data.summaryProfile.website;
-        const regularMarketOpen = res.data.price.regularMarketOpen.fmt;
-        const regularMarketDayHigh = res.data.price.regularMarketDayHigh.fmt;
-        const regularMarketDayLow = res.data.price.regularMarketDayLow.fmt;
-        const regularMarketPrice = res.data.price.regularMarketPrice.fmt;
-        const regularMarketVolume = res.data.price.regularMarketVolume.longFmt;
-        const regularMarketPreviousClose =
-          res.data.price.regularMarketPreviousClose.fmt;
-        console.log(shortname);
-        setStockInfo({
-          inputValue,
-          shortname,
-          website,
-          regularMarketOpen,
-          regularMarketDayHigh,
-          regularMarketDayLow,
-          regularMarketPrice,
-          regularMarketVolume,
-          regularMarketPreviousClose,
+    if (inputValue !== "") {
+      axios
+        .post("http://localhost:5678/stock", { data: inputValue })
+        .then((res) => {
+          setRedirectToIndStock(true);
+          console.log(res.data);
+          const shortname = res.data.price.shortName;
+          const website = res.data.summaryProfile.website;
+          const regularMarketOpen = res.data.price.regularMarketOpen.fmt;
+          const regularMarketDayHigh = res.data.price.regularMarketDayHigh.fmt;
+          const regularMarketDayLow = res.data.price.regularMarketDayLow.fmt;
+          const regularMarketPrice = res.data.price.regularMarketPrice.fmt;
+          const regularMarketVolume =
+            res.data.price.regularMarketVolume.longFmt;
+          const regularMarketPreviousClose =
+            res.data.price.regularMarketPreviousClose.fmt;
+          console.log(shortname);
+          setStockInfo({
+            inputValue,
+            shortname,
+            website,
+            regularMarketOpen,
+            regularMarketDayHigh,
+            regularMarketDayLow,
+            regularMarketPrice,
+            regularMarketVolume,
+            regularMarketPreviousClose,
+          });
+        })
+        .catch((err) => {
+          console.log("stock傳送失敗");
+          console.log(err);
         });
-      })
-      .catch((err) => {
-        console.log("stock傳送失敗");
-        console.log(err);
-      });
+    } else {
+      setShowAlert(true);
+    }
   };
 
   // 跳轉頁面
@@ -128,6 +134,11 @@ const Homepage = () => {
               </button>
             </form>
           </div>
+          {showAlert && (
+            <p className="stockAlert" style={{ color: "red" }}>
+              請輸入股票代碼
+            </p>
+          )}
           <div className="suggestStock mt-5">
             <div className="row">
               <div className="col">

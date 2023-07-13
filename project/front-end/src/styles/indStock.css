@@ -17,34 +17,23 @@
   --border-radius-small: 6px;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Noto Sans TC";
+.container {
+  margin-top: 150px;
 }
-
-span {
+.container .name {
+  margin-bottom: 10px;
   font-size: 2.5rem;
   font-weight: bold;
   color: var(--IronGray-Deep);
 }
-
-.container {
-  margin-top: 150px;
+.container .name span {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--IronGray-Deep);
 }
-.container #heart {
-  color: var(--bg-Second-Gray);
-}
-.container #heart:hover {
-  transform: scale(1.1);
-  color: var(--Red);
-}
-.container #heart:active {
-  transform: scale(0.9);
-}
-.container .name {
-  margin-bottom: 10px;
+.container .name a {
+  font-size: 2.5rem;
+  color: var(--black-Word);
 }
 .container .time {
   display: flex;

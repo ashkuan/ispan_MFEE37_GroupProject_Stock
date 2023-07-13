@@ -102,11 +102,14 @@
 .container .part1 #search .search__input:focus {
   outline: none;
 }
+.container .part1 #search .search__button {
+  border: none;
+}
 .container .part1 #search .search__button svg {
   position: absolute;
   margin-left: -4rem;
   color: var(--IronGray-Deep);
-  margin-top: 38px;
+  margin-top: -30px;
   width: 45px;
 }
 .container .part1 #search .search__button:hover {
@@ -233,4 +236,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+}/*# sourceMappingURL=homepage.css.map */

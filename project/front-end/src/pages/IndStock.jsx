@@ -15,9 +15,11 @@ const IndStock = () => {
           <div style={{ width: "100%" }}>
             <span id="indStocksNumber">{stockInfo.inputValue}</span>
             <span className="mx-2"> - </span>
-            <span id="indStocksName">{stockInfo.shortname}</span>
+            <a href={stockInfo.website} id="indStocksName">
+              {stockInfo.shortname}
+            </a>
           </div>
-          <svg
+          {/* <svg
             id="heart"
             style={{ position: "absolute", right: 300 }}
             xmlns="http://www.w3.org/2000/svg"
@@ -31,7 +33,7 @@ const IndStock = () => {
               fillRule="evenodd"
               d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
             />
-          </svg>
+          </svg> */}
         </div>
         {/* 個股介紹 */}
         <div className="d-flex align-items-center">
