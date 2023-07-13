@@ -11,10 +11,12 @@ const Homepage = () => {
   const { setStockInfo } = useContext(StockContext);
   const [redirectToIndStock, setRedirectToIndStock] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(inputValue);
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // console.log(inputValue);
     if (inputValue !== "") {
       axios
         .post("http://localhost:5678/stock", { data: inputValue })
@@ -27,11 +29,17 @@ const Homepage = () => {
           const regularMarketDayHigh = res.data.price.regularMarketDayHigh.fmt;
           const regularMarketDayLow = res.data.price.regularMarketDayLow.fmt;
           const regularMarketPrice = res.data.price.regularMarketPrice.fmt;
-          const regularMarketVolume =
-            res.data.price.regularMarketVolume.longFmt;
+          const regularMarketVolume = res.data.price.regularMarketVolume.fmt;
           const regularMarketPreviousClose =
             res.data.price.regularMarketPreviousClose.fmt;
-          console.log(shortname);
+          const averageDailyVolume3Month =
+            res.data.price.averageDailyVolume3Month.longFmt;
+          const averageDailyVolume10Day =
+            res.data.price.averageDailyVolume10Day.longFmt;
+          const regularMarketChangePercent =
+            res.data.price.regularMarketChangePercent.fmt;
+
+          // console.log(shortname);
           setStockInfo({
             inputValue,
             shortname,
@@ -42,6 +50,9 @@ const Homepage = () => {
             regularMarketPrice,
             regularMarketVolume,
             regularMarketPreviousClose,
+            averageDailyVolume3Month,
+            averageDailyVolume10Day,
+            regularMarketChangePercent,
           });
         })
         .catch((err) => {
@@ -55,12 +66,8 @@ const Homepage = () => {
 
   // 跳轉頁面
   if (redirectToIndStock) {
-    return <Navigate to="/indstock" />;
+    return <Navigate to="/indStock" />;
   }
-
-  const handleInputChange = (event) => {
-    setInputValue(event.target.value);
-  };
 
   return (
     <>
@@ -122,7 +129,7 @@ const Homepage = () => {
                 value={inputValue}
                 onChange={handleInputChange}
               />
-              <button type="submit" className="search__button" href="#">
+              <button type="submit" className="search__button">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="currentColor"

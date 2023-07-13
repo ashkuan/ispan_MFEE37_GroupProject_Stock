@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Navbar from "../components/Nav";
 import "../styles/register.css";
 import Sidebar from "../components/Sidebar";
@@ -15,26 +15,45 @@ const Register = () => {
   const navigate = useNavigate();
   const [errors, setErrors] = useState({});
   const [gender, setGender] = useState("male"); 
-
+  const showImgRef = useRef(null); // 添加ref
+  useEffect(() => {
+    if (values.avatar) {
+      const imageUrl = URL.createObjectURL(values.avatar);
+      const imgElement = document.querySelector(".showimg");
+      if (imgElement) {
+        imgElement.src = imageUrl;
+      }
+    }
+  }, [values.avatar]);
   const handleInput = (event) => {
-    setValues((prev) => ({
-      ...prev,
-      [event.target.name]: event.target.value,
-    }));
+    if (event.target.name === "avatar") {
+      setValues((prev) => ({
+        ...prev,
+        avatar: event.target.files[0],
+      }));
+    } else {
+      setValues((prev) => ({
+        ...prev,
+        [event.target.name]: event.target.value,
+      }));
+    }
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     setErrors(Validation(values));
+  
     if (errors.name === "" && errors.email === "" && errors.password === "") {
-      const updatedValues = {
-        ...values,
-        photopath: gender === "male" ? "./img/memberimg/memoji/memo5.png" : "./img/memberimg/memoji/memo7.png"
-      };
+      const formData = new FormData();
+      formData.append("name", values.name);
+      formData.append("email", values.email);
+      formData.append("password", values.password);
+      formData.append("avatar", values.avatar);
+  
       axios
-        .post("http://localhost:3000/register", updatedValues)
+        .post("http://localhost:3000/register", formData)
         .then((res) => {
-          navigate("/");
+          console.log("註冊成功");
         })
         .catch((err) => console.log(err));
     }
@@ -53,7 +72,9 @@ const Register = () => {
           <hr />
           <div className="member-photo">
             <div className="photo-container">
-              {gender === "male" ? (
+              <input type="file" name="avatar" onChange={handleInput} />
+              <img className="showimg" src="" alt="123" ref={showImgRef}  />
+              {/* {gender === "male" ? (
                 <img
                   className="photo"
                   src="./img/memberimg/memoji/memo5.png"
@@ -65,7 +86,7 @@ const Register = () => {
                   src="./img/memberimg/memoji/memo7.png"
                   alt="Female Avatar"
                 />
-              )}
+              )} */}
               <h4 className="text-center">用戶大頭照</h4>
             </div>
           </div>

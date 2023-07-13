@@ -6,6 +6,8 @@ import multer from "multer";
 import moment from "moment";
 import path from "path";
 import fs from "fs";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
 
 const app = express();
 app.use(express.json());
@@ -27,6 +29,9 @@ const storage = multer.diskStorage({
     cb(null, fileName);
   },
 });
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+app.use(express.static(path.join(__dirname, "img")));
 
 //發文
 app.post("/posts", multer({ storage }).single("faimage"), (req, res) => {
@@ -59,58 +64,34 @@ app.post("/posts", multer({ storage }).single("faimage"), (req, res) => {
   });
 });
 
-app.get("/posts",(req,res)=>{
-  const sql = "SELECT  `fatitle`, `farticle`, `faimage`, `likeCount`, `fboard`, `fhashtag`, `createTime`, `updateTime` FROM `ForumArticle` "
-  connToDBHelper.query(sql,[],(err,data)=>{
+app.get("/posts", (req, res) => {
+  const sql =
+    "SELECT `faid`,  `fatitle`, `farticle`, `faimage`, `likeCount`, `fboard`, `fhashtag`, `createTime`, `updateTime` FROM `ForumArticle` ";
+  connToDBHelper.query(sql, [], (err, data) => {
     if (err) {
       return "無法成功顯示發文";
     } else {
       return res.json(data);
     }
-  })
-})
-
-app.get("/getFaid", (req, res) => {
-  const sql = "SELECT faid FROM ForumArticle"; // 将 `YourTableName` 替换为实际的表名
-
-  connToDBHelper.query(sql, (err, results) => {
-    if (err) {
-      console.log(err);
-      return res.status(500).json({ error: "无法获取 faid" });
-    }
-
-    const faids = results.map((result) => result.faid);
-    return res.json(faids);
   });
 });
 
-app.get("/getFboard/:faid", (req, res) => {
-  const faid = req.params.faid;
-
-  const sql = "SELECT fboard FROM ForumArticle WHERE faid = ?";
-  connToDBHelper.query(sql, [faid], (err, result) => {
+//抓文章id
+app.post("/getFaid", (req, res) => {
+  const sql =
+    "SELECT `fatitle`, `farticle`, `faimage`, `likeCount`, `fboard`, `fhashtag`, `createTime` FROM ForumArticle where `faid` = ?";
+  connToDBHelper.query(sql, [req.body.faid], (err, data) => {
     if (err) {
       console.log(err);
-      return res.status(500).json({ error: "无法获取 fboard" });
+    } else {
+      return res.json(data);
     }
-
-    if (result.length === 0) {
-      return res.status(404).json({ error: "无法找到 fboard" });
-    }
-
-    const fboard = result[0].fboard;
-    return res.json(fboard);
   });
 });
-
-
-
-
 
 //獲取按讚狀態
 app.get("/posts/likeCount", (req, res) => {
-  const sql =
-    "SELECT likeCount FROM ForumArticle ";
+  const sql = "SELECT likeCount FROM ForumArticle ";
   connToDBHelper.query(sql, (err, data) => {
     if (err) {
       console.log(err);
@@ -125,8 +106,7 @@ app.get("/posts/likeCount", (req, res) => {
 //更新按讚狀態
 app.post("/posts/like", (req, res) => {
   const { likeCount } = req.body;
-  const getSql =
-    "SELECT likeCount FROM ForumArticle  ";
+  const getSql = "SELECT likeCount FROM ForumArticle  ";
   connToDBHelper.query(getSql, (err, data) => {
     if (err) {
       console.log(err);
@@ -134,8 +114,7 @@ app.post("/posts/like", (req, res) => {
     } else {
       const currentLikeCount = data[0].likeCount;
       const newLikeCount = currentLikeCount + likeCount;
-      const updateSql =
-        "UPDATE ForumArticle SET likeCount = ?";
+      const updateSql = "UPDATE ForumArticle SET likeCount = ?";
       const values = [newLikeCount];
       connToDBHelper.query(updateSql, values, (err, data) => {
         if (err) {
@@ -150,11 +129,58 @@ app.post("/posts/like", (req, res) => {
   });
 });
 
+// 獲取留言
+app.get("/messages", (req, res) => {
+  // 假設會員未登入 狀態為False
+  const isAuthenticated = false;
+  if (isAuthenticated) {
+    // 會員登入 出現所有所有留言
+    const sql = "SELECT * FROM `MessageContent`";
+    connToDBHelper.query(sql, (err, data) => {
+      if (err) {
+        console.log(err);
+        return res.status(500).json({ error: "無法檢視留言" });
+      }
+      return res.json(data);
+    });
+  } else {
+    // 如果會員未登入,限制返回前三條留言
+    const sql = "SELECT * FROM MessageContent LIMIT 3";
+    connToDBHelper.query(sql, (err, data) => {
+      if (err) {
+        console.log(err);
+        return res.status(500).json({ error: "無法檢視留言" });
+      }
+      return res.json(data);
+    });
+  }
+});
+
+// 處理留言
+app.post("/messages", (req, res) => {
+  const isAuthenticated = false;
+  const { fmContent } = req.body;
+  const sql = "INSERT INTO MessageContent (fmContent) VALUES (?)";
+  // 將留言內容插入資料庫
+  connToDBHelper.query(sql, [fmContent], (err, data) => {
+    if (err) {
+      console.log(err);
+      return res.status(500).json({ error: "無法新增留言" });
+    }
+  });
+  if (isAuthenticated) {
+    // 如果會員已登入,將留言存到資料庫
+    const message = req.body.message;
+    return res.json({ success: true, message: "留言成功" });
+  } else {
+    // 會員未登入,返回錯誤訊息
+    return res.status(401).json({ error: "未登入,無法成功留言" });
+  }
+});
+
 app.listen(5789, () => {
   console.log("5789 post發文開始" + new Date().toLocaleTimeString());
 });
-
-
 
 // import express from "express";
 // import cors from "cors";
