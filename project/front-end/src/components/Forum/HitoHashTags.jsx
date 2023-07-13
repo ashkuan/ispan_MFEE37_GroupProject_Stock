@@ -10,7 +10,7 @@ const HitoHashTags = (props) => {
           faid: faid,
         });
         // console.log(faidRes.data);
-        console.log(res.data);
+        // console.log(res.data);
         setTags(res.data)
       } catch (err) {
         console.log(err);

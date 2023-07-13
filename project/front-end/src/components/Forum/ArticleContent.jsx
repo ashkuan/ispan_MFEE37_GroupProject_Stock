@@ -51,7 +51,7 @@ const ArticleContent = (props) => {
                   faid: faid,
                 });
                 // console.log(faidRes.data);
-                console.log(res.data);
+                // console.log(res.data);
                 setArticles(res.data);
                 // setPhotopath(res.data)
               } catch (err) {

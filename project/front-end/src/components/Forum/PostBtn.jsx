@@ -10,7 +10,7 @@ function PostBtn() {
   const handleClose = () => setLgShow(false);
   const handleShow = () => setLgShow(true);
   const v4Id = uuid();
-  console.log("我在這" + v4Id);
+  // console.log("我在這" + v4Id);
   const [posts, setPosts] = useState({
     fatitle: "",
     farticle: "",
@@ -176,27 +176,7 @@ function PostBtn() {
               name="fhashtag"
               onChange={handleChange}
             />
-            {/* <Button
-              type="button"
-              className="btn m-2 hashtagbtn"
-              variant="secondary"
-            >
-              99台積電
-            </Button>
-            <Button
-              type="button"
-              className="btn m-2 hashtagbtn"
-              variant="secondary"
-            >
-              賺爛了
-            </Button>
-            <Button
-              type="button"
-              className="btn m-2 hashtagbtn"
-              variant="secondary"
-            >
-              公園留位置給我
-            </Button> */}
+          
           </div>
         </Modal.Body>
         <Modal.Footer>

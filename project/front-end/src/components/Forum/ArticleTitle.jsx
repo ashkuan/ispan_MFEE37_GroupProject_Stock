@@ -10,8 +10,7 @@ const ArticleTitle = (props) => {
         const res = await axios.post("http://localhost:5789/getFaid", {
           faid: faid,
         });
-        // console.log(faidRes.data);
-        console.log(res.data);
+        // console.log(res.data);
         setTitles(res.data)
       } catch (err) {
         console.log(err);

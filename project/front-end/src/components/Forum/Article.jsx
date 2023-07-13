@@ -17,7 +17,7 @@ import axios from "axios";
 function Article() {
   const [showModal, setShowModal] = useState(false);
   const [posts, setPosts] = useState([]);
-const [faid,setFaid]=useState([]);
+  const [faid, setFaid] = useState([]);
 
   useEffect(() => {
     const fetchAllPost = async () => {
@@ -35,24 +35,27 @@ const [faid,setFaid]=useState([]);
     setShowModal(true);
   };
 
-  const handleModalClose = () => {
+  const handleModalClose = (id) => {
+    setFaid(id);
     setShowModal(false);
   };
 
   return (
     <>
       {posts.map((post, index) => (
-        <div key={index} >
+        <div key={index}>
           <div className="articleCont" onClick={handleArticleClick}>
             <div className="d-flex justify-content-between px-4">
               <div className="d-flex align-items-center">
-                <img
-                  className="userImg"
-                  src="../public/img/forum/user-Img.jpg"
-                  alt=""
-                />
-                <span className="me-3 mb-1 fz-3">大神帶你飛</span>
-                <span className="me-3 mb-1 fz-4">・3小時前</span>
+                <img className="userImg" src={post.image} alt="" />
+                <span className="me-3 mb-1 fz-3">{post.name}</span>
+                <span className="me-3 mb-1 fz-4">
+                  {" "}
+                  {new Date(post.createTime).toLocaleDateString("en-US", {
+                    month: "2-digit",
+                    day: "2-digit",
+                  })}
+                </span>
               </div>
             </div>
 
@@ -60,13 +63,17 @@ const [faid,setFaid]=useState([]);
               className="px-4"
               id={post.faid}
               onClick={(e) => {
-                console.log(e.target.id);
-                setFaid(e.target.id)
+                // console.log(e.target.id);
+                setFaid(e.target.id);
               }}
-              style={{backgroundColor:"black"}}
+              style={{ backgroundColor: "black" }}
             >
-              <p className="fz-1 mt-3" id={post.faid}>{post.fatitle}</p>
-              <p className="ellipsis mt-3 fz-2" id={post.faid}>{post.farticle}</p>
+              <p className="fz-1 mt-3" id={post.faid}>
+                {post.fatitle}
+              </p>
+              <p className="ellipsis mt-3 fz-2" id={post.faid}>
+                {post.farticle}
+              </p>
             </div>
             <div className="px-4 mt-3 d-flex">
               <div className="d-flex">
@@ -106,12 +113,12 @@ const [faid,setFaid]=useState([]);
                     </div>
                     <div className="p-3 fs-5">
                       {/* 文章內容 */}
-                      <ArticleTitle data={faid}/>
-                      <ArticleContent  data={faid}/>
+                      <ArticleTitle data={faid} />
+                      <ArticleContent data={faid} />
                     </div>
                     <div className="p-3 d-flex">
                       {/* hashtag */}
-                      <HitoHashTags data={faid}/>
+                      <HitoHashTags data={faid} />
                     </div>
                     <div className="text-secondary fs-5 p-4 d-flex justify-content-between">
                       <div className="d-flex">
@@ -140,12 +147,6 @@ const [faid,setFaid]=useState([]);
 }
 
 export default Article;
-
-
-
-
-
-
 
 // import React, { useState, useEffect } from "react";
 // import Emoji from "./Emoji";

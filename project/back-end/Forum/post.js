@@ -66,8 +66,9 @@ app.post("/posts", multer({ storage }).single("faimage"), (req, res) => {
 
 app.get("/posts", (req, res) => {
   const sql =
-    "SELECT `faid`,  `fatitle`, `farticle`, `faimage`, `likeCount`, `fboard`, `fhashtag`, `createTime`, `updateTime` FROM `ForumArticle` ";
-  connToDBHelper.query(sql, [], (err, data) => {
+    // "SELECT `faid`,  `fatitle`, `farticle`, `faimage`, `likeCount`, `fboard`, `fhashtag`, `createTime`, `updateTime` FROM `ForumArticle` innerjoin  ";
+    "SELECT * FROM `ForumArticle` inner join  login on ForumArticle.uid = login.uid"
+    connToDBHelper.query(sql, [], (err, data) => {
     if (err) {
       return "無法成功顯示發文";
     } else {
@@ -79,7 +80,8 @@ app.get("/posts", (req, res) => {
 //抓文章id
 app.post("/getFaid", (req, res) => {
   const sql =
-    "SELECT `fatitle`, `farticle`, `faimage`, `likeCount`, `fboard`, `fhashtag`, `createTime` FROM ForumArticle where `faid` = ?";
+    "SELECT * FROM ForumArticle where `faid` = ? ";
+    // "SELECT `fatitle`, `farticle`, `faimage`, `likeCount`, `fboard`, `fhashtag`, `createTime` FROM ForumArticle where `faid` = ?";
   connToDBHelper.query(sql, [req.body.faid], (err, data) => {
     if (err) {
       console.log(err);

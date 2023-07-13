@@ -13,7 +13,7 @@ const BoardTag = (props) => {
           faid: faid,
         });
         // console.log(faidRes.data);
-        console.log(res.data);
+        // console.log(res.data);
         setBoards(res.data)
       } catch (err) {
         console.log(err);
@@ -25,7 +25,7 @@ const BoardTag = (props) => {
   return (
     <>
       {boards.map((board, index) => (
-        <div>
+        <div key={index}>
         <a
           href="#"
           className="me-3 text-decoration-none
@@ -34,7 +34,6 @@ const BoardTag = (props) => {
         >
           {board.fboard}
         </a>
-        {board.faimage}
           </div>
       ))}
     </>
