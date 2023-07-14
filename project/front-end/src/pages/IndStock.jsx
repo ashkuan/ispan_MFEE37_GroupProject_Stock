@@ -1,12 +1,25 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Footer from "../components/Footer";
 import "../styles/indStock.css";
 import { StockContext } from "../../context/StockContext";
 import IndStockChart from "../components/indStockChart";
+import axios from "axios";
 
 const IndStock = () => {
   const { stockInfo } = useContext(StockContext);
-
+  const [stockName, setStockName] = useState("");
+  const inputValue = stockInfo.inputValue;
+  axios
+    .post("http://localhost:5678/stockName", { data: inputValue })
+    .then((res) => {
+      console.log(res.data);
+      const name = res.data;
+      setStockName(name);
+    })
+    .catch((error) => {
+      console.log(error);
+      console.log("股票中文名稱獲取失敗");
+    });
   return (
     <>
       <div className="container">
@@ -16,7 +29,7 @@ const IndStock = () => {
             <span id="indStocksNumber">{stockInfo.inputValue}</span>
             <span className="mx-2"> - </span>
             <a href={stockInfo.website} id="indStocksName">
-              {stockInfo.shortname}
+              {stockName}
             </a>
           </div>
           {/* <svg

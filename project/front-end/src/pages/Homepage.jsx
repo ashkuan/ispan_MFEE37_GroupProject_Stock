@@ -20,45 +20,45 @@ const Homepage = () => {
     e.preventDefault();
     console.log(inputValue);
     if (inputValue !== "") {
-      // axios
-      //   .post("http://localhost:5678/stock", { data: inputValue })
-      //   .then((res) => {
-      setRedirectToIndStock(true);
-      //     // console.log(res.data);
-      //     const shortname = res.data.price.shortName;
-      //     const website = res.data.summaryProfile.website;
-      //     const regularMarketOpen = res.data.price.regularMarketOpen.fmt;
-      //     const regularMarketDayHigh = res.data.price.regularMarketDayHigh.fmt;
-      //     const regularMarketDayLow = res.data.price.regularMarketDayLow.fmt;
-      //     const regularMarketPrice = res.data.price.regularMarketPrice.fmt;
-      //     const regularMarketVolume = res.data.price.regularMarketVolume.fmt;
-      //     const regularMarketPreviousClose =
-      //       res.data.price.regularMarketPreviousClose.fmt;
-      //     const averageDailyVolume3Month =
-      //       res.data.price.averageDailyVolume3Month.longFmt;
-      //     const averageDailyVolume10Day =
-      //       res.data.price.averageDailyVolume10Day.longFmt;
-      //     const regularMarketChangePercent =
-      //       res.data.price.regularMarketChangePercent.fmt;
-      //     setStockInfo({
-      //       inputValue,
-      //       shortname,
-      //       website,
-      //       regularMarketOpen,
-      //       regularMarketDayHigh,
-      //       regularMarketDayLow,
-      //       regularMarketPrice,
-      //       regularMarketVolume,
-      //       regularMarketPreviousClose,
-      //       averageDailyVolume3Month,
-      //       averageDailyVolume10Day,
-      //       regularMarketChangePercent,
-      //     });
-      //   })
-      // .catch((err) => {
-      //   console.log("stock傳送失敗");
-      //   console.log(err);
-      // });
+      axios
+        .post("http://localhost:5678/stock", { data: inputValue })
+        .then((res) => {
+          setRedirectToIndStock(true);
+          // console.log(res.data);
+          const shortname = res.data.price.shortName;
+          const website = res.data.summaryProfile.website;
+          const regularMarketOpen = res.data.price.regularMarketOpen.fmt;
+          const regularMarketDayHigh = res.data.price.regularMarketDayHigh.fmt;
+          const regularMarketDayLow = res.data.price.regularMarketDayLow.fmt;
+          const regularMarketPrice = res.data.price.regularMarketPrice.fmt;
+          const regularMarketVolume = res.data.price.regularMarketVolume.fmt;
+          const regularMarketPreviousClose =
+            res.data.price.regularMarketPreviousClose.fmt;
+          const averageDailyVolume3Month =
+            res.data.price.averageDailyVolume3Month.longFmt;
+          const averageDailyVolume10Day =
+            res.data.price.averageDailyVolume10Day.longFmt;
+          const regularMarketChangePercent =
+            res.data.price.regularMarketChangePercent.fmt;
+          setStockInfo({
+            inputValue,
+            shortname,
+            website,
+            regularMarketOpen,
+            regularMarketDayHigh,
+            regularMarketDayLow,
+            regularMarketPrice,
+            regularMarketVolume,
+            regularMarketPreviousClose,
+            averageDailyVolume3Month,
+            averageDailyVolume10Day,
+            regularMarketChangePercent,
+          });
+        })
+        .catch((err) => {
+          console.log("stock傳送失敗");
+          console.log(err);
+        });
     } else {
       setShowAlert(true);
     }
