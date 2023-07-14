@@ -34,7 +34,7 @@ const Targets = () => {
                 </button>
               </div>
 
-              <PostBtn className="mt-4" />
+              <PostBtn className="mt-4"/>
               <div className="BArticle mt-4 pt-4">
                 <ArticlePart />
               </div>

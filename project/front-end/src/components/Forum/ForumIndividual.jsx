@@ -49,7 +49,7 @@ function ForumIndividual() {
                   </div>
                   <div className="d-flex">
                     <KeepButton />
-                    <NotifyShareDropdown />
+                    {/* <NotifyShareDropdown /> */}
                   </div>
                 </div>
                 <HotNewMessageTabs />

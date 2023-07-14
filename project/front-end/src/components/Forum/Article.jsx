@@ -34,7 +34,7 @@ function Article() {
 
   const fetchAllCollect = async () => {
     try {
-      
+
       const res = await axios.post("http://localhost:5789/posts", {
         faid: faid,
       });
@@ -68,7 +68,7 @@ function Article() {
     try {
       if (collects === 0) {
         setCollects(1);
-        console.log('有嗎'+faid);
+        console.log('有嗎' + faid);
         await axios.put("http://localhost:5789/collect/:faid", {
           faid: faid,
           collects: 1,
@@ -90,13 +90,13 @@ function Article() {
     <>
       {posts.map((post, index) => (
         <div key={index}>
-          <div className="articleCont">
-            <div className="d-flex justify-content-between px-4">
-              <div className="d-flex align-items-center">
-                {/* 用戶 */}
+          <div className="articleCont px-5" >
+            {/* 用戶 */}
+            <div className="d-flex justify-content-between">
+              <div className="d-flex align-items-center text-IronGray-Deep">
                 <img className="userImg" src={post.image} alt="" />
                 <span className="me-3 mb-1 fz-3">{post.name}</span>
-                <span className="me-3 mb-1 fz-4">
+                <span className="me-3 mb-1 fz-4 fw-normal">
                   {" "}
                   {new Date(post.createTime).toLocaleDateString("en-US", {
                     month: "2-digit",
@@ -105,45 +105,47 @@ function Article() {
                 </span>
               </div>
             </div>
-
-            <div
-              className="px-4"
+            <div className="row"
               id={post.faid}
               onClick={(e) => {
                 // console.log(e.target.id);
                 setFaid(e.target.id);
-                handleArticleClick();
+                handleArticleClick()
               }}
-              style={{ backgroundColor: "black" }}
+            //  style={{ backgroundColor: "black" }}
             >
-              <p className="fz-1 mt-3" id={post.faid}>
-                {post.fatitle}
-              </p>
-              <p className="ellipsis mt-3 fz-2" id={post.faid}>
-                {post.farticle}
-              </p>
+              <div className="col-9">
+                <p className="fs-4 fw-bold mt-2 text-IronGray-Deep" id={post.faid}>
+                  {post.fatitle}
+                </p>
+                <p className="ellipsis mt-2 fs-5 text-IronGray-Deep" id={post.faid}>
+                  {post.farticle}
+                </p>
+              </div>
+              <div className="col-2 d-flex align-items-center">
+                <div className="rounded-4" >
+                  {/* <img src={post.faimage} alt="" /> */}
+                </div>
+              </div>
             </div>
-            <div className="px-4 mt-3 d-flex">
-              <div className="d-flex">
+            <div className="pe-4 mt-3 d-flex text-IronGray-Deep">
+              <div className="d-flex me-4">
                 <img src="../public/img/forum/likeClick.svg" alt="" />
-                <span className="fz-5 d-flex align-content-center mt-1 mx-1">
+                <span className="fz-3 fw-normal px-3 d-flex align-content-center">
                   {post.likeCount}
                 </span>
               </div>
-              <div className="mx-4">
+              <div className="me-4">
                 <img src="../public/img/forum/Chat.svg" alt="" />
-
-                <span className="fz-5 mx-1">25</span>
+                <span className="fz-3 fw-normal px-3">25</span>
               </div>
-              <div className="mx-4" onClick={collectClick}>
-                <img
-                  src={
-                    collects !== 0
-                      ? "public/img/forum/collect.svg"
-                      : "public/img/forum/collect-Article.svg"
-                  }
-                />
-                <span className="fz-5 mx-1">3</span>
+              <div className="me-4" onClick={collectClick}>
+                <img src={
+                  collects !== 0
+                    ? "public/img/forum/collect.svg"
+                    : "public/img/forum/collect-Article.svg"
+                } />
+                <span className="fz-3 fw-normal px-3">3</span>
               </div>
             </div>
           </div>
@@ -181,7 +183,7 @@ function Article() {
                         <MessageQuantity />
                       </div>
                       <div className="d-flex">
-                        <KeepButton  data={faid}/>
+                        <KeepButton data={faid} />
                         <NotifyShareDropdown />
                       </div>
                     </div>

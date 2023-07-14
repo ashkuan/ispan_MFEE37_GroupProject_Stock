@@ -40,6 +40,7 @@
 
 
 import React, { useState,useEffect } from 'react';
+import "../../styles/forum_main.css";
 import axios from 'axios';
 const ArticleContent = (props) => {
     const [articles,setArticles]=useState([])
@@ -63,16 +64,13 @@ const ArticleContent = (props) => {
     return (
         <>
             {articles.map((article,index)=>(
-               <div key={index}>
-               <p className="mb-4">
-                {article.farticle}
-            </p>
-            <div className="d-flex justify-content-center">
-                <img src={`http://localhost:5789/${article.faimage}`} alt="" />
-            </div>
-               </div>
+                <div key={index}>
+                    <p className="mb-5 fs-5">
+                        {article.farticle}
+                    </p>
+                    <img className="object-fit-cover" src={`http://localhost:5789/${article.faimage}`} alt=""/>
+                </div>
             ))}
-           
         </>
     )
 }
