@@ -21,6 +21,7 @@ function PostBtn() {
     fboard: "",
     createTime: "",
     fhashtag: "",
+    collect:"",
   });
   const handleChange = (e) => {
     // setPosts((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -45,6 +46,7 @@ function PostBtn() {
       formData.append("fboard", posts.fboard);
       formData.append("fhashtag", posts.fhashtag);
       formData.append("createTime", currentTime);
+      formData.append("collect", 0); 
       formData.append("faid", v4Id);
       console.log("這是posts");
       console.log(posts);

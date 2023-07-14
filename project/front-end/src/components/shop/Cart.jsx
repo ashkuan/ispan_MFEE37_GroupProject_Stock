@@ -40,7 +40,7 @@ export const Cart = () => {
                     <button
                       className="btn deleteBtn"
                       onClick={() => {
-                        trashCan();
+                        trashCan(pid);
                       }}
                     >
                       <svg

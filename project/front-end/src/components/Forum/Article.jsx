@@ -181,7 +181,7 @@ function Article() {
                         {/* <Emoji /> */}
                         {/* <EmojiButton data={faid} /> */}
                         <MessageQuantity />
-                      </div>
+                      </div>  
                       <div className="d-flex">
                         <KeepButton data={faid} />
                         <NotifyShareDropdown />

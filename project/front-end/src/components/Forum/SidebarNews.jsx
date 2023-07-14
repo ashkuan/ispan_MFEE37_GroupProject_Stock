@@ -27,7 +27,7 @@ function SidebarNews() {
 
     // 使用 shuffle 函式進行隨機排序並選取前 3 篇文章
     setData(shuffle(result.data.articles).slice(0, 3));
-    console.log(result.data.articles);
+    // console.log(result.data.articles);
   };
 
   useEffect(() => {
@@ -53,7 +53,7 @@ function SidebarNews() {
       </div>
       <div className="p-3">
         {data.map((article, index) => (
-          <div className="card border-1 mb-3 p-3 text-decoration-none">
+          <div key={index} className="card border-1 mb-3 p-3 text-decoration-none">
             <a href={article.url} target="_blank" rel="noopener noreferrer">
               <div key={index}>
                 <div className="fz-3 mb-2 text-IronGray-Deep"> {article.author} </div>
