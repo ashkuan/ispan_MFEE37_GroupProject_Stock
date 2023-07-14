@@ -37,7 +37,7 @@ app.use(express.static(path.join(__dirname, "img")));
 app.post("/posts", multer({ storage }).single("faimage"), (req, res) => {
   const file = req.file;
   const sql =
-    "INSERT INTO `ForumArticle`( `fatitle`, `farticle`, `faimage`, `faid`, `fboard`,`createTime`,`fhashtag`) VALUES (?)";
+    "INSERT INTO `ForumArticle`( `fatitle`, `farticle`, `faimage`, `faid`, `fboard`,`createTime`,`fhashtag`,`collect`) VALUES (?)";
 
   const createTime = moment().format("YYYY-MM-DD HH:mm:ss");
 
@@ -49,6 +49,7 @@ app.post("/posts", multer({ storage }).single("faimage"), (req, res) => {
     req.body.fboard,
     createTime,
     req.body.fhashtag,
+    req.body.collect,
   ];
   connToDBHelper.query(sql, [values], (err, data) => {
     if (err) {
@@ -83,7 +84,7 @@ app.post("/getFaid", (req, res) => {
   // "SELECT `fatitle`, `farticle`, `faimage`, `likeCount`, `fboard`, `fhashtag`, `createTime` FROM ForumArticle where `faid` = ?";
   connToDBHelper.query(sql, [req.body.faid], (err, data) => {
     if (err) {
-      console.log("faid一直錯一直爽"+err);
+      console.log("faid一直錯一直爽" + err);
     } else {
       return res.json(data);
     }
@@ -145,26 +146,22 @@ app.post("/posts/like", (req, res) => {
 //   });
 // });
 
-
+// app.put("/collect/:faid", (req, res) => {
 app.put("/collect/:faid", (req, res) => {
-
-
   const sql = "UPDATE `ForumArticle` SET `collect` = ? WHERE `faid` = ?";
   const values = req.body.collects;
   const collectId = req.body.faid;
   console.log("有沒有" + values);
-console.log("有沒有collect" + collectId);
+  console.log("有沒有collect" + collectId);
   connToDBHelper.query(sql, [values, collectId], (err, data) => {
     if (err) {
       console.log(err);
     }
-    
+
     console.log("keep更新成功");
     return res.json("更新成功");
   });
 });
-
-
 
 // 獲取留言
 app.get("/messages", (req, res) => {
