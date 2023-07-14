@@ -17,7 +17,7 @@ const Rookie = () => {
     <>
 
       <div className="container mt-2">
-        <h1 id="rookie" className="ml1 title mb-5 d-flex justify-content-center">
+        <h1 id="rookie" className="ml1 title mb-5 d-flex justify-content-center text-IronGray-Deep">
           新手上路
         </h1>
         <div className="text-center mb-5"><RookieQuiz /></div>
@@ -25,7 +25,7 @@ const Rookie = () => {
           <RookieListBtn />
         </div>
         <span className="d-flex justify-content-around mt-5" id="openbank">
-          <span className="titlebox py-2" >證券開戶</span>
+          <span className="titlebox py-2 text-IronGray-Deep" >證券開戶</span>
         </span>
         <div className="row d-flex justify-content-center">
           <div className="col-9 m-1">
@@ -33,7 +33,7 @@ const Rookie = () => {
           </div>
         </div>
         <span className="d-flex justify-content-around mt-5" id="stockdoor">
-          <span className="titlebox py-2">股票入門</span>
+          <span className="titlebox py-2 text-IronGray-Deep">股票入門</span>
         </span>
         <div className="row d-flex justify-content-center">
           <div className="col-9 m-1">
@@ -41,7 +41,7 @@ const Rookie = () => {
           </div>
         </div>
         <div className="d-flex justify-content-around mt-5" id="etfdoor">
-          <span className="titlebox py-2">ETF入門</span>
+          <span className="titlebox py-2 text-IronGray-Deep">ETF入門</span>
         </div>
         <div className="row d-flex justify-content-center">
           <div className="col-9 m-1">

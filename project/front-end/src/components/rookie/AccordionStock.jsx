@@ -30,10 +30,10 @@ const AccordionStock = () => {
             <Accordion.Header>
               <div className="articalword">{res.title}</div>
             </Accordion.Header>
-            <Accordion.Body className="articalword text-wrap">
+            <Accordion.Body className="articalword text-wrap p-5">
               {res.article}
               <div className="d-flex justify-content-evenly">
-                <img src={res.image} fluid/>
+                <img className="img-fluid mt-4" src={res.image} />
               </div>
             </Accordion.Body>
           </Accordion.Item>
