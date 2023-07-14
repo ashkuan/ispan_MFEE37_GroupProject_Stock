@@ -19,7 +19,12 @@ export const StockContextProvider = (props) => {
   });
 
   return (
-    <StockContext.Provider value={{ stockInfo, setStockInfo }}>
+    <StockContext.Provider
+      value={{
+        stockInfo,
+        setStockInfo,
+      }}
+    >
       {props.children}
     </StockContext.Provider>
   );

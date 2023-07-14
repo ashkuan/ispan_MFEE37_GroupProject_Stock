@@ -69,7 +69,7 @@ const Navbar = () => {
         .post("http://localhost:5678/stock", { data: inputValue })
         .then((res) => {
           setRedirectToIndStock(true);
-          console.log(res.data);
+          // console.log(res.data);
           const shortname = res.data.price.shortName;
           const website = res.data.summaryProfile.website;
           const regularMarketOpen = res.data.price.regularMarketOpen.fmt;
