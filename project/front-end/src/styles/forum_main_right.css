@@ -25,13 +25,6 @@
   margin-right: 10px;
 }
 
-.articleShare {
-  background-color: white;
-  border-radius: 0.375rem;
-  width: 70%;
-  border: var(--IronGray-Deep);
-}
-
 .articleBtn {
   border: none;
   border-radius: 0.375rem;

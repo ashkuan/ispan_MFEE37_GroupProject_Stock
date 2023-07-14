@@ -1,5 +1,3 @@
-//
-
 import React, { useState, useEffect } from "react";
 import "../../styles/forum_main.css";
 import "../../styles/forum_sidebar.css";
@@ -43,7 +41,7 @@ function SidebarNews() {
     >
       <div className="card-title bg-Primary-Gray rounded-top-xl p-3">
         <a className="d-flex fs-3 m-2 text-decoration-none text-IronGray-Deep fz-2 align-items-center">
-          今日要聞{" "}
+          財經新聞{" "}
           <img
             onClick={() => search(auth)}
             className="ms-auto"

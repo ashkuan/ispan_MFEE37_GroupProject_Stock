@@ -31,7 +31,7 @@
 .form-control:focus,
 .form-select:focus
 {
-    border-color:var(--IronGray) !important; 
+    border-color:var(--White) !important; 
     outline: none !important;
     box-shadow: none !important;
 }
@@ -45,8 +45,8 @@
     box-shadow: none !important;;
 }
 #memberpic{
-    width: 60px;
-    height: 60px;
+    width: 3.5rem;
+    height: 3.5rem;
     border-radius: 50%;
     background-image: url(../img/Memoji\ Boys\ 2-1.svg);
     background-repeat: no-repeat;
@@ -54,10 +54,9 @@
     background-color:var(--IronGray-Light);
 }
 
-#memberid{
-
+/* #memberid{
     font-size: var(--f-med-2);
-}
+} */
 
 #postTitle{
     font-size: var(--f-med-2);
@@ -88,50 +87,31 @@
     background-color: var(--IronGray-Light);
 }
 
-#hashtag{
+/* #hashtag{
     border-radius: var(--border-radius-med);
     font-size: var(--f-med-2);
-}
+} */
 
 
 p {
     margin: 0 !important;
 }
 
-/* .upload__box {
-    padding: 40px;
-} */
 .upload__inputfile {
-    width: 0.1px;
-    height: 0.1px;
-    opacity: 0;
     overflow: hidden;
     position: absolute;
     z-index: -1;
 }
 .upload__btn {
-    display: inline-block;
-    font-weight: 600;
-    color: #fff;
-    text-align: center;
-    min-width: 116px;
-    padding: 5px;
     transition: all 0.3s ease;
     cursor: pointer;
-    border: 2px solid;
-    background-color:var(--IronGray-Deep);
-    border-color:var(--IronGray-Deep);
-    border-radius: var(--border-radius-med);
-    line-height: 26px;
-    font-size: 14px;
 }
 .upload__btn:hover {
-    background-color: unset;
-    color:var(--IronGray-Deep);
-    transition: all 0.3s ease;
+    background-color: var(--IronGray);
 }
+
 .upload__btn-box {
-    /* margin-bottom: 10px; */
+    margin-bottom: 10px;
 }
 .upload__img-wrap {
     display: flex;

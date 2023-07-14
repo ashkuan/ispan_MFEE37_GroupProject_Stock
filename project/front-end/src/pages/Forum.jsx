@@ -1,8 +1,8 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
+import "../styles/forum_individual.css";
 import Footer from "../components/Footer.jsx";
 import ForumIndividual from "../components/Forum/ForumIndividual";
-import "../styles/forum_individual.css";
 import SidebarTag from "../components/Forum/SidebarTag.jsx";
 import SidebarNews from "../components/Forum/SidebarNews.jsx";
 import Post from "../components/Forum/Post.jsx";
@@ -17,9 +17,7 @@ const Forum = () => {
           <div className="row d-flex justify-content-center g-5">
             <div className="col-4">
               <SidebarTag />
-
               {/* <div style={{width:"10px"}} ><LineChart/></div> */}
-
               <SidebarNews />
             </div>
             <div className="col-8">

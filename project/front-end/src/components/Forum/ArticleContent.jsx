@@ -65,9 +65,9 @@ const ArticleContent = (props) => {
         <>
             {articles.map((article,index)=>(
                 <div key={index}>
-                    <p className="mb-5 fs-5">
+                    <pre className="mb-5 fs-5">
                         {article.farticle}
-                    </p>
+                    </pre>
                     <img className="object-fit-cover" src={`http://localhost:5789/${article.faimage}`} alt=""/>
                 </div>
             ))}

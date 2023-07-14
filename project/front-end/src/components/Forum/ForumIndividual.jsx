@@ -17,7 +17,7 @@ function ForumIndividual() {
   return (
     <>
       <Modal>
-        <div className="container">
+        <div className="container mt-0">
           <div className="p-2 d-flex flex-column justify-content-between">
             <Modal.Header closeButton>
               <Modal.Title>
