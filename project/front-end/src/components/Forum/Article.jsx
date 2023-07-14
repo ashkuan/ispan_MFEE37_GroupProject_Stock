@@ -18,7 +18,7 @@ function Article() {
   const [showModal, setShowModal] = useState(false);
   const [posts, setPosts] = useState([]);
   const [faid, setFaid] = useState([]);
-  const [collects,setCollects]=useState(0)
+  const [collects, setCollects] = useState(0);
 
   useEffect(() => {
     const fetchAllPost = async () => {
@@ -32,6 +32,18 @@ function Article() {
     fetchAllPost();
   }, []);
 
+  const fetchAllCollect = async () => {
+    try {
+      
+      const res = await axios.post("http://localhost:5789/posts", {
+        faid: faid,
+      });
+      setCollects(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const handleArticleClick = () => {
     setShowModal(true);
   };
@@ -41,23 +53,47 @@ function Article() {
     setShowModal(false);
   };
 
-  const collectClick = (e)=>{
+  // // 全部一起動
+  // const collectClick = (e)=>{
+  //   e.preventDefault();
+  //   if(collects === 0 ){
+  //     setCollects(1)
+  //   }else{
+  //     setCollects(0)
+  //   }
+  // }
+  const collectClick = async (e) => {
     e.preventDefault();
-    if(collects === 0 ){
-      setCollects(1)
-    }else{
-      setCollects(0)
+
+    try {
+      if (collects === 0) {
+        setCollects(1);
+        console.log('有嗎'+faid);
+        await axios.put("http://localhost:5789/collect/:faid", {
+          faid: faid,
+          collects: 1,
+        });
+      } else {
+        setCollects(0);
+        await axios.put("http://localhost:5789/collect/:faid", {
+          faid: faid,
+          collects: 0,
+        });
+      }
+      fetchAllCollect();
+    } catch (err) {
+      console.log(err);
     }
-  }
+  };
 
   return (
     <>
       {posts.map((post, index) => (
         <div key={index}>
-          <div className="articleCont" >
+          <div className="articleCont">
             <div className="d-flex justify-content-between px-4">
               <div className="d-flex align-items-center">
-              {/* 用戶 */}
+                {/* 用戶 */}
                 <img className="userImg" src={post.image} alt="" />
                 <span className="me-3 mb-1 fz-3">{post.name}</span>
                 <span className="me-3 mb-1 fz-4">
@@ -76,7 +112,7 @@ function Article() {
               onClick={(e) => {
                 // console.log(e.target.id);
                 setFaid(e.target.id);
-                handleArticleClick()
+                handleArticleClick();
               }}
               style={{ backgroundColor: "black" }}
             >
@@ -100,11 +136,13 @@ function Article() {
                 <span className="fz-5 mx-1">25</span>
               </div>
               <div className="mx-4" onClick={collectClick}>
-                <img src={
-                  collects !==0
-                  ? "public/img/forum/collect.svg"
-                  : "public/img/forum/collect-Article.svg"
-                } />
+                <img
+                  src={
+                    collects !== 0
+                      ? "public/img/forum/collect.svg"
+                      : "public/img/forum/collect-Article.svg"
+                  }
+                />
                 <span className="fz-5 mx-1">3</span>
               </div>
             </div>
@@ -143,7 +181,7 @@ function Article() {
                         <MessageQuantity />
                       </div>
                       <div className="d-flex">
-                        <KeepButton />
+                        <KeepButton  data={faid}/>
                         <NotifyShareDropdown />
                       </div>
                     </div>
