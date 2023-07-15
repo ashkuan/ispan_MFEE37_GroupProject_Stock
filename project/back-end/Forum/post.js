@@ -65,10 +65,25 @@ app.post("/posts", multer({ storage }).single("faimage"), (req, res) => {
   });
 });
 
+//選擇文章
 app.get("/posts", (req, res) => {
   const sql =
     // "SELECT `faid`,  `fatitle`, `farticle`, `faimage`, `likeCount`, `fboard`, `fhashtag`, `createTime`, `updateTime` FROM `ForumArticle` innerjoin  ";
     "SELECT * FROM `ForumArticle` inner join  login on ForumArticle.uid = login.uid";
+  connToDBHelper.query(sql, [], (err, data) => {
+    if (err) {
+      return "無法成功顯示發文";
+    } else {
+      return res.json(data);
+    }
+  });
+});
+
+//選擇最新文章
+app.get("/posts/new", (req, res) => {
+  const sql =
+    // "SELECT `faid`,  `fatitle`, `farticle`, `faimage`, `likeCount`, `fboard`, `fhashtag`, `createTime`, `updateTime` FROM `ForumArticle` innerjoin  ";
+    "SELECT * FROM `ForumArticle` inner join  login on ForumArticle.uid = login.uid ORDER BY `createTime `";
   connToDBHelper.query(sql, [], (err, data) => {
     if (err) {
       return "無法成功顯示發文";
@@ -132,21 +147,6 @@ app.post("/posts/like", (req, res) => {
 });
 
 //收藏
-// app.put("/getFaid", (req, res) => {
-//   const sql =
-//     "UPDATE `ForumArticle` SET `likeCount`= ?,`collect`= ?,`updateTime`= ? WHERE `faid` = ?";
-//   const values = [req.body.likeCount, req.body.collect, req.body.updateTime];
-
-//   connToDBHelper.query(sql, values, (err,data) => {
-//     if (err) {
-//       return res.json(err);
-//     } else {
-//       return res.json( "更新成功");
-//     }
-//   });
-// });
-
-// app.put("/collect/:faid", (req, res) => {
 app.put("/collect/:faid", (req, res) => {
   const sql = "UPDATE `ForumArticle` SET `collect` = ? WHERE `faid` = ?";
   const values = req.body.collects;
@@ -211,6 +211,19 @@ app.post("/messages", (req, res) => {
     return res.status(401).json({ error: "未登入,無法成功留言" });
   }
 });
+
+
+app.get('/chats',(req,res)=>{
+  const sql = 'SELECT `faid`,  `fatitle`, `farticle`, `faimage`, `likeCount`, `fboard`, `fhashtag`, `createTime`, `updateTime` FROM `ForumArticle` WHERE fboard = "閒聊"';
+  connToDBHelper.query(sql,(err,data)=>{
+    if (err) {
+      return "閒聊版連接錯誤";
+    } else {
+      return res.json(data);
+    }
+  })
+})
+
 
 app.listen(5789, () => {
   console.log("5789 post發文開始" + new Date().toLocaleTimeString());
