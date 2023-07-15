@@ -12,7 +12,7 @@ import Article from "./Article";
 import PostBtn from "./PostBtn";
 import { useNavigate } from "react-router-dom";
 
-const Targets = () => {
+const Thoughts = () => {
   let navigate = useNavigate();
   return (
     <>
@@ -25,7 +25,7 @@ const Targets = () => {
             </div>
             <div className="col-8">
               <div className="d-flex justify-content-between mb-3">
-                <p className="baf fz-2 pt-2 fw-bolder">標的版</p>
+                <p className="baf fz-2 pt-2 fw-bolder">心得版</p>
                 <button
                   className="baBtn fz-3 p-2 px-3"
                   onClick={() => navigate("/forum")}
@@ -34,7 +34,7 @@ const Targets = () => {
                 </button>
               </div>
 
-              <PostBtn className="mt-4"/>
+              <PostBtn className="mt-4" />
               <div className="BArticle mt-4 pt-4">
                 <Article />
               </div>
@@ -46,5 +46,4 @@ const Targets = () => {
     </>
   );
 };
-
-export default Targets;
+export default Thoughts;

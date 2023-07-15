@@ -37,10 +37,10 @@ function SidebarNews() {
   return (
     <div
       className="card mt-4 rounded-4 IronGray"
-      style={{ filter: "drop-shadow(0px 20px 30px rgba(0, 0, 0, 0.1))" }}
+      style={{ filter: "drop-shadow(0px 20px 30px rgba(0, 0, 0, 0.25))" }}
     >
-      <div className="card-title bg-Primary-Gray rounded-top-xl p-3">
-        <a className="d-flex fs-3 m-2 text-decoration-none text-IronGray-Deep fz-2 align-items-center">
+      <div className="card-title bg-Primary-Gray rounded-top-xl px-3 py-2">
+        <a className="d-flex fs-4 m-2 text-decoration-none text-IronGray-Deep align-items-center">
           財經新聞{" "}
           <img
             onClick={() => search(auth)}
@@ -56,9 +56,9 @@ function SidebarNews() {
           <div key={index} className="card border-1 mb-3 p-3 text-decoration-none">
             <a href={article.url} target="_blank" rel="noopener noreferrer">
               <div key={index}>
-                <div className="fz-3 mb-2 text-IronGray-Deep"> {article.author} </div>
-                <div className="news-title fz-2 mb-2 fw-bold text-IronGray-Deep"> {article.title} </div>
-                <div className="fz-3 text-IronGray-Deep">{article.publishedAt.substr(0, 10)} {article.publishedAt.substr(11, 5)}</div>
+                <div className="fz-4 mb-2 text-IronGray-Deep"> {article.author} </div>
+                <div className="line-cut-2 fs-5 mb-2 fw-bold text-IronGray-Deep"> {article.title} </div>
+                <div className="fz-4 text-IronGray-Deep">{article.publishedAt.substr(0, 10)} {article.publishedAt.substr(11, 5)}</div>
               </div>
             </a>
           </div>

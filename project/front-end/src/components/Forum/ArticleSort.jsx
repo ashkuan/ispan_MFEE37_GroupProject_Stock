@@ -62,7 +62,7 @@ export default function ArticleSort() {
           </MDBTabsItem>
         </MDBTabs>
       </div>
-      <MDBTabsContent className="mt-4">
+      <MDBTabsContent className="">
         <MDBTabsPane show={basicActive === "tab1"}>
           <ArticlePopular />
         </MDBTabsPane>

@@ -1,4 +1,8 @@
+// 看板輪播
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../../styles/forum_main_right.css";
+import "../../styles/forum_main.css";
 import QuestionAnswerIcon from "@mui/icons-material/QuestionAnswer";
 import NewspaperIcon from "@mui/icons-material/Newspaper";
 import AdsClickIcon from "@mui/icons-material/AdsClick";
@@ -7,16 +11,14 @@ import QueryStatsIcon from "@mui/icons-material/QueryStats";
 import TipsAndUpdatesIcon from "@mui/icons-material/TipsAndUpdates";
 import ReadMoreIcon from "@mui/icons-material/ReadMore";
 import { Button, CardHeader } from "@mui/material";
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 const Billboard = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const itemsPerPage = 5;
-  const totalItems = 7; // 根据需要的总数量进行调整
+  const itemsPerPage = 4;
+  const totalItems = 7; // 根據需要的總數量進行調整
   let navigate = useNavigate();
 
-  function handleRightClick() {
+  function handleDownClick() {
     setCurrentSlide((prevSlide) => (prevSlide + 1) % totalItems);
   }
 
@@ -28,7 +30,7 @@ const Billboard = () => {
       {
         icon: (
           <QuestionAnswerIcon
-            sx={{ color: "#FFC857", fontSize: 48 }}
+            style={{ color: "#FFC857", fontSize: 48 }}
             onClick={() => navigate("/forum/chats")}
           />
         ),
@@ -37,7 +39,7 @@ const Billboard = () => {
       {
         icon: (
           <NewspaperIcon
-            sx={{ color: "#119DA4", fontSize: 48 }}
+            style={{ color: "#119DA4", fontSize: 48 }}
             onClick={() => navigate("/forum/news")}
           />
         ),
@@ -46,7 +48,7 @@ const Billboard = () => {
       {
         icon: (
           <AdsClickIcon
-            sx={{ color: "#FF6B6B", fontSize: 48 }}
+            style={{ color: "#FF6B6B", fontSize: 48 }}
             onClick={() => navigate("/forum/targets")}
           />
         ),
@@ -55,7 +57,7 @@ const Billboard = () => {
       {
         icon: (
           <HelpIcon
-            sx={{ color: "#4ECDC4", fontSize: 48 }}
+            style={{ color: "#4ECDC4", fontSize: 48 }}
             onClick={() => navigate("/forum/questions")}
           />
         ),
@@ -64,20 +66,27 @@ const Billboard = () => {
       {
         icon: (
           <QueryStatsIcon
-            sx={{ color: "#FFB86F", fontSize: 48 }}
+            style={{ color: "#FFB86F", fontSize: 48 }}
             onClick={() => navigate("/forum/notes")}
           />
-        ),
-        label: "情報",
+        ), label: "情報"
       },
       {
-        icon: <TipsAndUpdatesIcon sx={{ color: "#845EC2 ", fontSize: 48 }} />,
-        label: "心得",
+        icon: (
+          <TipsAndUpdatesIcon 
+            style={{ color: "#845EC2 ", fontSize: 48 }}
+            onClick={() => navigate("/forum/thoughts")}
+          />
+        ), label: "心得"
       },
       {
-        icon: <ReadMoreIcon sx={{ color: "#FF869A", fontSize: 48 }} />,
-        label: "其他",
-      },
+        icon: (
+          <ReadMoreIcon 
+            style={{ color: "#FF869A", fontSize: 48 }}
+            onClick={() => navigate("/forum/others")}
+          />
+        ), label: "其他"
+      }
     ];
 
     if (startIndex < endIndex) {
@@ -88,19 +97,21 @@ const Billboard = () => {
   }
 
   return (
-    <div className="carousel">
-      <div className="carousel-items">
+    <>
+      <a href="#">
         {getItems().map((item, index) => (
-          <div className="board p-4" key={index}>
-            {item.icon}
-            {item.label}
+          <div className="d-flex justify-content-between align-items-center text-IronGray-Deep p-4 rounded-4 bg-white mb-3 fs-4 cursor-pointer" key={index}>
+              {item.icon}
+              {item.label}
           </div>
         ))}
+      </a>
+      <div className="d-flex justify-content-center">
+        <Button onClick={handleDownClick}>
+          <img className="" src="./img/forum/arrow-down.svg" alt="" />
+        </Button>
       </div>
-      <Button className="carousel-arrow" onClick={handleRightClick}>
-        <img className="arrowRight" src="./img/forum/arrow-right.svg" alt="" />
-      </Button>
-    </div>
+    </>
   );
 };
 

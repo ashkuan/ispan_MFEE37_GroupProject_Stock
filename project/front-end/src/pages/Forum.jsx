@@ -7,6 +7,7 @@ import SidebarTag from "../components/Forum/SidebarTag.jsx";
 import SidebarNews from "../components/Forum/SidebarNews.jsx";
 import Post from "../components/Forum/Post.jsx";
 import ArticleSort from "../components/Forum/ArticleSort.jsx";
+import Billboard from "../components/Forum/Billboard.jsx";
 import LineChart from "../components/linechart";
 
 const Forum = () => {
@@ -14,14 +15,17 @@ const Forum = () => {
     <>
       <div className="forum" style={{ paddingTop: "180px" }}>
         <div className="container mt-4">
-          <div className="row d-flex justify-content-center g-5">
-            <div className="col-4">
+          <div className="row g-5">
+            <div className="col-2">
+              <Billboard />
+            </div>
+            <div className="col-7">
+              <ArticleSort />
+            </div>
+            <div className="col-3">
               <SidebarTag />
               {/* <div style={{width:"10px"}} ><LineChart/></div> */}
               <SidebarNews />
-            </div>
-            <div className="col-8">
-              <ArticleSort />
             </div>
           </div>
         </div>

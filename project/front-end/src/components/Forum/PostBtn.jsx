@@ -70,9 +70,9 @@ function PostBtn() {
             alt=""
           />
           <div className="w-75 rounded-3 bg-white d-flex align-items-center px-3 py-2">
-            想和大家分享些...
+            想和大家分享...
           </div>
-          <div className="articleBtn p-2">我要發文</div>
+          <div className="articleBtn px-3 py-2">發文</div>
         </div>
       </button>
       <Modal

@@ -32,10 +32,8 @@
   color: white;
 }
 
-.articlePopular {
-  border-radius: 1rem;
-  background: #ddd;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+.drop-shadow-20 {
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
 }
 
 .arrowRight {
@@ -55,15 +53,14 @@
   text-overflow: ellipsis;
 }
 
-.carousel {
+/* .carousel {
   display: flex;
   align-items: center;
-}
+} */
 
-.carousel-items {
+/* .carousel-items {
   display: flex;
-  /* margin-right: 10px; 调整 div 之间的间距 */
-}
+} */
 
 .billboard {
   color: var(--IronGray-Deep);
@@ -73,22 +70,16 @@
 
 .board {
   color: var(--IronGray-Deep);
-  border-radius: 0.625rem;
-  background-color: white;
-  border: #333333 solid 1.4px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 125px;
-  width: 125px;
-  margin-right: 20px;
-}
-
-.carousel-arrow {
-  margin-left: auto;
-  display: flex; /* 添加此行 */
-  align-items: center; /* 添加此行 */
+  border-radius: 0.75rem;
+  background-color: var(--bg-Primary-Gray);
+  /* border: #333333 solid 1.4px; */
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* align-items: center; */
+  /* justify-content: center; */
+  height: 8rem;
+  width: 8rem;
+  margin-bottom: 1rem;
 }
 
 .board .icon {
