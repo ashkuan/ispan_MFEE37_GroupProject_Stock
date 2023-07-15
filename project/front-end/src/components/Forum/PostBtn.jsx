@@ -21,7 +21,7 @@ function PostBtn() {
     fboard: "",
     createTime: "",
     fhashtag: "",
-    collect:"",
+    collect: "",
   });
   const handleChange = (e) => {
     // setPosts((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -35,6 +35,12 @@ function PostBtn() {
 
   const handleClick = async (e) => {
     e.preventDefault();
+    //全部都要填寫
+    const { fatitle, farticle, faimage, fboard, fhashtag } = posts;
+    if (!fatitle || !farticle || !faimage || !fboard || !fhashtag) {
+      alert("請填寫所有選項");
+      return;
+    }
     try {
       const currentTime = new Date().toDateString();
       setPosts((prev) => ({ ...prev, createTime: currentTime }));
@@ -46,7 +52,7 @@ function PostBtn() {
       formData.append("fboard", posts.fboard);
       formData.append("fhashtag", posts.fhashtag);
       formData.append("createTime", currentTime);
-      formData.append("collect", 0); 
+      formData.append("collect", 0);
       formData.append("faid", v4Id);
       console.log("這是posts");
       console.log(posts);
@@ -183,10 +189,19 @@ function PostBtn() {
                 </div>
                 {/* 取消鈕 & 發文鈕 */}
                 <div className="">
-                  <Button className="fs-5 rounded-3 px-3 py-2" variant="secondary" onClick={handleClose}>
+                  <Button
+                    className="fs-5 rounded-3 px-3 py-2"
+                    variant="secondary"
+                    onClick={handleClose}
+                  >
                     取消
                   </Button>
-                  <Button className="fs-5 rounded-3 px-3 py-2 ms-4" variant="primary" name="createTime" onClick={handleClick}>
+                  <Button
+                    className="fs-5 rounded-3 px-3 py-2 ms-4"
+                    variant="primary"
+                    name="createTime"
+                    onClick={handleClick}
+                  >
                     發文
                   </Button>
                 </div>
