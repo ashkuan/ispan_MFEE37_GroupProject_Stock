@@ -1,0 +1,15 @@
+.custom-modal-content {
+  border: 3px solid black;
+  background-color:white;
+  font-size: 2rem;
+  margin-top: 300px;
+  /* padding-left: 300px;
+  padding-right: 300px; */
+
+  
+}
+.custom-modal-portal{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

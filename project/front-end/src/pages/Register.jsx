@@ -53,7 +53,24 @@ const Register = () => {
       axios
         .post("http://localhost:3000/register", formData)
         .then((res) => {
-          console.log("註冊成功");
+          // 註冊成功後新增會員郵件
+          const uid = res.data.uid;
+          const name = values.name;
+          const time = new Date().toLocaleString('zh-TW', { hour12: false });
+          const message = `hi ${name}`;
+  
+          axios
+            .post("http://localhost:3000/member/mail/addMail", {
+              uid: uid,
+              message: message,
+              stats: null,
+              time: time,
+            })
+            .then((res) => {
+              console.log("會員郵件新增成功");
+              navigate("/");
+            })
+            .catch((err) => console.log(err));
         })
         .catch((err) => console.log(err));
     }

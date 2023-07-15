@@ -1,10 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/sidebar.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
 
 const Sidebar = () => {
+  const [name, setName] = useState("");
+  const [photopath, setPhotopath] = useState("");
+  useEffect(() => {
+    axios
+      .get("http://localhost:3000/member", { withCredentials: true })
+      .then((res) => {
+        setName(res.data.name);
+        setPhotopath(res.data.photopath);
+      })
+      .catch((err) => console.log(err));
+  }, []);
   const handleLogout = () => {
     axios
       .post("http://localhost:3000/logout") // 发送 POST 请求到 /logout 路由
@@ -27,10 +38,10 @@ const Sidebar = () => {
         <div className="avatar d-flex justify-content-center">
           <img
             className="sidebar-userphoto"
-            src="/public/img/memberimg/Mask Group.svg"
+            src={`http://localhost:3000/${photopath}`}
           />
         </div>
-        <p id="userName">AR Jakir</p>
+        <p id="userName">{name}</p>
       </div>
       <ul className="nav">
         <li className="nav-item navItem">
