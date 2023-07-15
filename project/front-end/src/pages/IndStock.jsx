@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import Footer from "../components/Footer";
 import "../styles/indStock.css";
 import { StockContext } from "../../context/StockContext";
-import IndStockChart from "../components/indStockChart";
+import IndStockChart from "../components/IndStock/IndStockChart";
 import axios from "axios";
 
 const IndStock = () => {
@@ -12,7 +12,7 @@ const IndStock = () => {
   axios
     .post("http://localhost:5678/stockName", { data: inputValue })
     .then((res) => {
-      console.log(res.data);
+      // console.log(res.data);
       const name = res.data;
       setStockName(name);
     })
@@ -32,21 +32,6 @@ const IndStock = () => {
               {stockName}
             </a>
           </div>
-          {/* <svg
-            id="heart"
-            style={{ position: "absolute", right: 300 }}
-            xmlns="http://www.w3.org/2000/svg"
-            width={50}
-            height={50}
-            fill="currentColor"
-            className="bi bi-heart-fill"
-            viewBox="0 0 16 16"
-          >
-            <path
-              fillRule="evenodd"
-              d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
-            />
-          </svg> */}
         </div>
         {/* 個股介紹 */}
         <div className="d-flex align-items-center">

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import Chart from "react-apexcharts";
-import { StockContext } from "../../context/StockContext";
-import "../styles/indStockChart.css";
+import { StockContext } from "../../../context/StockContext";
+import "../../styles/indStockChart.css";
 import axios from "axios";
 
 const IndStockChart = () => {
@@ -13,17 +13,17 @@ const IndStockChart = () => {
   const [stockDate, setStockDate] = useState([]);
   // console.log(stockInfo.inputValue);
   const inputValue = stockInfo.inputValue;
-  console.log(inputValue);
+  // console.log(inputValue);
 
   useEffect(() => {
     axios
-      .post("http://localhost:5678/stock2", {
+      .post("http://localhost:5678/stockChart", {
         data: { inputValue, perRange, range },
       })
       .then((res) => {
-        console.log(res.data);
-        console.log(res.data.indicators.adjclose[0].adjclose);
-        console.log(res.data.timestamp);
+        // console.log(res.data);
+        // console.log(res.data.indicators.adjclose[0].adjclose);
+        // console.log(res.data.timestamp);
         const Prices = res.data.indicators.adjclose[0].adjclose;
         const Dates = res.data.timestamp;
         const myStockDate = [];
@@ -35,14 +35,14 @@ const IndStockChart = () => {
           // console.log(date.toDateString());
           const dataString = date.toDateString().slice(4, 10);
           myStockDate.push(dataString);
-          console.log(myStockDate);
+          // console.log(myStockDate);
           setStockDate(myStockDate);
         });
         // 股票價格
         Prices.map((price) => {
           // console.log(price);
           myStockPrice.push(price.toFixed(2));
-          console.log(myStockPrice);
+          // console.log(myStockPrice);
           setStockPrice(myStockPrice);
         });
       })

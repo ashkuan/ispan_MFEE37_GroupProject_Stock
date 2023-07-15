@@ -31,6 +31,7 @@ export const ShopContextProvider = (props) => {
   const [dataLoaded, setDataLoaded] = useState(false); //判斷資料是否加載完成
   const [quantity, setQuantity] = useState(1);
   const [stockData, setStockData] = useState({}); // 存個股資訊
+  const [totalCartItemAmount, setTotalCartItemAmount] = useState(0); //計算購物車總數
 
   // 載入所有書籍
   useEffect(() => {
@@ -128,6 +129,17 @@ export const ShopContextProvider = (props) => {
     return cartTotal;
   };
 
+  // 計算總數
+  useEffect(() => {
+    let totalAmount = 0;
+    products.map((product) => {
+      const { pid } = product;
+      const cartItemAmount = cartItems[pid];
+      totalAmount += cartItemAmount;
+    });
+    setTotalCartItemAmount(totalAmount);
+  }, [cartItems]);
+
   const contextValue = {
     products,
     totalAmount,
@@ -138,6 +150,7 @@ export const ShopContextProvider = (props) => {
     trashCan,
     calculateCartTotal,
     stockData,
+    totalCartItemAmount,
   };
 
   return (

@@ -27,7 +27,8 @@ app.post("/stock", async function (req, res) {
     console.error(error);
   }
 });
-app.post("/stock2", async function (req, res) {
+
+app.post("/stockChart", async function (req, res) {
   const { data } = req.body;
   const inputValue = data.inputValue;
   const perRange = data.perRange;
