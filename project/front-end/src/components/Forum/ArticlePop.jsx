@@ -128,7 +128,7 @@ function ArticlePop() {
                 </p>
               </div>
               <div className="col-2 d-flex align-items-center">
-                <div className="rounded-4" >
+                <div className="rounded-4 " >
                   {/* <img src={post.faimage} alt="" /> */}
                 </div>
               </div>
@@ -187,7 +187,7 @@ function ArticlePop() {
                   <div className="text-secondary fs-5 p-4 d-flex justify-content-between">
                     <div className="d-flex">
                       {/* <Emoji /> */}
-                      {/* <EmojiButton data={faid} /> */}
+                      <EmojiButton data={faid} />
                       <MessageQuantity />
                     </div>
                     <div className="d-flex">

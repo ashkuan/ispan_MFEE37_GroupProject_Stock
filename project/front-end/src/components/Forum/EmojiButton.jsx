@@ -106,72 +106,146 @@
 // export default EmojiButton;
 
 
+// import React, { useState, useEffect } from "react";
+// import axios from "axios";
+
+// const EmojiButton = (props) => {
+//   const [heart, setHeart] = useState(0);
+//   const [count, setCount] = useState(0);
+//   const [likeCount, setLikeCount] = useState(0);
+//   const faid = props.data;
+
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       try {
+//         const res = await axios.post(`http://localhost:5789/getFaid`,{
+//           faid: faid,
+//         });
+//         const data = res.data;
+//         console.log("按讚啦"+res)
+//         setLikeCount(data.likeCount);
+//         setHeart(data.heart);
+//         setCount(data.count);
+//       } catch (err) {
+//         console.log(err);
+//       }
+//     };
+
+//     fetchData();
+//   }, []);
+
+//   const handleClick = async (e) => {
+//     e.preventDefault();
+//     if (heart === 0) {
+//       setHeart(1);
+//       setCount(count + 1);
+//       setLikeCount(likeCount + 1);
+//     } else {
+//       setHeart(0);
+//       setCount(count - 1);
+//       setLikeCount(likeCount - 1);
+//     }
+//     try {
+//       await axios.post(`http://localhost:5789/posts/like`, {
+//         likeCount: heart === 0 ? likeCount + 1 : likeCount - 1,
+//       });
+//       console.log("Like count updated successfully");
+//     } catch (err) {
+//       console.log(err);
+//     }
+//   };
+
+//   return (
+//     <>
+//       <span className="">
+//         <img
+//           className="aaa"
+//           src={
+//             heart !== 0
+//               ? "public/img/forum/likeClick.svg"
+//               : "public/img/forum/like.svg"
+//           }
+//           name="likeCount"
+//           onClick={handleClick}
+//         />
+//       </span>
+//       <span className="hello">{likeCount}</span>
+//     </>
+//   );
+// };
+
+// export default EmojiButton;
+
+
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const EmojiButton = (props) => {
-  const [heart, setHeart] = useState(0);
-  const [count, setCount] = useState(0);
-  const [likeCount, setLikeCount] = useState(0);
+const KeepButton = (props) => {
+  const [keeps, setKeeps] = useState([]);
+  const [counts, setCounts] = useState(null);
+
   const faid = props.data;
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchAllKeep = async () => {
       try {
-        const res = await axios.post(`http://localhost:5789/getFaid`,{
+        const res = await axios.post("http://localhost:5789/getFaid", {
           faid: faid,
         });
-        const data = res.data;
-        console.log("按讚啦"+res)
-        setLikeCount(data.likeCount);
-        setHeart(data.heart);
-        setCount(data.count);
+        setKeeps(res.data);
+        setCounts(res.data.collect);
       } catch (err) {
-        console.log(err);
+        console.log("Error in fetchAllKeep: ", err);
       }
     };
 
-    fetchData();
-  }, []);
+    fetchAllKeep();
+  }, [faid]);
 
-  const handleClick = async (e) => {
+  const collectClick = async (e) => {
     e.preventDefault();
-    if (heart === 0) {
-      setHeart(1);
-      setCount(count + 1);
-      setLikeCount(likeCount + 1);
-    } else {
-      setHeart(0);
-      setCount(count - 1);
-      setLikeCount(likeCount - 1);
-    }
+
     try {
-      await axios.post(`http://localhost:5789/posts/like`, {
-        likeCount: heart === 0 ? likeCount + 1 : likeCount - 1,
+      const LikeCounts = counts === 0 || counts === null ? 1 : 0;
+      setCounts(LikeCounts);
+
+      await axios.put(`http://localhost:5789/like/${faid}`, {
+        faid: faid,
+        likeCount: LikeCounts,
       });
-      console.log("Like count updated successfully");
+
+      // Update the keeps array with the new collect value
+      setKeeps((prevKeeps) => {
+        return prevKeeps.map((keep) => {
+          if (keep.faid === faid) {
+            return {
+              ...keep,
+              likeCount: LikeCounts,
+            };
+          }
+          return keep;
+        });
+      });
     } catch (err) {
-      console.log(err);
+      console.log("Error in collectClick: ", err);
     }
   };
 
   return (
     <>
-      <span className="">
-        <img
-          className="aaa"
-          src={
-            heart !== 0
-              ? "public/img/forum/likeClick.svg"
-              : "public/img/forum/like.svg"
-          }
-          name="likeCount"
-          onClick={handleClick}
-        />
-      </span>
-      <span className="hello">{likeCount}</span>
+      {keeps.map((keep, index) => (
+        <a className="text-decoration-none ms-2" href="#" key={index}>
+          <div onClick={collectClick}>
+            {keep.collect === 0 ? (
+              <img src="./img/forum/likeClick.svg" alt="" />
+            ) : (
+              <img src="./img/forum/like.svg" alt="" />
+            )}
+          </div>
+        </a>
+      ))}
     </>
   );
 };
 
-export default EmojiButton;
+export default KeepButton;

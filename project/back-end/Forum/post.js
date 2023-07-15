@@ -83,7 +83,7 @@ app.get("/posts", (req, res) => {
 app.get("/posts/new", (req, res) => {
   const sql =
     // "SELECT `faid`,  `fatitle`, `farticle`, `faimage`, `likeCount`, `fboard`, `fhashtag`, `createTime`, `updateTime` FROM `ForumArticle` innerjoin  ";
-    "SELECT * FROM `ForumArticle` inner JOIN  login on ForumArticle.uid = login.uid ORDER BY `createTime` DESC";
+    "SELECT * FROM `ForumArticle` LEFT JOIN  login on ForumArticle.uid = login.uid ORDER BY `createTime` DESC";
   connToDBHelper.query(sql, [], (err, data) => {
     if (err) {
       return "無法成功顯示發文";
@@ -171,6 +171,23 @@ app.post("/posts/like", (req, res) => {
         }
       });
     }
+  });
+});
+
+//按讚
+app.put("/like/:faid", (req, res) => {
+  const sql = "UPDATE `ForumArticle` SET `likeCount` = ? WHERE `faid` = ?";
+  const values = req.body.likeCount;
+  const likeId = req.body.faid;
+  console.log("有沒有" + values);
+  console.log("有沒有like" + likeId);
+  connToDBHelper.query(sql, [values, likeId], (err, data) => {
+    if (err) {
+      console.log(err);
+    }
+
+    console.log("keep更新成功");
+    return res.json("更新成功");
   });
 });
 
