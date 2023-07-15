@@ -1,3 +1,5 @@
+// 橫列發文鈕
+// 文章排序依 熱門|最新|追蹤中 切換下方文章
 import React, { useState } from "react";
 import {
   MDBTabs,
@@ -8,6 +10,7 @@ import {
 } from "mdb-react-ui-kit";
 import "../../styles/forum_sidebar.css";
 import "../../styles/forum_main_right.css";
+import "../../styles/forum_individual.css";
 import ArticlePopular from "../Forum/ArticlePopular";
 import ArticleNew from "../Forum/ArticleNew";
 import ArticleFollow from "../Forum/ArticleFollow";
@@ -26,9 +29,10 @@ export default function ArticleSort() {
 
   return (
     <>
-      <div className="d-flex justify-content-end">
-        <span className="fz-3 text-IronGray-Deep mt-2">文章排序依:</span>
-        <MDBTabs pills className="mb-3 fz-3">
+      <PostBtn />
+      <div className="d-flex justify-content-end align-items-center my-4">
+        <span className="fs-5 text-IronGray-Deep">文章排序依:</span>
+        <MDBTabs pills className="fs-5">
           <MDBTabsItem>
             <MDBTabsLink
               className="articleSort mx-2"
@@ -55,18 +59,10 @@ export default function ArticleSort() {
             >
               追蹤中
             </MDBTabsLink>
-            {/* <MDBTabsLink
-              className="articleSort mx-2"
-              onClick={() => handleBasicClick("tab1")}
-              active={basicActive === "tab1"}
-            >
-              123
-            </MDBTabsLink> */}
           </MDBTabsItem>
         </MDBTabs>
       </div>
-      <PostBtn />
-      <MDBTabsContent className="mt-4">
+      <MDBTabsContent className="">
         <MDBTabsPane show={basicActive === "tab1"}>
           <ArticlePopular />
         </MDBTabsPane>

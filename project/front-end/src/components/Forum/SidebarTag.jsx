@@ -7,16 +7,16 @@ function SidebarTag() {
       className="card rounded-4"
       style={{ filter: "drop-shadow(0px 20px 30px rgba(0, 0, 0, 0.1))" }}
     >
-      <div className="card-title IronGray-Deep rounded-top-xl p-3">
+      <div className="card-title IronGray-Deep rounded-top-xl p-2">
         <a
-          className="d-flex text-decoration-none text-white fz-2 align-items-center"
+          className="d-flex text-decoration-none text-white px-3 py-2 fs-4 align-items-center"
           href="#"
         >
           熱門關鍵字 &gt;
         </a>
       </div>
       <div className="card-body">
-        <ul className="cloud" role="navigation" aria-label="Webdev tag cloud">
+        <ul className="cloud p-2" role="navigation" aria-label="Webdev tag cloud">
           <li>
             <a data-weight={4} href="#">
               華航

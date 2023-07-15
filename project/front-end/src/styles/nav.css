@@ -97,7 +97,7 @@
   height: 2.5rem;
   background-color: #f4f2f2;
   border: none;
-  border-radius: var(--border-radius-big);
+  border-radius: var(--border-radius-small);
   width: 18vw;
   margin-right: -2.5rem;
   padding-left: 10px;
@@ -106,9 +106,13 @@
 #navbar .container-fluid #search .search__input:focus {
   outline: none;
 }
+#navbar .container-fluid #search .search__button {
+  border: none;
+  border-radius: var(--border-radius-med);
+}
 #navbar .container-fluid #search .search__button svg {
   color: var(--IronGray-Deep);
-  margin-bottom: 7px;
+  /* margin-bottom: 7px; */
   width: 30px;
 }
 #navbar .container-fluid #search .search__button:hover {

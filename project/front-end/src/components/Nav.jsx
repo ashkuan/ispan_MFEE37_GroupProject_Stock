@@ -1,15 +1,17 @@
 import React, { useContext, useEffect, useState } from "react";
 import "../styles/nav.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Cart } from "./shop/Cart";
 import { ShopContext } from "../../context/ShopContext";
 import Validation from "./loginValidation";
 import axios from "axios";
+import NavSearch from "../components/IndStock/NavSearch";
 
 const Navbar = () => {
-  const { products, cartItems } = useContext(ShopContext);
-  const [totalCartItemAmount, setTotalCartItemAmount] = useState(0);
+  // 購物車
+  const { totalCartItemAmount } = useContext(ShopContext);
 
+  // 會員
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [values, setValues] = useState({
     email: "",
@@ -43,17 +45,6 @@ const Navbar = () => {
     }
   };
 
-  // 計算總數
-  useEffect(() => {
-    let totalAmount = 0;
-    products.map((product) => {
-      const { pid } = product;
-      const cartItemAmount = cartItems[pid];
-      totalAmount += cartItemAmount;
-    });
-    setTotalCartItemAmount(totalAmount);
-  }, [cartItems]);
-
   return (
     <>
       <nav className="navbar navbar-expand-lg" id="navbar">
@@ -86,7 +77,6 @@ const Navbar = () => {
             </svg>
             <span className="logoname">股估績</span>
           </Link>
-
           <button
             className="navbar-toggler"
             type="button"
@@ -128,23 +118,7 @@ const Navbar = () => {
             </ul>
             {/*右邊*/}
             <div className="d-flex align-items-center justify-content-around">
-              <div id="search">
-                <input
-                  type="text"
-                  className="search__input"
-                  placeholder="搜尋台股代號/名稱"
-                />
-                <button type="submit" className="search__button">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    className="bi bi-search"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                  </svg>
-                </button>
-              </div>
+              <NavSearch></NavSearch>
               <span className="d-flex mb-3 mx-2 cart-icon">
                 <button
                   id="cartBtn"

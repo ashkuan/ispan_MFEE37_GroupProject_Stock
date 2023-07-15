@@ -13,10 +13,18 @@ export const StockContextProvider = (props) => {
     regularMarketPrice: "",
     regularMarketVolume: "",
     regularMarketPreviousClose: "",
+    averageDailyVolume3Month: "",
+    averageDailyVolume10Day: "",
+    regularMarketChangePercent: "",
   });
 
   return (
-    <StockContext.Provider value={{ stockInfo, setStockInfo }}>
+    <StockContext.Provider
+      value={{
+        stockInfo,
+        setStockInfo,
+      }}
+    >
       {props.children}
     </StockContext.Provider>
   );

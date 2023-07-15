@@ -8,7 +8,7 @@ import SidebarNews from "../Forum/SidebarNews.jsx";
 import Post from "../Forum/Post.jsx";
 import ArticleSort from "../Forum/ArticleSort.jsx";
 import LineChart from "../linechart";
-import ArticlePart from "./ArticlePart";
+import Article from "./Article";
 import PostBtn from "./PostBtn";
 import { useNavigate } from "react-router-dom";
 
@@ -34,9 +34,9 @@ const Targets = () => {
                 </button>
               </div>
 
-              <PostBtn className="mt-4" />
+              <PostBtn className="mt-4"/>
               <div className="BArticle mt-4 pt-4">
-                <ArticlePart />
+                <Article />
               </div>
             </div>
           </div>

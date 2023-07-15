@@ -15,41 +15,39 @@ import RookieQuiz from "../components/rookie/RookieQuiz.jsx";
 const Rookie = () => {
   return (
     <>
-   
-      <div className="container mt-3">
-        <h1 className="ml1 title d-flex justify-content-around ">
-          <div id="rookie"> 新手上路</div>
-        </h1>
-       
-        <div className="text-center m-45"><RookieQuiz/></div>
-        <RookieListBtn />
-        <span className="d-flex justify-content-around mt-5" id="openbank">
-          <span className="titlebox " >證券開戶</span>
-        </span>
-        <div className="m-45">
-          <AccordionOpen />
-        </div>
-        <span
-          className="d-flex justify-content-around  "
-          style={{ paddingTop: "10%", margin: 0 }}
-          id="stockdoor"
-        >
-          <span className="titlebox">股票入門</span>
-        </span>
-        <div className="m-45">
-          <AccordionStock />
-        <div><img src="/public/" alt="" /></div>
-        </div>
-        
-        <span
-          className="d-flex justify-content-around  "
-          style={{ paddingTop: "10%" }}
-          
-        >
-          <span className="titlebox" id="etfdoor">ETF入門</span>
-        </span>
 
-        <div className="m-45"><AccordionEtf/></div>
+      <div className="container mt-2">
+        <h1 id="rookie" className="ml1 title mb-5 d-flex justify-content-center text-IronGray-Deep">
+          新手上路
+        </h1>
+        <div className="text-center mb-5"><RookieQuiz /></div>
+        <div className="d-flex justify-content-center mt-3 mb-5">
+          <RookieListBtn />
+        </div>
+        <span className="d-flex justify-content-around mt-5" id="openbank">
+          <span className="titlebox py-2 text-IronGray-Deep" >證券開戶</span>
+        </span>
+        <div className="row d-flex justify-content-center">
+          <div className="col-9 m-1">
+            <AccordionOpen />
+          </div>
+        </div>
+        <span className="d-flex justify-content-around mt-5" id="stockdoor">
+          <span className="titlebox py-2 text-IronGray-Deep">股票入門</span>
+        </span>
+        <div className="row d-flex justify-content-center">
+          <div className="col-9 m-1">
+            <AccordionStock />
+          </div>
+        </div>
+        <div className="d-flex justify-content-around mt-5" id="etfdoor">
+          <span className="titlebox py-2 text-IronGray-Deep">ETF入門</span>
+        </div>
+        <div className="row d-flex justify-content-center">
+          <div className="col-9 m-1">
+            <AccordionEtf />
+          </div>
+        </div>
       </div>
       <RookieOpenBank />
       <Footer />

@@ -36,12 +36,14 @@ function App() {
             <Route path="/stock-index" element={<StockIndex />} />
             <Route path="/indStock" element={<IndStock />} />
             <Route path="/forum">
-              <Route index element={<Forum></Forum>} />
+              <Route index element={<Forum />} />
               <Route path="/forum/chats" element={<Chats />} />
               <Route path="/forum/news" element={<News />} />
               <Route path="/forum/targets" element={<Targets />} />
               <Route path="/forum/questions" element={<Questions />} />
               <Route path="/forum/notes" element={<Notes />} />
+              {/* <Route path="/forum/thoughts" element={<Thoughts />} /> */}
+              {/* <Route path="/forum/others" element={<Others />} /> */}
             </Route>
             <Route path="/register" element={<Register />} />
             <Route path="/member" element={<Member />} />
@@ -50,7 +52,7 @@ function App() {
             <Route path="/member/col" element={<MemberCol />} />
             <Route path="/member/artical" element={<MemberArtical />} />
             <Route path="/shop">
-              <Route index element={<Shop></Shop>} />
+              <Route index element={<Shop />} />
               <Route path="/shop/myproduct" element={<Myproduct />} />
               <Route path="/shop/history" element={<History />} />
               <Route path="/shop/checkout" element={<Checkout />} />

@@ -4,19 +4,15 @@ import React from 'react'
 const RookieListBtn = () => {
   return (
     <>
-
-    <div className="connectbtn d-flex justify-content-evenly ">
-      <a href="#openbank" className="btn choosebtn btn-47">
+      <a href="#openbank" className="btn connectbtn choosebtn btn-47 p-4">
         證券開戶
       </a>
-      <a href="#stockdoor" className="btn choosebtn btn-47">
+      <a href="#stockdoor" className="btn connectbtn choosebtn btn-47 p-4">
         股票入門
       </a>
-      <a href="#etfdoor" className="btn choosebtn btn-47 ">
+      <a href="#etfdoor" className="btn connectbtn choosebtn btn-47 p-4">
         ETF入門
       </a>
-     
-    </div>
   </>
   
   )

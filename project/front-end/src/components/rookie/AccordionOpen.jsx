@@ -31,7 +31,7 @@ const AccordionOpen = () => {
             <Accordion.Header>
               <div className="articalword">{res.title}</div>
             </Accordion.Header>
-            <Accordion.Body className="articalword"><pre>{res.article}</pre></Accordion.Body>
+            <Accordion.Body className="articalword text-wrap p-5">{res.article}</Accordion.Body>
           </Accordion.Item>
         </Accordion>
       ))}

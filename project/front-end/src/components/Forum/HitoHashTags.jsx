@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-const HitoHashTags = () => {
+const HitoHashTags = (props) => {
   const [tags, setTags] = useState([]);
+  const faid = props.data;
   useEffect(() => {
     const fetchAllTag = async () => {
       try {
-        const res = await axios.get("http://localhost:5789/posts");
-        setTags(res.data);
+        const res = await axios.post("http://localhost:5789/getFaid", {
+          faid: faid,
+        });
+        // console.log(faidRes.data);
+        // console.log(res.data);
+        setTags(res.data)
       } catch (err) {
         console.log(err);
       }
