@@ -11,6 +11,7 @@ import LineChart from "../linechart";
 import Article from "./Article";
 import PostBtn from "./PostBtn";
 import { useNavigate } from "react-router-dom";
+import NewsArticle from "./NewsArticle";
 
 const News = () => {
   let navigate = useNavigate();
@@ -36,7 +37,7 @@ const News = () => {
 
               <PostBtn className="mt-4" />
               <div className="BArticle mt-4 pt-4">
-                <Article />
+                <NewsArticle/>
               </div>
             </div>
           </div>

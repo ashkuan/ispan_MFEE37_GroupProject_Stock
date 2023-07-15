@@ -83,7 +83,35 @@ app.get("/posts", (req, res) => {
 app.get("/posts/new", (req, res) => {
   const sql =
     // "SELECT `faid`,  `fatitle`, `farticle`, `faimage`, `likeCount`, `fboard`, `fhashtag`, `createTime`, `updateTime` FROM `ForumArticle` innerjoin  ";
-    "SELECT * FROM `ForumArticle` inner join  login on ForumArticle.uid = login.uid ORDER BY `createTime `";
+    "SELECT * FROM `ForumArticle` inner JOIN  login on ForumArticle.uid = login.uid ORDER BY `createTime` DESC";
+  connToDBHelper.query(sql, [], (err, data) => {
+    if (err) {
+      return "無法成功顯示發文";
+    } else {
+      return res.json(data);
+    }
+  });
+});
+
+//選擇熱門文章
+app.get("/posts/popular", (req, res) => {
+  const sql =
+    // "SELECT `faid`,  `fatitle`, `farticle`, `faimage`, `likeCount`, `fboard`, `fhashtag`, `createTime`, `updateTime` FROM `ForumArticle` innerjoin  ";
+    // "SELECT *FROM `ForumArticle`ORDER BY `likeCount` DESC ";
+    "SELECT *FROM `ForumArticle`LEFT JOIN `login` ON `ForumArticle`.`uid` = `login`.`uid`ORDER BY `likeCount` DESC";
+  connToDBHelper.query(sql, [], (err, data) => {
+    if (err) {
+      return "無法成功顯示發文";
+    } else {
+      return res.json(data);
+    }
+  });
+});
+
+//選擇收藏文章
+app.get("/posts/keep", (req, res) => {
+  const sql =
+    "SELECT *FROM `ForumArticle`LEFT JOIN `login` ON `ForumArticle`.`uid` = `login`.`uid` where `collect` = 1 order by `updateTime`";
   connToDBHelper.query(sql, [], (err, data) => {
     if (err) {
       return "無法成功顯示發文";
@@ -212,12 +240,24 @@ app.post("/messages", (req, res) => {
   }
 });
 
-
+//閒聊
 app.get('/chats',(req,res)=>{
   const sql = 'SELECT `faid`,  `fatitle`, `farticle`, `faimage`, `likeCount`, `fboard`, `fhashtag`, `createTime`, `updateTime` FROM `ForumArticle` WHERE fboard = "閒聊"';
   connToDBHelper.query(sql,(err,data)=>{
     if (err) {
       return "閒聊版連接錯誤";
+    } else {
+      return res.json(data);
+    }
+  })
+})
+
+//新聞
+app.get('/news',(req,res)=>{
+  const sql = 'SELECT `faid`,  `fatitle`, `farticle`, `faimage`, `likeCount`, `fboard`, `fhashtag`, `createTime`, `updateTime` FROM `ForumArticle` WHERE fboard = "新聞"';
+  connToDBHelper.query(sql,(err,data)=>{
+    if (err) {
+      return "新聞版連接錯誤";
     } else {
       return res.json(data);
     }
