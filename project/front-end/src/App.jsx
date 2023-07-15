@@ -22,8 +22,10 @@ import Targets from "../src/components/Forum/Targets";
 import Questions from "../src/components/Forum/Questions";
 import Notes from "../src/components/Forum/Notes";
 import { StockContextProvider } from "../context/StockContext";
+import Modal from 'react-modal';
 
 function App() {
+  Modal.setAppElement('#root'); // 设置 appElement
   return (
     <ShopContextProvider>
       <StockContextProvider>

@@ -280,6 +280,7 @@ const Navbar = () => {
                       name="email"
                       className="member-inp"
                       placeholder="輸入您的信箱"
+                      
                     />
                     {errors.email && (
                       <p className="text-danger">{errors.email}</p>
@@ -296,6 +297,7 @@ const Navbar = () => {
                       name="password"
                       className="member-inp "
                       placeholder="輸入您的密碼"
+                      
                     />
                     {errors.password && (
                       <p className="text-danger">{errors.password}</p>
