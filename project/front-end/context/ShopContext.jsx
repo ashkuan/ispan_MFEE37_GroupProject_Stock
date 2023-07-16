@@ -129,7 +129,7 @@ export const ShopContextProvider = (props) => {
     return cartTotal;
   };
 
-  // 計算總數
+  // 計算購物車總數
   useEffect(() => {
     let totalAmount = 0;
     products.map((product) => {

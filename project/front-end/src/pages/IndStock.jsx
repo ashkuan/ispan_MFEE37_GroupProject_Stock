@@ -9,17 +9,19 @@ const IndStock = () => {
   const { stockInfo } = useContext(StockContext);
   const [stockName, setStockName] = useState("");
   const inputValue = stockInfo.inputValue;
-  axios
-    .post("http://localhost:5678/stockName", { data: inputValue })
-    .then((res) => {
-      // console.log(res.data);
-      const name = res.data;
-      setStockName(name);
-    })
-    .catch((error) => {
-      console.log(error);
-      console.log("股票中文名稱獲取失敗");
-    });
+  if (inputValue !== "") {
+    axios
+      .post("http://localhost:5678/stockName", { data: inputValue })
+      .then((res) => {
+        // console.log(res.data);
+        const name = res.data;
+        setStockName(name);
+      })
+      .catch((error) => {
+        console.log(error);
+        console.log("股票中文名稱獲取失敗");
+      });
+  }
   return (
     <>
       <div className="container">
@@ -33,11 +35,8 @@ const IndStock = () => {
             </a>
           </div>
         </div>
-        {/* 個股介紹 */}
-        <div className="d-flex align-items-center">
-          {/* 個股走勢圖 */}
-          <IndStockChart></IndStockChart>
-        </div>
+        {/* 個股走勢圖 */}
+        <IndStockChart></IndStockChart>
         {/* 個股股市 */}
         <div id="indStocksIndex" className="mt-5">
           <p
