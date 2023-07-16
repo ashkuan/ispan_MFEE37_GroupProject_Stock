@@ -96,6 +96,7 @@ app.post("/sendOrder", async (req, res) => {
         console.log("訂單儲存失敗");
       } else {
         console.log("訂單儲存成功");
+        res.send("訂單已送出");
       }
     });
   } catch (err) {
