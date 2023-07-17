@@ -64,18 +64,58 @@ app.post("/register", upload.single("avatar"), (req, res) => {
 
 // 新增會員郵件
 app.post("/member/mail/addMail", (req, res) => {
-  const { uid, message, stats, time } = req.body;
+  const { uid, message, stats, time ,code} = req.body;
 
-  const sql = "INSERT INTO membermessage (uid, message, stats, time) VALUES (?, ?, ?, ?)";
-  const values = [uid, message, stats, time];
+  const memberMessageSql =
+    "INSERT INTO membermessage (uid, message, stats, time) VALUES (?, ?, ?, ?)";
+  const memberMessageValues = [uid, message, stats, time];
 
-  db.query(sql, values, (err, result) => {
+  const couponSql = "INSERT INTO coupon (code, time) VALUES (?, ?)";
+  const couponValues = [code, new Date()];
+
+  db.query(memberMessageSql, memberMessageValues, (err, result) => {
     if (err) {
       console.log(err);
       return res.status(500).json("Internal Server Error");
     }
     console.log("會員郵件新增成功");
-    return res.json("Success");
+
+    // 在 coupon 表中新增
+    db.query(couponSql, couponValues, (err, result) => {
+      if (err) {
+        console.log(err);
+        return res.status(500).json("Internal Server Error");
+      }
+      console.log("coupon 表插入成功");
+      // return res.json("Success");
+    });
+    // 取得 coupon code 的值
+    const getCodeSql = "SELECT code FROM coupon ORDER BY cid DESC LIMIT 1";
+    db.query(getCodeSql, (err, result) => {
+      if (err) {
+        console.log(err);
+        return res.status(500).json("Internal Server Error");
+      }
+
+      if (result.length > 0) {
+        const couponCode = result[0].code;
+        console.log("coupon code:", couponCode);
+        const message2 = " 本文件內容為商城折扣碼(" + couponCode + ")，使用該折扣碼可在商城享受300元的折價優惠。請在結帳時輸入折扣碼，即可享受這項優惠。優惠期限為有限，請盡早使用以獲取折扣。"
+        // 在這裡您可以對 coupon code 做進一步處理或使用
+        const memberMessageSql2 = 
+        "INSERT INTO membermessage (uid, message, stats, time) VALUES (?, ?, ?, ?)";
+        const memberMessageValues2 = [uid, message2, stats, time];
+        db.query(memberMessageSql2, memberMessageValues2, (err, result) => {
+          if (err) {
+            console.log(err);
+            return res.status(500).json("Internal Server Error");
+          }
+          console.log("折價券信件新增成功");
+          return res.json("Success");
+        });
+
+      }
+    });
   });
 });
 
@@ -123,6 +163,7 @@ app.post("/logout", (req, res) => {
   req.session.destroy();
   return res.json("success");
 });
+
 //會員MESSAGE
 app.get("/member/mail", (req, res) => {
   const uid = req.session.user.uid;
@@ -150,7 +191,7 @@ app.get("/member/mail", (req, res) => {
 app.put("/member/mail/updateStats", (req, res) => {
   const message = req.body.message;
   const mid = req.body.mid;
-  console.log('hihi')
+  console.log("hihi");
   const sql = "UPDATE membermessage SET stats = 1 WHERE mid = ?";
   db.query(sql, [mid], (err, result) => {
     if (err) {
@@ -177,7 +218,39 @@ app.delete("/member/mail/:mid", (req, res) => {
   });
 });
 
+//檢視我的文章
+app.get("/member/artical", (req, res) => {
+  if (!req.session.user) {
+    console.log("User session not found");
+    return res.status(401).json("Unauthorized");
+  }
 
+  const uid = req.session.user.uid;
+  const sql = "SELECT * FROM ForumArticle WHERE uid = ?";
+
+  db.query(sql, [uid], (err, data) => {
+    if (err) {
+      console.log(err);
+      return res.status(500).json("Internal Server Error");
+    }
+
+    return res.json(data);
+  });
+});
+//刪除我的文章
+app.delete("/member/artical/:faid", (req, res) => {
+  const faid = req.params.faid;
+
+  const sql = "DELETE FROM ForumArticle WHERE faid = ?";
+  db.query(sql, [faid], (err, result) => {
+    if (err) {
+      console.log(err);
+      return res.status(500).json("Internal Server Error");
+    }
+    console.log("發文已成功刪除");
+    return res.json("Success");
+  });
+});
 
 app.listen(3000, () => {
   console.log(

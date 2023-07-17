@@ -298,6 +298,14 @@
 #memberModal .member-account .member-inp {
   border-radius: 10px;
 }
+.member-inp{
+  width: 260px;
+  height: 50px;
+  border-radius: 10px;
+  font-size: 1.3rem;
+  padding-left: 10px;
+}
+
 #memberModal .btn-login {
   font-size: 1.5rem;
   color: var(--White);

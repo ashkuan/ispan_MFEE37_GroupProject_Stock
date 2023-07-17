@@ -24,8 +24,8 @@ td{
 }
 .art-title{
   /* background-color: aqua; */
-  width: 400px;
-  margin-left: -50px;
+  width: 300px;
+  margin-left: -80px;
   margin-right: 50px;
   margin-top: 10px;
 }
@@ -41,10 +41,14 @@ td{
   margin-left: -50px;
   margin-right: 10px;
   margin-top: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .art-td-time{
   /* background-color: #1b3248; */
   margin-left: -90px;
+  margin-right: 40px;
   margin-top: 10px;
 }
 .art-btn{
@@ -53,6 +57,9 @@ td{
 .art-page-btn-container{
   display: flex;
   justify-content: center;
+  position: fixed;
+  bottom: 12%;
+  left: 45%;
 }
 .art-page-btn-container-2{
   width: 300px;

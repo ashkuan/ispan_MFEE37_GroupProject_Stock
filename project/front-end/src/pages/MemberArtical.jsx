@@ -1,8 +1,64 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/MemberArtical.css";
 import Sidebar from "../components/Sidebar";
+import axios from "axios";
 
 const MemberArtical = () => {
+  const [articles, setArticles] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    fetchArticles();
+  }, []);
+
+  const fetchArticles = () => {
+    axios
+      .get("http://localhost:3000/member/artical", { withCredentials: true })
+      .then((response) => {
+        setArticles(response.data);
+        // setMessages(res.data.messages);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  // 每頁顯示的文章數量
+  const articlesPerPage = 5;
+
+  // 計算總頁數
+  const totalPages = Math.ceil(articles.length / articlesPerPage);
+
+  // 取得當前頁面的文章
+  const indexOfLastArticle = currentPage * articlesPerPage;
+  const indexOfFirstArticle = indexOfLastArticle - articlesPerPage;
+  const currentArticles = articles.slice(indexOfFirstArticle, indexOfLastArticle);
+
+  // 切換到上一頁
+  const goToPreviousPage = () => {
+    setCurrentPage((prevPage) => prevPage - 1);
+  };
+
+  // 切換到下一頁
+  const goToNextPage = () => {
+    setCurrentPage((prevPage) => prevPage + 1);
+  };
+// 刪除文章
+const handleDelete = (article) => {
+  const confirmDelete = window.confirm("確定要刪除嗎？");
+
+  if (confirmDelete) {
+    axios
+      .delete(`http://localhost:3000/member/artical/${article.faid}`)
+      .then((res) => {
+        console.log("資料已成功刪除");
+        setArticles((prevArticles) =>
+          prevArticles.filter((prevArticle) => prevArticle.faid !== article.faid)
+        );
+      })
+      .catch((err) => console.log(err));
+  }
+};
   return (
     <>
       <Sidebar></Sidebar>
@@ -20,92 +76,32 @@ const MemberArtical = () => {
               </tr>
             </thead>
             <tbody>
-              <tr className="art-row">
-                <td className="art-td-header text-left">
-                  <div className=" art-title">我的今日焦點股</div>
-                </td>
-                <td className="text-center">
-                  <div className="art-td-time">2023/01/17</div>
-                </td>
-                <td>
-                  <div className="text-center  art-td-contant">
-                    認真問 從沒翻正過的股票 ...
-                  </div>
-                </td>
-                <td className="art-text-center">
-                  <button className="del-btn art-btn">刪除</button>
-                </td>
-              </tr>
-              <tr className="art-row">
-                <td className="art-td-header text-left">
-                  <div className=" art-title">論不成功投資者的樣貌</div>
-                </td>
-                <td className="text-center">
-                  <div className="art-td-time">2023/01/17</div>
-                </td>
-                <td>
-                  <div className="text-center  art-td-contant">
-                    理論看法更新：投資與人生哲學...
-                  </div>
-                </td>
-                <td className="art-text-center">
-                  <button className="del-btn art-btn">刪除</button>
-                </td>
-              </tr>
-              <tr className="art-row">
-                <td className="art-td-header text-left">
-                  <div className=" art-title">0705台股盤前</div>
-                </td>
-                <td className="text-center">
-                  <div className="art-td-time">2023/01/17</div>
-                </td>
-                <td>
-                  <div className="text-center  art-td-contant">
-                    台股開盤指數17055點下跌29點...
-                  </div>
-                </td>
-                <td className="art-text-center">
-                  <button className="del-btn art-btn">刪除</button>
-                </td>
-              </tr>
-              <tr className="art-row">
-                <td className="art-td-header text-left">
-                  <div className=" art-title">個人新聞解讀及產業新聞</div>
-                </td>
-                <td className="text-center">
-                  <div className="art-td-time">2023/01/17</div>
-                </td>
-                <td>
-                  <div className="text-center  art-td-contant">
-                    只要三分鐘，與股市不脫鉤 養成...
-                  </div>
-                </td>
-                <td className="art-text-center">
-                  <button className="del-btn art-btn">刪除</button>
-                </td>
-              </tr>
-              <tr className="art-row">
-                <td className="art-td-header text-left">
-                  <div className=" art-title">專欄晚報精選文章</div>
-                </td>
-                <td className="text-center">
-                  <div className="art-td-time">2023/01/17</div>
-                </td>
-                <td>
-                  <div className="text-center  art-td-contant">
-                    各位晚上好，昨晚有提到...
-                  </div>
-                </td>
-                <td className="art-text-center">
-                  <button className="del-btn art-btn">刪除</button>
-                </td>
-              </tr>
+              {currentArticles.map((article) => (
+                <tr key={article.faid} className="art-row">
+                  <td className="art-td-header text-left">
+                    <div className=" art-title">{article.fatitle}</div>
+                  </td>
+                  <td className="text-center">
+                    <div className="art-td-time">{article.createTime.substring(0, 10)}</div>
+                  </td>
+                  <td>
+                    <div className="text-center  art-td-contant">{article.farticle}</div>
+                  </td>
+                  <td className="art-text-center">
+                    <button className="del-btn art-btn" onClick={() => handleDelete(article)}>刪除</button>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
           <div className="art-page-btn-container">
             <div className="art-page-btn-container-2">
-              <button className="art-page-btn">上一頁</button>
-              <button className="art-page-btn">下一頁</button>
+              <button onClick={goToPreviousPage} disabled={currentPage === 1} className="art-page-btn">
+                上一頁
+              </button>
+              <button onClick={goToNextPage} disabled={currentPage === totalPages} className="art-page-btn">
+                下一頁
+              </button>
             </div>
           </div>
         </div>
