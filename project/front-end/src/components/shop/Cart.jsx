@@ -76,7 +76,14 @@ export const Cart = () => {
                       style={{ width: 50 }}
                       value={cartItemAmount}
                       onChange={(e) => {
-                        updateCartItemAmount(Number(e.target.value), pid);
+                        if (e.target.value !== "") {
+                          updateCartItemAmount(Number(e.target.value), pid);
+                        }
+                      }}
+                      onKeyDown={(e) => {
+                        if (e.key === "Backspace") {
+                          e.target.value = ""; // 清空輸入框的值
+                        }
                       }}
                     ></input>
                     <button

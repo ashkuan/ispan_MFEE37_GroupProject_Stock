@@ -65,7 +65,7 @@ const NavSearch = () => {
   }
 
   return (
-    <form id="search" onSubmit={handleInputSubmit}>
+    <form id="navSearch" onSubmit={handleInputSubmit}>
       <input
         type="text"
         className="search__input"

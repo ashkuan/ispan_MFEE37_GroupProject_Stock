@@ -14,43 +14,44 @@ const IndStockChart = () => {
   // console.log(stockInfo.inputValue);
   const inputValue = stockInfo.inputValue;
   // console.log(inputValue);
-
-  useEffect(() => {
-    axios
-      .post("http://localhost:5678/stockChart", {
-        data: { inputValue, perRange, range },
-      })
-      .then((res) => {
-        // console.log(res.data);
-        // console.log(res.data.indicators.adjclose[0].adjclose);
-        // console.log(res.data.timestamp);
-        const Prices = res.data.indicators.adjclose[0].adjclose;
-        const Dates = res.data.timestamp;
-        const myStockDate = [];
-        const myStockPrice = [];
-        // 股票日期
-        Dates.map((time) => {
-          // console.log(time);
-          const date = new Date(time * 1000);
-          // console.log(date.toDateString());
-          const dataString = date.toDateString().slice(4, 10);
-          myStockDate.push(dataString);
-          // console.log(myStockDate);
-          setStockDate(myStockDate);
+  if (inputValue !== "") {
+    useEffect(() => {
+      axios
+        .post("http://localhost:5678/stockChart", {
+          data: { inputValue, perRange, range },
+        })
+        .then((res) => {
+          // console.log(res.data);
+          // console.log(res.data.indicators.adjclose[0].adjclose);
+          // console.log(res.data.timestamp);
+          const Prices = res.data.indicators.adjclose[0].adjclose;
+          const Dates = res.data.timestamp;
+          const myStockDate = [];
+          const myStockPrice = [];
+          // 股票日期
+          Dates.map((time) => {
+            // console.log(time);
+            const date = new Date(time * 1000);
+            // console.log(date.toDateString());
+            const dataString = date.toDateString().slice(4, 10);
+            myStockDate.push(dataString);
+            // console.log(myStockDate);
+            setStockDate(myStockDate);
+          });
+          // 股票價格
+          Prices.map((price) => {
+            // console.log(price);
+            myStockPrice.push(price.toFixed(2));
+            // console.log(myStockPrice);
+            setStockPrice(myStockPrice);
+          });
+        })
+        .catch((err) => {
+          console.log("stock傳送失敗");
+          console.log(err);
         });
-        // 股票價格
-        Prices.map((price) => {
-          // console.log(price);
-          myStockPrice.push(price.toFixed(2));
-          // console.log(myStockPrice);
-          setStockPrice(myStockPrice);
-        });
-      })
-      .catch((err) => {
-        console.log("stock傳送失敗");
-        console.log(err);
-      });
-  }, [range]);
+    }, [range]);
+  }
 
   const options = {
     chart: {

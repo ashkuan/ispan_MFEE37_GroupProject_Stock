@@ -60,7 +60,7 @@ const HotNewMessageTabs = () => {
           role="tabpanel"
           aria-labelledby="tab02"
         >
-          <SmallNewMessage />
+          {/* <SmallNewMessage /> */}
         </div>
       </div>
     </>

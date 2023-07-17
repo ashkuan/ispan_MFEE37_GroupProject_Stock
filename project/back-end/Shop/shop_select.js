@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import db from "../DB/DBconfig.js";
+
 var app = express();
 app.use(cors());
 app.use(express.json()); // 將接收到的JSON格式的資料轉換為JS物件

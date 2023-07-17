@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import Navbar from "../components/Nav";
+import Footer from "../components/Footer";
 import "../styles/checkout.css";
 import { ShopContext } from "../../context/ShopContext";
 
@@ -15,17 +16,17 @@ const Checkout = () => {
     <>
       <Navbar></Navbar>
       {/* 主要內容 */}
-      <div className="container checkoutContainer">
-        {/* 結帳左邊 */}
-        <div id="left" className="px-5 py-4">
-          <div id="user" className="fw-bold">
-            <img
-              className="sidebar-userphoto"
-              src="/public/img/memberimg/Mask Group.svg"
-            />
-            <p id="userName">AR Jakir</p>
-          </div>
-          <form>
+      <form action="http://localhost:5567/sendOrder" method="post">
+        <div className="container checkoutContainer">
+          {/* 結帳左邊 */}
+          <div id="left" className="px-5 py-4">
+            <div id="user" className="fw-bold">
+              <img
+                className="sidebar-userphoto"
+                src="/public/img/memberimg/Mask Group.svg"
+              />
+              <p id="userName">AR Jakir</p>
+            </div>
             {/* 手機號碼 */}
             <div className="mb-4">
               <label htmlFor="phone" className="form-label">
@@ -47,6 +48,7 @@ const Checkout = () => {
                 type="email"
                 className="form-control"
                 id="email"
+                name="email"
                 placeholder="請輸入您的email"
               />
             </div>
@@ -58,10 +60,11 @@ const Checkout = () => {
                 <input
                   className="form-check-input mx-4"
                   type="radio"
-                  name="flexRadioDefault"
+                  name="LogisticsType"
                   id="flexRadioDefault1"
                   defaultChecked
                   style={{ width: 30, height: 30 }}
+                  value="conve"
                 />
                 <label className="form-check-label" htmlFor="flexRadioDefault1">
                   超商取貨
@@ -72,9 +75,10 @@ const Checkout = () => {
                 <input
                   className="form-check-input mx-4"
                   type="radio"
-                  name="flexRadioDefault"
+                  name="LogisticsType"
                   id="flexRadioDefault2"
                   style={{ width: 30, height: 30 }}
+                  value="convepay"
                 />
                 <label className="form-check-label" htmlFor="flexRadioDefault2">
                   超商取貨（取貨付款）
@@ -118,9 +122,10 @@ const Checkout = () => {
                 <textarea
                   type="text"
                   className="form-control"
+                  name="message"
                   id="message"
-                  style={{ height: "100", color: "gray" }}
-                  defaultValue="留言給我們"
+                  style={{ height: "100" }}
+                  placeholder="留言給我們"
                 />
               </div>
             </div>
@@ -162,12 +167,13 @@ const Checkout = () => {
                 <input
                   className="form-check-input mx-4"
                   type="radio"
-                  name="flexRadioDefault2"
-                  id="flexRadioDefault2"
+                  name="ChoosePayment"
+                  id="flexRadioDefault3"
                   style={{ width: 30, height: 30 }}
                   defaultChecked
+                  value="creditCard"
                 />
-                <label className="form-check-label" htmlFor="flexRadioDefault2">
+                <label className="form-check-label" htmlFor="flexRadioDefault3">
                   刷卡
                 </label>
               </div>
@@ -176,102 +182,121 @@ const Checkout = () => {
                 <input
                   className="form-check-input mx-4"
                   type="radio"
-                  name="flexRadioDefault2"
-                  id="flexRadioDefault2"
+                  name="ChoosePayment"
+                  id="flexRadioDefault4"
                   style={{ width: 30, height: 30 }}
+                  value="paypal"
                 />
-                <label className="form-check-label" htmlFor="flexRadioDefault2">
+                <label className="form-check-label" htmlFor="flexRadioDefault4">
                   PayPal
                 </label>
               </div>
             </div>
-            <button id="sendOrderBtn" type="submit" className="btn fs-3 mt-5">
-              送出訂單
-            </button>
-          </form>
-        </div>
-        {/* 結帳右邊 */}
-        <div id="right" className="my-5">
-          {filteredCartItems.map((item1) => {
-            // console.log(item1);
-            const pid = item1[0];
-            const paccount = item1[1];
-            // console.log(pid);
-            // Array.prototype.some()是JS中的陣列方法，可檢查陣列中是否至少有一個元素符合指定的條件。
-            const filteredProducts = products.filter(
-              (product) => product.pid == pid
-            );
-            // console.log(filteredProducts);
-            const pname = filteredProducts[0].pname;
-            const pimage1 = filteredProducts[0].pimage1;
-            const pdesc = filteredProducts[0].pdesc;
-            const pprice = filteredProducts[0].pprice;
-            // console.log(pname);
-            // console.log(pimage);
-            return (
-              <>
-                <div
-                  id={pid}
-                  className="card d-flex flex-row align-items-start"
-                >
-                  {/* 購物車 - 左 */}
-                  {/* 購物車內容-圖 */}
-                  <img src={pimage1} className="card-img-top" />
-                  {/* 購物車 - 中 */}
-                  {/* 購物車內容-文字 */}
-                  <div className="card-body d-flex flex-column align-items-start mx-1">
-                    <p className="card-title fw-bold">{pname}</p>
-                    <p
-                      className="card-text"
-                      style={{
-                        overflow: "hidden",
-                        display: "-webkit-box",
-                        WebkitBoxOrient: "vertical",
-                        WebkitLineClamp: 2,
-                      }}
-                    >
-                      {pdesc}
-                    </p>
-                  </div>
-                  {/* 購物車 - 右 */}
+          </div>
+          {/* 結帳右邊 */}
+          <div id="right" className="my-5">
+            {filteredCartItems.map((item1) => {
+              // console.log(item1);
+              const pid = item1[0];
+              const paccount = item1[1];
+              // console.log(pid);
+              const filteredProducts = products.filter(
+                (product) => product.pid == pid
+              );
+              // console.log(filteredProducts);
+              const pname = filteredProducts[0].pname;
+              const pimage1 = filteredProducts[0].pimage1;
+              const pdesc = filteredProducts[0].pdesc;
+              const pprice = filteredProducts[0].pprice;
+              // console.log(pname);
+              // console.log(pimage);
+              return (
+                <>
                   <div
-                    className="d-flex flex-column justify-content-between align-items-end mt-3"
-                    style={{ height: 140 }}
+                    key={pid}
+                    className="card d-flex flex-row align-items-start"
                   >
-                    {/* 商品數量 */}
-                    <div className="count d-flex fw-bold">
-                      數量：
-                      <p>{paccount}</p>
+                    <input
+                      type="text"
+                      name="pid"
+                      value={`${pid}:${paccount}`}
+                      style={{ display: "none" }}
+                    />
+                    <input
+                      type="text"
+                      name="oitemName"
+                      value={`${pname}`}
+                      style={{ display: "none" }}
+                    />
+                    {/* 購物車 - 左 */}
+                    <img src={pimage1} className="card-img-top" />
+                    {/* 購物車 - 中 */}
+                    <div className="card-body d-flex flex-column align-items-start mx-1">
+                      <p className="card-title fw-bold">{pname}</p>
+                      <p
+                        className="card-text"
+                        style={{
+                          overflow: "hidden",
+                          display: "-webkit-box",
+                          WebkitBoxOrient: "vertical",
+                          WebkitLineClamp: 2,
+                        }}
+                      >
+                        {pdesc}
+                      </p>
                     </div>
-                    {/* 商品價格 */}
-                    <div className="total fw-bold">NT$ {paccount * pprice}</div>
+                    {/* 購物車 - 右 */}
+                    <div
+                      className="d-flex flex-column justify-content-between align-items-end mt-3"
+                      style={{ height: 140 }}
+                    >
+                      <div className="count d-flex fw-bold">
+                        數量：
+                        <p>{paccount}</p>
+                      </div>
+                      <div className="total fw-bold">
+                        NT$ {paccount * pprice}
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <hr />
-              </>
-            );
-          })}
-          {/* 價格 */}
-          <div id="discount">
-            <span>優惠碼</span>
-            <input type="text" placeholder="請輸入優惠碼" />
-            <span>-NT$ 60</span>
-          </div>
-          <div id="sum" className="price">
-            <p>合計</p>
-            <p>NT$ {calculateCartTotal()}</p>
-          </div>
-          <div id="fee" className="price">
-            <p>運費</p>
-            <p>NT$ 60</p>
-          </div>
-          <hr />
-          <div id="finalSum" className="price">
-            <p>總金額</p>
-            <p>NT$ {calculateCartTotal() - 60}</p>
+                  <hr />
+                </>
+              );
+            })}
+            {/* 價格 */}
+            <div id="discount">
+              <span>優惠碼</span>
+              <input name="coupon" type="text" placeholder="請輸入優惠碼" />
+              <span>-NT$ 60</span>
+            </div>
+            <div id="sum" className="price">
+              <p>合計</p>
+              <p>NT$ {calculateCartTotal()}</p>
+            </div>
+            <div id="fee" className="price">
+              <p>運費</p>
+              <p>NT$ 60</p>
+            </div>
+            <hr />
+            <div id="finalSum" className="price">
+              <p>總金額</p>
+              <input
+                name="totalAmount"
+                value={`NT$ ${calculateCartTotal() - 60}`}
+                style={{
+                  border: "none",
+                  backgroundColor: "#dddddd",
+                  textAlign: "end",
+                }}
+              ></input>
+            </div>
           </div>
         </div>
-      </div>
+        <button id="sendOrderBtn" type="submit" className="btn fs-3 mt-5">
+          送出訂單
+        </button>
+      </form>
+      <Footer></Footer>
     </>
   );
 };

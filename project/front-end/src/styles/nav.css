@@ -89,11 +89,11 @@
   background-position: 100% 100%;
   background-size: 100% 0.125rem;
 }
-#navbar .container-fluid #search {
+#navbar .container-fluid #navSearch {
   display: flex;
   margin-right: 15px;
 }
-#navbar .container-fluid #search .search__input {
+#navbar .container-fluid #navSearch .search__input {
   height: 2.5rem;
   background-color: #f4f2f2;
   border: none;
@@ -103,22 +103,22 @@
   padding-left: 10px;
   font-size: 1.15rem;
 }
-#navbar .container-fluid #search .search__input:focus {
+#navbar .container-fluid #navSearch .search__input:focus {
   outline: none;
 }
-#navbar .container-fluid #search .search__button {
+#navbar .container-fluid #navSearch .search__button {
   border: none;
   border-radius: var(--border-radius-med);
 }
-#navbar .container-fluid #search .search__button svg {
+#navbar .container-fluid #navSearch .search__button svg {
   color: var(--IronGray-Deep);
   /* margin-bottom: 7px; */
   width: 30px;
 }
-#navbar .container-fluid #search .search__button:hover {
+#navbar .container-fluid #navSearch .search__button:hover {
   transform: scale(1.1);
 }
-#navbar .container-fluid #search .search__button:active {
+#navbar .container-fluid #navSearch .search__button:active {
   transform: scale(0.9);
 }
 #cartBtn {
@@ -160,7 +160,11 @@
 #myCart .card .card-img-top {
   width: 170px;
 }
-#myCart .card .card-body .card-text {
+#myCart .card .card-body {
+  width: 50%;
+}
+#myCart .card .card-body .card-text,
+#myCart .card .card-body .card-title {
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -168,7 +172,6 @@
 }
 #myCart .cart-right {
   height: 200px;
-  /* width: 500px; */
 }
 #myCart .cart-right .amount {
   font-size: 1.5rem;
@@ -221,7 +224,7 @@
   width: 40px;
   border: none;
   background-color: transparent;
-  padding: 0;
+  padding: 30px 0 0 0;
 }
 #cartModal .modal-body .deleteBtn:hover {
   transform: scale(1.1);

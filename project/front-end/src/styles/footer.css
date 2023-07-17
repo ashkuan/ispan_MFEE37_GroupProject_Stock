@@ -37,11 +37,11 @@
 .footer-row {
   color: white;
 }
-@media screen and (max-width: 1339px) {
-  #search .search__input {
+/* @media screen and (max-width: 1339px) {
+  #navSearch .search__input {
     display: none;
   }
-  #search .search__button svg {
+  #navSearch .search__button svg {
     color: var(--White) !important;
     width: 40px !important;
     margin-bottom: 1px !important;
@@ -63,4 +63,4 @@
   #footer .links .linksContent svg {
     width: 1.5rem;
   }
-}
+} */

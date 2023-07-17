@@ -17,89 +17,92 @@
   --border-radius-small: 6px;
 }
 
-.checkoutContainer {
+form #sendOrderBtn {
+  background-color: #f17064;
+  width: 90%;
+  margin-left: 5%;
+}
+form #sendOrderBtn a {
+  color: white;
+}
+form .checkoutContainer {
   width: 100%;
   height: 100%;
   display: flex;
   margin-top: 107px;
   flex-direction: row;
 }
-.checkoutContainer #left {
+form .checkoutContainer #left {
   width: 45%;
 }
-.checkoutContainer #left #user {
+form .checkoutContainer #left #user {
   text-align: center;
   font-size: 2.2rem;
   margin-bottom: 40px;
 }
-.checkoutContainer #left #user .sidebar-userphoto {
+form .checkoutContainer #left #user .sidebar-userphoto {
   background-color: #ccc;
   padding: 15px;
   border-radius: 50%;
 }
-.checkoutContainer #left .form-label {
+form .checkoutContainer #left .form-label {
   font-size: 2.3rem;
   font-weight: bold;
 }
-.checkoutContainer #left .form-check-label {
+form .checkoutContainer #left .form-check-label {
   font-size: 1.8rem;
 }
-.checkoutContainer #left .form-select {
+form .checkoutContainer #left .form-select {
   font-size: 1.7rem;
 }
-.checkoutContainer #left input,
-.checkoutContainer #left .form-control {
+form .checkoutContainer #left input,
+form .checkoutContainer #left .form-control {
   font-size: 1.4rem;
 }
-.checkoutContainer #left #sendOrderBtn {
-  background-color: #f17064;
-  color: white;
-  width: 100%;
-}
-.checkoutContainer #right {
+form .checkoutContainer #right {
   margin-top: 50px;
   width: 55%;
   background: var(--bg-Second-Gray);
   padding: 5px;
   border-radius: var(--border-radius-big);
 }
-.checkoutContainer #right .card {
+form .checkoutContainer #right .card {
   background: var(--bg-Second-Gray);
   border: none;
   padding: 30px;
 }
-.checkoutContainer #right .card .card-img-top {
+form .checkoutContainer #right .card .card-img-top {
   width: 25%;
 }
-.checkoutContainer #right .card .card-body {
+form .checkoutContainer #right .card .card-body {
   width: 50%;
 }
-.checkoutContainer #right .card .card-body .card-title {
+form .checkoutContainer #right .card .card-body .card-title {
   font-size: 1.7rem;
 }
-.checkoutContainer #right .card .card-body .card-text {
+form .checkoutContainer #right .card .card-body .card-text {
   font-size: 1.2rem;
 }
-.checkoutContainer #right .card .count {
+form .checkoutContainer #right .card .count {
   font-size: 1.5rem;
 }
-.checkoutContainer #right .card .total {
+form .checkoutContainer #right .card .total {
   font-size: 2rem;
 }
-.checkoutContainer #right .price {
+form .checkoutContainer #right .price {
   padding: 10px 30px;
   display: flex;
   justify-content: space-between;
   font-size: 1.8rem;
 }
-.checkoutContainer #right #discount {
+form .checkoutContainer #right #discount {
   margin-bottom: 20px;
   padding: 0px 10px 0 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.checkoutContainer #right #discount input {
+form .checkoutContainer #right #discount input {
   font-size: 1.3rem;
   width: 50%;
   padding: 10px;
@@ -107,13 +110,13 @@
   border-radius: 10px;
   margin-right: 5%;
 }
-.checkoutContainer #right #discount span {
+form .checkoutContainer #right #discount span {
   font-size: 1.8rem;
   color: red;
   font-weight: normal;
 }
-.checkoutContainer #right #finalSum {
+form .checkoutContainer #right #finalSum {
   font-weight: bold;
   font-size: 2.2rem;
   margin-top: 0px;
-}
+}/*# sourceMappingURL=checkout.css.map */
