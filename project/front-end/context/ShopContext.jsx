@@ -132,10 +132,12 @@ export const ShopContextProvider = (props) => {
   // 計算購物車總數
   useEffect(() => {
     let totalAmount = 0;
-    products.map((product) => {
+    products.forEach((product) => {
       const { pid } = product;
       const cartItemAmount = cartItems[pid];
-      totalAmount += cartItemAmount;
+      if (!isNaN(cartItemAmount)) {
+        totalAmount += cartItemAmount;
+      }
     });
     setTotalCartItemAmount(totalAmount);
   }, [cartItems]);

@@ -46,10 +46,10 @@ const Navbar = () => {
   };
   function handleClick() {
     // 觸發ESC按鈕的按下事件
-    console.log("123")
-    var escapeEvent = new KeyboardEvent('keydown', {
-      key: 'Escape',
-      keyCode: 27
+    console.log("123");
+    var escapeEvent = new KeyboardEvent("keydown", {
+      key: "Escape",
+      keyCode: 27,
     });
     document.dispatchEvent(escapeEvent);
   }
@@ -263,7 +263,6 @@ const Navbar = () => {
                       name="email"
                       className="member-inp"
                       placeholder="輸入您的信箱"
-                      
                     />
                     {errors.email && (
                       <p className="text-danger">{errors.email}</p>
@@ -280,7 +279,6 @@ const Navbar = () => {
                       name="password"
                       className="member-inp"
                       placeholder="輸入您的密碼"
-                      
                     />
                     {errors.password && (
                       <p className="text-danger">{errors.password}</p>
@@ -290,7 +288,11 @@ const Navbar = () => {
                     <button type="submit" className="btn btn-login">
                       登入
                     </button>
-                    <Link to="/register" className="btn btn-register" onClick={handleClick}>
+                    <Link
+                      to="/register"
+                      className="btn btn-register"
+                      onClick={handleClick}
+                    >
                       註冊
                     </Link>
                   </div>
