@@ -11,8 +11,8 @@ const MessageModal = ({ isOpen, onClose, message }) => {
       portalClassName="custom-modal-portal"
     >
       <div>
-        <p>{message}</p>
-        <button onClick={onClose}>Close</button>
+        <p className="mailcontent">{message}</p>
+        <button className="del-btn colbtn" onClick={onClose}>關閉</button>
       </div>
     </Modal>
   );
