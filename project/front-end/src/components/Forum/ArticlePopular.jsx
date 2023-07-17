@@ -188,7 +188,7 @@ function ArticlePopular() {
                     <div className="text-secondary fs-5 p-4 d-flex justify-content-between">
                       <div className="d-flex">
                         {/* <Emoji /> */}
-                        {/* <EmojiButton data={faid} /> */}
+                        <EmojiButton data={faid} />
                         <MessageQuantity />
                       </div>
                       <div className="d-flex">

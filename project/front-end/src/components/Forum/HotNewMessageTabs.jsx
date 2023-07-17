@@ -10,7 +10,7 @@ const HotNewMessageTabs = () => {
           {/* hotTabs */}
           <li className="nav-item" role="presentation">
             <a
-              class="nav-link me-2 text-decoration-none 
+              className="nav-link me-2 text-decoration-none 
                                 IronGray-Deep text-white fz-3 rounded-5 px-3 py-2"
               href="#"
               id="tab01"
