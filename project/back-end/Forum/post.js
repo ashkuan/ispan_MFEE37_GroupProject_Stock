@@ -124,7 +124,7 @@ app.get("/posts/keep", (req, res) => {
 
 //抓文章id
 app.post("/getFaid", (req, res) => {
-  const sql = "SELECT * FROM ForumArticle where `faid` = ? ";
+  const sql = "SELECT * FROM ForumArticle where faid = ? ";
   // "SELECT `fatitle`, `farticle`, `faimage`, `likeCount`, `fboard`, `fhashtag`, `createTime` FROM ForumArticle where `faid` = ?";
   connToDBHelper.query(sql, [req.body.faid], (err, data) => {
     if (err) {
@@ -135,6 +135,7 @@ app.post("/getFaid", (req, res) => {
     }
   });
 });
+
 
 // 獲取文章按讚數和使用者按讚狀態
 app.get("/posts/:faid", (req, res) => {

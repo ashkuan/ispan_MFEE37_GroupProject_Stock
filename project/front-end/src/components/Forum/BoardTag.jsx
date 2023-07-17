@@ -5,14 +5,15 @@ const BoardTag = (props) => {
   const [boards, setBoards] = useState([]);
   
   const faid = props.data;
+  console.log(faid);
 
   useEffect(() => {
     const fetchAllBoard = async () => {
       try {
+        console.log(faid);
         const res = await axios.post("http://localhost:5789/getFaid", {
           faid: faid,
         });
-        // console.log(faidRes.data);
         // console.log(res.data);
         setBoards(res.data)
       } catch (err) {

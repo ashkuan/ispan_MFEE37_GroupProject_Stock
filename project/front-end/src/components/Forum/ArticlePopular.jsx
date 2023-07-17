@@ -114,7 +114,7 @@ function ArticlePopular() {
               <div className="row mt-3"
                 id={post.faid}
                 onClick={(e) => {
-                  // console.log(e.target.id);
+                  console.log(e.target.id);
                   setFaid(e.target.id);
                   handleArticleClick()
                 }}
@@ -160,8 +160,11 @@ function ArticlePopular() {
             </div>
             <hr />
 
-            {/* articleIndividual-modal */}
-            <Modal show={showModal} onHide={handleModalClose}>
+       
+          </div>
+        ))}
+             {/* articleIndividual-modal */}
+             <Modal show={showModal} onHide={handleModalClose}>
               <div className="px-5 py-3 d-flex flex-column justify-content-between">
                 <Modal.Header closeButton>
                   <Modal.Title>
@@ -204,8 +207,6 @@ function ArticlePopular() {
                 </Modal.Footer>
               </div>
             </Modal>
-          </div>
-        ))}
       </div>
     </div>
   );

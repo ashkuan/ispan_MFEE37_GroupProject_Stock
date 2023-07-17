@@ -160,8 +160,11 @@ function ArticleFollow() {
             </div>
             <hr />
 
-            {/* articleIndividual-modal */}
-            <Modal show={showModal} onHide={handleModalClose}>
+
+          </div>
+        ))}
+                    {/* articleIndividual-modal */}
+                    <Modal show={showModal} onHide={handleModalClose}>
               <div className="px-5 py-3 d-flex flex-column justify-content-between">
                 <Modal.Header closeButton>
                   <Modal.Title>
@@ -204,8 +207,6 @@ function ArticleFollow() {
                 </Modal.Footer>
               </div>
             </Modal>
-          </div>
-        ))}
       </div>
     </div>
   );
