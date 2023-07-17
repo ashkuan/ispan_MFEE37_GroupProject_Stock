@@ -143,8 +143,9 @@ const Myproduct = () => {
                 </Toast.Body>
               </Toast>
               <div id="desc">
-                <p className="fs-3 fw-bold">內容介紹</p>
+                <p className="fs-2 fw-bold">內容介紹</p>
                 <hr />
+                <br />
                 <pre>{pdesc}</pre>
               </div>
             </>

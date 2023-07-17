@@ -123,8 +123,9 @@ export const ShopContextProvider = (props) => {
     products.forEach((product) => {
       const { pid, pprice } = product;
       const cartItemAmount = cartItems[pid];
-      // console.log(cartItemAmount);
-      cartTotal += cartItemAmount * pprice;
+      if (!isNaN(cartItemAmount) && !isNaN(pprice)) {
+        cartTotal += parseInt(cartItemAmount) * parseFloat(pprice);
+      }
     });
     return cartTotal;
   };
@@ -132,10 +133,12 @@ export const ShopContextProvider = (props) => {
   // 計算購物車總數
   useEffect(() => {
     let totalAmount = 0;
-    products.map((product) => {
+    products.forEach((product) => {
       const { pid } = product;
       const cartItemAmount = cartItems[pid];
-      totalAmount += cartItemAmount;
+      if (!isNaN(cartItemAmount)) {
+        totalAmount += cartItemAmount;
+      }
     });
     setTotalCartItemAmount(totalAmount);
   }, [cartItems]);

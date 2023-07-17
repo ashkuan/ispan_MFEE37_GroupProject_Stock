@@ -3,12 +3,52 @@ import { ShopContext } from "../../../context/ShopContext";
 import { Link } from "react-router-dom";
 
 export const Product = () => {
-  const { products, totalAmount, cartItems, addToCart } =
-    useContext(ShopContext);
+  const { products, totalAmount, cartItems } = useContext(ShopContext);
   const [pages, setPages] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 8;
+  const itemsPerPage = 16;
   const totalPages = Math.ceil(totalAmount / itemsPerPage);
+  const [sortByPriceHigh, setSortByPriceHigh] = useState(false);
+  const [sortByPriceLow, setSortByPriceLow] = useState(false);
+  const [sortByDate, setSortByDate] = useState(false);
+
+  console.log(products);
+  const sortProducts = (products) => {
+    if (sortByPriceHigh) {
+      return products.sort((a, b) => a.pprice - b.pprice);
+    } else if (sortByPriceLow) {
+      return products.sort((a, b) => b.pprice - a.pprice);
+    } else if (sortByDate) {
+      return products.slice().sort((a, b) => {
+        const dateA = new Date(a.ppublicationDate);
+        const dateB = new Date(b.ppublicationDate);
+        return dateB - dateA;
+      });
+    } else {
+      return products;
+    }
+  };
+
+  // 價格高排序
+  const handleSortByPriceHigh = () => {
+    setSortByPriceHigh(true);
+    setSortByPriceLow(false);
+
+    setSortByDate(false);
+  };
+
+  const handleSortByPriceLow = () => {
+    setSortByPriceLow(true);
+    setSortByPriceHigh(false);
+    setSortByDate(false);
+  };
+
+  // 最新排序
+  const handleSortByDate = () => {
+    setSortByPriceLow(false);
+    setSortByPriceHigh(false);
+    setSortByDate(true);
+  };
 
   // 頁籤
   useEffect(() => {
@@ -26,17 +66,17 @@ export const Product = () => {
 
   return (
     <>
-      {/* <div className="smallbar">
+      <div className="smallbar">
         <div className="shopSorting">
-          排序
-          <button>價格高</button>
-          <button>價格低</button>
-          <button>最新</button>
+          排列方式
+          <button onClick={handleSortByPriceHigh}>價格低</button>
+          <button onClick={handleSortByPriceLow}>價格高</button>
+          <button onClick={handleSortByDate}>最新</button>
         </div>
-      </div> */}
+      </div>
       <div className="row row-cols-1 row-cols-md-4 g-4">
         {/* 從陣列中選出頁面要顯示的商品資料範圍, 上一頁的商品數～這頁的商品數 */}
-        {products
+        {sortProducts(products)
           .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
           .map((product) => {
             const { pid, pname, pimage1, pprice, pdesc } = product;
@@ -55,34 +95,23 @@ export const Product = () => {
                         data-bs-toggle="modal"
                         data-bs-target={`#exampleModal-${pid}`}
                       >
-                        <Link to={`/shop/Myproduct?pid=${pid}`}>瀏覽</Link>
-                      </button>
-                      <button
-                        className="addInCartBtn"
-                        onClick={() => {
-                          addToCart(pid, 1);
-                        }}
-                      >
-                        <svg
-                          width="45"
-                          height="40"
-                          viewBox="0 0 46 41"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M40.3073 25.625H16.8964L17.4191 28.1875H38.8552C40.0852 28.1875 40.9968 29.3327 40.7242 30.5353L40.2836 32.4793C41.7763 33.2058 42.8056 34.7401 42.8056 36.5156C42.8056 39.0142 40.7676 41.0355 38.2675 40.9995C35.8858 40.9652 33.9271 39.0271 33.8628 36.6395C33.8277 35.3353 34.3488 34.1532 35.2047 33.3124H18.462C19.2907 34.1265 19.8056 35.2605 19.8056 36.5156C19.8056 39.0631 17.687 41.1146 15.1201 40.995C12.8409 40.8889 10.9872 39.0423 10.8674 36.7575C10.7749 34.9931 11.7009 33.4379 13.1076 32.6266L7.4976 5.125H1.91667C0.858108 5.125 0 4.26456 0 3.20312V1.92187C0 0.860439 0.858108 0 1.91667 0H10.1047C11.0152 0 11.8 0.642307 11.9825 1.5367L12.7145 5.125H44.0825C45.3125 5.125 46.2241 6.2702 45.9515 7.47281L42.1763 24.1291C41.978 25.0041 41.2022 25.625 40.3073 25.625ZM32.5833 13.4531H28.75V10.25C28.75 9.54235 28.178 8.96875 27.4722 8.96875H26.1945C25.4887 8.96875 24.9167 9.54235 24.9167 10.25V13.4531H21.0833C20.3776 13.4531 19.8056 14.0267 19.8056 14.7344V16.0156C19.8056 16.7233 20.3776 17.2969 21.0833 17.2969H24.9167V20.5C24.9167 21.2076 25.4887 21.7812 26.1945 21.7812H27.4722C28.178 21.7812 28.75 21.2076 28.75 20.5V17.2969H32.5833C33.2891 17.2969 33.8611 16.7233 33.8611 16.0156V14.7344C33.8611 14.0267 33.2891 13.4531 32.5833 13.4531Z"
-                            fill="#ffffff"
-                          />
-                        </svg>
-
-                        {cartItemAmount > 0 && (
-                          <>
-                            {" "}
-                            <div className="cartItemAmount">
-                              {cartItemAmount}{" "}
-                            </div>
-                          </>
-                        )}
+                        <Link to={`/shop/Myproduct?pid=${pid}`}>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="35"
+                            height="35"
+                            fill="currentColor"
+                            class="bi bi-bag-check"
+                            viewBox="0 0 20 20"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M10.854 8.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708 0z"
+                            />
+                            <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                          </svg>
+                          瀏覽商品
+                        </Link>
                       </button>
                     </div>
                   </div>
