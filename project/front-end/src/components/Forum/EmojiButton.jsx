@@ -1,188 +1,10 @@
-// import React, { useState, useEffect } from "react";
-// import axios from "axios";
-// const EmojiButton = () => {
-//   const [heart, setHeart] = useState(0);
-//   const [count, setCount] = useState(0);
-//   const [initialLike, setInitialLike] = useState(0);
-//   const [likeCount, setLikeCount] = useState(0);
-
-//   //請求以獲取按讚數量
-//   const getLikeCount = async () => {
-//     try {
-//       const response = await axios.get("http://localhost:3000/posts/likeCount");
-//       const likeCount = response.data.likeCount;
-//       setLikeCount(likeCount);
-//     } catch (err) {
-//       console.log(err);
-//     }
-//   };
-
-//   //按讚狀態判斷為哪個img
-//   const getLikeStatus = async () => {
-//     try {
-//       const response = await axios.post(
-//         "http://localhost:3000/posts/likeCount"
-//       );
-//       const likeStatus = response.data.likeStatus;
-//       // console.log(likeStatus);
-//       //追蹤按讚數量
-//       setLikeCount(likeStatus);
-//       //判斷按讚圖片為何
-//       // 1按讚 0取消
-//       setHeart(likeStatus !== 0 ? 1 : 0);
-//       //計算按讚次數
-//       setCount(likeStatus !== 0 ? 1 : 0);
-//       localStorage.setItem("likeStatus", likeStatus);
-//       document.querySelector(".aaa").src =
-//         likeStatus !== 0
-//           ? "public/img/forum/likeClick.svg"
-//           : "public/img/forum/like.svg";
-//     } catch (err) {
-//       // console.log(err);
-//     }
-//   };
-
-//   //初始按讚數量
-//   useEffect(() => {
-//     getLikeCount();
-//     setLikeCount(likeCount);
-//   }, []);
-
-//   //用 localStorage 來檢查並設定初始的按讚狀態 然後調用 getLikeStatus 函式以獲取按讚狀態。
-//   useEffect(() => {
-//     const storedLikeStatus = localStorage.getItem("likeStatus");
-//     if (storedLikeStatus !== null) {
-//       setInitialLike(parseInt(storedLikeStatus));
-//     }
-//     getLikeStatus();
-//   }, []);
-
-//   const handleClick = async (e) => {
-//     e.preventDefault();
-//     if (heart === 0) {
-//       setHeart(1);
-//       setCount(count + 1);
-//       document.querySelector(".aaa").src = "public/img/forum/likeClick.svg";
-//       setLikeCount(likeCount + 1);
-//       localStorage.setItem("likeStatus", 1); // 存按讚為1
-//     } else {
-//       setHeart(0);
-//       setCount(count - 1);
-//       document.querySelector(".aaa").src = "public/img/forum/like.svg";
-//       setLikeCount(likeCount - 1);
-//       localStorage.setItem("likeStatus", 0); // 取消按讚為0
-//     }
-//     try {
-//       // 用post更新按讚狀態
-//       await axios.post("http://localhost:5789/posts/like", {
-//         likeCount: heart === 0 ? 1 : -1,
-//       });
-
-//       console.log("Like count updated successfully");
-//       // 更新按讚狀態成功後上傳
-//       getLikeStatus();
-//     } catch (err) {
-//       console.log(err);
-//     }
-//   };
-//   return (
-//     <>
-//       <span className="">
-//         <img
-//           className="aaa"
-//           src={
-//             initialLike !== 0
-//               ? "public/img/forum/likeClick.svg"
-//               : "public/img/forum/like.svg"
-//           }
-//           name="likeCount"
-//           onClick={handleClick}
-//         />
-//       </span>
-//       <span className="hello">{likeCount}</span>
-//     </>
-//   );
-// };
-// export default EmojiButton;
-
-
-// import React, { useState, useEffect } from "react";
-// import axios from "axios";
-
-// const EmojiButton = (props) => {
-//   const [heart, setHeart] = useState(0);
-//   const [count, setCount] = useState(0);
-//   const [likeCount, setLikeCount] = useState(0);
-//   const faid = props.data;
-
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       try {
-//         const res = await axios.post(`http://localhost:5789/getFaid`,{
-//           faid: faid,
-//         });
-//         const data = res.data;
-//         console.log("按讚啦"+res)
-//         setLikeCount(data.likeCount);
-//         setHeart(data.heart);
-//         setCount(data.count);
-//       } catch (err) {
-//         console.log(err);
-//       }
-//     };
-
-//     fetchData();
-//   }, []);
-
-//   const handleClick = async (e) => {
-//     e.preventDefault();
-//     if (heart === 0) {
-//       setHeart(1);
-//       setCount(count + 1);
-//       setLikeCount(likeCount + 1);
-//     } else {
-//       setHeart(0);
-//       setCount(count - 1);
-//       setLikeCount(likeCount - 1);
-//     }
-//     try {
-//       await axios.post(`http://localhost:5789/posts/like`, {
-//         likeCount: heart === 0 ? likeCount + 1 : likeCount - 1,
-//       });
-//       console.log("Like count updated successfully");
-//     } catch (err) {
-//       console.log(err);
-//     }
-//   };
-
-//   return (
-//     <>
-//       <span className="">
-//         <img
-//           className="aaa"
-//           src={
-//             heart !== 0
-//               ? "public/img/forum/likeClick.svg"
-//               : "public/img/forum/like.svg"
-//           }
-//           name="likeCount"
-//           onClick={handleClick}
-//         />
-//       </span>
-//       <span className="hello">{likeCount}</span>
-//     </>
-//   );
-// };
-
-// export default EmojiButton;
-
-
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const KeepButton = (props) => {
+const EmojiButton = (props) => {
   const [keeps, setKeeps] = useState([]);
-  const [counts, setCounts] = useState(null);
+  const [likeCount, setLikeCount] = useState(0); // Set initial state to 0
+  const [totalLikes, setTotalLikes] = useState(0);
 
   const faid = props.data;
 
@@ -193,7 +15,7 @@ const KeepButton = (props) => {
           faid: faid,
         });
         setKeeps(res.data);
-        setCounts(res.data.collect);
+        setLikeCount(res.data.likedByUser);
       } catch (err) {
         console.log("Error in fetchAllKeep: ", err);
       }
@@ -202,25 +24,34 @@ const KeepButton = (props) => {
     fetchAllKeep();
   }, [faid]);
 
+  useEffect(() => {
+    // Calculate the total likes whenever keeps or likeCount changes
+    const calculateTotalLikes = () => {
+      const total = keeps.reduce((sum, keep) => sum + keep.likeByUser, 0);
+      setTotalLikes(total);
+    };
+    calculateTotalLikes();
+  }, [keeps, likeCount]);
+
   const collectClick = async (e) => {
     e.preventDefault();
 
     try {
-      const LikeCounts = counts === 0 || counts === null ? 1 : 0;
-      setCounts(LikeCounts);
+      const newLikeStatus = likeCount === 0 || likeCount === null ? 1 : 0;
+      setLikeCount(newLikeStatus);
 
-      await axios.put(`http://localhost:5789/like/${faid}`, {
+      await axios.put(`http://localhost:5789/posts/${faid}/like`, {
         faid: faid,
-        likeCount: LikeCounts,
+        likedByUser: newLikeStatus,
       });
 
-      // Update the keeps array with the new collect value
+      // 更新前端顯示的按讚狀態
       setKeeps((prevKeeps) => {
         return prevKeeps.map((keep) => {
           if (keep.faid === faid) {
             return {
               ...keep,
-              likeCount: LikeCounts,
+              likeByUser: newLikeStatus,
             };
           }
           return keep;
@@ -234,18 +65,108 @@ const KeepButton = (props) => {
   return (
     <>
       {keeps.map((keep, index) => (
-        <a className="text-decoration-none ms-2" href="#" key={index}>
-          <div onClick={collectClick}>
-            {keep.collect === 0 ? (
-              <img src="./img/forum/likeClick.svg" alt="" />
-            ) : (
-              <img src="./img/forum/like.svg" alt="" />
-            )}
-          </div>
-        </a>
+        <div key={index}>
+          <a className="text-decoration-none ms-2" href="#">
+            <div onClick={collectClick}>
+              {keep.likeByUser === 0 ? (
+                <img src="public/img/forum/like.svg" alt="" />
+              ) : (
+                <img src="public/img/forum/likeClick.svg" alt="" />
+              )}
+            </div>
+          </a>
+          <span className="hello">{keep.totalLikes}</span>
+        </div>
       ))}
+      {/* <span className="hello">{totalLikes}</span> */}
     </>
   );
 };
 
-export default KeepButton;
+export default EmojiButton;
+
+// import React, { useState, useEffect } from "react";
+// import axios from "axios";
+
+// const EmojiButton = (props) => {
+//   const [keeps, setKeeps] = useState([]);
+//   const [likeCount, setLikeCount] = useState(0); // Set initial state to 0
+//   const [totalLikes, setTotalLikes] = useState(0); // Set initial state to 0
+
+//   const faid = props.data;
+
+//   // Initialize totalLikes when component mounts
+//   useEffect(() => {
+//     setTotalLikes(0);
+//   }, []);
+
+//   useEffect(() => {
+//     const fetchAllKeep = async () => {
+//       try {
+//         const res = await axios.post("http://localhost:5789/getFaid", {
+//           faid: faid,
+//         });
+//         setKeeps(res.data);
+//         setLikeCount(res.data.likedByUser);
+//         setTotalLikes(res.data.totalLikes); // 從後端獲取總按讚數值
+//       } catch (err) {
+//         console.log("Error in fetchAllKeep: ", err);
+//       }
+//     };
+
+//     fetchAllKeep();
+//   }, [faid]);
+
+//   const collectClick = async (e) => {
+//     e.preventDefault();
+
+//     try {
+//       const newLikeStatus = likeCount === 0 || likeCount === null ? 1 : 0;
+//       setLikeCount(newLikeStatus);
+
+//       // 根據新的按讚狀態更新 totalLikes
+//       setTotalLikes((prevTotalLikes) => prevTotalLikes + (newLikeStatus ? 1 : -1));
+
+//       await axios.put(`http://localhost:5789/posts/${faid}/like`, {
+//         faid: faid,
+//         likedByUser: newLikeStatus,
+//       });
+
+//       // 更新前端顯示的按讚狀態
+//       setKeeps((prevKeeps) => {
+//         return prevKeeps.map((keep) => {
+//           if (keep.faid === faid) {
+//             return {
+//               ...keep,
+//               likeByUser: newLikeStatus,
+//             };
+//           }
+//           return keep;
+//         });
+//       });
+//     } catch (err) {
+//       console.log("Error in collectClick: ", err);
+//     }
+//   };
+
+//   return (
+//     <>
+//       {keeps.map((keep, index) => (
+//         <div key={index}>
+//           <a className="text-decoration-none ms-2" href="#">
+//             <div onClick={collectClick}>
+//               {keep.likeByUser === 0 ? (
+//                 <img src="public/img/forum/like.svg" alt="" />
+//               ) : (
+//                 <img src="public/img/forum/likeClick.svg" alt="" />
+//               )}
+//             </div>
+//           </a>
+//           <span className="hello">{totalLikes}</span>
+//         </div>
+//       ))}
+//     </>
+//   );
+// };
+
+// export default EmojiButton;
