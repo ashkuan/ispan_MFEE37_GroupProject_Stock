@@ -189,7 +189,7 @@ export const Product = () => {
           style={{
             textAlign: "left",
             margin: "0 0 20px 10%",
-            fontSize: "1.3rem",
+            fontSize: "1.5rem",
             color: "gray",
             fontWeight: "450",
           }}

@@ -39,7 +39,7 @@
 }
 .shop-main-content #shop .shopSidebar .shopSidebarSearch {
   text-align: left;
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   font-weight: bold;
 }
 .shop-main-content #shop .shopSidebar .shopSidebarSearch input {
@@ -54,7 +54,7 @@
   color: var(--IronGray-Deep);
 }
 .shop-main-content #shop .shopSidebar .shopSorting p span {
-  font-size: 1.6rem;
+  font-size: 1.7rem;
 }
 .shop-main-content #shop .shopSidebar .shopSorting select {
   margin-top: 20px;
@@ -69,7 +69,7 @@
 }
 .shop-main-content #shop .shopSidebar .shopType {
   text-align: left;
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   font-weight: bold;
   color: var(--IronGray-Deep);
 }
