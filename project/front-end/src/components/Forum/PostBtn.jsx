@@ -1,6 +1,6 @@
 // 橫列發文鈕 modal內容
 import React, { useState, useRef } from "react";
-import { Modal, Button, Form } from "react-bootstrap";
+import { Modal, Button, Form, Alert } from "react-bootstrap";
 import uuid, { v4 as uuidv4 } from "react-uuid";
 import "../../styles/post.css";
 import "../../styles/forum_main_right.css";
@@ -9,7 +9,10 @@ import axios from "axios";
 
 function PostBtn() {
   const [lgShow, setLgShow] = useState(false);
-  const handleClose = () => setLgShow(false);
+  const [postAlert, setPostAlert] = useState(false);
+  const handleClose = () => {
+    setLgShow(false);
+  };
   const handleShow = () => setLgShow(true);
   const v4Id = uuid();
   // console.log("我在這" + v4Id);
@@ -60,6 +63,7 @@ function PostBtn() {
       await axios.post("http://localhost:5789/posts", formData);
       console.log("上傳成功123");
       console.log(posts);
+      setPostAlert(true);
       handleClose();
     } catch (err) {
       console.log(err);
@@ -209,6 +213,14 @@ function PostBtn() {
             </Modal.Body>
           </div>
         </div>
+      </Modal>
+      <Modal
+        variant="success"
+        show={postAlert}
+        onClose={() => setPostAlert(false)}
+        dismissible
+      >
+        發文成功！
       </Modal>
     </>
   );
