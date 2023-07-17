@@ -38,7 +38,7 @@ const Navbar = () => {
 
             navigate("/member");
           } else {
-            alert("No record existed");
+            alert("此帳號不存在");
           }
         })
         .catch((err) => console.log(err));
