@@ -20,7 +20,7 @@
 }
 td{
   padding-left: 80px;
-  padding-bottom: 40px;
+  padding-bottom: 20px;
 }
 .art-title{
   /* background-color: aqua; */
@@ -48,8 +48,9 @@ td{
 .art-td-time{
   /* background-color: #1b3248; */
   margin-left: -90px;
-  margin-right: 40px;
+  margin-right: 50px;
   margin-top: 10px;
+  width: 200px;
 }
 .art-btn{
   margin-top: 10px;

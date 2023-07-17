@@ -16,7 +16,7 @@ const MemberMail = () => {
   // 顯示當前頁數
   const [currentPage, setCurrentPage] = useState(1); 
   // 每頁顯示幾則內容
-  const [messagesPerPage] = useState(6); 
+  const [messagesPerPage] = useState(5); 
 
   useEffect(() => {
     axios
