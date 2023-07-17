@@ -188,9 +188,10 @@ export const Product = () => {
         <div
           style={{
             textAlign: "left",
-            margin: "0 0 50px 10%",
-            fontSize: "1.7rem",
-            fontWeight: "bold",
+            margin: "0 0 20px 10%",
+            fontSize: "1.3rem",
+            color: "gray",
+            fontWeight: "450",
           }}
         >
           商城 {sortOption !== "預設" ? ` > ${sortOption} ` : null}
