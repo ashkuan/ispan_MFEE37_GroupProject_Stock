@@ -123,8 +123,9 @@ export const ShopContextProvider = (props) => {
     products.forEach((product) => {
       const { pid, pprice } = product;
       const cartItemAmount = cartItems[pid];
-      // console.log(cartItemAmount);
-      cartTotal += cartItemAmount * pprice;
+      if (!isNaN(cartItemAmount) && !isNaN(pprice)) {
+        cartTotal += parseInt(cartItemAmount) * parseFloat(pprice);
+      }
     });
     return cartTotal;
   };
