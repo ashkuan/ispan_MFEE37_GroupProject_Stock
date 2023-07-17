@@ -17,13 +17,10 @@
   --border-radius-small: 6px;
 }
 
-.main-content {
-  position: absolute;
-  top: 130px;
-  width: 70%;
-  margin-left: 18%;
+.shop-main-content {
+  margin-top: 120px;
 }
-.main-content #title {
+.shop-main-content #title {
   margin-top: 30px;
   font-size: 2.5rem;
   font-weight: bold;
@@ -31,28 +28,76 @@
   margin-left: 11% !important;
   margin-bottom: 30px !important;
 }
-.main-content .smallbar {
-  margin: 0 0 30px 50px;
-}
-.main-content .smallbar .shopSorting {
-  font-size: 1.2rem;
+.shop-main-content #shop {
   display: flex;
-  justify-content: flex-start;
+}
+.shop-main-content #shop .shopSidebar {
+  padding: 0 0 0 50px;
   align-items: center;
-  margin-left: 70px;
-  gap: 10px;
+  color: var(--IronGray-Deep);
 }
-.main-content .smallbar .shopSorting button {
-  border: none;
-  padding: 10px;
-  background-color: var(--bg-Second-Gray);
+.shop-main-content #shop .shopSidebar .shopSidebarSearch {
+  text-align: left;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+.shop-main-content #shop .shopSidebar .shopSidebarSearch input {
   border-radius: 5px;
+  font-size: 1.8rem;
+  border: none;
+  width: 100%;
+  padding-bottom: 5px;
 }
-.main-content .row {
+.shop-main-content #shop .shopSidebar .shopSorting {
+  text-align: left;
+  font-weight: bold;
+  color: var(--IronGray-Deep);
+}
+.shop-main-content #shop .shopSidebar .shopSorting p span {
+  font-size: 1.4rem;
+}
+.shop-main-content #shop .shopSidebar .shopSorting select {
+  margin-top: 20px;
+  border: 1px solid white;
+  border-radius: 5px;
+  font-size: 1.8rem;
+  border: none;
+  width: 100%;
+  font-size: 1.3rem;
+  color: gray;
+  padding: 5px 10px;
+}
+.shop-main-content #shop .shopSidebar .shopType {
+  text-align: left;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--IronGray-Deep);
+}
+.shop-main-content #shop .shopSidebar .shopType .shopTypeBtn {
+  margin: 30px 0 50px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 200px;
+  padding-left: 20px;
+}
+.shop-main-content #shop .shopSidebar .shopType .shopTypeBtn button {
+  font-size: 1.3rem;
+  border: none;
+  background-color: transparent;
+  text-align: left;
+  color: gray;
+}
+.shop-main-content #shop .shopSidebar .shopType .shopTypeBtn button:hover {
+  color: var(--IronGray);
+  font-weight: bold;
+}
+.shop-main-content #shop .row {
   margin-bottom: 15px;
-  margin-left: 10%;
+  margin-left: 8%;
+  width: 85%;
 }
-.main-content .row .card {
+.shop-main-content #shop .row .card {
   height: 280px;
   background-color: var(--bg-Second-Gray);
   border: none;
@@ -63,26 +108,26 @@
   border-radius: 5px;
   margin-bottom: 25px;
 }
-.main-content .row .card:hover .toggleBtn {
+.shop-main-content #shop .row .card:hover .toggleBtn {
   animation: slideUp 0.5s ease forwards;
   display: flex;
 }
-.main-content .row .card .book-title {
+.shop-main-content #shop .row .card .book-title {
   font-size: 1.3rem;
   font-weight: bold;
-  width: 225px;
+  width: 215px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-.main-content .row .card .card-text {
+.shop-main-content #shop .row .card .card-text {
   font-size: 1.3rem;
 }
-.main-content .row .card img {
+.shop-main-content #shop .row .card img {
   width: 140px;
   height: 170px;
 }
-.main-content .row .card .toggleBtn {
+.shop-main-content #shop .row .card .toggleBtn {
   position: absolute;
   left: 0;
   bottom: 0;
@@ -94,92 +139,91 @@
   justify-content: space-around;
   align-items: center;
 }
-.main-content .row .card .toggleBtn .seeMoreBtn {
+.shop-main-content #shop .row .card .toggleBtn .seeMoreBtn {
   width: 90%;
   font-size: 1.2rem;
   background-color: white;
   border-radius: 5px;
   padding: 15px 12px;
 }
-.main-content .row .card .toggleBtn .seeMoreBtn:hover {
+.shop-main-content #shop .row .card .toggleBtn .seeMoreBtn:hover {
   transform: scale(1.05);
 }
-.main-content .row .card .toggleBtn .seeMoreBtn a {
+.shop-main-content #shop .row .card .toggleBtn .seeMoreBtn a {
   color: var(--IronGray-Deep);
   font-weight: bold;
 }
-.main-content .row .card .btnGray {
+.shop-main-content #shop .row .card .btnGray {
   font-size: 1.2rem;
   background-color: gray;
 }
-.main-content .row .card .btnGray:hover {
+.shop-main-content #shop .row .card .btnGray:hover {
   background-color: rgb(114, 114, 114);
 }
-.main-content .row .card .modal .modal-dialog .modal-content {
+.shop-main-content #shop .row .card .modal .modal-dialog .modal-content {
   height: 800px;
 }
-.main-content .row .card .modal .modal-dialog .modal-content .modal-body .card {
+.shop-main-content #shop .row .card .modal .modal-dialog .modal-content .modal-body .card {
   height: 100%;
 }
-.main-content .row .card .modal .modal-dialog .modal-content .modal-body .card .card-img-top {
+.shop-main-content #shop .row .card .modal .modal-dialog .modal-content .modal-body .card .card-img-top {
   width: 280px;
   height: 280px;
 }
-.main-content .row .card .modal .modal-dialog .modal-content .modal-body .card .card-body .card-title {
+.shop-main-content #shop .row .card .modal .modal-dialog .modal-content .modal-body .card .card-body .card-title {
   font-size: 2rem;
   padding: 15px 0 20px 0;
 }
-.main-content .row .card .modal .modal-dialog .modal-content .modal-body .card .card-body .card-text {
+.shop-main-content #shop .row .card .modal .modal-dialog .modal-content .modal-body .card .card-body .card-text {
   height: 100%;
   max-height: 800px;
   overflow-y: auto;
 }
-.main-content .row .card .modal .modal-dialog .modal-content .modal-footer .addInCartRedBtn {
+.shop-main-content #shop .row .card .modal .modal-dialog .modal-content .modal-footer .addInCartRedBtn {
   background-color: var(--Pink-Deep);
   font-size: 1.4rem;
 }
-.main-content .row .card .modal .modal-dialog .modal-content .modal-footer .addInCartRedBtn:hover {
+.shop-main-content #shop .row .card .modal .modal-dialog .modal-content .modal-footer .addInCartRedBtn:hover {
   background-color: var(--Red);
 }
-.main-content .row .card .modal .modal-dialog .modal-content .modal-footer .btnGray {
+.shop-main-content #shop .row .card .modal .modal-dialog .modal-content .modal-footer .btnGray {
   font-size: 1.4rem;
 }
-.main-content .page {
+.shop-main-content #shop .page {
   cursor: pointer;
 }
-.main-content .page .pagination {
-  margin-left: 12%;
+.shop-main-content #shop .page .pagination {
   margin-top: 30px;
   color: var(--IronGray-Deep) !important;
   --bs-pagination-color: var(--IronGray-Deep);
 }
-.main-content .page .pagination .page-link {
+.shop-main-content #shop .page .pagination .page-link {
   font-size: 1.4rem;
   border: none;
   margin: 0;
   background-color: var(--bg-Second-Gray);
   padding: 6px 15px;
 }
-.main-content .page .pagination .page-link span {
+.shop-main-content #shop .page .pagination .page-link span {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-right: 0px;
 }
-.main-content .page .pagination .page-link:hover {
+.shop-main-content #shop .page .pagination .page-link:hover {
   color: var(--White);
   background-color: var(--IronGray-Deep);
 }
-.main-content .page .pagination .page-link:focus {
+.shop-main-content #shop .page .pagination .page-link:focus {
   background-color: var(--IronGray-Deep);
 }
-.main-content .page .pagination .page-number {
+.shop-main-content #shop .page .pagination .page-number {
   height: 60px;
   display: flex;
   align-items: center;
 }
-.main-content .page .pagination .page-link.active,
-.main-content .page .pagination .active > .page-link {
+.shop-main-content #shop .page .pagination .page-link.active,
+.shop-main-content #shop .page .pagination .active > .page-link {
   background-color: var(--IronGray-Deep);
 }
 

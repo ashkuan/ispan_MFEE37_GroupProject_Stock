@@ -6,13 +6,14 @@ import { Toast } from "react-bootstrap";
 const Myproduct = () => {
   const { products, addToCart } = useContext(ShopContext);
   const [quantity, setQuantity] = useState(1);
+  const [inputValue, setInputValue] = useState("");
   const [showToast, setShowToast] = useState(false);
 
   const handleButtonClick = () => {
     setShowToast(true);
     setTimeout(() => {
       setShowToast(false);
-    }, 3000);
+    }, 5000);
   };
   // 抓出url，找到pid參數的值
   const queryParams = new URLSearchParams(window.location.search);
@@ -90,20 +91,41 @@ const Myproduct = () => {
                   <hr />
                   <p className="fs-5 fw-bold">數量：</p>
                   <div id="amount">
-                    <button id="plusBtn">+</button>
+                    <button
+                      onClick={() => {
+                        if (quantity > 1) {
+                          setQuantity(quantity - 1);
+                        }
+                      }}
+                      id="plusBtn"
+                    >
+                      -
+                    </button>
                     <input
                       className="text-center"
                       type="text"
                       value={quantity}
-                      onChange={(e) => setQuantity(e.target.value)}
+                      onChange={(e) => {
+                        const value = parseInt(e.target.value);
+                        if (!isNaN(value)) {
+                          setQuantity(value);
+                        }
+                      }}
                     />
-                    <button id="minusBtn">-</button>
+                    <button
+                      id="minusBtn"
+                      onClick={() => {
+                        setQuantity(quantity + 1);
+                      }}
+                    >
+                      +
+                    </button>
                   </div>
                   <div
                     className="fs-3 fw-bold d-flex justify-content-end"
                     style={{ width: "100%" }}
                   >
-                    NT$ {pprice}
+                    NT$ {pprice * quantity}
                   </div>
                   <div className="fs-4 fw-bold d-flex justify-content-end">
                     <button

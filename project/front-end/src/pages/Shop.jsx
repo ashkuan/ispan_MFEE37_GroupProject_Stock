@@ -6,8 +6,7 @@ import { Product } from "../components/shop/Product";
 export const Shop = () => {
   return (
     <>
-      <Sidebar></Sidebar>
-      <div className="d-flex flex-column text-center main-content">
+      <div className="d-flex flex-column text-center shop-main-content">
         <p id="title">商城</p>
         <Product></Product>
       </div>

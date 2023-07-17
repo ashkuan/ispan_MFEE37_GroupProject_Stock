@@ -161,7 +161,7 @@
   width: 170px;
 }
 #myCart .card .card-body {
-  width: 50%;
+  width: 40%;
 }
 #myCart .card .card-body .card-text,
 #myCart .card .card-body .card-title {
@@ -172,6 +172,7 @@
 }
 #myCart .cart-right {
   height: 200px;
+  width: 20%;
 }
 #myCart .cart-right .amount {
   font-size: 1.5rem;
@@ -298,7 +299,7 @@
 #memberModal .member-account .member-inp {
   border-radius: 10px;
 }
-.member-inp{
+.member-inp {
   width: 260px;
   height: 50px;
   border-radius: 10px;
