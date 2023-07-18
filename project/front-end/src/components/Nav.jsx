@@ -9,6 +9,7 @@ import NavSearch from "../components/IndStock/NavSearch";
 import { UserContext } from "../../context/UserContext";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import LoginButton from "./loginbtn";
 
 const Navbar = () => {
   const { uid } = useContext(UserContext);
@@ -263,6 +264,7 @@ const Navbar = () => {
             ) : (
               <>
                 <div id="myCart" className="modal-body d-flex flex-column">
+                  <LoginButton></LoginButton>
                   <h3>請先登入會員，再查看購物車!</h3>
                 </div>
                 <div className="modal-footer">

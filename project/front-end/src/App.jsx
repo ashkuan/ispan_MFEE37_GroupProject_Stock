@@ -24,6 +24,8 @@ import Notes from "../src/components/Forum/Notes";
 import { StockContextProvider } from "../context/StockContext";
 import Modal from "react-modal";
 import { UserContextProvider } from "../context/UserContext";
+import LoginPage from "./pages/loginpage";
+import LoginButton from "./components/loginbtn";
 
 function App() {
   Modal.setAppElement("#root"); // 设置 appElement
@@ -47,6 +49,10 @@ function App() {
                 {/* <Route path="/forum/thoughts" element={<Thoughts />} /> */}
                 {/* <Route path="/forum/others" element={<Others />} /> */}
               </Route>
+
+              <Route path="/Loginbutton" element={<LoginButton></LoginButton>}></Route>
+              <Route path="/Loginpage" element={<LoginPage></LoginPage>}></Route>
+
               <Route path="/register" element={<Register />} />
               <Route path="/member" element={<Member />} />
               <Route path="/member/edit" element={<MemberEdit />} />
@@ -60,6 +66,7 @@ function App() {
                 <Route path="/shop/checkout" element={<Checkout />} />
               </Route>
               <Route path="/rookie" element={<Rookie />} />
+              <Route path="/loginPage" element={<loginPage />} />
             </Routes>
           </Router>
         </StockContextProvider>
