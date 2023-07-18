@@ -1,5 +1,6 @@
 import axios from "axios";
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
+import { UserContext } from "./UserContext";
 
 export const ShopContext = createContext(null);
 
@@ -33,6 +34,8 @@ export const ShopContextProvider = (props) => {
   const [stockData, setStockData] = useState({}); // 存個股資訊
   const [totalCartItemAmount, setTotalCartItemAmount] = useState(0); //計算購物車總數
 
+  const { uid } = useContext(UserContext);
+
   // 載入所有書籍
   useEffect(() => {
     const fetchShop = async () => {
@@ -51,34 +54,40 @@ export const ShopContextProvider = (props) => {
 
   // 載入購物車
   useEffect(() => {
-    const fetchCart = async () => {
-      try {
-        // 商品
-        const res = await axios.get(`http://localhost:5566/cart`);
-        // console.log(res.data.length);
-        // 如果資料庫都沒有資料，那就全部預設為0
-        if (res.data.length == 0) {
-          setCartItems(getDefaultCart()); // 一開始預設的商品和商品數
-          console.log(cartItems);
-        } else {
-          // 如果資料庫有資料，就把有資料的部分替換
-          // console.log(res.data);
-          const items = res.data;
-          const updatedCart = getDefaultCart();
-          items.forEach((item) => {
-            const { pid, paccount } = item;
-            // console.log(item);
-            updatedCart[pid] = paccount;
-          });
-          setCartItems(updatedCart);
-          setDataLoaded(true);
+    // 如果有登入會員
+    if (uid) {
+      const fetchCart = async () => {
+        try {
+          // 商品
+          const res = await axios.get(`http://localhost:5566/cart`);
+          // console.log(res.data.length);
+          // 如果資料庫都沒有資料，那就全部預設為0
+          if (res.data.length == 0) {
+            setCartItems(getDefaultCart()); // 一開始預設的商品和商品數
+            console.log(cartItems);
+          } else {
+            // 如果資料庫有資料，就把有資料的部分替換
+            // console.log(res.data);
+            const items = res.data;
+            const updatedCart = getDefaultCart();
+            items.forEach((item) => {
+              const { pid, paccount } = item;
+              // console.log(item);
+              updatedCart[pid] = paccount;
+            });
+            setCartItems(updatedCart);
+            setDataLoaded(true);
+          }
+        } catch (err) {
+          console.log(err);
         }
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchCart();
-    // console.log(cartItems);
+      };
+      fetchCart();
+    } else {
+      setCartItems(getDefaultCart()); // 一開始預設的商品和商品數
+      setDataLoaded(true);
+      console.log("沒有登入會員");
+    }
   }, []);
 
   const addToCart = (pid, quantity) => {

@@ -1,16 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Sidebar from "../components/Sidebar";
 import "../styles/member.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
-
+import { UserContext } from "../../context/UserContext";
 
 const Member = () => {
-  const [uid, setUid] = useState("");
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [photopath, setPhotopath] = useState("");
+  const {
+    uid,
+    setUid,
+    name,
+    setName,
+    email,
+    setEmail,
+    password,
+    setPassword,
+    photopath,
+    setPhotopath,
+  } = useContext(UserContext);
 
   useEffect(() => {
     axios
@@ -33,7 +40,7 @@ const Member = () => {
         <hr />
         <div className="memberpage-info ">
           <div className="mb-4 memberpic">
-          <img src={`http://localhost:3000/${photopath}`} alt="大頭照" />
+            <img src={`http://localhost:3000/${photopath}`} alt="大頭照" />
           </div>
           <div className="mb-4">
             <span>會員姓名:</span>

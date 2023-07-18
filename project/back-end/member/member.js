@@ -41,6 +41,7 @@ const upload = multer({ storage: storage });
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 app.use(express.static(path.join(__dirname, "img")));
+
 app.post("/register", upload.single("avatar"), (req, res) => {
   const sql =
     "INSERT INTO login (`name`,`email`,`password`,`photopath`) VALUES (?,?,?,?)";
@@ -64,7 +65,7 @@ app.post("/register", upload.single("avatar"), (req, res) => {
 
 // 新增會員郵件
 app.post("/member/mail/addMail", (req, res) => {
-  const { uid, message, stats, time ,code} = req.body;
+  const { uid, message, stats, time, code } = req.body;
 
   const memberMessageSql =
     "INSERT INTO membermessage (uid, message, stats, time) VALUES (?, ?, ?, ?)";
@@ -100,10 +101,13 @@ app.post("/member/mail/addMail", (req, res) => {
       if (result.length > 0) {
         const couponCode = result[0].code;
         console.log("coupon code:", couponCode);
-        const message2 = " 本文件內容為商城折扣碼(" + couponCode + ")，使用該折扣碼可在商城享受300元的折價優惠。請在結帳時輸入折扣碼，即可享受這項優惠。優惠期限為有限，請盡早使用以獲取折扣。"
+        const message2 =
+          " 本文件內容為商城折扣碼(" +
+          couponCode +
+          ")，使用該折扣碼可在商城享受300元的折價優惠。請在結帳時輸入折扣碼，即可享受這項優惠。優惠期限為有限，請盡早使用以獲取折扣。";
         // 在這裡您可以對 coupon code 做進一步處理或使用
-        const memberMessageSql2 = 
-        "INSERT INTO membermessage (uid, message, stats, time) VALUES (?, ?, ?, ?)";
+        const memberMessageSql2 =
+          "INSERT INTO membermessage (uid, message, stats, time) VALUES (?, ?, ?, ?)";
         const memberMessageValues2 = [uid, message2, stats, time];
         db.query(memberMessageSql2, memberMessageValues2, (err, result) => {
           if (err) {
@@ -113,7 +117,6 @@ app.post("/member/mail/addMail", (req, res) => {
           console.log("折價券信件新增成功");
           return res.json("Success");
         });
-
       }
     });
   });
@@ -155,9 +158,10 @@ app.get("/member", (req, res) => {
     return res.status(401).json("Unauthorized");
   }
 });
-app.get("/", (req, res) => {
-  res.send("Server is running successfully.");
-});
+// app.get("/", (req, res) => {
+// res.send("Server is running successfully.");
+// console.log("Server is running successfully.");
+// });
 // 登出路由
 app.post("/logout", (req, res) => {
   req.session.destroy();

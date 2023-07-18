@@ -6,8 +6,13 @@ import { ShopContext } from "../../context/ShopContext";
 import Validation from "./loginValidation";
 import axios from "axios";
 import NavSearch from "../components/IndStock/NavSearch";
+import { UserContext } from "../../context/UserContext";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 
 const Navbar = () => {
+  const { uid } = useContext(UserContext);
+
   // 購物車
   const { totalCartItemAmount } = useContext(ShopContext);
 
@@ -35,7 +40,6 @@ const Navbar = () => {
           if (res.data === "success") {
             // 變更登入狀態
             setIsLoggedIn(true);
-
             navigate("/member");
           } else {
             alert("此帳號不存在");
@@ -172,11 +176,16 @@ const Navbar = () => {
                       fill="#F3F3F3"
                     />
                   </svg>
-                  {totalCartItemAmount > 0 && (
-                    <div className="totalCartItemAmount">
-                      {totalCartItemAmount}
-                    </div>
-                  )}
+                  {uid ? (
+                    <>
+                      {/* {console.log(uid)} */}
+                      {totalCartItemAmount > 0 && (
+                        <div className="totalCartItemAmount">
+                          {totalCartItemAmount}
+                        </div>
+                      )}
+                    </>
+                  ) : null}
                 </button>
               </span>
               <span className="d-flex mb-3 nav-member-icon">
@@ -217,7 +226,7 @@ const Navbar = () => {
         aria-labelledby="cartModalLabel"
         aria-hidden="true"
       >
-        <div className="modal-dialog modal-lg modal-dialog-scrollable">
+        <div className="modal-dialog modal-lg modal-dialog-scrollable mt-5">
           <div className="modal-content">
             <div className="modal-header">
               <h1 className="modal-title" id="cartModalLabel">
@@ -230,24 +239,43 @@ const Navbar = () => {
                 aria-label="Close"
               />
             </div>
-            <Cart key="1sdgw549ye0grja"></Cart>
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                關閉
-              </button>
-              <button id="payBtn" type="button" className="btn mx-3">
-                <Link
-                  to="/shop/checkout"
-                  style={{ color: "white", textDecoration: "none" }}
-                >
-                  結帳 →
-                </Link>
-              </button>
-            </div>
+            {uid ? (
+              <>
+                <Cart key="1sdgw549ye0grja"></Cart>
+                <div className="modal-footer">
+                  <button
+                    type="button"
+                    className="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    關閉
+                  </button>
+                  <button id="payBtn" type="button" className="btn mx-3">
+                    <Link
+                      to="/shop/checkout"
+                      style={{ color: "white", textDecoration: "none" }}
+                    >
+                      結帳 →
+                    </Link>
+                  </button>
+                </div>
+              </>
+            ) : (
+              <>
+                <div id="myCart" className="modal-body d-flex flex-column">
+                  <h3>請先登入會員，再查看購物車!</h3>
+                </div>
+                <div className="modal-footer">
+                  <button
+                    type="button"
+                    className="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    關閉
+                  </button>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>

@@ -4,8 +4,11 @@ import Footer from "../components/Footer";
 import "../styles/checkout.css";
 import { ShopContext } from "../../context/ShopContext";
 import TWzipcode from "react-twzipcode";
+import { UserContext } from "../../context/UserContext";
 
 const Checkout = () => {
+  const { uid, name, email, photopath } = useContext(UserContext);
+  console.log("這是checkout的uid：" + uid + "，沒有就代表沒登入");
   const { products, cartItems, calculateCartTotal } = useContext(ShopContext);
   const [address, setAddress] = useState("");
 
@@ -39,21 +42,26 @@ const Checkout = () => {
               <input
                 type="text"
                 name="uid"
-                value="u01"
+                value={uid}
                 style={{ display: "none" }}
               />
               <img
                 className="sidebar-userphoto"
                 src="/public/img/memberimg/Mask Group.svg"
               />
-              <p id="userName">AR Jakir</p>
+              <p id="userName">{name}</p>
             </div>
             {/* 取貨姓名 */}
             <div className="mb-4">
               <label htmlFor="name" className="form-label">
                 取貨姓名
               </label>
-              <input type="text" className="form-control" name="userName" />
+              <input
+                type="text"
+                className="form-control"
+                name="userName"
+                value={name}
+              />
             </div>
             {/* 手機號碼 */}
             <div className="mb-4">

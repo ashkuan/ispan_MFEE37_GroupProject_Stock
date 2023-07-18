@@ -1,9 +1,11 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
-import Sidebar from "../components/Sidebar";
+import React, { useContext } from "react";
 import "../styles/shop.css";
 import { Product } from "../components/shop/Product";
+import { UserContext } from "../../context/UserContext";
 
 export const Shop = () => {
+  const { uid, name, email, photopath } = useContext(UserContext);
+  console.log("這是uid：" + uid + "，沒有就代表沒登入");
   return (
     <>
       <div className="d-flex flex-column text-center shop-main-content">
