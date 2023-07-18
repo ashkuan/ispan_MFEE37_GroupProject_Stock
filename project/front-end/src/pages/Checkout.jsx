@@ -1,31 +1,59 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Navbar from "../components/Nav";
 import Footer from "../components/Footer";
 import "../styles/checkout.css";
 import { ShopContext } from "../../context/ShopContext";
+import TWzipcode from "react-twzipcode";
 
 const Checkout = () => {
   const { products, cartItems, calculateCartTotal } = useContext(ShopContext);
+  const [address, setAddress] = useState("");
+
   // 要把cartItems的paccount不為0的pid抓出來後，拿去找products中的所有資料
   const filteredCartItems = Object.entries(cartItems).filter(
     (item) => item[1] !== 0
   );
-  // console.log(filteredCartItems);
+
+  const handleAddressChange = (value) => {
+    setAddress(value);
+  };
+
+  const [invoiceType, setInvoiceType] = useState(1);
+  const [invoiceType2, setInvoiceType2] = useState(1);
+  const handleInvoiceTypeChange = (e) => {
+    setInvoiceType(parseInt(e.target.value));
+  };
+  const handleInvoiceTypeChange2 = (e) => {
+    setInvoiceType2(parseInt(e.target.value));
+  };
 
   return (
     <>
       <Navbar></Navbar>
       {/* 主要內容 */}
-      <form action="http://localhost:5567/sendOrder" method="post">
+      <form action="http://localhost:7654/sendOrder" method="post">
         <div className="container checkoutContainer">
           {/* 結帳左邊 */}
           <div id="left" className="px-5 py-4">
             <div id="user" className="fw-bold">
+              <input
+                type="text"
+                name="uid"
+                value="u01"
+                style={{ display: "none" }}
+              />
               <img
                 className="sidebar-userphoto"
                 src="/public/img/memberimg/Mask Group.svg"
               />
               <p id="userName">AR Jakir</p>
+            </div>
+            {/* 取貨姓名 */}
+            <div className="mb-4">
+              <label htmlFor="name" className="form-label">
+                取貨姓名
+              </label>
+              <input type="text" className="form-control" name="userName" />
             </div>
             {/* 手機號碼 */}
             <div className="mb-4">
@@ -33,6 +61,7 @@ const Checkout = () => {
                 手機號碼
               </label>
               <input
+                name="phoneNumber"
                 type="text"
                 className="form-control"
                 id="phone"
@@ -45,18 +74,18 @@ const Checkout = () => {
                 Email
               </label>
               <input
+                name="email"
                 type="email"
                 className="form-control"
                 id="email"
-                name="email"
                 placeholder="請輸入您的email"
               />
             </div>
             {/* 取貨資料 */}
             <div className="mb-4">
-              <label className="form-label">取貨資料</label>
+              <label className="form-label">寄送地址</label>
               {/* 超商取貨 */}
-              <div className="form-check">
+              {/* <div className="form-check">
                 <input
                   className="form-check-input mx-4"
                   type="radio"
@@ -69,9 +98,9 @@ const Checkout = () => {
                 <label className="form-check-label" htmlFor="flexRadioDefault1">
                   超商取貨
                 </label>
-              </div>
+              </div> */}
               {/* 超商取貨付款 */}
-              <div className="form-check my-3">
+              {/* <div className="form-check my-3">
                 <input
                   className="form-check-input mx-4"
                   type="radio"
@@ -83,34 +112,23 @@ const Checkout = () => {
                 <label className="form-check-label" htmlFor="flexRadioDefault2">
                   超商取貨（取貨付款）
                 </label>
-              </div>
+              </div> */}
               {/* 選擇門市*/}
-              <div className="my-3">
-                <select className="form-select">
-                  <option disabled selected>
-                    請選擇門市
-                  </option>
-                  <option value={1}>One</option>
-                  <option value={2}>Two</option>
-                  <option value={3}>Three</option>
-                </select>
-              </div>
-              {/* 姓名 */}
-              <div className="row mb-4">
-                <div className="col">
-                  <input
-                    type="text"
+              <div className="form-group custom-select">
+                <div className="row">
+                  <TWzipcode
                     className="form-control"
-                    placeholder="名字"
-                    aria-label="First name"
+                    countyFieldName="county"
+                    districtFieldName="district"
+                    addressFieldName="address"
+                    handleChange={handleAddressChange}
+                    required
                   />
-                </div>
-                <div className="col">
                   <input
                     type="text"
-                    className="form-control"
-                    placeholder="姓氏"
-                    aria-label="Last name"
+                    name="address2"
+                    className="form-control address2"
+                    placeholder="路/巷/號/樓"
                   />
                 </div>
               </div>
@@ -132,33 +150,99 @@ const Checkout = () => {
             {/* 發票類型 */}
             <div className="mb-4">
               <label className="form-label">發票類型</label>
-              <select className="form-select">
+              <select
+                className="form-select"
+                value={invoiceType}
+                onChange={handleInvoiceTypeChange}
+                name="invoiceType"
+              >
                 <option value={1}>雲端發票</option>
                 <option value={2}>捐贈發票</option>
                 <option value={3}>公司戶紙本發票</option>
               </select>
             </div>
             {/* 載具 */}
-            <div className="mb-4 fs-3 fw-bold">
-              <label className="form-label">載具類型</label>
-              <select className="form-select">
-                <option value={1}>手機條碼</option>
-                <option value={2}>會員載具（發票資訊會寄到您的電郵）</option>
-                <option value={3}>自然人憑證條碼</option>
-              </select>
-            </div>
+            {invoiceType == 1 && (
+              <div className="mb-4 fs-3 fw-bold">
+                <label className="form-label">載具類型</label>
+                <select
+                  className="form-select"
+                  value={invoiceType2}
+                  onChange={handleInvoiceTypeChange2}
+                  name="invoiceType2"
+                >
+                  <option value={1}>手機條碼</option>
+                  <option value={2}>自然人憑證條碼</option>
+                </select>
+              </div>
+            )}
             {/* 條碼  */}
-            <div className="mb-4">
-              <label htmlFor="code" className="form-label">
-                手機條碼
-              </label>
-              <input
-                type="text"
-                placeholder="請輸入手機條碼"
-                className="form-control"
-                id="code"
-              />
-            </div>
+            {invoiceType == 1 && invoiceType2 == 1 && (
+              <div className="mb-4">
+                <label htmlFor="code" className="form-label">
+                  手機條碼
+                </label>
+                <input
+                  type="text"
+                  placeholder="請輸入手機條碼"
+                  className="form-control"
+                  id="code"
+                  name="invoiceCode"
+                />
+              </div>
+            )}
+            {/* 自然人憑證條碼  */}
+            {invoiceType == 1 && invoiceType2 == 2 && (
+              <div className="mb-4">
+                <label htmlFor="code" className="form-label">
+                  自然人憑證條碼
+                </label>
+                <input
+                  type="text"
+                  placeholder="請輸入自然人憑證條碼"
+                  className="form-control"
+                  id="code"
+                  name="naturalCode"
+                />
+              </div>
+            )}
+            {/* 捐贈碼 */}
+            {invoiceType == 2 && (
+              <div className="mb-4">
+                <label htmlFor="donationCode" className="form-label">
+                  捐贈碼
+                </label>
+                <input
+                  type="text"
+                  placeholder="請輸入捐贈碼"
+                  className="form-control"
+                  id="donationCode"
+                  name="donationCode"
+                />
+              </div>
+            )}
+            {invoiceType == 3 && (
+              <div className="mb-4">
+                <label htmlFor="donationCode" className="form-label">
+                  統一編號
+                </label>
+                <input
+                  type="text"
+                  placeholder="請輸入統一編號"
+                  className="form-control"
+                  name="uniNumber"
+                />
+                <label htmlFor="donationCode" className="form-label">
+                  公司名稱
+                </label>
+                <input
+                  type="text"
+                  placeholder="請輸入公司名稱"
+                  className="form-control"
+                  name="companyName"
+                />
+              </div>
+            )}
             {/* 付款方式 */}
             <div className="mb-4">
               <label className="form-label">付款方式</label>
@@ -171,10 +255,10 @@ const Checkout = () => {
                   id="flexRadioDefault3"
                   style={{ width: 30, height: 30 }}
                   defaultChecked
-                  value="creditCard"
+                  value="linepay"
                 />
                 <label className="form-check-label" htmlFor="flexRadioDefault3">
-                  刷卡
+                  Line Pay
                 </label>
               </div>
               {/* PayPal */}
@@ -220,12 +304,6 @@ const Checkout = () => {
                       type="text"
                       name="pid"
                       value={`${pid}:${paccount}`}
-                      style={{ display: "none" }}
-                    />
-                    <input
-                      type="text"
-                      name="oitemName"
-                      value={`${pname}`}
                       style={{ display: "none" }}
                     />
                     {/* 購物車 - 左 */}

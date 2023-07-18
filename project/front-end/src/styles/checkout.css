@@ -17,6 +17,17 @@
   --border-radius-small: 6px;
 }
 
+form .custom-select .row select,
+form .custom-select .row input {
+  font-size: 1.4rem;
+  border: 1px solid rgb(223, 223, 223);
+  margin: 5px 20px 5px 0px;
+  border-radius: 5px;
+  padding: 10px 22px 10px 15px;
+}
+form .custom-select .row .address2 {
+  margin-left: 12px;
+}
 form #sendOrderBtn {
   background-color: #f17064;
   width: 90%;

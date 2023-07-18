@@ -119,10 +119,34 @@ const Navbar = () => {
                   新手上路
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link to="/shop" className="nav-link" href="#">
-                  購物商城
+              <li className="nav-item dropdown">
+                <Link
+                  className="nav-link dropdown-toggle"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <span style={{ fontSize: "1.7rem", fontWeight: "normal" }}>
+                    購物商城
+                  </span>
                 </Link>
+                <ul className="dropdown-menu">
+                  <li>
+                    <Link className="dropdown-item" to="/shop">
+                      購物商城
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="dropdown-item" href="#">
+                      訂單狀況
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="dropdown-item" to="/shop/history">
+                      歷史訂單
+                    </Link>
+                  </li>
+                </ul>
               </li>
             </ul>
             {/*右邊*/}
