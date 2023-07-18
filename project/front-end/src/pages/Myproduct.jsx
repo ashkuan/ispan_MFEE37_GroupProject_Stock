@@ -6,21 +6,16 @@ import { UserContext } from "../../context/UserContext";
 
 const Myproduct = () => {
   const { products, addToCart } = useContext(ShopContext);
-  const { uid, name, email, photopath } = useContext(UserContext);
+  const { uid } = useContext(UserContext);
   const [quantity, setQuantity] = useState(1);
   const [inputValue, setInputValue] = useState("");
   const [showToast, setShowToast] = useState(false);
 
-  const handleButtonClick = (pid) => {
-    if (uid) {
-      addToCart(pid, Number(quantity));
-      setShowToast(true);
-      setTimeout(() => {
-        setShowToast(false);
-      }, 5000);
-    } else {
-      alert("請先登入會員");
-    }
+  const handleButtonClick = () => {
+    setShowToast(true);
+    setTimeout(() => {
+      setShowToast(false);
+    }, 5000);
   };
 
   // 抓出url，找到pid參數的值
@@ -139,7 +134,12 @@ const Myproduct = () => {
                     <button
                       id="addToCart"
                       onClick={() => {
-                        handleButtonClick({ pid });
+                        if (uid) {
+                          addToCart(pid, Number(quantity));
+                          handleButtonClick();
+                        } else {
+                          alert("請先登入會員");
+                        }
                       }}
                     >
                       加入購物車

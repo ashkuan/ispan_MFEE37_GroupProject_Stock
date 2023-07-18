@@ -17,7 +17,7 @@ export const Cart = () => {
     <>
       <div id="myCart" className="modal-body d-flex flex-column">
         {/* 購物車內容(卡片) */}
-        {products.map((product, index) => {
+        {products.map((product) => {
           const { pid, pname, pimage1, pprice, pdesc } = product;
           const cartItemAmount = cartItems[pid];
           return (

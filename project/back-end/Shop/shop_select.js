@@ -20,19 +20,6 @@ app.get("/shop", function (req, res) {
   });
 });
 
-// 要檢查是否登入會員
-// app.post("/cart2", function (req, res) {
-//   const { uid } = req.data;
-//   console.log(uid);
-// db.query("SELECT * FROM Cart Where uid = ? ", [49], function (err, data) {
-//     if (err) {
-//       return "查無資料";
-//     } else {
-//       return res.json(data);
-//     }
-//   });
-// });
-
 app.get("/cart", function (req, res) {
   db.query("SELECT * FROM Cart Where uid = ? ", [49], function (err, data) {
     if (err) {
