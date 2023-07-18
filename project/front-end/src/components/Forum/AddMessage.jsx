@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const AddMessage = () => {
+const AddMessage = (props) => {
+  const faid = props.data;
+  console.log(faid);
   const handleSubmit = async (e) => {
     e.preventDefault();
     const fmContent = e.target.elements.fmContent.value;
     try {
-      await axios.post("http://localhost:5789/messages", { fmContent });
+      await axios.post("http://localhost:5052/messages", { fmContent, faid });
       // 成功提交留言后，可以刷新页面或更新留言数据以显示新留言
     } catch (err) {
       console.log(err);

@@ -1,20 +1,22 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const SmallHotMessage = () => {
+const SmallHotMessage = (props) => {
+  const faid = props.data;
+  console.log(faid);
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
     const fetchMessages = async () => {
       try {
-        const res = await axios.get("http://localhost:5789/messages");
+        const res = await axios.get(`http://localhost:5052/messages/${faid}`);
         setMessages(res.data);
       } catch (err) {
         console.log(err);
       }
     };
     fetchMessages();
-  }, []);
+  }, [faid]);
 
   const getMessages = () => {
     axios
@@ -28,13 +30,13 @@ const SmallHotMessage = () => {
   };
 
   const postMessage = () => {
-    const fmContent = "留言内容"; // 替换为实际的留言内容
+    const fmContent = "留言内容"; // 替換為實際的留言內容
     axios
-      .post("/messages", { fmContent })
+      .post(`http://localhost:5052/messages/${faid}`, { fmContent })
       .then((response) => {
         console.log(response.data);
-        // 成功发表留言后，刷新留言列表
-        getMessages();
+        // 成功發表留言後，刷新留言列表
+        fetchMessages(); // 注意這裡需要調用 fetchMessages() 函數來重新獲取留言
       })
       .catch((error) => {
         console.log(error);
@@ -47,9 +49,9 @@ const SmallHotMessage = () => {
         <div className="border-top border-2 py-4 mt-4" key={message.fmid}>
           <div className="black-Word d-flex justify-content-between align-items-center">
             <div className="d-flex align-items-center">
-              <img src={message.userImageUrl} alt="" />
+              <img src={message.photopath} alt="" />
               <span className="ms-3 text-IronGray-Deep fs-5">
-                {message.userName} · {message.time}
+                {message.uid} · {message.createTime}
               </span>
             </div>
             <div>
