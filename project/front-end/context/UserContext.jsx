@@ -29,4 +29,4 @@ const UserContextProvider = (props) => {
     </UserContext.Provider>
   );
 };
-export default UserContext;
+export default UserContextProvider;
