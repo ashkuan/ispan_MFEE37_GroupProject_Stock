@@ -1,12 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "../styles/sidebar.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
-
+import { UserContext } from "../../context/UserContext";
 
 const Sidebar = () => {
-  const [name, setName] = useState("");
-  const [photopath, setPhotopath] = useState("");
+  // const [name, setName] = useState("");
+  // const [photopath, setPhotopath] = useState("");
+  const {
+    uid,
+    setUid,
+    name,
+    setName,
+    email,
+    setEmail,
+    password,
+    setPassword,
+    photopath,
+    setPhotopath,
+  } = useContext(UserContext);
+
   useEffect(() => {
     axios
       .get("http://localhost:3000/member", { withCredentials: true })
@@ -137,8 +150,9 @@ const Sidebar = () => {
               d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"
             />
           </svg>
-          <button className="nav-link logout-btn" onClick={handleLogout}
-          >登出</button>
+          <button className="nav-link logout-btn" onClick={handleLogout}>
+            登出
+          </button>
         </li>
       </ul>
     </div>

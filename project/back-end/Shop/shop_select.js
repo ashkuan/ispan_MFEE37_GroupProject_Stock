@@ -21,8 +21,11 @@ app.get("/shop", function (req, res) {
 });
 
 // 要檢查是否登入會員
-app.get("/cart", function (req, res) {
-  db.query("SELECT * FROM Cart Where uid = ? ", [49], function (err, data) {
+app.post("/cart", function (req, res) {
+  const { uid } = req.data;
+  console.log(req.data);
+  console.log(uid);
+  db.query("SELECT * FROM Cart Where uid = ? ", [uid], function (err, data) {
     if (err) {
       return "查無資料";
     } else {
@@ -30,6 +33,15 @@ app.get("/cart", function (req, res) {
     }
   });
 });
+// app.get("/cart", function (req, res) {
+//   db.query("SELECT * FROM Cart Where uid = ? ", [49], function (err, data) {
+//     if (err) {
+//       return "查無資料";
+//     } else {
+//       return res.json(data);
+//     }
+//   });
+// });
 
 app.post("/cart/edit", function (req, res) {
   const items = req.body.data;
