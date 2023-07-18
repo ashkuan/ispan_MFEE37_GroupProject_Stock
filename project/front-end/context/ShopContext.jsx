@@ -55,40 +55,40 @@ export const ShopContextProvider = (props) => {
   // 載入購物車
   useEffect(() => {
     // 如果有登入會員
-    if (uid) {
-      const fetchCart = async () => {
-        try {
-          // 商品
-          // const res2 = await axios.post("http://localhost:5566/cart", { uid });
-          const res = await axios.post("http://localhost:5566/cart", { uid });
-          console.log(res.data);
-          // 如果資料庫都沒有資料，那就全部預設為0
-          if (res.data.length == 0) {
-            setCartItems(getDefaultCart()); // 一開始預設的商品和商品數
-            console.log(cartItems);
-          } else {
-            // 如果資料庫有資料，就把有資料的部分替換
-            // console.log(res.data);
-            const items = res.data;
-            const updatedCart = getDefaultCart();
-            items.forEach((item) => {
-              const { pid, paccount } = item;
-              // console.log(item);
-              updatedCart[pid] = paccount;
-            });
-            setCartItems(updatedCart);
-            setDataLoaded(true);
-          }
-        } catch (err) {
-          console.log(err);
+    // if (uid) {
+    const fetchCart = async () => {
+      try {
+        // 商品
+        // const res2 = await axios.post("http://localhost:5566/cart",uid);
+        const res = await axios.get("http://localhost:5566/cart");
+        // console.log(res.data.length);
+        // 如果資料庫都沒有資料，那就全部預設為0
+        if (res.data.length == 0) {
+          setCartItems(getDefaultCart()); // 一開始預設的商品和商品數
+          console.log(cartItems);
+        } else {
+          // 如果資料庫有資料，就把有資料的部分替換
+          // console.log(res.data);
+          const items = res.data;
+          const updatedCart = getDefaultCart();
+          items.forEach((item) => {
+            const { pid, paccount } = item;
+            // console.log(item);
+            updatedCart[pid] = paccount;
+          });
+          setCartItems(updatedCart);
+          setDataLoaded(true);
         }
-      };
-      fetchCart();
-    } else {
-      setCartItems(getDefaultCart()); // 一開始預設的商品和商品數
-      setDataLoaded(true);
-      console.log("沒有登入會員");
-    }
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchCart();
+    // } else {
+    //   setCartItems(getDefaultCart()); // 一開始預設的商品和商品數
+    //   setDataLoaded(true);
+    //   console.log("沒有登入會員");
+    // }
   }, []);
 
   const addToCart = (pid, quantity) => {

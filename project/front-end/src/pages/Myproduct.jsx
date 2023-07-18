@@ -2,19 +2,27 @@ import React, { useContext, useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import { ShopContext } from "../../context/ShopContext";
 import { Toast } from "react-bootstrap";
+import { UserContext } from "../../context/UserContext";
 
 const Myproduct = () => {
   const { products, addToCart } = useContext(ShopContext);
+  const { uid, name, email, photopath } = useContext(UserContext);
   const [quantity, setQuantity] = useState(1);
   const [inputValue, setInputValue] = useState("");
   const [showToast, setShowToast] = useState(false);
 
-  const handleButtonClick = () => {
-    setShowToast(true);
-    setTimeout(() => {
-      setShowToast(false);
-    }, 5000);
+  const handleButtonClick = (pid) => {
+    if (uid) {
+      addToCart(pid, Number(quantity));
+      setShowToast(true);
+      setTimeout(() => {
+        setShowToast(false);
+      }, 5000);
+    } else {
+      alert("請先登入會員");
+    }
   };
+
   // 抓出url，找到pid參數的值
   const queryParams = new URLSearchParams(window.location.search);
   const URLpid = queryParams.get("pid");
@@ -131,8 +139,7 @@ const Myproduct = () => {
                     <button
                       id="addToCart"
                       onClick={() => {
-                        addToCart(pid, Number(quantity));
-                        handleButtonClick();
+                        handleButtonClick({ pid });
                       }}
                     >
                       加入購物車
