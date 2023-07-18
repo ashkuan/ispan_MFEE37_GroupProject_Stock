@@ -54,15 +54,30 @@ export const ShopContextProvider = (props) => {
 
   // 載入購物車
   useEffect(() => {
+    const postUid = async () => {
+      if (uid) {
+        try {
+          const res = await axios.post("http://localhost:5566/postUid", {
+            uid,
+          });
+          console.log(uid);
+        } catch (err) {
+          console.log(err);
+        }
+      } else {
+        console.log("沒有登入會員");
+      }
+    };
     const fetchCart = async () => {
       try {
         // 商品
-        // const res2 = await axios.post("http://localhost:5566/cart",uid);
         const res = await axios.get("http://localhost:5566/cart");
+        // console.log(res.data);
         // 如果資料庫都沒有資料，那就全部預設為0
         if (res.data.length == 0) {
           setCartItems(getDefaultCart()); // 一開始預設的商品和商品數
           console.log(cartItems);
+          setDataLoaded(true);
         } else {
           // 如果資料庫有資料，就把有資料的部分替換
           // console.log(res.data);
@@ -80,8 +95,8 @@ export const ShopContextProvider = (props) => {
         console.log(err);
       }
     };
-    fetchCart();
-  }, []);
+    postUid(fetchCart());
+  }, [uid]);
 
   const addToCart = (pid, quantity) => {
     console.log(quantity);

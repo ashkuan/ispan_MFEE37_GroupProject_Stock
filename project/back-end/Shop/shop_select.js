@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import db from "../DB/DBconfig.js";
+import { chownSync } from "fs";
 
 var app = express();
 app.use(cors());
@@ -20,8 +21,17 @@ app.get("/shop", function (req, res) {
   });
 });
 
+let myuid = "";
+app.post("/postUid", function (req, res) {
+  const { uid } = req.body;
+  myuid = uid.toString();
+  console.log(myuid);
+  console.log("This is myUid from /postUid:" + myuid);
+});
+
 app.get("/cart", function (req, res) {
-  db.query("SELECT * FROM Cart Where uid = ? ", [49], function (err, data) {
+  console.log("This is myUid from /cart:" + myuid);
+  db.query("SELECT * FROM Cart Where uid = (?)", [myuid], function (err, data) {
     if (err) {
       return "查無資料";
     } else {
@@ -31,6 +41,7 @@ app.get("/cart", function (req, res) {
 });
 
 app.post("/cart/edit", function (req, res) {
+  console.log(myuid);
   const items = req.body.data;
   console.log("這是items");
   console.log(items);
@@ -38,10 +49,11 @@ app.post("/cart/edit", function (req, res) {
     pid,
     paccount,
   ]);
+  console.log(updateValues);
   db.query(
-    "INSERT INTO Cart (pid, paccount) VALUES ? ON DUPLICATE KEY UPDATE paccount = VALUES(paccount)",
-    [updateValues],
-    function (err, data) {
+    `INSERT INTO Cart (uid, pid, paccount) VALUES ? ON DUPLICATE KEY UPDATE paccount = VALUES(paccount)`,
+    [updateValues.map((values) => [myuid, ...values])],
+    function (err) {
       if (err) {
         console.error("購物車儲存失敗:", err);
       } else {
