@@ -127,7 +127,7 @@ const SidebarTag = () => {
             role="navigation"
             aria-label="Webdev tag cloud"
           >
-            {randomTags.slice(current, current + 10).map((tag, index) => (
+            {randomTags.slice(current, current + 14).map((tag, index) => (
               <li key={index}>
                 <a href="#" data-weight={tag.count}>
                   {tag.fhashtag}

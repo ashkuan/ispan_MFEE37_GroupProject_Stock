@@ -225,3 +225,14 @@ body {
 .cursor-pointer {
     cursor: pointer;
 }
+
+.postSuccess{
+    background-color: var(--Pink-Deep);
+    color: var(--White);
+    position: relative;
+    top: 10px;
+    left: 30%;
+    width: 30%;    
+    /* height: 50px; */
+    
+}
