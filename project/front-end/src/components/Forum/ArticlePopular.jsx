@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext } from "react";
 import "../../styles/forum_main_right.css";
 import "../../styles/forum_main.css";
 import Emoji from "./Emoji";
@@ -15,8 +15,12 @@ import NotifyShareDropdown from "./NotifyShareDropdown";
 import AddMessage from "./AddMessage";
 import ArticleTitle from "./ArticleTitle";
 import axios from "axios";
+import {UserContext} from "../../../context/UserContext";
 
 function ArticlePopular() {
+  const { uid, name, email, photopath } = useContext(UserContext);
+  console.log("我是popular裡面的uid");
+  console.log(uid);
   const [showModal, setShowModal] = useState(false);
   const [posts, setPosts] = useState([]);
   const [faid, setFaid] = useState([]);
@@ -97,7 +101,7 @@ function ArticlePopular() {
               {/* 用戶 */}
               <div className="d-flex justify-content-between">
                 <div className="d-flex align-items-center text-IronGray-Deep">
-                  <img className="userImg me-3" src={post.image} alt="" />
+                <img className="userImg me-3" src={`http://localhost:3000/${photopath}`} alt="" />
                   <span className="me-3 mb-1 fz-3">{post.name}</span>
                   <span className="me-4 mb-1 fz-3">{post.fboard}</span>
                   <span className="me-3 mb-1 fz-4 fw-normal">
