@@ -7,7 +7,7 @@ export const ShopContext = createContext(null);
 // 設定商品和商品數預設值
 const getDefaultCart = () => {
   let cart = {};
-  for (let i = 0; i < 19; i++) {
+  for (let i = 0; i < 29; i++) {
     cart[`p${i + 1}`] = 0; //i+1直接等於id
   }
   return cart;

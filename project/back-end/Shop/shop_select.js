@@ -41,26 +41,29 @@ app.get("/cart", function (req, res) {
 });
 
 app.post("/cart/edit", function (req, res) {
-  console.log(myuid);
-  const items = req.body.data;
-  console.log("這是items");
-  console.log(items);
-  const updateValues = Object.entries(items).map(([pid, paccount]) => [
-    pid,
-    paccount,
-  ]);
-  console.log(updateValues);
-  db.query(
-    `INSERT INTO Cart (uid, pid, paccount) VALUES ? ON DUPLICATE KEY UPDATE paccount = VALUES(paccount)`,
-    [updateValues.map((values) => [myuid, ...values])],
-    function (err) {
-      if (err) {
-        console.error("購物車儲存失敗:", err);
-      } else {
-        console.log("購物車儲存成功");
+  if (myuid) {
+    console.log(myuid);
+    const items = req.body.data;
+    console.log("這是items");
+    console.log(items);
+    const updateValues = Object.entries(items).map(([pid, paccount]) => [
+      myuid + pid,
+      pid,
+      paccount,
+    ]);
+    console.log(updateValues);
+    db.query(
+      `INSERT INTO Cart (uid, uidpid, pid, paccount) VALUES ? ON DUPLICATE KEY UPDATE paccount = VALUES(paccount)`,
+      [updateValues.map((values) => [myuid, ...values])],
+      function (err) {
+        if (err) {
+          console.error("購物車儲存失敗:", err);
+        } else {
+          console.log("購物車儲存成功");
+        }
       }
-    }
-  );
+    );
+  }
 });
 
 app.get("/checkout", function (req, res) {
