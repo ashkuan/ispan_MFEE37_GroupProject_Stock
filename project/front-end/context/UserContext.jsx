@@ -3,7 +3,7 @@ import React, { createContext, useEffect, useState } from "react";
 
 export const UserContext = createContext(null);
 
-const UserContextProvider = (props) => {
+export const UserContextProvider = (props) => {
   const [uid, setUid] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -29,4 +29,4 @@ const UserContextProvider = (props) => {
     </UserContext.Provider>
   );
 };
-export default UserContextProvider;
+// export default UserContextProvider;
