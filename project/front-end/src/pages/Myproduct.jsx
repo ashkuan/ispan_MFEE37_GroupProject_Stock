@@ -21,7 +21,7 @@ const Myproduct = () => {
   // 抓出url，找到pid參數的值
   const queryParams = new URLSearchParams(window.location.search);
   const URLpid = queryParams.get("pid");
-  console.log(URLpid);
+  // console.log(URLpid);
 
   // 找出與資料庫products pid相符的資料
   const filteredProducts = products.filter((product) => product.pid == URLpid);
