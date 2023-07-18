@@ -332,11 +332,12 @@ function PostBtn() {
     <>
       <button className="postBtn px-4 fz-3" onClick={handleShow}>
         <div className="d-flex justify-content-between align-items-center py-3">
-          <img
+          <div className="user-img-circle bg-cover"></div>
+          {/* <img
             className="userImg d-flex align-items-center"
             src="../public/img/forum/userImg.svg"
             alt=""
-          />
+          /> */}
           <div className="w-75 rounded-3 bg-white d-flex align-items-center px-3 py-2">
             想和大家分享...
           </div>
