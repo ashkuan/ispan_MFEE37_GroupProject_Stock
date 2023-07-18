@@ -53,14 +53,6 @@ app.post("/messages/:faid", (req, res) => {
       return res.status(500).json({ error: "無法新增留言" });
     }
   });
-  if (isAuthenticated) {
-    // 如果會員已登入,將留言存到資料庫
-    const message = req.body.message;
-    return res.json({ success: true, message: "留言成功" });
-  } else {
-    // 會員未登入,返回錯誤訊息
-    return res.status(401).json({ error: "未登入,無法成功留言" });
-  }
 });
 
 app.listen(5052, () => {

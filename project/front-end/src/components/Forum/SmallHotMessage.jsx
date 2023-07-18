@@ -51,7 +51,7 @@ const SmallHotMessage = (props) => {
             <div className="d-flex align-items-center">
               <img src={message.photopath} alt="" />
               <span className="ms-3 text-IronGray-Deep fs-5">
-                {message.uid} · {message.createTime}
+                {message.name} · {message.createTime}
               </span>
             </div>
             <div>
