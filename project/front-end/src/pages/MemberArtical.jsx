@@ -62,46 +62,49 @@ const handleDelete = (article) => {
   return (
     <>
       <Sidebar></Sidebar>
-      <div className="main-content flex-grow-1 p-3">
-        <p className="mt-5 art-info">我的文章</p>
-        <hr />
-        <div className="col-list">
-          <table className="table1">
-            <thead>
-              <tr className="header-row">
-                <th className="text-center art-header">標題</th>
-                <th className="text-center  art-time">發文時間</th>
-                <th className="text-center  art-author">內容</th>
-                <th className=" col-blank" />
-              </tr>
-            </thead>
-            <tbody>
-              {currentArticles.map((article) => (
-                <tr key={article.faid} className="art-row">
-                  <td className="art-td-header text-left">
-                    <div className=" art-title">{article.fatitle}</div>
-                  </td>
-                  <td className="text-center">
-                    <div className="art-td-time">{article.createTime.substring(0, 10)}</div>
-                  </td>
-                  <td>
-                    <div className="text-center  art-td-contant">{article.farticle}</div>
-                  </td>
-                  <td className="art-text-center">
-                    <button className="del-btn art-btn" onClick={() => handleDelete(article)}>刪除</button>
-                  </td>
+      <div className="replaceart">
+
+        <div className="main-content flex-grow-1 p-3">
+          <p className="mt-5 art-info">我的文章</p>
+          <hr />
+          <div className="col-list">
+            <table className="table1">
+              <thead>
+                <tr className="header-row">
+                  <th className="text-center art-header">標題</th>
+                  <th className="text-center  art-time">發文時間</th>
+                  <th className="text-center  art-author">內容</th>
+                  <th className=" col-blank" />
                 </tr>
-              ))}
-            </tbody>
-          </table>
-          <div className="art-page-btn-container">
-            <div className="art-page-btn-container-2">
-              <button onClick={goToPreviousPage} disabled={currentPage === 1} className="art-page-btn">
-                上一頁
-              </button>
-              <button onClick={goToNextPage} disabled={currentPage === totalPages} className="art-page-btn">
-                下一頁
-              </button>
+              </thead>
+              <tbody>
+                {currentArticles.map((article) => (
+                  <tr key={article.faid} className="art-row">
+                    <td className="art-td-header text-left">
+                      <div className=" art-title">{article.fatitle}</div>
+                    </td>
+                    <td className="text-center">
+                      <div className="art-td-time">{article.createTime.substring(0, 10)}</div>
+                    </td>
+                    <td>
+                      <div className="text-center  art-td-contant">{article.farticle}</div>
+                    </td>
+                    <td className="art-text-center">
+                      <button className="del-btn art-btn" onClick={() => handleDelete(article)}>刪除</button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <div className="art-page-btn-container">
+              <div className="art-page-btn-container-2">
+                <button onClick={goToPreviousPage} disabled={currentPage === 1} className="art-page-btn">
+                  上一頁
+                </button>
+                <button onClick={goToNextPage} disabled={currentPage === totalPages} className="art-page-btn">
+                  下一頁
+                </button>
+              </div>
             </div>
           </div>
         </div>

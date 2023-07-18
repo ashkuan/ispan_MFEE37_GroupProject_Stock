@@ -1,0 +1,8 @@
+.replaceloginpage{
+  margin-top: 200px;
+}
+.modal-footer{
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}

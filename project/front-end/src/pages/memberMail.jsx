@@ -99,43 +99,46 @@ const MemberMail = () => {
   return (
     <>
       <Sidebar></Sidebar>
-      <div className="main-content flex-grow-1 p-3">
-        <p className="mt-5 member-info">會員公告</p>
-        <hr />
-        <div className="mailpage-info">
-          {currentMessages.map((message, index) => (
-            <div
-              key={index}
-              className={`d-flex justify-content-around mail-row ${
-                message.stats === 1 ? "mail-read" : ""
-              }`}
-            >
-              <span className="mail-content">{message.message}</span>
-              <button
-                className="mail-btn"
-                onClick={() => handleOpenModal(message)}
+      <div className="replacemail">
+
+        <div className="main-content flex-grow-1 p-3">
+          <p className="mt-5 member-info">會員公告</p>
+          <hr />
+          <div className="mailpage-info">
+            {currentMessages.map((message, index) => (
+              <div
+                key={index}
+                className={`d-flex justify-content-around mail-row ${
+                  message.stats === 1 ? "mail-read" : ""
+                }`}
               >
-                點擊
-              </button>
-              <button className="delete-btn" onClick={() => handleDelete(message)}>刪除</button>
-            </div>
-          ))}
+                <span className="mail-content">{message.message}</span>
+                <button
+                  className="mail-btn"
+                  onClick={() => handleOpenModal(message)}
+                >
+                  點擊
+                </button>
+                <button className="delete-btn" onClick={() => handleDelete(message)}>刪除</button>
+              </div>
+            ))}
+          </div>
+          <div className="pagination mail-page-btn-container">
+            <button onClick={goToPreviousPage} disabled={currentPage === 1} className="mail-page-btn">
+              上一頁
+            </button>
+            <span className="currentPage">{currentPage}</span>
+            <button onClick={goToNextPage} disabled={currentPage === totalPages} className="mail-page-btn">
+              下一頁
+            </button>
+          </div>
         </div>
-        <div className="pagination mail-page-btn-container">
-          <button onClick={goToPreviousPage} disabled={currentPage === 1} className="mail-page-btn">
-            上一頁
-          </button>
-          <span className="currentPage">{currentPage}</span>
-          <button onClick={goToNextPage} disabled={currentPage === totalPages} className="mail-page-btn">
-            下一頁
-          </button>
-        </div>
+        <MessageModal
+          isOpen={modalOpen}
+          onClose={handleCloseModal}
+          message={selectedMessage.message} // 使用 selectedMessage.message
+        />
       </div>
-      <MessageModal
-        isOpen={modalOpen}
-        onClose={handleCloseModal}
-        message={selectedMessage.message} // 使用 selectedMessage.message
-      />
     </>
   );
 };
