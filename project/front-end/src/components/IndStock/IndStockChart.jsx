@@ -3,6 +3,7 @@ import { useContext } from "react";
 import Chart from "react-apexcharts";
 import { StockContext } from "../../../context/StockContext";
 import "../../styles/indStockChart.css";
+import "../../styles/forum_main.css";
 import axios from "axios";
 
 const IndStockChart = () => {
@@ -32,7 +33,7 @@ const IndStockChart = () => {
           Dates.map((time) => {
             // console.log(time);
             const date = new Date(time * 1000);
-            // console.log(date.toDateString());
+            console.log(date.toDateString());
             const dataString = date.toDateString().slice(4, 10);
             myStockDate.push(dataString);
             // console.log(myStockDate);
@@ -59,7 +60,7 @@ const IndStockChart = () => {
       toolbar: {
         dataLabels: {
           show: true,
-          style: { fontSize: "1rem" },
+          // style: { fontSize: "1rem" },
         },
       },
     },
@@ -72,10 +73,10 @@ const IndStockChart = () => {
     xaxis: {
       labels: {
         show: true,
-        style: { fontSize: "1.2rem" },
+        style: { fontSize: "1.1rem" },
       }, // 時間
       categories: stockDate,
-      tickAmount: 8,
+      tickAmount: 5,
     },
     fill: {
       colors: ["#f17064"],
@@ -88,7 +89,7 @@ const IndStockChart = () => {
     yaxis: {
       labels: {
         show: true,
-        style: { fontSize: "1.6rem" },
+        style: { fontSize: "1.3rem" },
       },
     },
     dataLabels: {
@@ -97,38 +98,28 @@ const IndStockChart = () => {
   };
 
   return (
-    <div>
-      <div className="container-fluid mt-3 mb-3">
-        <Chart
-          options={options}
-          series={options.series}
-          type="area"
-          width={1200}
-          height={450}
-        />
-      </div>
-      <div className="time">
+    <>
+      <div className="time-zone mb-3 fz-3">
         <button
           onClick={() => {
-            setPerRange("1d");
-            setRange("30d");
+            setPerRange("1d"), setRange("30d");
           }}
         >
-          1個月
+          月
         </button>
         <button
           onClick={() => {
             setPerRange("1d"), setRange("3mo");
           }}
         >
-          3個月
+          季
         </button>
         <button
           onClick={() => {
             setPerRange("1d"), setRange("6mo");
           }}
         >
-          6個月
+          半年
         </button>
         <button
           onClick={() => {
@@ -152,7 +143,16 @@ const IndStockChart = () => {
           10年
         </button>
       </div>
-    </div>
+      <div className="drop-shadow-20">
+        <Chart
+          options={options}
+          series={options.series}
+          type="area"
+          width={600}
+          height={400}
+        />
+      </div>
+    </>
   );
 };
 

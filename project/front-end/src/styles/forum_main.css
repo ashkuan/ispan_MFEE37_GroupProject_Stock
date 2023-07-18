@@ -146,6 +146,10 @@ body {
     background-color: var(--IronGray-Light);
 }
 
+.bg-black-word {
+    background-color: var(--black-Word);
+}
+
 .Pink {
     background-color: var(--Pink);
 }
@@ -234,5 +238,4 @@ body {
     left: 30%;
     width: 30%;    
     /* height: 50px; */
-    
 }
