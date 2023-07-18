@@ -159,6 +159,9 @@ function ChatArticle() {
             </div>
             <hr />
 
+          </div>
+        ))}
+        
             {/* articleIndividual-modal */}
             <Modal show={showModal} onHide={handleModalClose}>
               <div className="px-5 py-3 d-flex flex-column justify-content-between">
@@ -203,8 +206,6 @@ function ChatArticle() {
                 </Modal.Footer>
               </div>
             </Modal>
-          </div>
-        ))}
       </div>
     </div>
   );

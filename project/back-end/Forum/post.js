@@ -37,12 +37,13 @@ app.use(express.static(path.join(__dirname, "img")));
 app.post("/posts", multer({ storage }).single("faimage"), (req, res) => {
   const file = req.file;
   const sql =
-    "INSERT INTO `ForumArticle`(`fuid`, `fatitle`, `farticle`, `faimage`, `faid`, `fboard`,`createTime`,`fhashtag`,`collect`) VALUES (?)";
+    // "INSERT INTO `ForumArticle`(`uid`, `fatitle`, `farticle`, `faimage`, `faid`, `fboard`,`createTime`,`fhashtag`,`collect`) VALUES (?)";
+    "INSERT INTO `ForumArticle`(`uid`, `fatitle`, `farticle`, `faimage`, `faid`, `fboard`,`createTime`,`fhashtag`,`collect`,`totalLikes`) VALUES (?)";
 
   const createTime = moment().format("YYYY-MM-DD HH:mm:ss");
 
   const values = [
-    req.body.fuid,
+    req.body.uid="5",
     req.body.fatitle,
     req.body.farticle,
     file ? file.filename : "",
@@ -51,6 +52,7 @@ app.post("/posts", multer({ storage }).single("faimage"), (req, res) => {
     createTime,
     req.body.fhashtag,
     req.body.collect,
+    req.body.totalLikes="0",
   ];
   connToDBHelper.query(sql, [values], (err, data) => {
     if (err) {
@@ -130,7 +132,7 @@ app.post("/getFaid", (req, res) => {
     if (err) {
       console.log("faid一直錯一直爽" + err);
     } else {
-      console.log(data)
+      // console.log(data)
       return res.json(data);
     }
   });
@@ -152,6 +154,7 @@ app.get("/posts/:faid", (req, res) => {
 });
 
 
+//按讚faid
 app.put("/like/:faid", (req, res) => {
   const sql = "UPDATE `ForumArticle` SET `likedByUser` = ? WHERE `faid` = ?";
   const values = req.body.likedByUser;
@@ -220,6 +223,8 @@ app.put("/like/:faid", (req, res) => {
 //   });
 // });
 
+
+//按讚存入
 app.put("/posts/:faid/like", (req, res) => {
   const updateSql = "UPDATE ForumArticle SET likedByUser = ? WHERE faid = ?";
   const values = req.body.likedByUser;
@@ -346,6 +351,19 @@ app.get('/news',(req,res)=>{
   connToDBHelper.query(sql,(err,data)=>{
     if (err) {
       return "新聞版連接錯誤";
+    } else {
+      return res.json(data);
+    }
+  })
+})
+
+//標籤雲
+app.get('/tags',(req,res)=>{
+  // const sql = "SELECT fhashtag FROM `ForumArticle` "
+  const sql = "SELECT fhashtag, COUNT(*) AS count FROM ForumArticle GROUP BY fhashtag";
+  connToDBHelper.query(sql,[],(err,data)=>{
+    if (err) {
+      return "標籤雲後端失敗";
     } else {
       return res.json(data);
     }
