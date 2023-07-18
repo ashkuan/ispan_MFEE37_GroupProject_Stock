@@ -9,6 +9,7 @@ import Post from "../components/Forum/Post.jsx";
 import ArticleSort from "../components/Forum/ArticleSort.jsx";
 import Billboard from "../components/Forum/Billboard.jsx";
 import LineChart from "../components/linechart";
+import PostSuccess from "../components/Forum/PostSuccess";
 
 const Forum = () => {
   return (
