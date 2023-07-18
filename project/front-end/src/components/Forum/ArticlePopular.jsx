@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext } from "react";
 import "../../styles/forum_main_right.css";
 import "../../styles/forum_main.css";
 import Emoji from "./Emoji";
@@ -15,8 +15,12 @@ import NotifyShareDropdown from "./NotifyShareDropdown";
 import AddMessage from "./AddMessage";
 import ArticleTitle from "./ArticleTitle";
 import axios from "axios";
+import {UserContext} from "../../../context/UserContext";
 
 function ArticlePopular() {
+  const { uid, name, email, photopath } = useContext(UserContext);
+  console.log("我是popular裡面的uid");
+  console.log(uid);
   const [showModal, setShowModal] = useState(false);
   const [posts, setPosts] = useState([]);
   const [faid, setFaid] = useState([]);
@@ -34,17 +38,17 @@ function ArticlePopular() {
     fetchAllPost();
   }, []);
 
-  const fetchAllCollect = async () => {
-    try {
+  // const fetchAllCollect = async () => {
+  //   try {
 
-      const res = await axios.post("http://localhost:5789/posts", {
-        faid: faid,
-      });
-      setCollects(res.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  //     const res = await axios.post("http://localhost:5789/posts", {
+  //       faid: faid,
+  //     });
+  //     setCollects(res.data);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   const handleArticleClick = () => {
     setShowModal(true);
@@ -64,29 +68,29 @@ function ArticlePopular() {
   //     setCollects(0)
   //   }
   // }
-  const collectClick = async (e) => {
-    e.preventDefault();
+  // const collectClick = async (e) => {
+  //   e.preventDefault();
 
-    try {
-      if (collects === 0) {
-        setCollects(1);
-        console.log('有嗎' + faid);
-        await axios.put("http://localhost:5789/collect/:faid", {
-          faid: faid,
-          collects: 1,
-        });
-      } else {
-        setCollects(0);
-        await axios.put("http://localhost:5789/collect/:faid", {
-          faid: faid,
-          collects: 0,
-        });
-      }
-      fetchAllCollect();
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  //   try {
+  //     if (collects === 0) {
+  //       setCollects(1);
+  //       console.log('有嗎' + faid);
+  //       await axios.put("http://localhost:5789/collect/:faid", {
+  //         faid: faid,
+  //         collects: 1,
+  //       });
+  //     } else {
+  //       setCollects(0);
+  //       await axios.put("http://localhost:5789/collect/:faid", {
+  //         faid: faid,
+  //         collects: 0,
+  //       });
+  //     }
+  //     fetchAllCollect();
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   return (
     <div className="drop-shadow-20 rounded-4 bg-white mt-4">
@@ -97,7 +101,7 @@ function ArticlePopular() {
               {/* 用戶 */}
               <div className="d-flex justify-content-between">
                 <div className="d-flex align-items-center text-IronGray-Deep">
-                  <img className="userImg me-3" src={post.image} alt="" />
+                <img className="userImg me-3" src={`http://localhost:3000/${photopath}`} alt="" />
                   <span className="me-3 mb-1 fz-3">{post.name}</span>
                   <span className="me-4 mb-1 fz-3">{post.fboard}</span>
                   <span className="me-3 mb-1 fz-4 fw-normal">
@@ -160,53 +164,55 @@ function ArticlePopular() {
             </div>
             <hr />
 
-       
+
           </div>
         ))}
-             {/* articleIndividual-modal */}
-             <Modal show={showModal} onHide={handleModalClose}>
-              <div className="px-5 py-3 d-flex flex-column justify-content-between">
-                <Modal.Header closeButton>
-                  <Modal.Title>
-                    <div className="d-flex align-items-center">
-                      <PostUser />
-                    </div>
-                  </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                  <div className="p-4">
-                    <div className="p-2 pb-4">
-                      {/* 看板 */}
-                      <BoardTag data={faid} />
-                    </div>
-                    <div className="p-3 fs-5">
-                      {/* 文章內容 */}
-                      <ArticleTitle data={faid} />
-                      <ArticleContent data={faid} />
-                    </div>
-                    <div className="p-3 d-flex">
-                      {/* hashtag */}
-                      <HitoHashTags data={faid} />
-                    </div>
-                    <div className="text-secondary fs-5 p-4 d-flex justify-content-between">
-                      <div className="d-flex">
-                        {/* <Emoji /> */}
-                        <EmojiButton data={faid} />
-                        <MessageQuantity />
-                      </div>
-                      <div className="d-flex">
-                        <KeepButton data={faid} />
-                        <NotifyShareDropdown />
-                      </div>
-                    </div>
-                    <HotNewMessageTabs />
+        {/* articleIndividual-modal */}
+        <Modal show={showModal} onHide={handleModalClose}>
+          <div className="px-5 py-3 d-flex flex-column justify-content-between">
+            <Modal.Header closeButton>
+              <Modal.Title>
+                <div className="d-flex align-items-center">
+                  <PostUser />
+                </div>
+              </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <div className="p-4">
+                <div className="p-2 pb-4">
+                  {/* 看板 */}
+                  <BoardTag data={faid} />
+                </div>
+                <div className="p-3 fs-5">
+                  {/* 文章內容 */}
+                  <ArticleTitle data={faid} />
+                  <ArticleContent data={faid} />
+                </div>
+                <div className="p-3 d-flex">
+                  {/* hashtag */}
+                  <HitoHashTags data={faid} />
+                </div>
+                <div className="text-secondary fs-5 p-4 d-flex justify-content-between">
+                  <div className="d-flex align-items-center">
+                    {/* <Emoji /> */}
+                    {/* <img src="public/img/forum/likeClick.svg" alt="" /> */}
+                    {/* <EmojiCount data={faid} /> */}
+                    <EmojiButton data={faid} />
+                    <MessageQuantity />
                   </div>
-                </Modal.Body>
-                <Modal.Footer className="p-4 d-flex justify-content-between align-items-center">
-                  <AddMessage />
-                </Modal.Footer>
+                  <div className="d-flex">
+                    <KeepButton data={faid} />
+                    {/* <NotifyShareDropdown /> */}
+                  </div>
+                </div>
+                <HotNewMessageTabs />
               </div>
-            </Modal>
+            </Modal.Body>
+            <Modal.Footer className="p-4 d-flex justify-content-between align-items-center">
+              <AddMessage />
+            </Modal.Footer>
+          </div>
+        </Modal>
       </div>
     </div>
   );

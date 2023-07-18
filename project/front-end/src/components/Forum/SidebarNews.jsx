@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../../styles/forum_main.css";
 import "../../styles/forum_sidebar.css";
 import axios from "axios";
-import cycle from "/public/img/sidesbar/rotate-left-solid.svg";
+import renewIronGray from "/public/img/sidesbar/arrow-renew-IronGray.svg";
 
 function SidebarNews() {
   const [data, setData] = useState([]);
@@ -46,7 +46,7 @@ function SidebarNews() {
             onClick={() => search(auth)}
             className="ms-auto"
             style={{ width: "30px", cursor: "pointer" }}
-            src={cycle}
+            src={renewIronGray}
             alt=""
           />
         </a>

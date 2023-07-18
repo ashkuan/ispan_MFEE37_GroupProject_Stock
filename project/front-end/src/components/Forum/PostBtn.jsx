@@ -229,7 +229,7 @@
 // export default PostBtn;
 
 // 橫列發文鈕 modal內容
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect,useContext  } from "react";
 import { Modal, Button, Form, Alert } from "react-bootstrap";
 import uuid, { v4 as uuidv4 } from "react-uuid";
 import "../../styles/post.css";
@@ -237,8 +237,12 @@ import "../../styles/forum_main_right.css";
 import "../../styles/forum_main.css";
 import axios from "axios";
 import PostSuccess from "./PostSuccess";
+import {UserContext} from "../../../context/UserContext"
 
 function PostBtn() {
+  const { uid, name, email, photopath } = useContext(UserContext);
+  console.log("我是post裡面的uid");
+  console.log(uid);
   const [lgShow, setLgShow] = useState(false);
   const [postAlert, setPostAlert] = useState(false);
   const [image, setImage] = useState(null);
@@ -332,11 +336,12 @@ function PostBtn() {
     <>
       <button className="postBtn px-4 fz-3" onClick={handleShow}>
         <div className="d-flex justify-content-between align-items-center py-3">
-          <img
+          <div className="user-img-circle bg-cover"></div>
+          {/* <img
             className="userImg d-flex align-items-center"
             src="../public/img/forum/userImg.svg"
             alt=""
-          />
+          /> */}
           <div className="w-75 rounded-3 bg-white d-flex align-items-center px-3 py-2">
             想和大家分享...
           </div>
@@ -356,9 +361,9 @@ function PostBtn() {
             <Modal.Header closeButton>
               {/* 發文者資訊 */}
               <div className="d-flex align-items-center px-3">
-                <div id="memberpic" />
+              <img id="memberpic" src={`http://localhost:3000/${photopath}`}></img>  
                 <div id="memberid" className="py-3 ms-3 fs-4">
-                  韭菜是我
+                 {name}
                 </div>
               </div>
             </Modal.Header>
