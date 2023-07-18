@@ -1,10 +1,10 @@
 import { Link, Navigate, useNavigate } from "react-router-dom";
-
 import Validation from "./loginValidation";
 import axios from "axios";
 import NavSearch from "../components/IndStock/NavSearch";
 import { UserContext } from "../../context/UserContext";
 import { useState } from "react";
+import "../styles/logginpage.css";
 
 const loginPage = () => {
   // 會員
@@ -41,7 +41,8 @@ const loginPage = () => {
   };
   return (
     <>
-      <div>
+  
+      <div className="replaceloginpage d-flex align-items-center justify-content-center">
         <form onSubmit={handleSubmit} className="text-center m-3">
           <div>
             <label htmlFor="emial" className="m-3">
