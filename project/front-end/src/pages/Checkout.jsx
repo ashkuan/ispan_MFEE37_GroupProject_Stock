@@ -5,6 +5,7 @@ import "../styles/checkout.css";
 import { ShopContext } from "../../context/ShopContext";
 import TWzipcode from "react-twzipcode";
 import { UserContext } from "../../context/UserContext";
+import { Link } from "react-router-dom";
 
 const Checkout = () => {
   const { uid, name, email, photopath } = useContext(UserContext);
@@ -87,6 +88,7 @@ const Checkout = () => {
                 className="form-control"
                 id="email"
                 placeholder="請輸入您的email"
+                value={email}
               />
             </div>
             {/* 取貨資料 */}
@@ -379,7 +381,7 @@ const Checkout = () => {
           </div>
         </div>
         <button id="sendOrderBtn" type="submit" className="btn fs-3 mt-5">
-          送出訂單
+          <Link to="/shop/orderSuccess">送出訂單</Link>
         </button>
       </form>
       <Footer></Footer>
