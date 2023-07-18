@@ -8,7 +8,7 @@ const Myproduct = () => {
   const { products, addToCart } = useContext(ShopContext);
   const { uid } = useContext(UserContext);
   const [quantity, setQuantity] = useState(1);
-  const [inputValue, setInputValue] = useState("");
+  // const [inputValue, setInputValue] = useState("");
   const [showToast, setShowToast] = useState(false);
 
   const handleButtonClick = () => {
