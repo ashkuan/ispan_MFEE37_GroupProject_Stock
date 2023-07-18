@@ -81,7 +81,7 @@ export const ShopContextProvider = (props) => {
       }
     };
     fetchCart();
-  });
+  }, []);
 
   const addToCart = (pid, quantity) => {
     console.log(quantity);
