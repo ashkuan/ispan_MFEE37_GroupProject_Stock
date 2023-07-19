@@ -282,7 +282,7 @@ function ArticleNew() {
     <div className="drop-shadow-20 rounded-4 bg-white mt-4">
       <div className="px-5 py-4">
         {posts.map((post, index) => (
-          <div key={"10"+index}>
+          <div key={"new"+index}>
             <div className="articleCont py-4">
               {/* 用戶 */}
               <div className="d-flex justify-content-between">

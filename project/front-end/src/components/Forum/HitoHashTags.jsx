@@ -24,7 +24,7 @@ const HitoHashTags = (props) => {
         <a
           href="#"
           className="me-3 text-decoration-none IronGray-Light text-white fz-3 rounded-3 px-2 py-1"
-          key={index}
+          key={"hashtag"+index}
         >
           {tag.fhashtag}
         </a>

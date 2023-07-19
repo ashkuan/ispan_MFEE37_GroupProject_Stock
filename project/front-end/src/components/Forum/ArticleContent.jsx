@@ -64,7 +64,7 @@ const ArticleContent = (props) => {
     return (
         <>
             {articles.map((article,index)=>(
-                <div key={index}>
+                <div key={"article"+index}>
                     <pre className="mb-5 fs-5">
                         {article.farticle}
                     </pre>

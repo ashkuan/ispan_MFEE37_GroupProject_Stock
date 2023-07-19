@@ -26,7 +26,7 @@ const BoardTag = (props) => {
   return (
     <>
       {boards.map((board, index) => (
-        <div key={index}>
+        <div key={"board"+index}>
         <a
           href="#"
           className="me-3 text-decoration-none

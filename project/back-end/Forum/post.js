@@ -386,7 +386,8 @@ app.post("/messages", (req, res) => {
 //閒聊
 app.get("/chats", (req, res) => {
   const sql =
-    'SELECT `faid`,  `fatitle`, `farticle`, `faimage`, `likeCount`, `fboard`, `fhashtag`, `createTime`, `updateTime` FROM `ForumArticle` WHERE fboard = "閒聊"';
+    // 'SELECT `faid`,  `fatitle`, `farticle`, `faimage`, `likeCount`, `fboard`, `fhashtag`, `createTime`, `updateTime` FROM `ForumArticle` WHERE fboard = "閒聊"';
+   ' SELECT *FROM `ForumArticle`LEFT JOIN `login` ON `ForumArticle`.`uid` = `login`.`uid`WHERE fboard = "閒聊" ORDER BY `createTime` DESC'
   connToDBHelper.query(sql, (err, data) => {
     if (err) {
       return "閒聊版連接錯誤";

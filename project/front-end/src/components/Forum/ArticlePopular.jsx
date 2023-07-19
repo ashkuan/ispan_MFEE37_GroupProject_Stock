@@ -38,20 +38,8 @@ function ArticlePopular() {
       }
     };
     fetchAllPost();
-  }, []);
+  }, [posts]);
 
-  // useEffect(() => {
-  //   const fetchUserPhotoPath = async () => {
-  //     try {
-  //       const res = await axios.get(`http://localhost:3000/photopath/${photopath}`);
-  //       setUserPhotoPath(res);
-  //     } catch (err) {
-  //       console.log("我是res.data")
-  //       console.log(err);
-  //     }
-  //   };
-  //   fetchUserPhotoPath();
-  // }, []);
 
   const handleArticleClick = () => {
     setShowModal(true);
@@ -66,7 +54,7 @@ function ArticlePopular() {
     <div className="drop-shadow-20 rounded-4 bg-white mt-4">
       <div className="px-5 py-4">
         {posts.map((post, index) => (
-          <div key={"10"+index}>
+          <div key={"popular"+index}>
             <div className="articleCont py-4">
               {/* 用戶 */}
               <div className="d-flex justify-content-between">

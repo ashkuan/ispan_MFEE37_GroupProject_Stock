@@ -22,7 +22,7 @@ const EmojiButton = (props) => {
     };
 
     fetchAllKeep();
-  }, [faid]);
+  }, []);
 
   useEffect(() => {
     // Calculate the total likes whenever keeps or likeCount changes
@@ -67,7 +67,7 @@ const EmojiButton = (props) => {
   return (
     <>
       {keeps.map((keep, index) => (
-        <div className="d-flex align-items-center" key={index}>
+        <div className="d-flex align-items-center" key={"emoji"+index}>
           <a className="text-decoration-none" href="#">
             <div onClick={collectClick}>
               {keep.likeByUser !== 1 ? (
@@ -85,3 +85,5 @@ const EmojiButton = (props) => {
 };
 
 export default EmojiButton;
+
+
