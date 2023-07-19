@@ -82,6 +82,7 @@ function PostBtn() {
       // setPosts((prev) => ({ ...prev, [e.target.name]: e.target.value }));
       const formData = new FormData();
       formData.append("uid", uid);
+      formData.append("userimg", photopath);
       formData.append("fatitle", posts.fatitle);
       formData.append("farticle", posts.farticle);
       formData.append("faimage", posts.faimage);
@@ -105,12 +106,10 @@ function PostBtn() {
     }
   };
 
+  // 先登入才可以發文 uid為null或undefined跳到login btn
   if (!uid) {
     return (
       <>
-        {/* <p>請先登入才可發文</p>
-        <LoginButton onClick={() => setIsModalLogin(true)} />  */}
-
         <button className="postBtn px-4 fz-3" onClick={handleShow}>
           <div className="d-flex justify-content-between align-items-center py-3">
             <div className="user-img-circle bg-cover"></div>
