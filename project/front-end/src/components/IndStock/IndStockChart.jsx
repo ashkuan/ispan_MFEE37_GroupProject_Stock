@@ -33,7 +33,7 @@ const IndStockChart = () => {
           Dates.map((time) => {
             // console.log(time);
             const date = new Date(time * 1000);
-            console.log(date.toDateString());
+            // console.log(date.toDateString());
             const dataString = date.toDateString().slice(4, 10);
             myStockDate.push(dataString);
             // console.log(myStockDate);
@@ -73,10 +73,10 @@ const IndStockChart = () => {
     xaxis: {
       labels: {
         show: true,
-        style: { fontSize: "1.1rem" },
+        style: { fontSize: "1rem" },
       }, // 時間
       categories: stockDate,
-      tickAmount: 5,
+      tickAmount: 6,
     },
     fill: {
       colors: ["#f17064"],
@@ -89,7 +89,7 @@ const IndStockChart = () => {
     yaxis: {
       labels: {
         show: true,
-        style: { fontSize: "1.3rem" },
+        style: { fontSize: "1rem" },
       },
     },
     dataLabels: {
@@ -100,6 +100,13 @@ const IndStockChart = () => {
   return (
     <>
       <div className="time-zone mb-3 fz-3">
+        <button
+          onClick={() => {
+            setPerRange("1d"), setRange("7d");
+          }}
+        >
+          週
+        </button>
         <button
           onClick={() => {
             setPerRange("1d"), setRange("30d");
