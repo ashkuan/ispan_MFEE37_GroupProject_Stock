@@ -53,14 +53,14 @@ const Register = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     setErrors(Validation(values));
-  
+
     if (errors.name === "" && errors.email === "" && errors.password === "") {
       const formData = new FormData();
       formData.append("name", values.name);
       formData.append("email", values.email);
       formData.append("password", values.password);
       formData.append("avatar", values.avatar);
-  
+
       axios
         .post("http://localhost:3000/register", formData)
         .then((res) => {
@@ -71,9 +71,9 @@ const Register = () => {
           const time = new Date().toLocaleString("zh-TW", { hour12: false });
           const message = `嗨! ${name}, 歡迎加入我們的股市網站會員！我們提供全面的股市資訊和專業的投資指引，讓您能夠更好地了解股市動態，做出明智的投資決策。不論您是股市新手還是經驗豐富的投資者，我們都致力於為您提供優質的服務和最新的市場分析報告。加入我們的會員，您將享受到定制化的投資組合建議、即時的股價更新、緊貼股市熱點的訊息推送，以及與其他投資者交流的機會。我們期待與您攜手合作，共同在股市中獲得成功！`;
           // 隨機得到10位數字英文代碼
-          const code = generateRandomCode(10); 
-          const couponTime = new Date().toISOString(); 
-  
+          const code = generateRandomCode(10);
+          const couponTime = new Date().toISOString();
+
           axios
             .post("http://localhost:3000/member/mail/addMail", {
               uid: uid,
@@ -81,7 +81,7 @@ const Register = () => {
               stats: null,
               time: time,
               code: code,
-              couponTime: couponTime
+              couponTime: couponTime,
             })
             .then((res) => {
               console.log("會員郵件和 coupon資料新增成功");
@@ -92,7 +92,7 @@ const Register = () => {
         .catch((err) => console.log(err));
     }
   };
-  
+
   // // 隨機得到10位數字英文代碼
   const generateRandomCode = (length) => {
     const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
@@ -104,9 +104,6 @@ const Register = () => {
     return code;
   };
 
-
-  
-
   return (
     <>
       <Navbar />
@@ -116,9 +113,19 @@ const Register = () => {
           <hr />
           <div className="member-photo">
             <div className="photo-container">
-              <input type="file" name="avatar" onChange={handleInput} className="inputfile" />
+              <input
+                type="file"
+                name="avatar"
+                onChange={handleInput}
+                className="inputfile"
+              />
 
-              <img className="showimg text-danger text-center" src="" alt="請上傳圖片" ref={showImgRef}/>
+              <img
+                className="showimg text-danger text-center"
+                src=""
+                alt="請上傳圖片"
+                ref={showImgRef}
+              />
               {/* {gender === "male" ? (
                 <img
                   className="photo"
@@ -133,12 +140,13 @@ const Register = () => {
                 />
               )} */}
               <h4 className="text-center">用戶大頭照</h4>
-              
             </div>
           </div>
           <div className="text-center input-row">
-            <label className="short-lab" htmlFor="name">姓名:</label>
-            
+            <label className="short-lab" htmlFor="name">
+              姓名:
+            </label>
+
             <input
               className="regi-input"
               onChange={handleInput}
@@ -173,10 +181,17 @@ const Register = () => {
           </div>
           <div className="text-center input-row">
             <label className="short-lab ">編號:</label>
-            <input className="regi-input numinput" type="text" placeholder="此欄位請勿填寫,由系統生成" readOnly />
+            <input
+              className="regi-input numinput"
+              type="text"
+              placeholder="此欄位請勿填寫,由系統生成"
+              readOnly
+            />
           </div>
           <div className="text-center input-row">
-            <label className="short-lab" htmlFor="password">密碼:</label>
+            <label className="short-lab" htmlFor="password">
+              密碼:
+            </label>
             <input
               className="regi-input"
               onChange={handleInput}
@@ -190,7 +205,11 @@ const Register = () => {
           </div>
           <div className="text-center input-row pwdc">
             <label>確認密碼:</label>
-            <input className="regi-input" type="password" placeholder="請確認密碼" />
+            <input
+              className="regi-input"
+              type="password"
+              placeholder="請確認密碼"
+            />
           </div>
           <div className="text-center input-row pwdc">
             <label htmlFor="email">電子信箱:</label>
@@ -210,11 +229,9 @@ const Register = () => {
             <div className="register-fast d-flex">
               <div className="register-fast-row">
                 <img src="./img/memberimg/google.svg" alt="" />
-                
               </div>
               <div className="register-fast-row">
                 <img src="./img/memberimg/fb.svg" alt="" />
-                
               </div>
               <div className="register-fast-row">
                 <img src="./img/memberimg/line.svg" alt="" />

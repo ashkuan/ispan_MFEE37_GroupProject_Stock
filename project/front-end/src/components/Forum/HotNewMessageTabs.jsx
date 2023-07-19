@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import SmallHotMessage from "./SmallHotMessage";
 import SmallNewMessage from "./SmallNewMessage";
 
-const HotNewMessageTabs = () => {
+const HotNewMessageTabs = (props) => {
+  const faid = props.data;
+  console.log(faid);
   return (
     <>
       <div className="text-secondary fs-5 px-4 d-flex justify-content-end align-items-center">
@@ -51,7 +53,7 @@ const HotNewMessageTabs = () => {
           role="tabpanel"
           aria-labelledby="tab01"
         >
-          <SmallHotMessage />
+          <SmallHotMessage data={faid} />
         </div>
         {/* newmessage */}
         <div
@@ -60,7 +62,7 @@ const HotNewMessageTabs = () => {
           role="tabpanel"
           aria-labelledby="tab02"
         >
-          {/* <SmallNewMessage /> */}
+          <SmallNewMessage data={faid} />
         </div>
       </div>
     </>

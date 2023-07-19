@@ -38,12 +38,13 @@ app.post("/posts", multer({ storage }).single("faimage"), (req, res) => {
   const file = req.file;
   const sql =
     // "INSERT INTO `ForumArticle`(`uid`, `fatitle`, `farticle`, `faimage`, `faid`, `fboard`,`createTime`,`fhashtag`,`collect`) VALUES (?)";
-    "INSERT INTO `ForumArticle`(`uid`, `fatitle`, `farticle`, `faimage`, `faid`, `fboard`,`createTime`,`fhashtag`,`collect`,`totalLikes`) VALUES (?)";
+    "INSERT INTO `ForumArticle`(`uid`,`userimg`, `fatitle`, `farticle`, `faimage`, `faid`, `fboard`,`createTime`,`fhashtag`,`collect`,`totalLikes`) VALUES (?)";
 
   const createTime = moment().format("YYYY-MM-DD HH:mm:ss");
 
   const values = [
-    req.body.uid="5",
+    req.body.uid,
+    req.body.userimg,
     req.body.fatitle,
     req.body.farticle,
     file ? file.filename : "",
@@ -52,7 +53,7 @@ app.post("/posts", multer({ storage }).single("faimage"), (req, res) => {
     createTime,
     req.body.fhashtag,
     req.body.collect,
-    req.body.totalLikes="0",
+    (req.body.totalLikes = 0),
   ];
   connToDBHelper.query(sql, [values], (err, data) => {
     if (err) {
@@ -114,7 +115,7 @@ app.get("/posts/popular", (req, res) => {
 //選擇收藏文章
 app.get("/posts/keep", (req, res) => {
   const sql =
-    "SELECT *FROM `ForumArticle`LEFT JOIN `login` ON `ForumArticle`.`uid` = `login`.`uid` where `collect` = 1 order by `updateTime`";
+    "SELECT *FROM `ForumArticle`LEFT JOIN `login` ON `ForumArticle`.`uid` = `login`.`uid` where `collect` = 1 order by `updateTime`DESC";
   connToDBHelper.query(sql, [], (err, data) => {
     if (err) {
       return "無法成功顯示發文";
@@ -126,7 +127,8 @@ app.get("/posts/keep", (req, res) => {
 
 //抓文章id
 app.post("/getFaid", (req, res) => {
-  const sql = "SELECT * FROM ForumArticle where faid = ? ";
+  const sql =
+    "SELECT ForumArticle.*, login.name FROM ForumArticle LEFT JOIN login ON ForumArticle.uid = login.uid WHERE ForumArticle.faid = ?";
   // "SELECT `fatitle`, `farticle`, `faimage`, `likeCount`, `fboard`, `fhashtag`, `createTime` FROM ForumArticle where `faid` = ?";
   connToDBHelper.query(sql, [req.body.faid], (err, data) => {
     if (err) {
@@ -137,7 +139,6 @@ app.post("/getFaid", (req, res) => {
     }
   });
 });
-
 
 // 獲取文章按讚數和使用者按讚狀態
 app.get("/posts/:faid", (req, res) => {
@@ -159,15 +160,17 @@ app.put("/posts/:faid/like", (req, res) => {
   const likedByUser = req.body.likedByUser;
 
   // 更新使用者按讚狀態
-  const updateLikeSql = "UPDATE ForumArticle SET likedByUser = ? WHERE faid = ?"
+  const updateLikeSql =
+    "UPDATE ForumArticle SET likedByUser = ? WHERE faid = ?";
   connToDBHelper.query(updateLikeSql, [likedByUser, faid], (err, data) => {
     if (err) {
       console.log(err);
-      return res.status(500).json({ error: "按讚狀態更新失敗"});
+      return res.status(500).json({ error: "按讚狀態更新失敗" });
     }
 
     // 更新愛心數
-    const updateLikeCountSql = "UPDATE ForumArticle SET likeCount = (SELECT SUM(likedByUser) FROM ForumArticle WHERE faid = ?) WHERE faid = ?";
+    const updateLikeCountSql =
+      "UPDATE ForumArticle SET likeCount = (SELECT SUM(likedByUser) FROM ForumArticle WHERE faid = ?) WHERE faid = ?";
     connToDBHelper.query(updateLikeCountSql, [faid, faid], (err, data) => {
       if (err) {
         console.log(err);
@@ -175,7 +178,8 @@ app.put("/posts/:faid/like", (req, res) => {
       }
 
       // 取得更新後的數據
-      const getUpdatedDataSql = "SELECT likeCount, likedByUser FROM ForumArticle WHERE faid = ?";
+      const getUpdatedDataSql =
+        "SELECT likeCount, likedByUser FROM ForumArticle WHERE faid = ?";
       connToDBHelper.query(getUpdatedDataSql, [faid], (err, data) => {
         if (err) {
           console.log(err);
@@ -189,9 +193,6 @@ app.put("/posts/:faid/like", (req, res) => {
     });
   });
 });
-
-
-
 
 // //按讚存入
 // app.put("/posts/:faid/like", (req, res) => {
@@ -234,7 +235,6 @@ app.put("/posts/:faid/like", (req, res) => {
 //   });
 // });
 
-
 // // 獲取文章按讚數和使用者按讚狀態
 // app.get("/posts/:faid", (req, res) => {
 //   const faid = req.params.faid;
@@ -248,7 +248,6 @@ app.put("/posts/:faid/like", (req, res) => {
 //     }
 //   });
 // });
-
 
 // //按讚faid
 // app.put("/like/:faid", (req, res) => {
@@ -268,7 +267,6 @@ app.put("/posts/:faid/like", (req, res) => {
 //   });
 // });
 
-
 // // 更新使用者對文章的按讚狀態
 // app.put("/posts/:faid/like", (req, res) => {
 //   const updateSql = "UPDATE ForumArticle SET likedByUser = ? WHERE faid = ?";
@@ -285,21 +283,16 @@ app.put("/posts/:faid/like", (req, res) => {
 //       return res.json("按讚狀態更新成功");
 
 //     }
-    
+
 //   });
 // });
-
-
-
-
-
 
 //按讚總數(old)
 // app.put("/posts/:faid/like", (req, res) => {
 //   const updateSql = "UPDATE ForumArticle SET likedByUser = ? WHERE faid = ?";
 //   const values = req.body.likedByUser;
 //   const likeId = req.params.faid;
-  
+
 //   connToDBHelper.query(updateSql, [values, likeId], (err, data) => {
 //     if (err) {
 //       console.log(err);
@@ -323,8 +316,6 @@ app.put("/posts/:faid/like", (req, res) => {
 //     });
 //   });
 // });
-
-
 
 //收藏
 app.put("/collect/:faid", (req, res) => {
@@ -393,42 +384,44 @@ app.post("/messages", (req, res) => {
 });
 
 //閒聊
-app.get('/chats',(req,res)=>{
-  const sql = 'SELECT `faid`,  `fatitle`, `farticle`, `faimage`, `likeCount`, `fboard`, `fhashtag`, `createTime`, `updateTime` FROM `ForumArticle` WHERE fboard = "閒聊"';
-  connToDBHelper.query(sql,(err,data)=>{
+app.get("/chats", (req, res) => {
+  const sql =
+    'SELECT `faid`,  `fatitle`, `farticle`, `faimage`, `likeCount`, `fboard`, `fhashtag`, `createTime`, `updateTime` FROM `ForumArticle` WHERE fboard = "閒聊"';
+  connToDBHelper.query(sql, (err, data) => {
     if (err) {
       return "閒聊版連接錯誤";
     } else {
       return res.json(data);
     }
-  })
-})
+  });
+});
 
 //新聞
-app.get('/news',(req,res)=>{
-  const sql = 'SELECT `faid`,  `fatitle`, `farticle`, `faimage`, `likeCount`, `fboard`, `fhashtag`, `createTime`, `updateTime` FROM `ForumArticle` WHERE fboard = "新聞"';
-  connToDBHelper.query(sql,(err,data)=>{
+app.get("/news", (req, res) => {
+  const sql =
+    'SELECT `faid`,  `fatitle`, `farticle`, `faimage`, `likeCount`, `fboard`, `fhashtag`, `createTime`, `updateTime` FROM `ForumArticle` WHERE fboard = "新聞"';
+  connToDBHelper.query(sql, (err, data) => {
     if (err) {
       return "新聞版連接錯誤";
     } else {
       return res.json(data);
     }
-  })
-})
+  });
+});
 
 //標籤雲
-app.get('/tags',(req,res)=>{
+app.get("/tags", (req, res) => {
   // const sql = "SELECT fhashtag FROM `ForumArticle` "
-  const sql = "SELECT fhashtag, COUNT(*) AS count FROM ForumArticle GROUP BY fhashtag";
-  connToDBHelper.query(sql,[],(err,data)=>{
+  const sql =
+    "SELECT fhashtag, COUNT(*) AS count FROM ForumArticle GROUP BY fhashtag";
+  connToDBHelper.query(sql, [], (err, data) => {
     if (err) {
       return "標籤雲後端失敗";
     } else {
       return res.json(data);
     }
-  })
-})
-
+  });
+});
 
 app.listen(5789, () => {
   console.log("5789 post發文開始" + new Date().toLocaleTimeString());

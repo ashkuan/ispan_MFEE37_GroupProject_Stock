@@ -18,8 +18,8 @@
 }
 
 #navbar {
-  padding: 0 10px 0 0;
-  height: 107px;
+  padding: 0.5rem 0;
+  height: 6rem;
   background-color: var(--IronGray-Deep);
   color: var(--White);
   letter-spacing: 0.25rem;
@@ -28,40 +28,40 @@
   top: 0;
   width: 100%;
 }
-#navbar .container-fluid .navbar-brand {
+/* #navbar .container-fluid .navbar-brand {
   font-size: 2rem;
   display: flex;
   align-items: center;
   gap: 5px;
-}
-#navbar .container-fluid .navbar-brand .logoname {
+} */
+/* #navbar .container-fluid .navbar-brand .logoname {
   color: white;
-}
-#navbar .container-fluid .navbar-toggler {
+} */
+/* #navbar .container-fluid .navbar-toggler {
   color: var(--IronGray-Deep);
   background-color: var(--White);
-}
+} */
 #navbar .container-fluid a {
   color: var(--White);
-  font-size: 1.7rem;
+  font-size: 1.6rem;
 }
 #navbar .container-fluid a:active {
-  transform: scale(0.9);
+  transform: scale(0.98);
 }
 #navbar .container-fluid .collapse {
   background-color: var(--IronGray-Deep);
 }
-#navbar .container-fluid .collapse .nav-member-icon,
+/* #navbar .container-fluid .collapse .nav-member-icon,
 #navbar .container-fluid .collapse .cart-icon {
-  height: 2.5rem;
+  height: 2rem;
   margin: 0 10px;
-}
-#navbar .container-fluid .collapse .nav-member-icon:hover {
-  transform: scale(1.1);
-}
-#navbar .container-fluid .collapse .nav-member-icon:active {
-  transform: scale(0.9);
-}
+} */
+/* #navbar .container-fluid .collapse .nav-member-icon:hover {
+  transform: scale(1.03);
+} */
+/* #navbar .container-fluid .collapse .nav-member-icon:active {
+  transform: scale(0.98);
+} */
 #navbar .container-fluid .collapse .nav-item {
   color: var(--White);
   display: inline-block;
@@ -70,6 +70,12 @@
   background-size: 0% 0.125rem;
   background-repeat: no-repeat;
   transition: background-size 0.3s, background-position 0s 0.3s; /*change after the size immediately*/
+}
+#navbar .container-fluid .collapse .nav-item:hover {
+  /* color: var(--White); */
+  /* font-weight: bold; */
+  background-position: 100% 100%;
+  background-size: 100% 0.125rem;
 }
 #navbar .container-fluid .collapse .nav-item .dropdown-menu {
   background-color: var(--IronGray-Deep);
@@ -82,12 +88,6 @@
 }
 #navbar .container-fluid .collapse .nav-item .dropdown-menu :hover {
   background-color: var(--IronGray);
-}
-#navbar .container-fluid .collapse .nav-item:hover {
-  color: var(--White);
-  font-weight: bold;
-  background-position: 100% 100%;
-  background-size: 100% 0.125rem;
 }
 #navbar .container-fluid #navSearch {
   display: flex;
@@ -103,6 +103,24 @@
   padding-left: 10px;
   font-size: 1.15rem;
 }
+
+/*webkit 瀏覽器專用*/
+#navSearch ::-webkit-input-placeholder {
+  font-size: 1.15rem; 
+}
+/*Firefox 4-18 瀏覽器專用*/
+#navSearch input::-moz-placeholder { 
+  font-size: 1.15rem; 
+}
+/*Firefox 19+ 瀏覽器專用*/
+#navSearch input::-moz-placeholder{
+font-size: 1.15rem
+}
+/*IE10 瀏覽器專用*/
+#navSearch:-ms-input-placeholder{
+  font-size: 1.15rem;
+}
+
 #navbar .container-fluid #navSearch .search__input:focus {
   outline: none;
 }
@@ -113,29 +131,30 @@
 #navbar .container-fluid #navSearch .search__button svg {
   color: var(--IronGray-Deep);
   /* margin-bottom: 7px; */
-  width: 30px;
+  width: 25px;
 }
-#navbar .container-fluid #navSearch .search__button:hover {
+/* #navbar .container-fluid #navSearch .search__button:hover {
   transform: scale(1.1);
 }
 #navbar .container-fluid #navSearch .search__button:active {
   transform: scale(0.9);
-}
+} */
+
 #cartBtn {
   border: none;
   z-index: 100;
 }
-#cartBtn:hover svg {
+/* #cartBtn:hover svg {
   transform: scale(1.1);
-}
+} */
+/* #cartBtn:active svg {
+  transform: scale(0.98);
+} */
 #cartBtn:hover .totalCartItemAmount {
-  transform: scale(1.1);
-}
-#cartBtn:active svg {
-  transform: scale(0.8);
+  transform: scale(1.03);
 }
 #cartBtn:active .totalCartItemAmount {
-  transform: scale(0.8);
+  transform: scale(0.98);
 }
 
 #cartBtn .totalCartItemAmount {
@@ -186,9 +205,22 @@
   font-weight: bold;
   padding: 10px;
 }
-#cartModal .modal-title {
-  font-size: 2.2rem;
+
+#myCart .btn-login {
+  font-size: 1.75rem;
+  color: var(--White);
+  background-color: var(--Red);
 }
+#myCart .btn-login:hover {
+  background-color: rgb(233, 79, 65);
+}
+#myCart .btn-login:active {
+  background-color: var(--Red);
+}
+
+/* #cartModal .modal-title {
+  font-size: 2.2rem;
+} */
 #cartModal .modal-footer #payBtn {
   background-color: var(--Red);
   color: white;
@@ -280,6 +312,7 @@
 #cartModal #recommend-card .card .recommend-card-btn:active {
   transform: scale(0.9);
 }
+
 .member-spacing {
   height: 80px;
   margin-bottom: 10px;

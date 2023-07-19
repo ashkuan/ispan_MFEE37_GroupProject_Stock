@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import "../styles/nav.css";
+import "../styles/forum_main.css";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Cart } from "./shop/Cart";
 import { ShopContext } from "../../context/ShopContext";
@@ -9,7 +10,7 @@ import NavSearch from "../components/IndStock/NavSearch";
 import { UserContext } from "../../context/UserContext";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import LoginButton from "./loginbtn";
+import LoginBtn from "./loginbtn";
 
 const Navbar = () => {
   const { uid } = useContext(UserContext);
@@ -65,8 +66,8 @@ const Navbar = () => {
         <div className="container-fluid">
           <Link to="/" className="navbar-brand logoName" href="#">
             <svg
-              width="70"
-              height="70"
+              width="60"
+              height="60"
               viewBox="0 0 40 57"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -89,7 +90,7 @@ const Navbar = () => {
                 fill="#EEEEEE"
               />
             </svg>
-            <span className="logoname">股估績</span>
+            {/* <span className="fw-normal fs-2">股估績</span> */}
           </Link>
           <button
             className="navbar-toggler"
@@ -131,23 +132,23 @@ const Navbar = () => {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  <span style={{ fontSize: "1.7rem", fontWeight: "normal" }}>
+                  <span style={{ fontSize: "1.6rem", fontWeight: "normal" }}>
                     購物商城
                   </span>
                 </Link>
-                <ul className="dropdown-menu">
+                <ul className="dropdown-menu text-center">
                   <li>
-                    <Link className="dropdown-item" to="/shop">
+                    <Link className="dropdown-item fs-4 fw-light" to="/shop">
                       購物商城
                     </Link>
                   </li>
                   <li>
-                    <Link className="dropdown-item" href="#">
+                    <Link className="dropdown-item fs-4 fw-light" href="#">
                       訂單狀況
                     </Link>
                   </li>
                   <li>
-                    <Link className="dropdown-item" to="/shop/history">
+                    <Link className="dropdown-item fs-4 fw-light" to="/shop/history">
                       歷史訂單
                     </Link>
                   </li>
@@ -155,9 +156,9 @@ const Navbar = () => {
               </li>
             </ul>
             {/*右邊*/}
-            <div className="d-flex align-items-center justify-content-around">
-              <NavSearch></NavSearch>
-              <span className="d-flex mb-3 mx-2 cart-icon">
+            <div className="d-flex align-items-center">
+              <NavSearch />
+              <div className="ms-4 cart-icon">
                 <button
                   id="cartBtn"
                   type="button"
@@ -166,9 +167,9 @@ const Navbar = () => {
                   data-bs-target="#cartModal"
                 >
                   <svg
-                    width="46"
-                    height="41"
-                    viewBox="0 0 46 41"
+                    width="45"
+                    height="40"
+                    viewBox="0 0 45 40"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                   >
@@ -188,8 +189,8 @@ const Navbar = () => {
                     </>
                   ) : null}
                 </button>
-              </span>
-              <span className="d-flex mb-3 nav-member-icon">
+              </div>
+              <div className="ms-1 nav-member-icon">
                 <button
                   type="button"
                   className="btn"
@@ -202,8 +203,8 @@ const Navbar = () => {
                   }}
                 >
                   <svg
-                    width="43"
-                    height="43"
+                    width="42"
+                    height="42"
                     viewBox="0 0 43 43"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -214,7 +215,7 @@ const Navbar = () => {
                     />
                   </svg>
                 </button>
-              </span>
+              </div>
             </div>
           </div>
         </div>
@@ -227,15 +228,15 @@ const Navbar = () => {
         aria-labelledby="cartModalLabel"
         aria-hidden="true"
       >
-        <div className="modal-dialog modal-lg modal-dialog-scrollable mt-5">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h1 className="modal-title" id="cartModalLabel">
+        <div className="modal-dialog modal-lg modal-dialog-scrollable top-15">
+          <div className="modal-content rounded-4">
+            <div className="modal-header IronGray-Deep px-5 py-4">
+              <div className="modal-title fs-2 py-1 text-white" id="cartModalLabel">
                 您的購物車
-              </h1>
+              </div>
               <button
                 type="button"
-                className="btn-close"
+                className="btn-close btn-close-white fs-4"
                 data-bs-dismiss="modal"
                 aria-label="Close"
               />
@@ -263,18 +264,16 @@ const Navbar = () => {
               </>
             ) : (
               <>
-                <div id="myCart" className="modal-body d-flex flex-column">
-                  <LoginButton></LoginButton>
-                  <h3>請先登入會員，再查看購物車!</h3>
-                </div>
-                <div className="modal-footer">
-                  <button
+                <div id="myCart" className="modal-body d-flex flex-column align-items-center py-5 my-5">
+                  <p className="fs-3 text-IronGray-Deep mb-5 fw-bold">請先登入會員，再查看購物車!</p>
+                  <LoginBtn />
+                  {/* <button
                     type="button"
                     className="btn btn-secondary"
                     data-bs-dismiss="modal"
                   >
                     關閉
-                  </button>
+                  </button> */}
                 </div>
               </>
             )}

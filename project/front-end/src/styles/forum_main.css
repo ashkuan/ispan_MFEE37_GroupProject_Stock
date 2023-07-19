@@ -126,6 +126,10 @@ body {
     color: var(--IronGray-Light);
 }
 
+.text-Red {
+    color: var(--Red);
+}
+
 .text-Pink-Deep {
     color: var(--Pink-Deep);
 }
@@ -144,6 +148,10 @@ body {
 
 .IronGray-Light {
     background-color: var(--IronGray-Light);
+}
+
+.bg-black-word {
+    background-color: var(--black-Word);
 }
 
 .Pink {
@@ -230,9 +238,16 @@ body {
     background-color: var(--Pink-Deep);
     color: var(--White);
     position: relative;
-    top: 10px;
+    top: -20px;
     left: 30%;
     width: 30%;    
     /* height: 50px; */
-    
+}
+
+.useImg{
+    height: 50px;
+    width: 50px;
+    float: left;
+    margin-left: 10px;
+    border-radius: 50%;
 }

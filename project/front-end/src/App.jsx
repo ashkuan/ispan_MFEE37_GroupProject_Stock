@@ -26,6 +26,7 @@ import Modal from "react-modal";
 import { UserContextProvider } from "../context/UserContext";
 import LoginPage from "./pages/loginpage";
 import LoginButton from "./components/loginbtn";
+import OrderSuccess from "./pages/OrderSuccess";
 
 function App() {
   Modal.setAppElement("#root"); // 设置 appElement
@@ -70,6 +71,7 @@ function App() {
                 <Route path="/shop/myproduct" element={<Myproduct />} />
                 <Route path="/shop/history" element={<History />} />
                 <Route path="/shop/checkout" element={<Checkout />} />
+                <Route path="/shop/orderSuccess" element={<OrderSuccess />} />
               </Route>
               <Route path="/rookie" element={<Rookie />} />
               <Route path="/loginPage" element={<loginPage />} />

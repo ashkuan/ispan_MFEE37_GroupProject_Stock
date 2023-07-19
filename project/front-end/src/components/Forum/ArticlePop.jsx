@@ -36,7 +36,6 @@ function ArticlePop() {
 
   const fetchAllCollect = async () => {
     try {
-
       const res = await axios.post("http://localhost:5789/posts", {
         faid: faid,
       });
@@ -70,7 +69,7 @@ function ArticlePop() {
     try {
       if (collects === 0) {
         setCollects(1);
-        console.log('有嗎' + faid);
+        console.log("有嗎" + faid);
         await axios.put("http://localhost:5789/collect/:faid", {
           faid: faid,
           collects: 1,
@@ -92,7 +91,7 @@ function ArticlePop() {
     <div className="px-5 py-4">
       {posts.map((post, index) => (
         <div key={index}>
-          <div className="articleCont py-4" >
+          <div className="articleCont py-4">
             {/* 用戶 */}
             <div className="d-flex justify-content-between">
               <div className="d-flex align-items-center text-IronGray-Deep">
@@ -106,29 +105,35 @@ function ArticlePop() {
                     day: "2-digit",
                   })}
                 </span>
-               
               </div>
             </div>
             {/* articleContent */}
-            <div className="row mt-3"
+            <div
+              className="row mt-3"
               id={post.faid}
               onClick={(e) => {
                 // console.log(e.target.id);
                 setFaid(e.target.id);
-                handleArticleClick()
+                handleArticleClick();
               }}
-            //  style={{ backgroundColor: "black" }}
+              //  style={{ backgroundColor: "black" }}
             >
               <div className="col-9">
-                <p className="ellipsis fs-4 fw-bold mt-2 text-IronGray-Deep" id={post.faid}>
+                <p
+                  className="ellipsis fs-4 fw-bold mt-2 text-IronGray-Deep"
+                  id={post.faid}
+                >
                   {post.fatitle}
                 </p>
-                <p className="line-cut-2 mt-2 fz-3 text-IronGray-Deep" id={post.faid}>
+                <p
+                  className="line-cut-2 mt-2 fz-3 text-IronGray-Deep"
+                  id={post.faid}
+                >
                   {post.farticle}
                 </p>
               </div>
               <div className="col-2 d-flex align-items-center">
-                <div className="rounded-4 " >
+                <div className="rounded-4 ">
                   {/* <img src={post.faimage} alt="" /> */}
                 </div>
               </div>
@@ -148,17 +153,19 @@ function ArticlePop() {
               </div>
               {/* collectCount */}
               <div className="me-1" onClick={collectClick}>
-                <img src={
-                  collects !== 0
-                    ? "public/img/forum/collect.svg"
-                    : "public/img/forum/collect-Article.svg"
-                } />
+                <img
+                  src={
+                    collects !== 0
+                      ? "public/img/forum/collect.svg"
+                      : "public/img/forum/collect-Article.svg"
+                  }
+                />
                 <span className="fz-3 fw-normal px-3">3</span>
               </div>
             </div>
           </div>
           <hr />
-          
+
           {/* articleIndividual-modal */}
           <Modal show={showModal} onHide={handleModalClose}>
             <div className="px-5 py-3 d-flex flex-column justify-content-between">
@@ -195,11 +202,11 @@ function ArticlePop() {
                       <NotifyShareDropdown />
                     </div>
                   </div>
-                  <HotNewMessageTabs />
+                  <HotNewMessageTabs data={faid} />
                 </div>
               </Modal.Body>
               <Modal.Footer className="p-4 d-flex justify-content-between align-items-center">
-                <AddMessage />
+                <AddMessage data={faid} />
               </Modal.Footer>
             </div>
           </Modal>
