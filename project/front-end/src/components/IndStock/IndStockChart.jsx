@@ -15,8 +15,8 @@ const IndStockChart = () => {
   // console.log(stockInfo.inputValue);
   const inputValue = stockInfo.inputValue;
   // console.log(inputValue);
-  if (inputValue !== "") {
-    useEffect(() => {
+  useEffect(() => {
+    if (inputValue !== "") {
       axios
         .post("http://localhost:5678/stockChart", {
           data: { inputValue, perRange, range },
@@ -51,8 +51,8 @@ const IndStockChart = () => {
           console.log("stock傳送失敗");
           console.log(err);
         });
-    }, [range]);
-  }
+    }
+  }, [inputValue, perRange, range]);
 
   const options = {
     chart: {

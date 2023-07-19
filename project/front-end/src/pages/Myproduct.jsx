@@ -3,6 +3,7 @@ import Footer from "../components/Footer";
 import { ShopContext } from "../../context/ShopContext";
 import { Toast } from "react-bootstrap";
 import { UserContext } from "../../context/UserContext";
+import uuid4 from "uuid4";
 
 const Myproduct = () => {
   const { products, addToCart } = useContext(ShopContext);
@@ -27,8 +28,8 @@ const Myproduct = () => {
   const filteredProducts = products.filter((product) => product.pid == URLpid);
 
   return (
-    <>
-      <div id="myproductContainer" className="container">
+    <div>
+      <div id="myproductContainer" key={uuid4()} className="container">
         {filteredProducts.map((product) => {
           const {
             pid,
@@ -50,100 +51,106 @@ const Myproduct = () => {
             setCurrentImage(newImage);
           };
           return (
-            <>
-              <div className="d-flex" id="myproduct" key={pid}>
-                <div id="myproductLeft" className="d-flex">
-                  <div id="myproductLeftSmall">
-                    <div className="imageBox">
-                      <img
-                        src={pimage1}
-                        onClick={() => handleImage(pimage1)}
-                        className={currentImage === pimage1 ? "active" : ""}
-                      />
+            <div>
+              <div key={pid}>
+                <div className="d-flex" id="myproduct" key={pid}>
+                  <div id="myproductLeft" className="d-flex">
+                    <div id="myproductLeftSmall">
+                      <div className="imageBox">
+                        <img
+                          src={pimage1}
+                          onClick={() => handleImage(pimage1)}
+                          className={currentImage === pimage1 ? "active" : ""}
+                          key="1"
+                        />
+                      </div>
+                      <div className="imageBox">
+                        <img
+                          src={pimage2}
+                          onClick={() => handleImage(pimage2)}
+                          className={currentImage === pimage2 ? "active" : ""}
+                          key="2"
+                        />
+                      </div>
+                      <div className="imageBox">
+                        <img
+                          src={pimage3}
+                          onClick={() => handleImage(pimage3)}
+                          className={currentImage === pimage3 ? "active" : ""}
+                          key="3"
+                        />
+                      </div>
+                      <div className="imageBox">
+                        <img
+                          src={pimage4}
+                          onClick={() => handleImage(pimage4)}
+                          className={currentImage === pimage4 ? "active" : ""}
+                          key="4"
+                        />
+                      </div>
                     </div>
-                    <div className="imageBox">
-                      <img
-                        src={pimage2}
-                        onClick={() => handleImage(pimage2)}
-                        className={currentImage === pimage2 ? "active" : ""}
-                      />
-                    </div>
-                    <div className="imageBox">
-                      <img
-                        src={pimage3}
-                        onClick={() => handleImage(pimage3)}
-                        className={currentImage === pimage3 ? "active" : ""}
-                      />
-                    </div>
-                    <div className="imageBox">
-                      <img
-                        src={pimage4}
-                        onClick={() => handleImage(pimage4)}
-                        className={currentImage === pimage4 ? "active" : ""}
-                      />
-                    </div>
+                    <img src={currentImage} width="500px" height="550px" />
                   </div>
-                  <img src={currentImage} width="500px" height="550px" />
-                </div>
-                <div id="myproductRight">
-                  <p className="title fw-bold">{pname}</p>
-                  <p>作 者： {pauthor}</p>
-                  {ptranslator && <p>譯 者： {ptranslator}</p>}
-                  <p>出 版 社： {ppublisher}</p>
-                  <p>出 版 日 期： {ppublicationDate}</p>
-                  <hr />
-                  <p className="fs-5 fw-bold">數量：</p>
-                  <div id="amount">
-                    <button
-                      onClick={() => {
-                        if (quantity > 1) {
-                          setQuantity(quantity - 1);
-                        }
-                      }}
-                      id="plusBtn"
+                  <div id="myproductRight">
+                    <p className="title fw-bold">{pname}</p>
+                    <p>作 者： {pauthor}</p>
+                    {ptranslator && <p>譯 者： {ptranslator}</p>}
+                    <p>出 版 社： {ppublisher}</p>
+                    <p>出 版 日 期： {ppublicationDate}</p>
+                    <hr />
+                    <p className="fs-5 fw-bold">數量：</p>
+                    <div id="amount">
+                      <button
+                        onClick={() => {
+                          if (quantity > 1) {
+                            setQuantity(quantity - 1);
+                          }
+                        }}
+                        id="plusBtn"
+                      >
+                        -
+                      </button>
+                      <input
+                        className="text-center"
+                        type="text"
+                        value={quantity}
+                        onChange={(e) => {
+                          const value = parseInt(e.target.value);
+                          if (!isNaN(value)) {
+                            setQuantity(value);
+                          }
+                        }}
+                      />
+                      <button
+                        id="minusBtn"
+                        onClick={() => {
+                          setQuantity(quantity + 1);
+                        }}
+                      >
+                        +
+                      </button>
+                    </div>
+                    <div
+                      className="fs-3 fw-bold d-flex justify-content-end"
+                      style={{ width: "100%" }}
                     >
-                      -
-                    </button>
-                    <input
-                      className="text-center"
-                      type="text"
-                      value={quantity}
-                      onChange={(e) => {
-                        const value = parseInt(e.target.value);
-                        if (!isNaN(value)) {
-                          setQuantity(value);
-                        }
-                      }}
-                    />
-                    <button
-                      id="minusBtn"
-                      onClick={() => {
-                        setQuantity(quantity + 1);
-                      }}
-                    >
-                      +
-                    </button>
-                  </div>
-                  <div
-                    className="fs-3 fw-bold d-flex justify-content-end"
-                    style={{ width: "100%" }}
-                  >
-                    NT$ {pprice * quantity}
-                  </div>
-                  <div className="fs-4 fw-bold d-flex justify-content-end">
-                    <button
-                      id="addToCart"
-                      onClick={() => {
-                        if (uid) {
-                          addToCart(pid, Number(quantity));
-                          handleButtonClick();
-                        } else {
-                          alert("請先登入會員");
-                        }
-                      }}
-                    >
-                      加入購物車
-                    </button>
+                      NT$ {pprice * quantity}
+                    </div>
+                    <div className="fs-4 fw-bold d-flex justify-content-end">
+                      <button
+                        id="addToCart"
+                        onClick={() => {
+                          if (uid) {
+                            addToCart(pid, Number(quantity));
+                            handleButtonClick();
+                          } else {
+                            alert("請先登入會員");
+                          }
+                        }}
+                      >
+                        加入購物車
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -151,6 +158,7 @@ const Myproduct = () => {
                 id="toast"
                 show={showToast}
                 onClose={() => setShowToast(false)}
+                key="1"
               >
                 <Toast.Header
                   style={{ backgroundColor: "#b4c7dd", border: "none" }}
@@ -177,12 +185,12 @@ const Myproduct = () => {
                 <br />
                 <pre>{pdesc}</pre>
               </div>
-            </>
+            </div>
           );
         })}
       </div>
       <Footer></Footer>
-    </>
+    </div>
   );
 };
 export default Myproduct;

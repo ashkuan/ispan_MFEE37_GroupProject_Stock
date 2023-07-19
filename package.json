@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "react-twzipcode": "^3.0.1"
+    "react-twzipcode": "^3.0.1",
+    "uuid4": "^2.0.3"
   }
 }

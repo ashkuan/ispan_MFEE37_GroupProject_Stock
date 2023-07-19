@@ -65,7 +65,7 @@ export const ShopContextProvider = (props) => {
           console.log(err);
         }
       } else {
-        console.log("沒有登入會員");
+        console.log("沒有登入會員，購物車不載入");
       }
     };
     const fetchCart = async () => {
@@ -76,7 +76,7 @@ export const ShopContextProvider = (props) => {
         // 如果資料庫都沒有資料，那就全部預設為0
         if (res.data.length == 0) {
           setCartItems(getDefaultCart()); // 一開始預設的商品和商品數
-          console.log(cartItems);
+          // console.log(cartItems);
           setDataLoaded(true);
         } else {
           // 如果資料庫有資料，就把有資料的部分替換
