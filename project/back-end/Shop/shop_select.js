@@ -66,20 +66,6 @@ app.post("/cart/edit", function (req, res) {
   }
 });
 
-// app.get("/checkout", function (req, res) {
-//   db.query(
-//     "SELECT Shop.pname, Shop.pimage, Shop.pprice, Shop.pdesc FROM Cart JOIN Shop ON Cart.pid = Shop.pid WHERE Cart.pid = ?",
-//     [],
-//     function (err, data) {
-//       if (err) {
-//         return "查無資料";
-//       } else {
-//         console.log(json(data));
-//       }
-//     }
-//   );
-// });
-
 app.post("/sendOrder", async (req, res) => {
   try {
     const merchantTradeDate = new Date(); // 交易時間
@@ -164,8 +150,22 @@ app.get("/shop/history", async (req, res) => {
     if (err) {
       return "查無資料";
     } else {
+      // console.log(data);
+      // console.log(res.data);
+      return res.json(data);
+    }
+  });
+});
+
+app.post("/shop/history/firstPid", async (req, res) => {
+  const { firstPid } = req.body;
+  const url = "SELECT pimage1 FROM Shop WHERE pid = ?";
+  db.query(url, [firstPid], function (err, data) {
+    if (err) {
+      console.log("firstPid資料獲取失敗");
+      console.log(err);
+    } else {
       console.log(data);
-      console.log(res.data);
       return res.json(data);
     }
   });

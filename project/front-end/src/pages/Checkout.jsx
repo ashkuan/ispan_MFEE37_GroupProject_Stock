@@ -85,7 +85,7 @@ const Checkout = () => {
       console.log("請先登入會員");
       navigate("/loginPage");
     }
-  }, [uid]);
+  }, []);
 
   // 訂單完成要跳轉畫面
   useEffect(() => {

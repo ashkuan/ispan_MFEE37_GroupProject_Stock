@@ -148,7 +148,10 @@ const Navbar = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link className="dropdown-item fs-4 fw-light" to="/shop/history">
+                    <Link
+                      className="dropdown-item fs-4 fw-light"
+                      to="/shop/history"
+                    >
                       歷史訂單
                     </Link>
                   </li>
@@ -231,7 +234,10 @@ const Navbar = () => {
         <div className="modal-dialog modal-lg modal-dialog-scrollable top-15">
           <div className="modal-content rounded-4">
             <div className="modal-header IronGray-Deep px-5 py-4">
-              <div className="modal-title fs-2 py-1 text-white" id="cartModalLabel">
+              <div
+                className="modal-title fs-2 py-1 text-white"
+                id="cartModalLabel"
+              >
                 您的購物車
               </div>
               <button
@@ -264,8 +270,13 @@ const Navbar = () => {
               </>
             ) : (
               <>
-                <div id="myCart" className="modal-body d-flex flex-column align-items-center py-5 my-5">
-                  <p className="fs-3 text-IronGray-Deep mb-5 fw-bold">請先登入會員，再查看購物車!</p>
+                <div
+                  id="myCart"
+                  className="modal-body d-flex flex-column align-items-center py-5 my-5"
+                >
+                  <p className="fs-3 text-IronGray-Deep mb-5 fw-bold">
+                    請先登入會員，再查看購物車!
+                  </p>
                   <LoginBtn />
                   {/* <button
                     type="button"
