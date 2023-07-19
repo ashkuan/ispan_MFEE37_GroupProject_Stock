@@ -43,7 +43,7 @@ app.post("/posts", multer({ storage }).single("faimage"), (req, res) => {
   const createTime = moment().format("YYYY-MM-DD HH:mm:ss");
 
   const values = [
-    req.body.uid="5",
+    req.body.uid,
     req.body.fatitle,
     req.body.farticle,
     file ? file.filename : "",
@@ -52,7 +52,7 @@ app.post("/posts", multer({ storage }).single("faimage"), (req, res) => {
     createTime,
     req.body.fhashtag,
     req.body.collect,
-    req.body.totalLikes="0",
+    req.body.totalLikes=0,
   ];
   connToDBHelper.query(sql, [values], (err, data) => {
     if (err) {
