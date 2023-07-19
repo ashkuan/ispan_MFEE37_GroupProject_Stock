@@ -3,7 +3,6 @@ import axios from "axios";
 
 const SmallHotMessage = (props) => {
   const faid = props.data;
-  console.log(faid);
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
@@ -16,11 +15,12 @@ const SmallHotMessage = (props) => {
       }
     };
     fetchMessages();
+    getMessages();
   }, [faid]);
 
   const getMessages = () => {
     axios
-      .get("/messages")
+      .get(`http://localhost:5052/messages/${faid}`)
       .then((response) => {
         setMessages(response.data);
       })
@@ -30,13 +30,14 @@ const SmallHotMessage = (props) => {
   };
 
   const postMessage = () => {
-    const fmContent = "留言内容"; // 替換為實際的留言內容
+    const fmContentValue = { fmContent }; // 替換為實際的留言內容
+    console.log(fmContent);
     axios
       .post(`http://localhost:5052/messages/${faid}`, { fmContent })
       .then((response) => {
         console.log(response.data);
         // 成功發表留言後，刷新留言列表
-        fetchMessages(); // 注意這裡需要調用 fetchMessages() 函數來重新獲取留言
+        getMessages();
       })
       .catch((error) => {
         console.log(error);
