@@ -3,6 +3,8 @@ import { Navigate } from "react-router-dom";
 import { StockContext } from "../../../context/StockContext";
 import axios from "axios";
 
+let peRatio = "";
+
 const NavSearch = () => {
   const [inputValue, setInputValue] = useState("");
   const [redirectToIndStock, setRedirectToIndStock] = useState(false);
@@ -15,27 +17,35 @@ const NavSearch = () => {
     // console.log(inputValue);
     if (inputValue !== "") {
       axios
+        .post("http://localhost:5678/stock2", { data: inputValue })
+        .then((res) => {
+          setRedirectToIndStock(true);
+          const mypeRatio = res.data.indexTrend.pegRatio.fmt; //震幅
+          console.log(mypeRatio);
+          peRatio = mypeRatio;
+        });
+      axios
         .post("http://localhost:5678/stock", { data: inputValue })
         .then((res) => {
           setRedirectToIndStock(true);
           // console.log(res.data);
           const shortname = res.data.price.shortName;
           const website = res.data.summaryProfile.website;
-          const regularMarketOpen = res.data.price.regularMarketOpen.fmt;
-          const regularMarketDayHigh = res.data.price.regularMarketDayHigh.fmt;
-          const regularMarketDayLow = res.data.price.regularMarketDayLow.fmt;
-          const regularMarketPrice = res.data.price.regularMarketPrice.fmt;
-          const regularMarketVolume = res.data.price.regularMarketVolume.fmt;
+          const regularMarketOpen = res.data.price.regularMarketOpen.fmt; // 開盤
+          const regularMarketDayHigh = res.data.price.regularMarketDayHigh.fmt; // 最高
+          const regularMarketDayLow = res.data.price.regularMarketDayLow.fmt; // 最低
+          const regularMarketPrice = res.data.price.regularMarketPrice.fmt; // 現價
+          const regularMarketVolume = res.data.price.regularMarketVolume.fmt; // 成交金額（億）
           const regularMarketPreviousClose =
-            res.data.price.regularMarketPreviousClose.fmt;
+            res.data.price.regularMarketPreviousClose.fmt; // 昨收
           const averageDailyVolume3Month =
             res.data.price.averageDailyVolume3Month.longFmt;
           const averageDailyVolume10Day =
             res.data.price.averageDailyVolume10Day.longFmt;
           const regularMarketChangePercent =
-            res.data.price.regularMarketChangePercent.fmt;
-
-          // console.log(shortname);
+            res.data.price.regularMarketChangePercent.fmt; // 漲跌幅
+          const regularMarketChange = res.data.price.regularMarketChange.fmt; // 漲跌
+          const marketCap = res.data.price.marketCap.fmt;
           setStockInfo({
             inputValue,
             shortname,
@@ -49,6 +59,9 @@ const NavSearch = () => {
             averageDailyVolume3Month,
             averageDailyVolume10Day,
             regularMarketChangePercent,
+            regularMarketChange,
+            peRatio,
+            marketCap,
           });
         })
         .catch((err) => {

@@ -18,7 +18,7 @@ const HomepageSearch = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(inputValue);
+    // console.log(inputValue);
     if (inputValue !== "") {
       axios
         .post("http://localhost:5678/stock2", { data: inputValue })
