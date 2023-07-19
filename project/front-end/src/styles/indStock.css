@@ -18,70 +18,56 @@
 }
 
 .container {
-  margin-top: 180px;
+  margin-top: 10rem;
 }
-.container .name {
-  margin-bottom: 80px;
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: var(--IronGray-Deep);
-}
-.container .name span {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: var(--IronGray-Deep);
-}
-.container .name a {
-  font-size: 2.5rem;
-  color: var(--black-Word);
-}
-.container .time {
+
+.container .time-zone {
   display: flex;
   justify-content: end;
   margin-right: 20px;
 }
-.container .time button {
+
+.container .time-zone button {
   border: none;
-  background-color: transparent;
   letter-spacing: 0.2rem;
-  padding-left: 20px;
-  display: inline;
-  font-size: 1.3rem;
-  color: var(--black-Word);
-  margin-top: -50px;
+  background-color: transparent;
+  padding: 0 0.5rem;
+  color: var(--IronGray);
+  transition: 0.4s;
 }
-.container .time button:hover {
-  transform: scale(1.1);
+.container .time-zone button:hover {
+  transform: scale(1.03);
 }
-.container .time button:active {
-  transform: scale(0.9);
+.container .time-zone button:active {
+  transform: scale(0.98);
 }
 
-#indStocksIndex {
+/* #indStocksIndex {
   background-color: var(--bg-Second-Gray);
   padding: 40px 0;
   border-radius: var(--border-radius-big);
-}
-#indStocksIndex .row {
+} */
+/* #indStocksIndex .row {
   display: flex;
   justify-content: space-evenly;
-}
-#indStocksIndex .row .card {
+} */
+/* #indStocksIndex .row .card {
   border: none;
-}
-#indStocksIndex .row .card .card-body {
+} */
+/* #indStocksIndex .row .card .card-body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-#indStocksIndex .row .card .card-body .card-text {
+} */
+/* #indStocksIndex .row .card .card-body .card-text {
   font-weight: bold;
   font-size: 1.7rem;
   color: var(--IronGray-Deep);
-}
-#indStocksIndex .row .card .card-body .card-title {
+} */
+/* #indStocksIndex .row .card .card-body .card-title {
   font-size: 1.6rem;
   padding: 10px 15px;
   border-radius: var(--border-radius-small);
   text-align: center;
-}/*# sourceMappingURL=indStock.css.map */
+} */
+/*# sourceMappingURL=indStock.css.map */
