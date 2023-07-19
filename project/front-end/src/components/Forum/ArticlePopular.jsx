@@ -66,7 +66,7 @@ function ArticlePopular() {
     <div className="drop-shadow-20 rounded-4 bg-white mt-4">
       <div className="px-5 py-4">
         {posts.map((post, index) => (
-          <div key={faid+index}>
+          <div key={faid + index}>
             <div className="articleCont py-4">
               {/* 用戶 */}
               <div className="d-flex justify-content-between">
@@ -179,11 +179,11 @@ function ArticlePopular() {
                     {/* <NotifyShareDropdown /> */}
                   </div>
                 </div>
-                <HotNewMessageTabs />
+                <HotNewMessageTabs data={faid} />
               </div>
             </Modal.Body>
             <Modal.Footer className="p-4 d-flex justify-content-between align-items-center">
-              <AddMessage />
+              <AddMessage data={faid} />
             </Modal.Footer>
           </div>
         </Modal>
