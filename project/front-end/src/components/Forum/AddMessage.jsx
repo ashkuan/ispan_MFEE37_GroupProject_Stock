@@ -1,27 +1,47 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
 import { UserContext } from "../../../context/UserContext";
+import Alert from "@mui/material/Alert";
+import Stack from "@mui/material/Stack";
 
 const AddMessage = (props) => {
   const { uid, name, email, photopath } = useContext(UserContext);
 
   const faid = props.data;
   const [fmContent, setFmContent] = useState("");
+  const [alertMessage, setAlertMessage] = useState("");
+  const [alertSeverity, setAlertSeverity] = useState("info");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!uid) {
-      console.log("未登入，無法成功留言");
+      setAlertMessage("未登入，無法成功留言");
+      setAlertSeverity("error");
+      return;
+    }
+    if (!fmContent.trim()) {
+      setAlertMessage("留言內容不能是空的");
+      setAlertSeverity("error");
       return;
     }
 
     try {
       await axios.post(`http://localhost:5052/messages/${faid}`, {
+        uid,
         fmContent,
       });
-      // 成功提交留言后，重新獲取留言列表以顯示新的留言
-      props.fetchAllMessages(); // 請從 ArticlePopular 元件傳遞 fetchAllMessages 函數
-      setFmContent(""); // 清空留言內容
+
+      // 更新留言列表
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { fmContent, name, createTime: new Date().toLocaleString() },
+      ]);
+
+      // 成功提交留言后，重新获取留言列表以显示新的留言
+      props.fetchAllMessages(); // 从 ArticlePopular 元件传递 fetchAllMessages 函数
+
+      setFmContent(""); // 清空留言内容
+      setAlertMessage(""); // 清空警告消息
     } catch (err) {
       console.log(err);
     }
@@ -29,6 +49,13 @@ const AddMessage = (props) => {
 
   return (
     <form onSubmit={handleSubmit}>
+      <Stack sx={{ width: "100%" }} spacing={2}>
+        {alertMessage && (
+          <Alert severity={alertSeverity} onClose={() => setAlertMessage("")}>
+            {alertMessage}
+          </Alert>
+        )}
+      </Stack>
       <div className="d-flex align-items-center">
         <img src={`http://localhost:3000/${photopath}`} className="useImg" />
         <p>{name}</p>
@@ -40,6 +67,7 @@ const AddMessage = (props) => {
           value={fmContent}
           onChange={(e) => setFmContent(e.target.value)}
         />
+
         <button type="submit" className="btn btn-primary ms-3">
           送出留言
         </button>
@@ -49,7 +77,6 @@ const AddMessage = (props) => {
 };
 
 export default AddMessage;
-
 // import React, { useState } from 'react';
 
 // const AddMessage = () => {
@@ -61,4 +88,4 @@ export default AddMessage;
 //     )
 // }
 
-// export default AddMessage;
+// export default AddMessage
