@@ -73,7 +73,7 @@ const loginPage = () => {
               <p className="text-danger">{errors.password}</p>
             )}
           </div>
-          <div className="modal-footer">
+          <div className="modal-footer2">
             <button type="submit" className="btn btn-login">
               登入
             </button>

@@ -16,7 +16,7 @@ const Register = () => {
   const [errors, setErrors] = useState({});
   // const [maleAvatar, setMaleAvatar] = useState("./img/memberimg/memoji/memo5.png");
 
-  const [gender, setGender] = useState("male");
+  // const [gender, setGender] = useState("male");
   const showImgRef = useRef(null); // 添加ref
   useEffect(() => {
     if (values.avatar) {
@@ -64,6 +64,7 @@ const Register = () => {
       axios
         .post("http://localhost:3000/register", formData)
         .then((res) => {
+          console.log('註冊成功')
           // 註冊成功後會新增會員郵件和coupon資料
           const uid = res.data.uid;
           const name = values.name;
