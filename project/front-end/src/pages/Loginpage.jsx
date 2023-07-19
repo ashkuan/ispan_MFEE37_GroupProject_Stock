@@ -41,7 +41,6 @@ const loginPage = () => {
   };
   return (
     <>
-  
       <div className="replaceloginpage d-flex align-items-center justify-content-center">
         <form onSubmit={handleSubmit} className="text-center m-3">
           <div>
