@@ -11,7 +11,7 @@ const Homepage = () => {
         <div className="part1 d-flex flex-column justify-content-center align-items-center">
           <div
             className="titel1 d-flex justify-content-center align-items-center"
-            style={{ marginTop: 200 }}
+            style={{ marginTop: 75 }}
           >
             <p className="t1">人人一支股估績</p>
             <svg
@@ -55,28 +55,28 @@ const Homepage = () => {
             </svg>
             <p className="t2">股市擁有好成績</p>
           </div>
-          <HomepageSearch></HomepageSearch>
+          <HomepageSearch />
           <div className="suggestStock mt-5">
             <div className="row">
               <div className="col">
-                <p>台積電2330</p>
+                <p>台積電 2330</p>
               </div>
               <div className="col mx-5">
-                <p>長榮航2618</p>
+                <p>長榮航 2618</p>
               </div>
               <div className="col">
-                <p>緯創3231</p>
+                <p>緯創 3231</p>
               </div>
             </div>
             <div className="row">
               <div className="col">
-                <p>台積電2330</p>
+                <p>英業達 2356</p>
               </div>
               <div className="col mx-5">
-                <p>台積電2330</p>
+                <p>仁寶 2324</p>
               </div>
               <div className="col">
-                <p>台積電2330</p>
+                <p>神達 3706</p>
               </div>
             </div>
           </div>
