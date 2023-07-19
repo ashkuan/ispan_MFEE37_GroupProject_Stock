@@ -88,8 +88,8 @@ const HomepageSearch = () => {
         <form onSubmit={handleSubmit}>
           <input
             type="text"
-            className="search__input text-center"
-            placeholder="點我查詢台灣股票"
+            className="search__input text-center ps-5"
+            placeholder="搜尋台股代號/名稱"
             value={inputValue}
             onChange={handleInputChange}
           />

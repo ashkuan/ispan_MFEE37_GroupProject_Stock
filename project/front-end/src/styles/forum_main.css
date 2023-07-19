@@ -126,6 +126,10 @@ body {
     color: var(--IronGray-Light);
 }
 
+.text-Red {
+    color: var(--Red);
+}
+
 .text-Pink-Deep {
     color: var(--Pink-Deep);
 }
