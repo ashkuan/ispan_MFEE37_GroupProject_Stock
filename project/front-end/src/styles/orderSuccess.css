@@ -43,6 +43,13 @@
   background-color: black;
   color: white;
 }
+.orderSuccessContainer button a {
+  transition-duration: 0.3s;
+  color: black;
+}
+.orderSuccessContainer button a:hover {
+  color: white;
+}
 .orderSuccessContainer .orderList {
   background-color: var(--bg-Second-Gray);
   padding: 50px 20px;

@@ -30,7 +30,7 @@ export const ShopContextProvider = (props) => {
   const [totalAmount, setTotalAmount] = useState(0);
   const [cartItems, setCartItems] = useState();
   const [dataLoaded, setDataLoaded] = useState(false); //判斷資料是否加載完成
-  const [quantity, setQuantity] = useState(1);
+  // const [quantity, setQuantity] = useState(1);
   const [stockData, setStockData] = useState({}); // 存個股資訊
   const [totalCartItemAmount, setTotalCartItemAmount] = useState(0); //計算購物車總數
 

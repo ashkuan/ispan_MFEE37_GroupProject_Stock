@@ -158,10 +158,10 @@ app.get("/member", (req, res) => {
     return res.status(401).json("Unauthorized");
   }
 });
-// app.get("/", (req, res) => {
-// res.send("Server is running successfully.");
-// console.log("Server is running successfully.");
-// });
+app.get("/", (req, res) => {
+  res.send("Server is running successfully.");
+  console.log("Server is running successfully.");
+});
 // 登出路由
 app.post("/logout", (req, res) => {
   req.session.destroy();

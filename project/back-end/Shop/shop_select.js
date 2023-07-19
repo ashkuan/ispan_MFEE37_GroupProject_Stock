@@ -1,7 +1,6 @@
 import express from "express";
 import cors from "cors";
 import db from "../DB/DBconfig.js";
-import { chownSync } from "fs";
 
 var app = express();
 app.use(cors());
@@ -67,19 +66,19 @@ app.post("/cart/edit", function (req, res) {
   }
 });
 
-app.get("/checkout", function (req, res) {
-  db.query(
-    "SELECT Shop.pname, Shop.pimage, Shop.pprice, Shop.pdesc FROM Cart JOIN Shop ON Cart.pid = Shop.pid WHERE Cart.pid = ?",
-    [],
-    function (err, data) {
-      if (err) {
-        return "查無資料";
-      } else {
-        console.log(json(data));
-      }
-    }
-  );
-});
+// app.get("/checkout", function (req, res) {
+//   db.query(
+//     "SELECT Shop.pname, Shop.pimage, Shop.pprice, Shop.pdesc FROM Cart JOIN Shop ON Cart.pid = Shop.pid WHERE Cart.pid = ?",
+//     [],
+//     function (err, data) {
+//       if (err) {
+//         return "查無資料";
+//       } else {
+//         console.log(json(data));
+//       }
+//     }
+//   );
+// });
 
 app.post("/sendOrder", async (req, res) => {
   try {
@@ -140,7 +139,6 @@ app.post("/sendOrder", async (req, res) => {
         console.log("訂單儲存失敗");
       } else {
         console.log("訂單儲存成功");
-        // res.redirect("http://localhost:5173/shop/orderSuccess");
       }
     });
     const deleteurl = "DELETE FROM `Cart` WHERE uid = ?";
@@ -154,6 +152,39 @@ app.post("/sendOrder", async (req, res) => {
     });
   } catch (err) {
     console.log("接收失敗");
+    console.log(err);
+  }
+});
+
+app.get("/shop/history", async (req, res) => {
+  console.log("這是歷史訂單的uid");
+  console.log(myuid);
+  const url = "SELECT * FROM `MyOrder` WHERE uid = ?";
+  db.query(url, [myuid], function (err, data) {
+    if (err) {
+      return "查無資料";
+    } else {
+      console.log(data);
+      console.log(res.data);
+      return res.json(data);
+    }
+  });
+});
+
+app.get("/coupon", async (req, res) => {
+  try {
+    db.query("SELECT code,discount FROM coupon", function (err, data) {
+      if (err) {
+        console.log("coupon資料獲取失敗");
+        console.log(err);
+      } else {
+        // console.log("這是coupon");
+        // console.log(data);
+        return res.json(data);
+      }
+    });
+  } catch (err) {
+    console.log("coupon資料傳送失敗");
     console.log(err);
   }
 });

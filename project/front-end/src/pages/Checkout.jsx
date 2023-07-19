@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Checkout = () => {
-  const { uid, name, email, photopath, isLoggedIn } = useContext(UserContext);
+  const { uid, name, email } = useContext(UserContext);
   console.log("這是checkout的uid：" + uid + "，沒有就代表沒登入");
   const {
     products,
@@ -21,15 +21,73 @@ const Checkout = () => {
   const [address, setAddress] = useState("");
   const navigate = useNavigate();
   const [toOrderSuccess, setToOrderSuccess] = useState(false);
+  const [coupon, setCoupon] = useState([]);
+  const [discount, setDiscount] = useState(0);
+  const [couponCorrect, setCouponCorrect] = useState(true);
 
+  const handleCoupon = (e) => {
+    console.log(e.target.value);
+    for (const c of coupon) {
+      // for...of找到匹配的就會停止
+      if (e.target.value === c.code) {
+        console.log("符合代碼");
+        console.log(c.discount);
+        setDiscount(c.discount);
+        setCouponCorrect(true);
+        break;
+      } else if (e.target.value == "") {
+        console.log("優惠碼輸入框為空");
+        setDiscount(0);
+        setCouponCorrect(true);
+        e.target.value = "";
+      } else {
+        console.log("代碼錯誤");
+        setDiscount(0);
+        setCouponCorrect(false);
+      }
+    }
+  };
+
+  // 載入coupon
+  useEffect(() => {
+    setCoupon([]);
+    const fetchCoupon = async () => {
+      try {
+        axios
+          .get("http://localhost:5566/coupon")
+          .then((res) => {
+            console.log("這是coupon");
+            console.log(res.data);
+            res.data.map((mycoupon) => {
+              // console.log(mycoupon);
+              coupon.push(mycoupon);
+            });
+            console.log("這是coupon");
+            console.log(coupon);
+            setCoupon(coupon);
+          })
+          .catch((err) => {
+            console.log("抓不到coupon");
+            console.log(err);
+          });
+      } catch (err) {
+        console.log("coupon後端連接失敗");
+        console.log(err);
+      }
+    };
+    fetchCoupon();
+  }, []);
+
+  // 檢查是否有登入會員
   useEffect(() => {
     if (!uid) {
       console.log(uid);
       console.log("請先登入會員");
       navigate("/loginPage");
     }
-  }, [isLoggedIn]);
+  }, [uid]);
 
+  // 訂單完成要跳轉畫面
   useEffect(() => {
     if (toOrderSuccess) {
       setCartItems(getDefaultCart());
@@ -377,10 +435,20 @@ const Checkout = () => {
             })}
             {/* 價格 */}
             <div id="discount">
-              <span>優惠碼</span>
-              <input name="coupon" type="text" placeholder="請輸入優惠碼" />
-              <span>-NT$ 60</span>
+              <div className="coupon">
+                <span>優惠碼</span>
+                <input
+                  name="coupon"
+                  type="text"
+                  placeholder="請輸入優惠碼"
+                  onBlur={handleCoupon}
+                />
+                <span style={{ color: "red" }}>
+                  {discount !== 0 ? `-NT$ ${discount}` : null}
+                </span>
+              </div>
             </div>
+            <div className="alert">{couponCorrect ? null : "查無此優惠碼"}</div>
             <div id="sum" className="price">
               <p>合計</p>
               <p>NT$ {calculateCartTotal()}</p>
@@ -394,7 +462,7 @@ const Checkout = () => {
               <p>總金額</p>
               <input
                 name="totalAmount"
-                value={`NT$ ${calculateCartTotal() - 60}`}
+                value={`NT$ ${calculateCartTotal() + 60 - discount}`}
                 style={{
                   border: "none",
                   backgroundColor: "#dddddd",
