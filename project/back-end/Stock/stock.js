@@ -28,6 +28,28 @@ app.post("/stock", async function (req, res) {
   }
 });
 
+app.post("/stock2", async function (req, res) {
+  let { data } = req.body;
+  console.log(data);
+  console.log(typeof data);
+  const options = {
+    method: "GET",
+    url: "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-analysis",
+    params: { symbol: "2330.TW" },
+    headers: {
+      "X-RapidAPI-Key": "4892a9e016msh50445f6831f2ba5p11acc9jsn4bd98dd4a1f2",
+      "X-RapidAPI-Host": "apidojo-yahoo-finance-v1.p.rapidapi.com",
+    },
+  };
+  try {
+    const response = await axios.request(options);
+    console.log(response.data);
+    res.send(response.data);
+  } catch (error) {
+    console.error(error);
+  }
+});
+
 app.post("/stockChart", async function (req, res) {
   const { data } = req.body;
   const inputValue = data.inputValue;

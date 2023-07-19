@@ -239,3 +239,11 @@ body {
     width: 30%;    
     /* height: 50px; */
 }
+
+.useImg{
+    height: 50px;
+    width: 50px;
+    float: left;
+    margin-left: 10px;
+    border-radius: 50%;
+}

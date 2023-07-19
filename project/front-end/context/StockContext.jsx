@@ -16,6 +16,9 @@ export const StockContextProvider = (props) => {
     averageDailyVolume3Month: "",
     averageDailyVolume10Day: "",
     regularMarketChangePercent: "",
+    regularMarketChange: "",
+    peRatio: "",
+    marketCap: "",
   });
 
   return (
