@@ -174,7 +174,7 @@ const IndStock = () => {
                       </div>
                       <hr />
                       <div className="d-flex justify-content-between px-3 py-2">
-                        <div className="card-title">震幅</div>
+                        <div className="card-title">振幅</div>
                         {/* <div className="card-text">3.14%</div> */}
                         <div className="card-text">{stockInfo.peRatio}%</div>
                       </div>

@@ -3,6 +3,7 @@ import { StockContext } from "../../../context/StockContext";
 // 跳轉頁面
 import { Navigate } from "react-router-dom";
 import axios from "axios";
+
 let peRatio = "";
 
 const HomepageSearch = () => {
@@ -24,7 +25,7 @@ const HomepageSearch = () => {
         .then((res) => {
           setRedirectToIndStock(true);
           const mypeRatio = res.data.indexTrend.pegRatio.fmt; //震幅
-          // console.log(peRatio);
+          console.log(mypeRatio);
           peRatio = mypeRatio;
         });
       axios
