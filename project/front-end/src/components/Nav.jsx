@@ -230,13 +230,13 @@ const Navbar = () => {
       >
         <div className="modal-dialog modal-lg modal-dialog-scrollable top-15">
           <div className="modal-content rounded-4">
-            <div className="modal-header IronGray">
-              <div className="modal-title fs-2 ps-4 py-1 text-white" id="cartModalLabel">
+            <div className="modal-header IronGray-Deep px-5 py-4">
+              <div className="modal-title fs-2 py-1 text-white" id="cartModalLabel">
                 您的購物車
               </div>
               <button
                 type="button"
-                className="btn-close"
+                className="btn-close btn-close-white fs-4"
                 data-bs-dismiss="modal"
                 aria-label="Close"
               />

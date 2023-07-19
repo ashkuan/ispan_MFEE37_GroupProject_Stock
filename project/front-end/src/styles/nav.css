@@ -139,6 +139,7 @@ font-size: 1.15rem
 #navbar .container-fluid #navSearch .search__button:active {
   transform: scale(0.9);
 } */
+
 #cartBtn {
   border: none;
   z-index: 100;
