@@ -25,7 +25,7 @@ const IndStock = () => {
           <div className="inchart">
             <LineChart></LineChart>
             <div className="text-end ">
-              <p className="date-text">1天 5天 1個月 6個月 1年 2年 5年</p>
+              
             </div>
           </div>
           <div className="part1-row ">
