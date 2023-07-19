@@ -6,6 +6,7 @@ import { chownSync } from "fs";
 var app = express();
 app.use(cors());
 app.use(express.json()); // 將接收到的JSON格式的資料轉換為JS物件
+app.use(express.urlencoded({ extended: true }));
 
 app.get("/", function (req, res) {
   res.send("select連接成功");
@@ -78,6 +79,83 @@ app.get("/checkout", function (req, res) {
       }
     }
   );
+});
+
+app.post("/sendOrder", async (req, res) => {
+  try {
+    const merchantTradeDate = new Date(); // 交易時間
+    const oid = Math.floor(Math.random() * 1000000000).toString();
+    const {
+      uid,
+      userName,
+      phoneNumber,
+      email,
+      county,
+      district,
+      address2,
+      message,
+      invoiceType,
+      invoiceType2,
+      invoiceCode,
+      naturalCode,
+      donationCode,
+      uniNumber,
+      companyName,
+      ChoosePayment,
+      pid,
+      coupon,
+      totalAmount,
+    } = req.body;
+    console.log(req.body);
+
+    const orderData = [
+      oid,
+      uid,
+      userName,
+      phoneNumber,
+      email,
+      county,
+      district,
+      address2,
+      pid.toString(),
+      merchantTradeDate,
+      totalAmount.slice(4, totalAmount.length),
+      message,
+      ChoosePayment,
+      coupon,
+      invoiceType,
+      invoiceType2,
+      invoiceCode,
+      naturalCode,
+      donationCode,
+      uniNumber,
+      companyName,
+    ];
+
+    const url =
+      "INSERT INTO `MyOrder`(`oid`, `uid`, `userName`, `userPhone`, `userEmail`, `userCountry`, `userDistrict`, `userAddress`, `pid`, `merchantTradeDate`, `totalAmount`, `message`, `payment`, `coupon`, `invoiceType`, `invoiceType2`, `invoiceCode`, `naturalCode`, `donationCode`, `uniNumber`, `companyName`) VALUES  (?)";
+    db.query(url, [orderData], function (err, data) {
+      if (err) {
+        console.log(err);
+        console.log("訂單儲存失敗");
+      } else {
+        console.log("訂單儲存成功");
+        // res.redirect("http://localhost:5173/shop/orderSuccess");
+      }
+    });
+    const deleteurl = "DELETE FROM `Cart` WHERE uid = ?";
+    db.query(deleteurl, [uid], function (err, data) {
+      if (err) {
+        console.log(err);
+        console.log("購物車刪除失敗");
+      } else {
+        console.log("購物車已經清空");
+      }
+    });
+  } catch (err) {
+    console.log("接收失敗");
+    console.log(err);
+  }
 });
 
 app.listen(5566, () => {

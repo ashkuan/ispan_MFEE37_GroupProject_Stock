@@ -171,6 +171,8 @@ export const ShopContextProvider = (props) => {
     calculateCartTotal,
     stockData,
     totalCartItemAmount,
+    setCartItems,
+    getDefaultCart,
   };
 
   return (

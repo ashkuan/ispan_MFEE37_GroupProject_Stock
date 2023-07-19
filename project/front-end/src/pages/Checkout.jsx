@@ -1,17 +1,41 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Navbar from "../components/Nav";
 import Footer from "../components/Footer";
 import "../styles/checkout.css";
 import { ShopContext } from "../../context/ShopContext";
 import TWzipcode from "react-twzipcode";
 import { UserContext } from "../../context/UserContext";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Checkout = () => {
-  const { uid, name, email, photopath } = useContext(UserContext);
+  const { uid, name, email, photopath, isLoggedIn } = useContext(UserContext);
   console.log("這是checkout的uid：" + uid + "，沒有就代表沒登入");
-  const { products, cartItems, calculateCartTotal } = useContext(ShopContext);
+  const {
+    products,
+    cartItems,
+    calculateCartTotal,
+    setCartItems,
+    getDefaultCart,
+  } = useContext(ShopContext);
   const [address, setAddress] = useState("");
+  const navigate = useNavigate();
+  const [toOrderSuccess, setToOrderSuccess] = useState(false);
+
+  useEffect(() => {
+    if (!uid) {
+      console.log(uid);
+      console.log("請先登入會員");
+      navigate("/loginPage");
+    }
+  }, [isLoggedIn]);
+
+  useEffect(() => {
+    if (toOrderSuccess) {
+      setCartItems(getDefaultCart());
+      navigate("/shop/orderSuccess");
+    }
+  }, [toOrderSuccess]);
 
   // 要把cartItems的paccount不為0的pid抓出來後，拿去找products中的所有資料
   const filteredCartItems = Object.entries(cartItems).filter(
@@ -35,7 +59,7 @@ const Checkout = () => {
     <>
       <Navbar></Navbar>
       {/* 主要內容 */}
-      <form action="http://localhost:7654/sendOrder" method="post">
+      <form action="http://localhost:5566/sendOrder" method="post">
         <div className="container checkoutContainer">
           {/* 結帳左邊 */}
           <div id="left" className="px-5 py-4">
@@ -380,8 +404,15 @@ const Checkout = () => {
             </div>
           </div>
         </div>
-        <button id="sendOrderBtn" type="submit" className="btn fs-3 mt-5">
-          <Link to="/shop/orderSuccess">送出訂單</Link>
+        <button
+          onClick={() => {
+            setToOrderSuccess(true);
+          }}
+          id="sendOrderBtn"
+          type="submit"
+          className="btn fs-3 mt-5"
+        >
+          送出訂單
         </button>
       </form>
       <Footer></Footer>
