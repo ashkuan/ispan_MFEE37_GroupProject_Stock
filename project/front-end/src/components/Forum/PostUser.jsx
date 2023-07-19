@@ -1,18 +1,45 @@
-import React, { useState } from 'react';
+import axios from "axios";
+import React, { useState, useEffect } from "react";
 
-const PostUser = () => {
-    return (
-        <>
-            <div className="user-img-circle bg-cover me-3"></div>
-            <div className="pt-4">
-                <div className="fz-2 me-3 mb-1">股海擺渡人</div>
-                <div className="fz-3 ms-6 text-IronGray">08/02</div>
-            </div>
-            {/* follow-author-button */}
-            {/* <a href="#"
-                className="text-decoration-none IronGray-Deep fz-4 rounded-5 text-white px-3 py-2">+&nbsp;追蹤</a> */}
-        </>
-    )
-}
+const PostUser = (props) => {
+  const [users, setUsers] = useState([]);
+
+  const faid = props.data;
+  console.log("postuser的" + faid);
+
+  useEffect(() => {
+    const fetchAllUser = async () => {
+      try {
+        console.log("postuser的" + faid);
+        const res = await axios.post("http://localhost:5789/getFaid", {
+          faid: faid,
+        });
+        setUsers(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchAllUser();
+  }, []);
+
+  return (
+    <>
+      {users.map((user, index) => (
+        <div key={index} className="d-flex">
+          {/* <div className="user-img-circle bg-cover me-3"></div> */}
+          <img className="userImg me-3" src={`http://localhost:3000/${user.userimg}`} alt="" />
+          <div className="pt-4">
+            <div className="fz-2 me-3 mb-1">{user.name}</div>
+            <div className="fz-3 ms-6 text-IronGray">{new Date(user.createTime).toLocaleDateString("en-US", {
+                      month: "2-digit",
+                      day: "2-digit",
+                    })}</div>
+          </div>
+       
+        </div>
+      ))}
+    </>
+  );
+};
 
 export default PostUser;

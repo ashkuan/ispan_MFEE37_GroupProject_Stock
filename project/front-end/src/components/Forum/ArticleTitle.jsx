@@ -21,7 +21,7 @@ const ArticleTitle = (props) => {
   return (
     <>
       {titles.map((title,index)=>(
-        <div className="fs-3 fw-bold mb-4" key={index}>
+        <div className="fs-3 fw-bold mb-4" key={index*3}>
           {title.fatitle}
         </div>
       ))}
