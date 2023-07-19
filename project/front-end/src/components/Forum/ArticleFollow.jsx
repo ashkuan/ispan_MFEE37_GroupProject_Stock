@@ -14,8 +14,7 @@ import NotifyShareDropdown from "./NotifyShareDropdown";
 import AddMessage from "./AddMessage";
 import ArticleTitle from "./ArticleTitle";
 import axios from "axios";
-import { UserContext } from "../../../context/UserContext";
-import LoginButton from "../loginbtn";
+import {UserContext} from "../../../context/UserContext";
 
 function ArticleFollow() {
   const { uid, name, email, photopath } = useContext(UserContext);
@@ -49,24 +48,24 @@ function ArticleFollow() {
     setShowModal(false);
   };
 
-  if (!uid) {
-    return (
+  if(!uid){
+    return(
       <div className="drop-shadow-20 rounded-4 bg-white mt-4">
-        <h1> 請先登入才可查看收藏</h1>
-        <LoginButton />
-      </div>
-    );
-  } else {
+     <p> 請先登入才可查看收藏</p>
+     <LoginButton></LoginButton>
+    </div>
+    )
+  }else{
     return (
       <div className="drop-shadow-20 rounded-4 bg-white mt-4">
         <div className="px-5 py-4">
           {posts.map((post, index) => (
-            <div key={"10" + index}>
+            <div key={"10"+index}>
               <div className="articleCont py-4">
                 {/* 用戶 */}
                 <div className="d-flex justify-content-between">
                   <div className="d-flex align-items-center text-IronGray-Deep">
-                  <img className="userImg me-3" src={`http://localhost:3000/${post.userimg}`} alt="" />
+                    {/* <img className="userImg me-3" src={`http://localhost:3000/${photopath}`} alt="" /> */}
                     <span className="me-3 mb-1 fz-3">{post.name}</span>
                     <span className="me-4 mb-1 fz-3">{post.fboard}</span>
                     <span className="me-3 mb-1 fz-4 fw-normal">
@@ -186,6 +185,8 @@ function ArticleFollow() {
       </div>
     );
   }
+  
+ 
 }
 
 export default ArticleFollow;
