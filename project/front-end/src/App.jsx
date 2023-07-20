@@ -24,9 +24,9 @@ import Notes from "../src/components/Forum/Notes";
 import { StockContextProvider } from "../context/StockContext";
 import Modal from "react-modal";
 import { UserContextProvider } from "../context/UserContext";
-import LoginPage from "./pages/Loginpage";
 import LoginButton from "./components/loginbtn";
 import OrderSuccess from "./pages/OrderSuccess";
+import Loginpage from "./pages/Loginpage";
 
 function App() {
   Modal.setAppElement("#root"); // 设置 appElement
@@ -51,14 +51,8 @@ function App() {
                 {/* <Route path="/forum/others" element={<Others />} /> */}
               </Route>
 
-              <Route
-                path="/Loginbutton"
-                element={<LoginButton></LoginButton>}
-              ></Route>
-              <Route
-                path="/Loginpage"
-                element={<LoginPage></LoginPage>}
-              ></Route>
+              <Route path="/Loginbutton" element={<LoginButton />}></Route>
+              <Route path="/loginpage" element={<Loginpage />}></Route>
 
               <Route path="/register" element={<Register />} />
               <Route path="/member" element={<Member />} />
@@ -74,7 +68,6 @@ function App() {
                 <Route path="/shop/orderSuccess" element={<OrderSuccess />} />
               </Route>
               <Route path="/rookie" element={<Rookie />} />
-              <Route path="/loginPage" element={<loginPage />} />
             </Routes>
           </Router>
         </StockContextProvider>

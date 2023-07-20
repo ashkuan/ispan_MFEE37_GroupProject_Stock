@@ -19,46 +19,31 @@ const Navbar = () => {
   const { totalCartItemAmount } = useContext(ShopContext);
 
   // 會員
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [values, setValues] = useState({
-    email: "",
-    password: "",
-  });
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [values, setValues] = useState({
+  //   email: "",
+  //   password: "",
+  // });
   const navigate = useNavigate();
-  const [errors, setErrors] = useState({});
-  const handleInput = (event) => {
-    setValues((prev) => ({
-      ...prev,
-      [event.target.name]: event.target.value,
-    }));
-  };
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    setErrors(Validation(values));
-    if (errors.email === "" && errors.password === "") {
-      axios
-        .post("http://localhost:3000", values, { withCredentials: true })
-        .then((res) => {
-          if (res.data === "success") {
-            // 變更登入狀態
-            setIsLoggedIn(true);
-            navigate("/member");
-          } else {
-            alert("此帳號不存在");
-          }
-        })
-        .catch((err) => console.log(err));
-    }
-  };
-  function handleClick() {
-    // 觸發ESC按鈕的按下事件
-    console.log("123");
-    var escapeEvent = new KeyboardEvent("keydown", {
-      key: "Escape",
-      keyCode: 27,
-    });
-    document.dispatchEvent(escapeEvent);
-  }
+  // const [errors, setErrors] = useState({});
+  // const handleInput = (event) => {
+  //   setValues((prev) => ({
+  //     ...prev,
+  //     [event.target.name]: event.target.value,
+  //   }));
+  // };
+
+  // function handleClick() {
+  //   // 觸發ESC按鈕的按下事件
+  //   console.log("123");
+  //   var escapeEvent = new KeyboardEvent("keydown", {
+  //     key: "Escape",
+  //     keyCode: 27,
+  //   });
+  //   document.dispatchEvent(escapeEvent);
+  // }
+
+
 
   return (
     <>
@@ -161,6 +146,7 @@ const Navbar = () => {
             {/*右邊*/}
             <div className="d-flex align-items-center">
               <NavSearch />
+              {/* 購物車 icon */}
               <div className="ms-4 cart-icon">
                 <button
                   id="cartBtn"
@@ -193,14 +179,18 @@ const Navbar = () => {
                   ) : null}
                 </button>
               </div>
+              {/* 會員 icon */}
               <div className="ms-1 nav-member-icon">
                 <button
                   type="button"
                   className="btn"
-                  data-bs-toggle={isLoggedIn ? "" : "modal"}
-                  data-bs-target={isLoggedIn ? "" : "#memberModal"}
+                  // data-bs-toggle={isLoggedIn ? "" : "modal"}
+                  // data-bs-target={isLoggedIn ? "" : "#memberModal"}
                   onClick={() => {
-                    if (isLoggedIn) {
+                    if (!uid) {
+                      navigate("/loginpage");
+                    }else {
+                      console.log(uid);
                       navigate("/member");
                     }
                   }}
@@ -244,8 +234,7 @@ const Navbar = () => {
                 type="button"
                 className="btn-close btn-close-white fs-4"
                 data-bs-dismiss="modal"
-                aria-label="Close"
-              />
+                aria-label="Close" />
             </div>
             {uid ? (
               <>
@@ -293,27 +282,29 @@ const Navbar = () => {
       </div>
 
       {/* 會員登入的彈跳視窗 */}
-      <div
+      {/* <div
         className="modal fade"
         id="memberModal"
         tabIndex="-1"
-        aria-labelledby="exampleModalLabel"
+        aria-labelledby="loginModalLabel"
         aria-hidden="true"
       >
-        <div className="modal-dialog">
-          <div className="modal-content d-flex justify-content align-items">
-            <div className="modal-header member-spacing">
-              <p className="modal-title jump-title" id="exampleModalLabel">
+        <div className="modal-dialog modal-lg modal-dialog-scrollable top-15">
+          <div className="modal-content rounded-4">
+            <div className="modal-header IronGray-Deep px-5 py-4">
+              <div 
+                className="modal-title fs-2 py-1 text-white" 
+                id="loginModalLabel"
+              >
                 會員登入
-              </p>
+              </div>
               <button
                 type="button"
-                className="btn-close"
+                className="btn-close btn-close-white fs-4"
                 data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
+                aria-label="Close" />
             </div>
-            <div className="modal-body bg-white ">
+            <div className="modal-body d-flex flex-column align-items-center ">
               <div>
                 <form onSubmit={handleSubmit} className="text-center m-3">
                   <div>
@@ -365,7 +356,7 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

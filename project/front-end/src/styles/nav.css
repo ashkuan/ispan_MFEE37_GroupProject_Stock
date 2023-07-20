@@ -313,18 +313,18 @@ font-size: 1.15rem
   transform: scale(0.9);
 }
 
-.member-spacing {
+/* .member-spacing {
   height: 80px;
   margin-bottom: 10px;
-}
+} */
 #memberbtn {
   border: none;
 }
-#memberModal .jump-title {
+/* #memberModal .jump-title {
   font-size: 2.5rem;
   margin-bottom: -40px;
   font-weight: bold;
-}
+} */
 #memberModal .member-account {
   font-size: 1.5rem;
   margin: 20px;
