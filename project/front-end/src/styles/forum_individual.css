@@ -7,6 +7,12 @@
     background-image: url(../img/forum/user-Img.jpg);
 }
 
+.user-img {
+    width: 3.4375rem;
+    height: 3.4375rem;
+    border-radius: 3.4375rem;
+}
+
 .modal {
     --bs-modal-width: 730px;
     --bs-modal-margin: 0;
