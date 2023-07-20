@@ -143,11 +143,6 @@ const Navbar = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link className="dropdown-item fs-4 fw-light" href="#">
-                      訂單狀況
-                    </Link>
-                  </li>
-                  <li>
                     <Link
                       className="dropdown-item fs-4 fw-light"
                       to="/shop/history"
