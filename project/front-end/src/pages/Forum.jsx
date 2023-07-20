@@ -9,11 +9,12 @@ import Post from "../components/Forum/Post.jsx";
 import ArticleSort from "../components/Forum/ArticleSort.jsx";
 import Billboard from "../components/Forum/Billboard.jsx";
 import LineChart from "../components/linechart";
-import {UserContext} from "../../context/UserContext";
 
 const Forum = () => {
-  const { uid, name, email, photopath } = useContext(UserContext);
-
+  const uid = sessionStorage.getItem("uid");
+  const name = sessionStorage.getItem("name");
+  const email = sessionStorage.getItem("email");
+  const photopath = sessionStorage.getItem("photopath");
   console.log("我是uid");
   console.log(uid);
   return (

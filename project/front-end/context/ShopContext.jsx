@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { UserContext } from "./UserContext";
 
 export const ShopContext = createContext(null);
 
@@ -33,8 +32,10 @@ export const ShopContextProvider = (props) => {
   // const [quantity, setQuantity] = useState(1);
   const [stockData, setStockData] = useState({}); // 存個股資訊
   const [totalCartItemAmount, setTotalCartItemAmount] = useState(0); //計算購物車總數
-
-  const { uid } = useContext(UserContext);
+  const uid = sessionStorage.getItem("uid");
+  const name = sessionStorage.getItem("name");
+  const email = sessionStorage.getItem("email");
+  const photopath = sessionStorage.getItem("photopath");
 
   // 載入所有書籍
   useEffect(() => {

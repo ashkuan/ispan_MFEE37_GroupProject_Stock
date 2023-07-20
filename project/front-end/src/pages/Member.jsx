@@ -3,36 +3,19 @@ import Sidebar from "../components/Sidebar";
 import "../styles/member.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { UserContext } from "../../context/UserContext";
 
 const Member = () => {
-  const {
-    uid,
-    setUid,
-    name,
-    setName,
-    email,
-    setEmail,
-    password,
-    setPassword,
-    photopath,
-    setPhotopath,
-  } = useContext(UserContext);
-  // const [uid, setUid] = useState("");
-  // const [name, setName] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [photopath, setPhotopath] = useState("");
+  const uid = sessionStorage.getItem("uid");
+  const name = sessionStorage.getItem("name");
+  const email = sessionStorage.getItem("email");
+  const photopath = sessionStorage.getItem("photopath");
+  const [password, setPassword] = useState("");
 
   useEffect(() => {
     axios
       .get("http://localhost:3000/member", { withCredentials: true })
       .then((res) => {
-        setUid(res.data.uid);
-        setName(res.data.name);
-        setEmail(res.data.email);
         setPassword(res.data.password);
-        setPhotopath(res.data.photopath);
       })
       .catch((err) => console.log(err));
   }, []);

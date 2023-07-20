@@ -1,11 +1,13 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
-import { UserContext } from "../../../context/UserContext";
 import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
 
 const AddMessage = (props) => {
-  const { uid, name, email, photopath } = useContext(UserContext);
+  const uid = sessionStorage.getItem("uid");
+  const name = sessionStorage.getItem("name");
+  const email = sessionStorage.getItem("email");
+  const photopath = sessionStorage.getItem("photopath");
 
   const faid = props.data;
   const [fmContent, setFmContent] = useState("");

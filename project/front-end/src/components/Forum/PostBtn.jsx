@@ -7,11 +7,13 @@ import "../../styles/forum_main_right.css";
 import "../../styles/forum_main.css";
 import axios from "axios";
 import PostSuccess from "./PostSuccess";
-import { UserContext } from "../../../context/UserContext";
 import LoginButton from "../loginbtn";
 
 function PostBtn() {
-  const { uid, name, email, photopath } = useContext(UserContext);
+  const uid = sessionStorage.getItem("uid");
+  const name = sessionStorage.getItem("name");
+  const email = sessionStorage.getItem("email");
+  const photopath = sessionStorage.getItem("photopath");
   console.log("我是post裡面的uid");
   console.log(uid);
   const [lgShow, setLgShow] = useState(false);
@@ -134,7 +136,7 @@ function PostBtn() {
               </Modal.Header>
               <Modal.Body className="px-4 py-2  ">
                 <div className="m-4  row">
-                  <LoginButton  className=""/>
+                  <LoginButton className="" />
                   <Button
                     className=" mt-3  fs-3 bg-secondary"
                     variant="secondary"

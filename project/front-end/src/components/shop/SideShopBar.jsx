@@ -1,21 +1,13 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { UserContext } from "../../../context/UserContext";
 
 const SideShopBar = () => {
-  const {
-    uid,
-    setUid,
-    name,
-    setName,
-    email,
-    setEmail,
-    password,
-    setPassword,
-    photopath,
-    setPhotopath,
-  } = useContext(UserContext);
+  const uid = sessionStorage.getItem("uid");
+  const name = sessionStorage.getItem("name");
+  const email = sessionStorage.getItem("email");
+  const photopath = sessionStorage.getItem("photopath");
+
   const [userData, setUserData] = useState("");
   const [dataAccount, setDataAccount] = useState("");
   const fetchUidPhoto = async () => {

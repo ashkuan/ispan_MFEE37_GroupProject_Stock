@@ -14,12 +14,13 @@ import NotifyShareDropdown from "./NotifyShareDropdown";
 import AddMessage from "./AddMessage";
 import ArticleTitle from "./ArticleTitle";
 import axios from "axios";
-import { UserContext } from "../../../context/UserContext";
 import LoginButton from "../loginbtn";
 
 function ArticleFollow() {
-  const { uid, name, email, photopath } = useContext(UserContext);
-  // console.log("我是follow裡面的uid");
+  const uid = sessionStorage.getItem("uid");
+  const name = sessionStorage.getItem("name");
+  const email = sessionStorage.getItem("email");
+  const photopath = sessionStorage.getItem("photopath"); // console.log("我是follow裡面的uid");
   // console.log(uid);
   const [showModal, setShowModal] = useState(false);
   const [posts, setPosts] = useState([]);

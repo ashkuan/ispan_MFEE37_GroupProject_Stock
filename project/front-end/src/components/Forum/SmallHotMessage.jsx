@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useContext } from "react";
-import { UserContext } from "../../../context/UserContext";
 import axios from "axios";
 import AddMessage from "./AddMessage";
 
 const SmallHotMessage = (props) => {
   const faid = props.data;
   const [messages, setMessages] = useState([]);
-  const { uid, name, email, photopath } = useContext(UserContext);
-
+  const uid = sessionStorage.getItem("uid");
+  const name = sessionStorage.getItem("name");
+  const email = sessionStorage.getItem("email");
+  const photopath = sessionStorage.getItem("photopath");
   useEffect(() => {
     fetchMessages();
   }, [faid]);

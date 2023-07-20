@@ -4,12 +4,18 @@ import Footer from "../components/Footer";
 import "../styles/checkout.css";
 import { ShopContext } from "../../context/ShopContext";
 import TWzipcode from "react-twzipcode";
-import { UserContext } from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Checkout = () => {
-  const { uid, name, email } = useContext(UserContext);
+  const uid = sessionStorage.getItem("uid");
+  const name = sessionStorage.getItem("name");
+  const email = sessionStorage.getItem("email");
+  const photopath = sessionStorage.getItem("photopath");
+  console.log(uid);
+  console.log(name);
+  console.log(email);
+  console.log(photopath);
   console.log("這是checkout的uid：" + uid + "，沒有就代表沒登入");
   const {
     products,
@@ -79,13 +85,11 @@ const Checkout = () => {
   }, []);
 
   // 檢查是否有登入會員
-  useEffect(() => {
-    if (!uid) {
-      console.log(uid);
-      console.log("請先登入會員");
-      navigate("/loginPage");
-    }
-  }, []);
+  if (uid == null) {
+    console.log(uid);
+    console.log("請先登入會員");
+    navigate("/loginPage");
+  }
 
   // 訂單完成要跳轉畫面
   useEffect(() => {

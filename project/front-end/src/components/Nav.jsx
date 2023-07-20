@@ -7,13 +7,15 @@ import { ShopContext } from "../../context/ShopContext";
 import Validation from "./loginValidation";
 import axios from "axios";
 import NavSearch from "../components/IndStock/NavSearch";
-import { UserContext } from "../../context/UserContext";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import LoginBtn from "./loginbtn";
 
 const Navbar = () => {
-  const { uid } = useContext(UserContext);
+  const uid = sessionStorage.getItem("uid");
+  const name = sessionStorage.getItem("name");
+  const email = sessionStorage.getItem("email");
+  const photopath = sessionStorage.getItem("photopath");
 
   // 購物車
   const { totalCartItemAmount } = useContext(ShopContext);
@@ -42,8 +44,6 @@ const Navbar = () => {
   //   });
   //   document.dispatchEvent(escapeEvent);
   // }
-
-
 
   return (
     <>
@@ -184,7 +184,7 @@ const Navbar = () => {
                   onClick={() => {
                     if (!uid) {
                       navigate("/loginpage");
-                    }else {
+                    } else {
                       console.log(uid);
                       navigate("/member");
                     }
@@ -229,7 +229,8 @@ const Navbar = () => {
                 type="button"
                 className="btn-close btn-close-white fs-4"
                 data-bs-dismiss="modal"
-                aria-label="Close" />
+                aria-label="Close"
+              />
             </div>
             {uid ? (
               <>

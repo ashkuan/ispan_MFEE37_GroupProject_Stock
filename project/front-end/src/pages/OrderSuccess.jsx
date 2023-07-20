@@ -1,12 +1,13 @@
 import React, { useContext } from "react";
 import "../styles/orderSuccess.css";
 import Footer from "../components/Footer";
-import { UserContext } from "../../context/UserContext";
 import { Link } from "react-router-dom";
 
 const OrderSuccess = () => {
-  const { name } = useContext(UserContext);
-
+  const uid = sessionStorage.getItem("uid");
+  const name = sessionStorage.getItem("name");
+  const email = sessionStorage.getItem("email");
+  const photopath = sessionStorage.getItem("photopath");
   return (
     <>
       <div className="container orderSuccessContainer">

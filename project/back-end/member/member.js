@@ -140,8 +140,8 @@ app.post("/", (req, res) => {
         "email = " + req.session.user.email,
         "photopath = " + req.session.user.photopath
       );
-      console.log(req.session.user.uid)
-      return res.json(req.session.user.uid);
+      console.log(req.session.user);
+      return res.json(req.session.user);
     } else {
       return res.json("fail");
     }

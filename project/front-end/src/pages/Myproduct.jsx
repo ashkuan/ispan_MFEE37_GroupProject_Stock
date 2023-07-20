@@ -2,12 +2,14 @@ import React, { useContext, useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import { ShopContext } from "../../context/ShopContext";
 import { Toast } from "react-bootstrap";
-import { UserContext } from "../../context/UserContext";
 import uuid4 from "uuid4";
 
 const Myproduct = () => {
   const { products, addToCart } = useContext(ShopContext);
-  const { uid } = useContext(UserContext);
+  const uid = sessionStorage.getItem("uid");
+  const name = sessionStorage.getItem("name");
+  const email = sessionStorage.getItem("email");
+  const photopath = sessionStorage.getItem("photopath");
   const [quantity, setQuantity] = useState(1);
   // const [inputValue, setInputValue] = useState("");
   const [showToast, setShowToast] = useState(false);

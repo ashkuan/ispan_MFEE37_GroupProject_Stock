@@ -15,10 +15,8 @@ import NotifyShareDropdown from "./NotifyShareDropdown";
 import AddMessage from "./AddMessage";
 import ArticleTitle from "./ArticleTitle";
 import axios from "axios";
-// import {UserContext} from "../../../context/UserContext";
 
 function ChatArticle() {
-
   const [showModal, setShowModal] = useState(false);
   const [posts, setPosts] = useState([]);
   const [faid, setFaid] = useState([]);
@@ -64,12 +62,16 @@ function ChatArticle() {
     <div className="drop-shadow-20 rounded-4 bg-white mt-4">
       <div className="px-5 py-4">
         {posts.map((post, index) => (
-          <div key={"popular"+index}>
+          <div key={"popular" + index}>
             <div className="articleCont py-4">
               {/* 用戶 */}
               <div className="d-flex justify-content-between">
                 <div className="d-flex align-items-center text-IronGray-Deep">
-                  <img className="userImg me-3" src={`http://localhost:3000/${post.userimg}`} alt="" />
+                  <img
+                    className="userImg me-3"
+                    src={`http://localhost:3000/${post.userimg}`}
+                    alt=""
+                  />
                   <span className="me-3 mb-1 fz-3">{post.name}</span>
                   <span className="me-4 mb-1 fz-3">{post.fboard}</span>
                   <span className="me-3 mb-1 fz-4 fw-normal">

@@ -230,12 +230,8 @@ import NotifyShareDropdown from "./NotifyShareDropdown";
 import AddMessage from "./AddMessage";
 import ArticleTitle from "./ArticleTitle";
 import axios from "axios";
-// import {UserContext} from "../../../context/UserContext";
 
 function ArticleNew() {
-  // const { uid, name, email, photopath } = useContext(UserContext);
-  // console.log("我是popular裡面的uid");
-  // console.log(uid);
   const [showModal, setShowModal] = useState(false);
   const [posts, setPosts] = useState([]);
   const [faid, setFaid] = useState([]);
