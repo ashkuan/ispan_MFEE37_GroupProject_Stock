@@ -70,7 +70,6 @@ const ArticleContent = (props) => {
                     </pre>
                     <img className="object-fit-cover" src={`/img/forum/post/${article.faimage}`} alt=""/>
                     {/* <img className="object-fit-cover" src={`http://localhost:5789/${article.faimage}`} alt=""/> */}
-                   {/* faimage_1689821538046.webp */}
                 </div>
             ))}
         </>

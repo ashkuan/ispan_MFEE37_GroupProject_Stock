@@ -160,7 +160,6 @@
 //             </div>
 //             <hr />
 
-          
 //           </div>
 //         ))}
 //           {/* articleIndividual-modal */}
@@ -282,12 +281,16 @@ function ArticleNew() {
     <div className="drop-shadow-20 rounded-4 bg-white mt-4">
       <div className="px-5 py-4">
         {posts.map((post, index) => (
-          <div key={"new"+index}>
+          <div key={"new" + index}>
             <div className="articleCont py-4">
               {/* 用戶 */}
               <div className="d-flex justify-content-between">
                 <div className="d-flex align-items-center text-IronGray-Deep">
-                <img className="userImg me-3" src={`http://localhost:3000/${post.userimg}`} alt="" />
+                  <img
+                    className="userImg me-3"
+                    src={`http://localhost:3000/${post.userimg}`}
+                    alt=""
+                  />
                   <span className="me-3 mb-1 fz-3">{post.name}</span>
                   <span className="me-4 mb-1 fz-3">{post.fboard}</span>
                   <span className="me-3 mb-1 fz-4 fw-normal">
@@ -398,9 +401,7 @@ function ArticleNew() {
                 <HotNewMessageTabs />
               </div>
             </Modal.Body>
-            <Modal.Footer className="p-4 d-flex justify-content-between align-items-center">
-              <AddMessage />
-            </Modal.Footer>
+            <Modal.Footer className="p-4 d-flex justify-content-between align-items-center"></Modal.Footer>
           </div>
         </Modal>
       </div>
