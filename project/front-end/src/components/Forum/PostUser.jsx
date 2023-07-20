@@ -5,7 +5,7 @@ const PostUser = (props) => {
   const [users, setUsers] = useState([]);
 
   const faid = props.data;
-  console.log("postuser的" + faid);
+  // console.log("postuser的" + faid);
 
   useEffect(() => {
     const fetchAllUser = async () => {

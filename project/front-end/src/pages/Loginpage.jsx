@@ -4,7 +4,8 @@ import axios from "axios";
 import NavSearch from "../components/IndStock/NavSearch";
 import { UserContext } from "../../context/UserContext";
 import { useState } from "react";
-import "../styles/logginpage.css";
+import "../styles/loginpage.css";
+import "../styles/forum_main.css";
 
 const loginPage = () => {
   // 會員
@@ -41,49 +42,54 @@ const loginPage = () => {
   };
   return (
     <>
-      <div className="replaceloginpage d-flex align-items-center justify-content-center">
-        <form onSubmit={handleSubmit} className="text-center m-3">
-          <div>
-            <label htmlFor="emial" className="m-3">
-              會員信箱
-            </label>
-            <p></p>
-            <input
-              onChange={handleInput}
-              type="email"
-              name="email"
-              className="member-inp"
-              placeholder="輸入您的信箱"
-            />
-            {errors.email && <p className="text-danger">{errors.email}</p>}
-          </div>
-          <div>
-            <label htmlFor="password" className="m-3">
-              會員密碼
-            </label>
-            <p></p>
-            <input
-              onChange={handleInput}
-              type="password"
-              name="password"
-              className="member-inp"
-              placeholder="輸入您的密碼"
-            />
-            {errors.password && (
-              <p className="text-danger">{errors.password}</p>
-            )}
-          </div>
-          <div className="modal-footer2">
-            <button type="submit" className="btn btn-login">
-              登入
-            </button>
-            <Link
-              to="/register"
-              className="btn btn-register"
-              
-            >
-              註冊
-            </Link>
+      <div className="mt-8rem d-flex align-items-center justify-content-center">
+        <form id="memberLogin" onSubmit={handleSubmit} className="card p-4 rounded-4 drop-shadow-20">
+          <div className="card-body px-5 text-IronGray-Deep">
+            <div className="">
+              <label htmlFor="email" className="d-flex justify-content-center m-auto py-3 fs-2">
+                會員信箱
+              </label>
+              <input
+                onChange={handleInput}
+                type="email"
+                name="email"
+                className="member-inp"
+                placeholder="請輸入您的信箱"
+              />
+            </div>
+            <div>
+              {errors.email && (
+                <p className="text-Red ps-3 fz-3">{errors.email}</p>
+              )}
+            </div>
+            <div className="mt-3 mb-5">
+              <label htmlFor="password" className="d-flex justify-content-center m-auto py-3 fs-2">
+                會員密碼
+              </label>
+              <input
+                onChange={handleInput}
+                type="password"
+                name="password"
+                className="member-inp"
+                placeholder="請輸入您的密碼"
+              />
+              <div>
+              {errors.password && (
+                <p className="text-Red ps-3 fz-3">{errors.password}</p>
+              )}
+              </div>
+            </div>
+            <div className="d-flex flex-column justify-content-around">
+              <button type="submit" className="btn btn-login py-2 mb-4">
+                登 入
+              </button>
+              <Link
+                to="/register"
+                className="notYetRegister py-2 fs-5"
+              >
+                尚未註冊嗎？請點此
+              </Link>
+            </div>
           </div>
         </form>
       </div>

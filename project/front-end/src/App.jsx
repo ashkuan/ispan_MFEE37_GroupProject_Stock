@@ -24,7 +24,7 @@ import Notes from "../src/components/Forum/Notes";
 import { StockContextProvider } from "../context/StockContext";
 import Modal from "react-modal";
 import { UserContextProvider } from "../context/UserContext";
-import LoginPage from "./pages/loginpage";
+import LoginPage from "./pages/Loginpage";
 import LoginButton from "./components/loginbtn";
 import OrderSuccess from "./pages/OrderSuccess";
 

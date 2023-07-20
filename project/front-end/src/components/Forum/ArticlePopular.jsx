@@ -15,16 +15,11 @@ import NotifyShareDropdown from "./NotifyShareDropdown";
 import AddMessage from "./AddMessage";
 import ArticleTitle from "./ArticleTitle";
 import axios from "axios";
-// import {UserContext} from "../../../context/UserContext";
 
 function ArticlePopular() {
-  // const { uid, name, email, photopath } = useContext(UserContext);
-  // console.log("我是popular裡面的uid");
-  // console.log(uid);
   const [showModal, setShowModal] = useState(false);
   const [posts, setPosts] = useState([]);
   const [faid, setFaid] = useState([]);
-  const [userPhotoPath, setUserPhotoPath] = useState([]);
   const [collects, setCollects] = useState(0);
 
   useEffect(() => {
@@ -107,7 +102,7 @@ function ArticlePopular() {
                 <div className="d-flex me-1">
                   <img src="../public/img/forum/likeClick.svg" alt="" />
                   <span className="fz-3 fw-normal px-3 d-flex align-content-center">
-                    {post.likeCount}
+                    {post.totalLikes}
                   </span>
                 </div>
                 {/* messageCount */}
@@ -167,7 +162,7 @@ function ArticlePopular() {
                     {/* <NotifyShareDropdown /> */}
                   </div>
                 </div>
-                <HotNewMessageTabs data={faid} />
+                {/* <HotNewMessageTabs data={faid} /> */}
               </div>
             </Modal.Body>
             <Modal.Footer className="p-4 d-flex justify-content-between align-items-center">
