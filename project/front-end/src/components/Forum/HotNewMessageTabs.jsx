@@ -4,7 +4,6 @@ import SmallNewMessage from "./SmallNewMessage";
 
 const HotNewMessageTabs = (props) => {
   const faid = props.data;
-  console.log(faid);
   return (
     <>
       <div className="text-secondary fs-5 px-4 d-flex justify-content-end align-items-center">

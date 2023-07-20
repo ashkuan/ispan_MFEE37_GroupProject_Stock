@@ -1,47 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { UserContext } from "../../../context/UserContext";
 import axios from "axios";
+import AddMessage from "./AddMessage";
 
 const SmallHotMessage = (props) => {
   const faid = props.data;
   const [messages, setMessages] = useState([]);
+  const { uid, name, email, photopath } = useContext(UserContext);
 
   useEffect(() => {
-    const fetchMessages = async () => {
-      try {
-        const res = await axios.get(`http://localhost:5052/messages/${faid}`);
-        setMessages(res.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
     fetchMessages();
-    getMessages();
   }, [faid]);
 
-  const getMessages = () => {
-    axios
-      .get(`http://localhost:5052/messages/${faid}`)
-      .then((response) => {
-        setMessages(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  const postMessage = () => {
-    const fmContentValue = { fmContent }; // 替換為實際的留言內容
-    console.log(fmContent);
-    axios
-      .post(`http://localhost:5052/messages/${faid}`, { fmContent })
-      .then((response) => {
-        console.log(response.data);
-        // 成功發表留言後，刷新留言列表
-        getMessages();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  const fetchMessages = async () => {
+    try {
+      const res = await axios.get(`http://localhost:5052/messages/${faid}`);
+      setMessages(res.data);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -50,9 +27,9 @@ const SmallHotMessage = (props) => {
         <div className="border-top border-2 py-4 mt-4" key={message.fmid}>
           <div className="black-Word d-flex justify-content-between align-items-center">
             <div className="d-flex align-items-center">
-              <img src={message.photopath} alt="" />
+              {/* <img src={`/img/memberimg/member/${message.photopath}`} alt="" /> */}
               <span className="ms-3 text-IronGray-Deep fs-5">
-                {message.name} · {message.createTime}
+                {name} · {message.createTime}
               </span>
             </div>
             <div>
@@ -68,6 +45,7 @@ const SmallHotMessage = (props) => {
           </div>
         </div>
       ))}
+      <AddMessage data={faid} fetchAllMessages={fetchMessages} />
     </>
   );
 };
