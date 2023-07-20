@@ -1,13 +1,14 @@
-
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import { UserContext } from "../../../context/UserContext";
 
 const EmojiButton = (props) => {
   const [keeps, setKeeps] = useState([]);
   const [likeCount, setLikeCount] = useState(0); // Set initial state to 0
   const [totalLikes, setTotalLikes] = useState(0);
-const{uid}=useContext(UserContext)
+  const uid = sessionStorage.getItem("uid");
+  const name = sessionStorage.getItem("name");
+  const email = sessionStorage.getItem("email");
+  const photopath = sessionStorage.getItem("photopath");
   const faid = props.data;
 
   useEffect(() => {
@@ -40,10 +41,9 @@ const{uid}=useContext(UserContext)
     calculateTotalLikes();
   }, [keeps, likeCount, totalLikes]);
 
-
   const collectClick = async (e) => {
     e.preventDefault();
-   try {
+    try {
       const newLikeStatus = likeCount === 0 || likeCount === null ? 1 : 0;
       setLikeCount(newLikeStatus);
 
