@@ -3,8 +3,10 @@ import "../styles/sidebar.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { UserContext } from "../../context/UserContext";
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
+  const navigate = useNavigate();
   // const [name, setName] = useState("");
   // const [photopath, setPhotopath] = useState("");
   const {
@@ -41,7 +43,9 @@ const Sidebar = () => {
         // 登出成功的处理逻辑
         console.log(response.data); // 可根据需要处理返回的响应数据
         // 进行重定向或其他操作
-        window.location.href = "/";
+        alert("您已登出")
+        navigate("/")
+        // window.location.href = "/";
       })
       .catch((error) => {
         // 登出失败的处理逻辑
