@@ -22,45 +22,85 @@
   color: var(--IronGray-Deep);
 }
 .history_container .title {
-  font-size: 2.5rem;
-  text-align: center;
+  font-size: 3rem;
   font-weight: bold;
-  margin-bottom: 50px;
+  padding-bottom: 50px;
+  letter-spacing: 10px;
 }
-.history_container .historyTitle {
+.history_container .bread {
+  color: gray;
+}
+.history_container .bread a {
+  color: gray;
+}
+.history_container .bread a:hover {
+  text-decoration: underline;
+}
+.history_container .mainContent {
+  display: flex;
+  gap: 20px;
+}
+.history_container .mainContent .left {
+  width: 80%;
+}
+.history_container .mainContent .left .historyTitle {
   display: flex;
   font-size: 1.8rem;
   font-weight: 600;
   justify-content: center;
   background-color: var(--bg-Second-Gray);
-  padding: 50px 0px;
+  padding: 30px 0px;
   color: var(--black-Word);
 }
-.history_container .historyTitle div {
-  display: flex;
-  justify-content: center;
-}
-.history_container .card {
+.history_container .mainContent .left .row .card {
   border: none;
   background-color: var(--bg-Primary-Gray);
-}
-.history_container .card .card-img-top {
-  width: 25%;
-}
-.history_container .card .card-body {
-  padding-left: 40px;
   display: flex;
-  justify-content: space-around;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 25px;
 }
-.history_container .card .card-body .card-title {
-  font-size: 2rem;
+.history_container .mainContent .left .row .card .card-img-top {
+  width: 15%;
+  height: 100px;
 }
-.history_container .card .card-body .amount {
-  font-size: 1.3rem;
+.history_container .mainContent .left .row .card .card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
 }
-.history_container .card .card-body .date {
-  font-size: 1.3rem;
-}
-.history_container .card .total {
+.history_container .mainContent .left .row .card .card-body .card-title {
   font-size: 1.5rem;
+  font-weight: 500;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  width: 90%;
+}
+.history_container .mainContent .left .row .card .card-body .amount,
+.history_container .mainContent .left .row .card .card-body .date {
+  font-size: 1.2rem;
+  color: gray;
+}
+.history_container .mainContent .left .row .totalAccount,
+.history_container .mainContent .left .row .total {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 1.4rem;
+}
+.history_container .mainContent .right {
+  width: 20%;
+  background-color: rgba(128, 128, 128, 0.175);
+  box-shadow: 0px 0px 15px 0px rgba(128, 128, 128, 0.387);
+  text-align: center;
+}
+.history_container .mainContent .right .name {
+  font-size: 1.2rem;
+}
+.history_container .mainContent .right .email {
+  font-size: 1rem;
 }/*# sourceMappingURL=history.css.map */
