@@ -254,7 +254,7 @@ function ArticleNew() {
       }
     };
     fetchAllPost();
-  }, []);
+  }, [posts]);
 
   // useEffect(() => {
   //   const fetchUserPhotoPath = async () => {

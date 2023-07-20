@@ -66,7 +66,7 @@ function PostBtn() {
       setPosts((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     }
   };
-  console.log(posts);
+  // console.log(posts);
 
   const handleClick = async (e) => {
     e.preventDefault();

@@ -5,7 +5,7 @@ const BoardTag = (props) => {
   const [boards, setBoards] = useState([]);
   
   const faid = props.data;
-  console.log(faid);
+  // console.log(faid);
 
   useEffect(() => {
     const fetchAllBoard = async () => {
