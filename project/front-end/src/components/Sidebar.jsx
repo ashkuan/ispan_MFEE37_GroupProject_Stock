@@ -6,8 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
   const navigate = useNavigate();
-  // const [name, setName] = useState("");
-  // const [photopath, setPhotopath] = useState("");
+
   const uid = sessionStorage.getItem("uid");
   const name = sessionStorage.getItem("name");
   const email = sessionStorage.getItem("email");
@@ -26,11 +25,10 @@ const Sidebar = () => {
     axios
       .post("http://localhost:3000/logout") // 发送 POST 请求到 /logout 路由
       .then((response) => {
-        setUid("");
-        setName("");
-        setEmail("");
-        setPassword("");
-        setPhotopath("");
+        sessionStorage.removeItem("uid");
+        sessionStorage.removeItem("name");
+        sessionStorage.removeItem("email");
+        sessionStorage.removeItem("photopath");
         // 登出成功的处理逻辑
         console.log(response.data); // 可根据需要处理返回的响应数据
         // 进行重定向或其他操作

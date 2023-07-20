@@ -42,11 +42,11 @@ const SideShopBar = () => {
     axios
       .post("http://localhost:3000/logout") // 发送 POST 请求到 /logout 路由
       .then((response) => {
-        setUid("");
-        setName("");
-        setEmail("");
-        setPassword("");
-        setPhotopath("");
+        sessionStorage.removeItem("uid");
+        sessionStorage.removeItem("name");
+        sessionStorage.removeItem("email");
+        sessionStorage.removeItem("photopath");
+
         // 登出成功的处理逻辑
         console.log(response.data); // 可根据需要处理返回的响应数据
         // 进行重定向或其他操作
