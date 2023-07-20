@@ -14,7 +14,7 @@ import NotifyShareDropdown from "./NotifyShareDropdown";
 import AddMessage from "./AddMessage";
 import ArticleTitle from "./ArticleTitle";
 import axios from "axios";
-import {UserContext} from "../../../context/UserContext";
+import { UserContext } from "../../../context/UserContext";
 import LoginButton from "../loginbtn";
 
 function ArticleFollow() {
@@ -49,20 +49,20 @@ function ArticleFollow() {
     setShowModal(false);
   };
 
-  if(!uid){
-    return(
+  if (!uid) {
+    return (
       <div className="drop-shadow-20 rounded-4 bg-white mt-4">
-     <p> 請先登入才可查看收藏</p>
-     {/* <LoginButton></LoginButton> */}
-     <LoginButton/>
-    </div>
-    )
-  }else{
+        <p> 請先登入才可查看收藏</p>
+        {/* <LoginButton></LoginButton> */}
+        <LoginButton />
+      </div>
+    );
+  } else {
     return (
       <div className="drop-shadow-20 rounded-4 bg-white mt-4">
         <div className="px-5 py-4">
           {posts.map((post, index) => (
-            <div key={"follow"+index}>
+            <div key={"follow" + index}>
               <div className="articleCont py-4">
                 {/* 用戶 */}
                 <div className="d-flex justify-content-between">
@@ -178,17 +178,13 @@ function ArticleFollow() {
                   <HotNewMessageTabs />
                 </div>
               </Modal.Body>
-              <Modal.Footer className="p-4 d-flex justify-content-between align-items-center">
-                <AddMessage />
-              </Modal.Footer>
+              <Modal.Footer className="p-4 d-flex justify-content-between align-items-center"></Modal.Footer>
             </div>
           </Modal>
         </div>
       </div>
     );
   }
-  
- 
 }
 
 export default ArticleFollow;

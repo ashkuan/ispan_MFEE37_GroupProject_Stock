@@ -1,47 +1,44 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { UserContext } from "../../../context/UserContext";
 import axios from "axios";
+import AddMessage from "./AddMessage";
 
 const SmallHotMessage = (props) => {
   const faid = props.data;
   const [messages, setMessages] = useState([]);
+  const { uid, name, email, photopath } = useContext(UserContext);
 
   useEffect(() => {
-    const fetchMessages = async () => {
-      try {
-        const res = await axios.get(`http://localhost:5052/messages/${faid}`);
-        setMessages(res.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
     fetchMessages();
-    getMessages();
   }, [faid]);
 
-  const getMessages = () => {
-    axios
-      .get(`http://localhost:5052/messages/${faid}`)
-      .then((response) => {
-        setMessages(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  const fetchMessages = async () => {
+    try {
+      const res = await axios.get(`http://localhost:5052/messages/${faid}`);
+      setMessages(res.data);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
-  const postMessage = () => {
-    const fmContentValue = { fmContent }; // 替換為實際的留言內容
-    console.log(fmContent);
-    axios
-      .post(`http://localhost:5052/messages/${faid}`, { fmContent })
-      .then((response) => {
-        console.log(response.data);
-        // 成功發表留言後，刷新留言列表
-        getMessages();
-      })
-      .catch((error) => {
-        console.log(error);
+  const handleDeleteMessage = async (messageId) => {
+    try {
+      await axios.post(`http://localhost:5052/messages/${messageId}/delete`);
+      fetchMessages(); // 刪除留言後重新獲取留言列表
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleEditMessage = async (messageId, editedContent) => {
+    try {
+      await axios.post(`http://localhost:5052/messages/${messageId}/edit`, {
+        fmContent: editedContent,
       });
+      fetchMessages(); // 編輯留言後重新獲取留言列表
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -65,9 +62,26 @@ const SmallHotMessage = (props) => {
               {message.ranking}
             </a>
             <span className="fs-5 fw-normal">{message.fmContent}</span>
+            {uid === message.uid && ( // 只有留言作者能夠看到編輯和刪除按鈕
+              <div className="d-flex justify-content-end">
+                {" "}
+                {/* 將按鈕放在右側 */}
+                <button
+                  onClick={() =>
+                    handleEditMessage(message.fmid, "編輯後的留言內容")
+                  }
+                >
+                  編輯
+                </button>
+                <button onClick={() => handleDeleteMessage(message.fmid)}>
+                  刪除
+                </button>
+              </div>
+            )}
           </div>
         </div>
       ))}
+      <AddMessage data={faid} fetchAllMessages={fetchMessages} />
     </>
   );
 };

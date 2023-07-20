@@ -4,11 +4,14 @@ import "../styles/history.css";
 import axios from "axios";
 import { UserContext } from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import SideShopBar from "../components/shop/SideShopBar";
 
 const History = () => {
   const [historyData, setHistoryData] = useState("");
   const [totalAccount, setTotalAccount] = useState([]);
-  const [firstPimg, setFirstPimg] = useState("");
+  const [firstPimg, setFirstPimg] = useState([]);
+  const [firstPname, setFirstPname] = useState([]);
   const { uid } = useContext(UserContext);
   const navigate = useNavigate();
 
@@ -25,6 +28,7 @@ const History = () => {
   useEffect(() => {
     let total = [];
     let firstPimg = [];
+    let firstPname = [];
     const fetchHistory = async () => {
       try {
         const res = await axios.get("http://localhost:5566/shop/history");
@@ -53,10 +57,11 @@ const History = () => {
               console.log("第一個商品的圖片獲取成功");
               // console.log(res.data);
               // console.log(res.data[0].pimage1);
+              // console.log(res.data[0].pname);
               res.data.map((p) => {
-                // console.log(p.pimage1);
                 firstPimg.push(p.pimage1);
-                // console.log(firstPimg);
+                firstPname.push(p.pname);
+                setFirstPname([...firstPname]);
                 setFirstPimg([...firstPimg]);
               });
             } catch (err) {
@@ -81,58 +86,67 @@ const History = () => {
       {/* <!-- 主要內容 --> */}
       {historyData !== "" && (
         <div className="container history_container">
-          <p className="title">歷史訂單</p>
-          <hr />
-          <div className="historyTitle">
-            <div className="d-flex col-8 justify-content-start ps-5">
-              <div>商品</div>
-            </div>
-            <div className="col-2">數量</div>
-            <div className="col-2">訂單金額</div>
+          <div>
+            <p className="fs-5 pb-3 bread">
+              <Link to="/shop">商城</Link> &gt; <Link to="#">歷史訂單</Link>
+            </p>
+            <p className="title">歷史訂單</p>
           </div>
-          {historyData.map((data, index) => {
-            return (
-              <>
-                <div className="row my-5" key={index}>
-                  <div className="col-8">
-                    <div className="card d-flex flex-row align-items-start">
-                      {firstPimg[index] && (
-                        <img src={firstPimg[index]} className="card-img-top" />
-                      )}
-                      <div className="card-body d-flex flex-column align-items-start mx-1">
-                        <p className="card-title fw-bold">全方位股票分析法</p>
-                        {totalAccount[index] && (
-                          <p className="amount">{totalAccount[index]}項商品</p>
+          <div className="mainContent">
+            <div className="left">
+              <div className="historyTitle">
+                <div className="d-flex col-8 justify-content-start ps-5">
+                  <div>商品</div>
+                </div>
+                <div className="col-1">數量</div>
+                <div className="col-3 ps-5">訂單金額</div>
+              </div>
+              {historyData.map((data, index) => {
+                return (
+                  <>
+                    <div className="row my-5" key={index}>
+                      <div className="col-8 card">
+                        {firstPimg[index] && (
+                          <img
+                            src={firstPimg[index]}
+                            className="card-img-top"
+                          />
                         )}
-                        <p className="date">
-                          <span className="fs-4">
+
+                        <div className="card-body">
+                          {firstPname[index] && (
+                            <p className="card-title">{firstPname[index]}</p>
+                          )}
+                          {totalAccount[index] && (
+                            <p className="amount">
+                              {totalAccount[index]}項商品
+                            </p>
+                          )}
+                          <p className="date">
                             購買日期：
                             {data.merchantTradeDate.slice(
                               0,
                               data.merchantTradeDate.length - 13
                             )}
-                          </span>
-                        </p>
+                          </p>
+                        </div>
+                      </div>
+                      <div className="col-1">
+                        {totalAccount[index] && (
+                          <p className="totalAccount">{totalAccount[index]}</p>
+                        )}
+                      </div>
+                      <div className="col-3 ps-5">
+                        <span className="total">NT$ {data.totalAmount}</span>
                       </div>
                     </div>
-                  </div>
-                  <div className="col-2 d-flex fs-3 flex-column justify-content-center align-items-center">
-                    <div className="title fs-3">
-                      {totalAccount[index] && (
-                        <p className="amount">{totalAccount[index]}</p>
-                      )}
-                    </div>
-                  </div>
-                  <div className="col-2 d-flex flex-column justify-content-between align-items-end mt-3">
-                    <div className="total">
-                      <span>NT$ {data.totalAmount}</span>
-                    </div>
-                  </div>
-                </div>
-                <hr />
-              </>
-            );
-          })}
+                    <hr />
+                  </>
+                );
+              })}
+            </div>
+            <SideShopBar></SideShopBar>
+          </div>
         </div>
       )}
     </>

@@ -21,7 +21,8 @@ app.get("/", (req, res) => {
 //上傳圖片為path
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "img");
+    // cb(null, "img");
+    cb(null, "D:/GGIITT/allyoucaneat/project/public/img/forum/post");
   },
   filename: (req, file, cb) => {
     const fileName =
@@ -38,7 +39,7 @@ app.post("/posts", multer({ storage }).single("faimage"), (req, res) => {
   const file = req.file;
   const sql =
     // "INSERT INTO `ForumArticle`(`uid`, `fatitle`, `farticle`, `faimage`, `faid`, `fboard`,`createTime`,`fhashtag`,`collect`) VALUES (?)";
-    "INSERT INTO `ForumArticle`(`uid`,`userimg`, `fatitle`, `farticle`, `faimage`, `faid`, `fboard`,`createTime`,`fhashtag`,`collect`,`totalLikes`) VALUES (?)";
+    "INSERT INTO `ForumArticle`(`uid`,`userimg`, `fatitle`, `farticle`, `faimage`, `faid`, `fboard`,`createTime`,`fhashtag`,`likeCount`, `likedByUser`,`totalLikes`) VALUES (?)";
 
   const createTime = moment().format("YYYY-MM-DD HH:mm:ss");
 
@@ -52,8 +53,9 @@ app.post("/posts", multer({ storage }).single("faimage"), (req, res) => {
     req.body.fboard,
     createTime,
     req.body.fhashtag,
-    req.body.collect,
-    (req.body.totalLikes = 0),
+    0,
+    0,
+    0,
   ];
   connToDBHelper.query(sql, [values], (err, data) => {
     if (err) {
@@ -101,8 +103,8 @@ app.get("/posts/new", (req, res) => {
 app.get("/posts/popular", (req, res) => {
   const sql =
     // "SELECT `faid`,  `fatitle`, `farticle`, `faimage`, `likeCount`, `fboard`, `fhashtag`, `createTime`, `updateTime` FROM `ForumArticle` innerjoin  ";
-    // "SELECT *FROM `ForumArticle`ORDER BY `likeCount` DESC ";
     "SELECT *FROM `ForumArticle`LEFT JOIN `login` ON `ForumArticle`.`uid` = `login`.`uid`ORDER BY `totalLikes` DESC";
+    // "SELECT f.*, l.likes, l.likedByUser, l.totalLikes, login.name FROM ForumArticle f LEFT JOIN LikeCount l ON f.faid = l.faid LEFT JOIN login ON f.uid = login.uid ORDER BY l.totalLikes DESC;";
   connToDBHelper.query(sql, [], (err, data) => {
     if (err) {
       return "無法成功顯示發文";
@@ -199,7 +201,8 @@ app.put("/posts/:faid/like", (req, res) => {
     console.log("按讚更新成功");
 
     // Recalculate the total likes for the article
-    const getTotalLikesSql = "SELECT likeCount, likedByUser, (likeCount + likedByUser) as totalLikes FROM ForumArticle WHERE faid = ?";
+    const getTotalLikesSql =
+      "SELECT likeCount, likedByUser, (likeCount + likedByUser) as totalLikes FROM ForumArticle WHERE faid = ?";
     connToDBHelper.query(getTotalLikesSql, [likeId], (err, result) => {
       if (err) {
         console.log(err);
@@ -210,24 +213,51 @@ app.put("/posts/:faid/like", (req, res) => {
       console.log("總按讚數: " + totalLikes);
 
       // Update the totalLikes value in the ForumArticle table
-      const updateTotalLikesSql = "UPDATE ForumArticle SET totalLikes = ? WHERE faid = ?";
-      connToDBHelper.query(updateTotalLikesSql, [totalLikes, likeId], (err, data) => {
-        if (err) {
-          console.log(err);
-          return res.status(500).json({ error: "總按讚數更新失敗" });
+      const updateTotalLikesSql =
+        "UPDATE ForumArticle SET totalLikes = ? WHERE faid = ?";
+      connToDBHelper.query(
+        updateTotalLikesSql,
+        [totalLikes, likeId],
+        (err, data) => {
+          if (err) {
+            console.log(err);
+            return res.status(500).json({ error: "總按讚數更新失敗" });
+          }
+
+          console.log("總按讚數更新成功");
+
+          return res.json({ totalLikes });
         }
-
-        console.log("總按讚數更新成功");
-
-        return res.json({ totalLikes });
-      });
+      );
     });
   });
 });
 
+// 更新 ForumArticle 表和 LikeCount 表的按讚紀錄
+// app.put("/posts/:faid/like", async (req, res) => {
+//   const likeId = req.body.faid;
+//   const newLikeStatus = req.body.likedByUser === 0 ? 1 : 0;
 
+//   try {
+//     // 更新 ForumArticle 表的 likedByUser 和 totalLikes
+//     const updateForumArticleSql = "UPDATE ForumArticle SET likedByUser = ?, totalLikes = (likes + ?) WHERE faid = ?";
+//     await connToDBHelper.query(updateForumArticleSql, [newLikeStatus, newLikeStatus, likeId]);
 
+//     // 更新 LikeCount 表的 likedByUser 和 totalLikes
+//     const updateLikeCountSql = "UPDATE LikeCount SET likedByUser = ?, totalLikes = ? WHERE faid = ? AND uid = ?";
+//     await connToDBHelper.query(updateLikeCountSql, [newLikeStatus, totalLikes, likeId, userId]);
 
+//     // 回傳更新後的按讚數量
+//     const getTotalLikesSql = "SELECT likeCount, likedByUser, (likes + likedByUser) as totalLikes FROM ForumArticle WHERE faid = ?";
+//     const result = await connToDBHelper.query(getTotalLikesSql, [likeId]);
+//     const totalLikes = result[0].totalLikes || 0;
+
+//     return res.json({ totalLikes });
+//   } catch (err) {
+//     console.log("Error in updating like status: ", err);
+//     return res.status(500).json({ error: "按讚更新失敗" });
+//   }
+// });
 
 // //收藏存入
 // app.put("/posts/:faid/like", (req, res) => {

@@ -159,10 +159,36 @@ app.get("/shop/history", async (req, res) => {
 
 app.post("/shop/history/firstPid", async (req, res) => {
   const { firstPid } = req.body;
-  const url = "SELECT pimage1 FROM Shop WHERE pid = ?";
+  const url = "SELECT pimage1,pname FROM Shop WHERE pid = ?";
   db.query(url, [firstPid], function (err, data) {
     if (err) {
       console.log("firstPid資料獲取失敗");
+      console.log(err);
+    } else {
+      console.log(data);
+      return res.json(data);
+    }
+  });
+});
+
+app.post("/shop/history/uidPhoto", async (req, res) => {
+  const { uid } = req.body;
+  const url = "SELECT * FROM login WHERE uid =?";
+  db.query(url, [uid], function (err, data) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(data);
+      return res.json(data);
+    }
+  });
+});
+
+app.post("/shop/history/countHistoryData", async (req, res) => {
+  const { uid } = req.body;
+  const url = "SELECT COUNT(oid) FROM MyOrder WHERE uid=?";
+  db.query(url, [uid], function (err, data) {
+    if (err) {
       console.log(err);
     } else {
       console.log(data);
