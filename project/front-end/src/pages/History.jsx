@@ -5,10 +5,10 @@ import axios from "axios";
 import { UserContext } from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import SideShopBar from "../components/shop/SideShopBar";
 
 const History = () => {
   const [historyData, setHistoryData] = useState("");
-  const [userData, setUserData] = useState("");
   const [totalAccount, setTotalAccount] = useState([]);
   const [firstPimg, setFirstPimg] = useState([]);
   const [firstPname, setFirstPname] = useState([]);
@@ -70,21 +70,6 @@ const History = () => {
             }
           };
           fetchFirstPid();
-          const fetchUidPhoto = async () => {
-            try {
-              const res = await axios.post(
-                "http://localhost:5566/shop/history/uidPhoto",
-                { uid }
-              );
-              console.log(res.data);
-              console.log(res.data.photopath);
-              setUserData(res.data);
-            } catch (err) {
-              console.log("歷史訂單載入失敗");
-              console.log(err);
-            }
-          };
-          fetchUidPhoto();
         });
         setHistoryData(res.data);
       } catch (err) {
@@ -160,17 +145,7 @@ const History = () => {
                 );
               })}
             </div>
-
-            {userData && (
-              <div className="right">
-                <img
-                  src={`/img/memberimg/member/${userData[0].photopath}`}
-                  style={{ width: "100px" }}
-                />
-                <p className="name">{userData[0].name}</p>
-                <p className="email">{userData[0].email}</p>
-              </div>
-            )}
+            <SideShopBar></SideShopBar>
           </div>
         </div>
       )}

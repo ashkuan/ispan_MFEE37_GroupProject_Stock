@@ -184,6 +184,19 @@ app.post("/shop/history/uidPhoto", async (req, res) => {
   });
 });
 
+app.post("/shop/history/countHistoryData", async (req, res) => {
+  const { uid } = req.body;
+  const url = "SELECT COUNT(oid) FROM MyOrder WHERE uid=?";
+  db.query(url, [uid], function (err, data) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(data);
+      return res.json(data);
+    }
+  });
+});
+
 app.get("/coupon", async (req, res) => {
   try {
     db.query("SELECT code,discount FROM coupon", function (err, data) {

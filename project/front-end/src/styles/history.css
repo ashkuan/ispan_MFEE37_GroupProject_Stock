@@ -41,7 +41,7 @@
   gap: 20px;
 }
 .history_container .mainContent .left {
-  width: 80%;
+  width: 75%;
 }
 .history_container .mainContent .left .historyTitle {
   display: flex;
@@ -93,14 +93,35 @@
   font-size: 1.4rem;
 }
 .history_container .mainContent .right {
-  width: 20%;
-  background-color: rgba(128, 128, 128, 0.175);
+  width: 25%;
   box-shadow: 0px 0px 15px 0px rgba(128, 128, 128, 0.387);
   text-align: center;
+  border-radius: 2px;
+}
+.history_container .mainContent .right img {
+  width: 120px;
+  margin-top: 50px;
 }
 .history_container .mainContent .right .name {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
 }
 .history_container .mainContent .right .email {
   font-size: 1rem;
+  padding: 10px;
+  color: gray;
+  margin: 5px 0 30px 0;
+}
+.history_container .mainContent .right .side {
+  padding: 30px;
+  margin-top: 10px;
+  font-size: 1.3rem;
+}
+.history_container .mainContent .right .side:hover, .history_container .mainContent .right .side:focus, .history_container .mainContent .right .side:active {
+  background-color: var(--bg-Second-Gray);
+}
+.history_container .mainContent .right .side a {
+  color: black;
+}
+.history_container .mainContent .right .side-main {
+  background-color: var(--bg-Second-Gray);
 }/*# sourceMappingURL=history.css.map */

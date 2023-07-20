@@ -106,18 +106,18 @@
 
 /*webkit 瀏覽器專用*/
 #navSearch ::-webkit-input-placeholder {
-  font-size: 1.15rem; 
+  font-size: 1.15rem;
 }
 /*Firefox 4-18 瀏覽器專用*/
-#navSearch input::-moz-placeholder { 
-  font-size: 1.15rem; 
+#navSearch input::-moz-placeholder {
+  font-size: 1.15rem;
 }
 /*Firefox 19+ 瀏覽器專用*/
-#navSearch input::-moz-placeholder{
-font-size: 1.15rem
+#navSearch input::-moz-placeholder {
+  font-size: 1.15rem;
 }
 /*IE10 瀏覽器專用*/
-#navSearch:-ms-input-placeholder{
+#navSearch:-ms-input-placeholder {
   font-size: 1.15rem;
 }
 
@@ -143,6 +143,7 @@ font-size: 1.15rem
 #cartBtn {
   border: none;
   z-index: 100;
+  margin-right: 10px;
 }
 /* #cartBtn:hover svg {
   transform: scale(1.1);
@@ -171,7 +172,7 @@ font-size: 1.15rem
   font-size: 1.2rem;
   position: absolute;
   top: 15px;
-  right: 105px;
+  right: 78px;
 }
 #myCart .card {
   background-color: var(--bg-Primary-Gray);
