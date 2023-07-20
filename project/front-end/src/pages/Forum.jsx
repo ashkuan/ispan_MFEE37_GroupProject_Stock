@@ -9,6 +9,7 @@ import Post from "../components/Forum/Post.jsx";
 import ArticleSort from "../components/Forum/ArticleSort.jsx";
 import Billboard from "../components/Forum/Billboard.jsx";
 import LineChart from "../components/linechart";
+import BackToTop from "../components/Forum/BackToTop";
 
 const Forum = () => {
   const uid = sessionStorage.getItem("uid");
@@ -19,6 +20,7 @@ const Forum = () => {
   console.log(uid);
   return (
     <>
+      <div id="top"></div>
       <div className="forum" style={{ paddingTop: "180px" }}>
         <div className="container mt-4">
           <div className="row g-5">
@@ -35,8 +37,13 @@ const Forum = () => {
             </div>
           </div>
         </div>
+        <a href="#top">
+          <BackToTop />
+        </a>
+
         {/* <Post/> */}
       </div>
+
       <Footer />
     </>
   );
