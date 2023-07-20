@@ -4,6 +4,12 @@ import "../styles/homepage.css";
 import HomepageSearch from "../components/IndStock/HompageSearch";
 
 const Homepage = () => {
+  const [input, setInput] = useState("");
+
+  function handleInput(index) {
+    console.log(index);
+    setInput(index);
+  }
   return (
     <>
       {/* 首頁內容 */}
@@ -55,28 +61,64 @@ const Homepage = () => {
             </svg>
             <p className="t2">股市擁有好成績</p>
           </div>
-          <HomepageSearch />
+          <HomepageSearch data={input} />
           <div className="suggestStock mt-5">
             <div className="row">
               <div className="col">
-                <p>台積電 2330</p>
+                <p
+                  onClick={() => {
+                    handleInput(2330);
+                  }}
+                >
+                  台積電 2330
+                </p>
               </div>
               <div className="col mx-5">
-                <p>長榮航 2618</p>
+                <p
+                  onClick={() => {
+                    handleInput(2618);
+                  }}
+                >
+                  長榮航 2618
+                </p>
               </div>
               <div className="col">
-                <p>緯創 3231</p>
+                <p
+                  onClick={() => {
+                    handleInput(3231);
+                  }}
+                >
+                  緯創 3231
+                </p>
               </div>
             </div>
             <div className="row">
               <div className="col">
-                <p>英業達 2356</p>
+                <p
+                  onClick={() => {
+                    handleInput(2356);
+                  }}
+                >
+                  英業達 2356
+                </p>
               </div>
               <div className="col mx-5">
-                <p>仁寶 2324</p>
+                <p
+                  onClick={() => {
+                    handleInput(2324);
+                  }}
+                >
+                  仁寶 2324
+                </p>
               </div>
               <div className="col">
-                <p>神達 3706</p>
+                <p
+                  onClick={() => {
+                    handleInput(3706);
+                  }}
+                >
+                  神達 3706
+                </p>
               </div>
             </div>
           </div>

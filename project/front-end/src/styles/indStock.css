@@ -35,25 +35,25 @@
   font-size: 2.5rem;
   color: var(--black-Word);
 }
-.container .time {
+.container .time-zone {
   display: flex;
   justify-content: end;
   margin-right: 20px;
 }
-.container .time button {
+.container .time-zone button {
   border: none;
   background-color: transparent;
   letter-spacing: 0.2rem;
-  padding-left: 20px;
+  padding-left: 10px;
   display: inline;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   color: var(--black-Word);
   margin-top: -50px;
 }
-.container .time button:hover {
+.container .time-zone button:hover {
   transform: scale(1.1);
 }
-.container .time button:active {
+.container .time-zone button:active {
   transform: scale(0.9);
 }
 

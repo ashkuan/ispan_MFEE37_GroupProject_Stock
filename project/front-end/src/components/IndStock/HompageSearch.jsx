@@ -1,25 +1,33 @@
-import React, { useContext, useState } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { StockContext } from "../../../context/StockContext";
 // 跳轉頁面
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 let peRatio = "";
 
-const HomepageSearch = () => {
+const HomepageSearch = (props) => {
   const [inputValue, setInputValue] = useState("");
   const { setStockInfo } = useContext(StockContext);
   const [redirectToIndStock, setRedirectToIndStock] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
   };
 
+  useEffect(() => {
+    if (props.data != "") {
+      console.log(props.data);
+      setInputValue(props.data);
+    }
+  });
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(inputValue);
     if (inputValue !== "") {
+      console.log(inputValue);
       axios
         .post("http://localhost:5678/stock2", { data: inputValue })
         .then((res) => {
@@ -78,9 +86,11 @@ const HomepageSearch = () => {
   };
 
   // 跳轉頁面
-  if (redirectToIndStock) {
-    return <Navigate to="/indStock" />;
-  }
+  useEffect(() => {
+    if (redirectToIndStock) {
+      navigate("/indStock");
+    }
+  }, [redirectToIndStock]);
 
   return (
     <>
@@ -88,7 +98,7 @@ const HomepageSearch = () => {
         <form onSubmit={handleSubmit}>
           <input
             type="text"
-            className="search__input text-center ps-5"
+            className="search__input ps-3"
             placeholder="搜尋台股代號/名稱"
             value={inputValue}
             onChange={handleInputChange}
