@@ -302,7 +302,7 @@ const Navbar = () => {
       >
         <div className="modal-dialog">
           <div className="modal-content d-flex justify-content align-items">
-            <div className="modal-header member-spacing ">
+            <div className="modal-header member-spacing">
               <p className="modal-title jump-title" id="exampleModalLabel">
                 會員登入
               </p>
