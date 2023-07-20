@@ -41,31 +41,34 @@ const AddMessage = (props) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <Stack sx={{ width: "100%" }} spacing={2}>
-        {alertMessage && (
-          <Alert severity={alertSeverity} onClose={() => setAlertMessage("")}>
-            {alertMessage}
-          </Alert>
-        )}
-      </Stack>
-      <div className="d-flex align-items-center">
-        <img src={`http://localhost:3000/${photopath}`} className="useImg" />
-        <p>{name}</p>
-        <input
-          type="text"
-          className="form-control ms-3 fs-5"
-          name="fmContent"
-          placeholder="留言..."
-          value={fmContent}
-          onChange={(e) => setFmContent(e.target.value)}
-        />
+    <>
+      <hr />
+      <form onSubmit={handleSubmit}>
+        <Stack sx={{ width: "100%" }} spacing={2}>
+          {alertMessage && (
+            <Alert severity={alertSeverity} onClose={() => setAlertMessage("")}>
+              {alertMessage}
+            </Alert>
+          )}
+        </Stack>
+        <div className="d-flex align-items-center">
+          <img src={`http://localhost:3000/${photopath}`} className="useImg" />
+          <p>{name}</p>
+          <input
+            type="text"
+            className="form-control ms-3 fs-5"
+            name="fmContent"
+            placeholder="留言..."
+            value={fmContent}
+            onChange={(e) => setFmContent(e.target.value)}
+          />
 
-        <button type="submit" className="btn btn-primary ms-3">
-          送出留言
-        </button>
-      </div>
-    </form>
+          <button type="submit" className="btn btn-primary ms-3">
+            送出留言
+          </button>
+        </div>
+      </form>
+    </>
   );
 };
 
