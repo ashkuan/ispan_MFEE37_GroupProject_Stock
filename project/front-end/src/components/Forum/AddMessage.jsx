@@ -31,17 +31,10 @@ const AddMessage = (props) => {
         fmContent,
       });
 
-      // 更新留言列表
-      setMessages((prevMessages) => [
-        ...prevMessages,
-        { fmContent, name, createTime: new Date().toLocaleString() },
-      ]);
-
       // 成功提交留言后，重新获取留言列表以显示新的留言
       props.fetchAllMessages(); // 从 ArticlePopular 元件传递 fetchAllMessages 函数
 
-      setFmContent(""); // 清空留言内容
-      setAlertMessage(""); // 清空警告消息
+      setFmContent(""); // 清空留言內容
     } catch (err) {
       console.log(err);
     }

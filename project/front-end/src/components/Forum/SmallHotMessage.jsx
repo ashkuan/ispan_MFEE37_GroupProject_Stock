@@ -16,7 +16,7 @@ const SmallHotMessage = (props) => {
     };
     fetchMessages();
     getMessages();
-  }, [faid]);
+  }, []);
 
   const getMessages = () => {
     axios
