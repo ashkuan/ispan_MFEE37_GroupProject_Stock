@@ -1,20 +1,12 @@
 import { Link, useNavigate } from "react-router-dom";
 import Validation from "./loginValidation";
 import axios from "axios";
-import NavSearch from "../components/IndStock/NavSearch";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import "../styles/loginpage.css";
 import "../styles/forum_main.css";
 
 const Loginpage = () => {
-  const uid = sessionStorage.getItem("uid");
-  const name = sessionStorage.getItem("name");
-  const email = sessionStorage.getItem("email");
-  const photopath = sessionStorage.getItem("photopath");
-  const [userIsLogin, setUserIsLogin] = useState(false);
-
   // 會員
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [values, setValues] = useState({
     email: "",
     password: "",
@@ -41,15 +33,18 @@ const Loginpage = () => {
             sessionStorage.setItem("uid", res.data.uid);
             sessionStorage.setItem("name", res.data.name);
             sessionStorage.setItem("email", res.data.email);
+            sessionStorage.setItem("password", res.data.password);
             sessionStorage.setItem("photopath", res.data.photopath);
             const uid = sessionStorage.getItem("uid");
             const name = sessionStorage.getItem("name");
             const email = sessionStorage.getItem("email");
+            const password = sessionStorage.getItem("password");
             const photopath = sessionStorage.getItem("photopath");
-            console.log(uid);
-            console.log(name);
-            console.log(email);
-            console.log(photopath);
+            console.log("session的uid:" + uid);
+            console.log("session的name:" + name);
+            console.log("session的email:" + email);
+            console.log("session的password:" + password);
+            console.log("session的photopath:" + photopath);
             navigate("/");
           } else {
             alert("此帳號不存在");
