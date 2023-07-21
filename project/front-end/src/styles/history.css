@@ -18,7 +18,7 @@
 }
 
 .history_container {
-  top: 130px;
+  margin: 150px 80px 0 80px;
   color: var(--IronGray-Deep);
 }
 .history_container .title {
@@ -38,7 +38,7 @@
 }
 .history_container .mainContent {
   display: flex;
-  gap: 20px;
+  gap: 30px;
 }
 .history_container .mainContent .left {
   width: 75%;
@@ -52,24 +52,20 @@
   padding: 30px 0px;
   color: var(--black-Word);
 }
+.history_container .mainContent .left .row {
+  display: flex;
+  align-items: center;
+}
 .history_container .mainContent .left .row .card {
   border: none;
   background-color: var(--bg-Primary-Gray);
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-start;
-  gap: 25px;
+  gap: 15px;
 }
 .history_container .mainContent .left .row .card .card-img-top {
-  width: 15%;
-  height: 100px;
-}
-.history_container .mainContent .left .row .card .card-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  height: 100%;
+  width: 20%;
 }
 .history_container .mainContent .left .row .card .card-body .card-title {
   font-size: 1.5rem;
@@ -77,7 +73,6 @@
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
-  width: 90%;
 }
 .history_container .mainContent .left .row .card .card-body .amount,
 .history_container .mainContent .left .row .card .card-body .date {
@@ -87,41 +82,27 @@
 .history_container .mainContent .left .row .totalAccount,
 .history_container .mainContent .left .row .total {
   height: 100%;
+  font-size: 1.4rem;
+  text-align: center;
+}
+.history_container .mainContent .left .row .editBtn {
+  background-color: white;
+  color: black;
+  height: 50px;
+  border: 3px solid black;
+  width: 90px;
+  font-size: 1.2rem;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  font-size: 1.4rem;
+  justify-content: center;
 }
-.history_container .mainContent .right {
-  width: 25%;
-  box-shadow: 0px 0px 15px 0px rgba(128, 128, 128, 0.387);
-  text-align: center;
-  border-radius: 2px;
-}
-.history_container .mainContent .right img {
-  width: 120px;
-  margin-top: 50px;
-}
-.history_container .mainContent .right .name {
-  font-size: 1.5rem;
-}
-.history_container .mainContent .right .email {
-  font-size: 1rem;
-  padding: 10px;
-  color: gray;
-  margin: 5px 0 30px 0;
-}
-.history_container .mainContent .right .side {
-  padding: 30px;
-  margin-top: 10px;
-  font-size: 1.3rem;
-}
-.history_container .mainContent .right .side:hover, .history_container .mainContent .right .side:focus, .history_container .mainContent .right .side:active {
-  background-color: var(--bg-Second-Gray);
-}
-.history_container .mainContent .right .side a {
+.history_container .mainContent .left .row .editBtn a {
   color: black;
 }
-.history_container .mainContent .right .side-main {
-  background-color: var(--bg-Second-Gray);
+.history_container .mainContent .left .row .editBtn:hover {
+  background-color: black;
+  color: white;
+}
+.history_container .mainContent .left .row .editBtn:hover a {
+  color: white;
 }/*# sourceMappingURL=history.css.map */

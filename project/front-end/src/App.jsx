@@ -26,6 +26,7 @@ import Modal from "react-modal";
 import LoginButton from "./components/loginbtn";
 import OrderSuccess from "./pages/OrderSuccess";
 import Loginpage from "./pages/Loginpage";
+import HistoryIndOrder from "./components/shop/HistoryIndOrder";
 
 function App() {
   Modal.setAppElement("#root"); // 设置 appElement
@@ -62,6 +63,10 @@ function App() {
               <Route index element={<Shop />} />
               <Route path="/shop/myproduct" element={<Myproduct />} />
               <Route path="/shop/history" element={<History />} />
+              <Route
+                path="/shop/historyIndOrder"
+                element={<HistoryIndOrder />}
+              />
               <Route path="/shop/checkout" element={<Checkout />} />
               <Route path="/shop/orderSuccess" element={<OrderSuccess />} />
             </Route>

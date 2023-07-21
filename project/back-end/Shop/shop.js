@@ -51,7 +51,7 @@ app.post("/cart/edit", function (req, res) {
       pid,
       paccount,
     ]);
-    console.log(updateValues);
+    // console.log(updateValues);
     db.query(
       `INSERT INTO Cart (uid, uidpid, pid, paccount) VALUES ? ON DUPLICATE KEY UPDATE paccount = VALUES(paccount)`,
       [updateValues.map((values) => [myuid, ...values])],
@@ -91,7 +91,7 @@ app.post("/sendOrder", async (req, res) => {
       coupon,
       totalAmount,
     } = req.body;
-    console.log(req.body);
+    // console.log(req.body);
 
     const orderData = [
       oid,
@@ -165,7 +165,7 @@ app.post("/shop/history/firstPid", async (req, res) => {
       console.log("firstPid資料獲取失敗");
       console.log(err);
     } else {
-      console.log(data);
+      // console.log(data);
       return res.json(data);
     }
   });
@@ -178,7 +178,7 @@ app.post("/shop/history/uidPhoto", async (req, res) => {
     if (err) {
       console.log(err);
     } else {
-      console.log(data);
+      // console.log(data);
       return res.json(data);
     }
   });
@@ -191,7 +191,7 @@ app.post("/shop/history/countHistoryData", async (req, res) => {
     if (err) {
       console.log(err);
     } else {
-      console.log(data);
+      // console.log(data);
       return res.json(data);
     }
   });
@@ -213,6 +213,35 @@ app.get("/coupon", async (req, res) => {
     console.log("coupon資料傳送失敗");
     console.log(err);
   }
+});
+
+app.post("/shop/historyIndOrder", async (req, res) => {
+  const { URLoid } = req.body;
+  console.log(URLoid);
+  const url = "SELECT * FROM MyOrder WHERE oid=?";
+  db.query(url, [URLoid], function (err, data) {
+    if (err) {
+      console.log("獲取歷史個別訂單失敗");
+      console.log(err);
+    } else {
+      // console.log(data);
+      return res.json(data);
+    }
+  });
+});
+
+app.post("/shop/historyIndProducts", async (req, res) => {
+  const { pid } = req.body;
+  const url = "SELECT * FROM Shop WHERE pid = ?";
+  db.query(url, [pid], function (err, data) {
+    if (err) {
+      console.log("商品資料獲取失敗");
+      console.log(err);
+    } else {
+      // console.log(data);
+      return res.json(data);
+    }
+  });
 });
 
 app.listen(5566, () => {
