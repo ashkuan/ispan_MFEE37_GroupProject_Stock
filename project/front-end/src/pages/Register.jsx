@@ -10,6 +10,9 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import "../styles/register.css";
 import "../styles/forum_main.css";
+import { Icon } from "react-icons-kit";
+import { eyeOff } from "react-icons-kit/feather/eyeOff";
+import { eye } from "react-icons-kit/feather/eye";
 
 const Register = () => {
   const [values, setValues] = useState({
@@ -19,6 +22,8 @@ const Register = () => {
   });
   const navigate = useNavigate();
   const [errors, setErrors] = useState({});
+  const [type, setType] = useState("password");
+  const [icon, setIcon] = useState(eyeOff);
   // const [maleAvatar, setMaleAvatar] = useState("./img/memberimg/memoji/memo5.png");
 
   // const [gender, setGender] = useState("male");
@@ -55,6 +60,16 @@ const Register = () => {
   //     }));
   //   }
   // };
+  const handleToggle = () => {
+    if (type === "password") {
+      setIcon(eye);
+      setType("text");
+    } else {
+      setIcon(eyeOff);
+      setType("password");
+    }
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     setErrors(Validation(values));
@@ -195,12 +210,22 @@ const Register = () => {
                       <Form.Control
                         onChange={handleInput}
                         name="password"
-                        type="password"
+                        type={type}
                         className="h-3rem"
                         placeholder="至少 8 碼 ( 含大小寫英文 + 數字 )" />
                       {errors.password && (
                         <div className="fz-3 fw-normal mt-1 ms-3 text-Red">{errors.password}</div>
                       )}
+                      <span
+                        className="flex justify-around items-center"
+                        onClick={handleToggle}
+                      >
+                        <Icon
+                          className="absolute mr-10"
+                          icon={icon}
+                          size={25}
+                        />
+                      </span>
                     </Col>
                   </Form.Group>
                   {/* 確認密碼 */}
@@ -218,13 +243,15 @@ const Register = () => {
                       <Form.Control
                         onChange={handleInput}
                         name="password"
-                        type="password"
+                        type={type}
                         className="h-3rem"
                         placeholder="請確認密碼" />
                       {/* {errors.password && (
                         <div className="fz-3 fw-normal mt-1 ms-3 text-Red">{errors.password}</div>
                       )} */}
+                      
                     </Col>
+                   
                   </Form.Group>
                   {/* 電子信箱 */}
                   <Form.Group
