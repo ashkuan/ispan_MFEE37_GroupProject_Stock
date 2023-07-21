@@ -43,6 +43,13 @@ const EmojiButton = (props) => {
 
   const collectClick = async (e) => {
     e.preventDefault();
+
+    if (!uid) {
+      // 如果 uid 不存在，則不執行下面的程式碼
+      return;
+    }
+
+
     try {
       const newLikeStatus = likeCount === 0 || likeCount === null ? 1 : 0;
       setLikeCount(newLikeStatus);

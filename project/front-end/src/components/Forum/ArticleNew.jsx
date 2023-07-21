@@ -334,7 +334,7 @@ function ArticleNew() {
                 <div className="d-flex me-1">
                   <img src="../public/img/forum/likeClick.svg" alt="" />
                   <span className="fz-3 fw-normal px-3 d-flex align-content-center">
-                    {post.likeCount}
+                    {post.totalLikes}
                   </span>
                 </div>
                 {/* messageCount */}
