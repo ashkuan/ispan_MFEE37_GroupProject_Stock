@@ -1,15 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
-import "../styles/nav.css";
-import "../styles/forum_main.css";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Cart } from "./shop/Cart";
 import { ShopContext } from "../../context/ShopContext";
+import NavSearch from "../components/IndStock/NavSearch";
+import LoginBtn from "./loginbtn";
+import "../styles/nav.css";
+import "../styles/forum_main.css";
 import Validation from "./loginValidation";
 import axios from "axios";
-import NavSearch from "../components/IndStock/NavSearch";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import LoginBtn from "./loginbtn";
 
 const Navbar = () => {
   const uid = sessionStorage.getItem("uid");
@@ -113,17 +113,23 @@ const Navbar = () => {
               <li className="nav-item dropdown">
                 <Link
                   className="nav-link dropdown-toggle"
+                  style={{ fontSize: "1.6rem", fontWeight: "normal" }}
+                  href="#"
+                  id="navbarDropdownMenuLink"
                   role="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  <span style={{ fontSize: "1.6rem", fontWeight: "normal" }}>
-                    購物商城
-                  </span>
+                  購物商城
                 </Link>
-                <ul className="dropdown-menu text-center">
+                <ul
+                  className="dropdown-menu"
+                  aria-labelledby="navbarDropdownMenuLink"
+                >
                   <li>
-                    <Link className="dropdown-item fs-4 fw-light" to="/shop">
+                    <Link
+                      className="dropdown-item fs-4 fw-light"
+                      to="/shop">
                       購物商城
                     </Link>
                   </li>
@@ -194,7 +200,8 @@ const Navbar = () => {
                       <img
                         src={`public/img/memberimg/member/${photopath}`}
                         style={{
-                          width: "75px",
+                          width: "3.2rem",
+                          borderRadius: "50%"
                         }}
                       />
                     </>

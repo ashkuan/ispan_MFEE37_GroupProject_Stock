@@ -221,9 +221,9 @@ const Register = () => {
                         type="password"
                         className="h-3rem"
                         placeholder="請確認密碼" />
-                      {errors.password && (
+                      {/* {errors.password && (
                         <div className="fz-3 fw-normal mt-1 ms-3 text-Red">{errors.password}</div>
-                      )}
+                      )} */}
                     </Col>
                   </Form.Group>
                   {/* 電子信箱 */}

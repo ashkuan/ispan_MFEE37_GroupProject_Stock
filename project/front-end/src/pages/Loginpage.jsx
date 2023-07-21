@@ -87,7 +87,7 @@ const Loginpage = () => {
             <div className="">
               <label
                 htmlFor="email"
-                className="d-flex justify-content-center m-auto py-3 fs-2"
+                className="d-flex justify-content-center m-auto py-3 fs-3"
               >
                 會員信箱
               </label>
@@ -107,7 +107,7 @@ const Loginpage = () => {
             <div className="mt-3 mb-5">
               <label
                 htmlFor="password"
-                className="d-flex justify-content-center m-auto py-3 fs-2"
+                className="d-flex justify-content-center m-auto py-3 fs-3"
               >
                 會員密碼
               </label>
