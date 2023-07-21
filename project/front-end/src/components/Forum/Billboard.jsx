@@ -73,7 +73,7 @@ const Billboard = () => {
       },
       {
         icon: (
-          <TipsAndUpdatesIcon 
+          <TipsAndUpdatesIcon
             style={{ color: "#845EC2 ", fontSize: 48 }}
             onClick={() => navigate("/forum/thoughts")}
           />
@@ -81,7 +81,7 @@ const Billboard = () => {
       },
       {
         icon: (
-          <ReadMoreIcon 
+          <ReadMoreIcon
             style={{ color: "#FF869A", fontSize: 48 }}
             onClick={() => navigate("/forum/others")}
           />
@@ -100,15 +100,35 @@ const Billboard = () => {
     <>
       <a href="#">
         {getItems().map((item, index) => (
-          <div className="d-flex justify-content-between align-items-center text-IronGray-Deep p-4 rounded-4 bg-white mb-3 fs-4 cursor-pointer" key={index}>
-              {item.icon}
-              {item.label}
+          <div className="drop-shadow-10 d-flex justify-content-between align-items-center text-IronGray-Deep p-4 rounded-4 bg-white mb-3 fs-4 cursor-pointer" key={index}>
+            {item.icon}
+            {item.label}
           </div>
         ))}
       </a>
       <div className="d-flex justify-content-center">
         <Button onClick={handleDownClick}>
-          <img className="" src="./img/forum/arrow-down.svg" alt="" />
+          <svg
+            width="3rem"
+            height="3rem"
+            viewBox="0 0 33 33"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <rect
+              x="33"
+              y="33"
+              width="33"
+              height="33"
+              rx="5"
+              transform="rotate(180 33 33)"
+              fill="#57687C" />
+            <path
+              d="M25 13L16.5 22L8 13"
+              stroke="white"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
         </Button>
       </div>
     </>

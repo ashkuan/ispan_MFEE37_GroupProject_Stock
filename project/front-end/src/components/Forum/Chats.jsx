@@ -19,7 +19,7 @@ const Chats = () => {
   let navigate = useNavigate();
   return (
     <>
-      <div className="forum" style={{ paddingTop: "180px" }}>
+      <div className="forum" style={{ paddingTop: "9rem" }}>
         <div className="container mt-4">
           <div className="row g-5">
             <div className="col-2 text-center">

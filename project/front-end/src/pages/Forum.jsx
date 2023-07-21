@@ -21,7 +21,7 @@ const Forum = () => {
   return (
     <>
       <div id="top"></div>
-      <div className="forum" style={{ paddingTop: "180px" }}>
+      <div className="forum" style={{ paddingTop: "9rem" }}>
         <div className="container mt-4">
           <div className="row g-5">
             <div className="col-2">
