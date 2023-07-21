@@ -29,13 +29,14 @@ const StockIndexAcc = () => {
           </AccordionBody>
         </AccordionItem>
         <AccordionItem eventKey="2" className="accitem">
-          <AccordionHeader><h2>櫃買指數是什麼？</h2></AccordionHeader>
+          <AccordionHeader><h2>寶島指數是什麼？</h2></AccordionHeader>
           <AccordionBody>
-            櫃買指數（OTC指數）是台灣櫃檯買賣中心（OTC）的股票市場指數，
-            用於衡量櫃買市場整體表現。它由選定的一組櫃買市場股票所組成，
-            反映櫃買市場股票價格變動的總體趨勢。
-            櫃買指數提供投資者對櫃買市場的績效和走勢有一個快速的總體了解，
-            並可作為投資決策的參考依據。。
+          福摩莎指數，又稱台灣福摩莎臺灣50指數（TAIEX），是台灣證券交易所的主要指標之
+          一。它是由台灣市場中50家規模最大且最具代表性的上市公司股票組成，包含了各行各
+          業的代表企業。福摩莎指數的變動反映了這些50家公司股票價格的波動情況，成為了衡
+          量台灣股市整體表現的指標。投資者經常使用福摩莎指數來追踪台灣股市的趨勢，並參
+          考它進行投資策略的制定。當福摩莎指數上漲，表示台灣股市整體表現較佳，反之則可
+          能意味著股市走弱。。
           </AccordionBody>
         </AccordionItem>
         <AccordionItem eventKey="3" className="accitem">

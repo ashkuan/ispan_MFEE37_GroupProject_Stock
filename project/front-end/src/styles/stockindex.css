@@ -1,6 +1,15 @@
 .part1-text-container{
   margin-top: -40px;
 }
+.container1{
+  margin-top: 160px;
+  /* display: flex; */
+  /* justify-content: space-between; */
+}
+.container2{
+  justify-content: space-between;
+  margin-left: 60px;
+}
 .inchart{
   width: 65%;
 }
@@ -20,10 +29,11 @@
   
 }
 .part1-row{
-  width: 35%;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  
+  margin-left: -0px;
+  margin-top: 40px;
 }
 .first-row{
   margin-top: 20px;
@@ -104,4 +114,9 @@
 }
 .stock-rows{
   margin-top: 60px;
+}
+.part1-chart-container{
+  width: 50%;
+  margin-left: -20px;
+  
 }
