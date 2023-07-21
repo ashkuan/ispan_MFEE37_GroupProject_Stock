@@ -43,10 +43,12 @@ app.get("/messages/:faid", (req, res) => {
 
 // 處理留言
 app.post("/messages/:faid", (req, res) => {
-  const isAuthenticated = true; // 修改為根據會員登入狀態來設定是否授權留言
+  // 修改為根據會員登入狀態來設定是否授權留言
+  const isAuthenticated = true;
   const { faid } = req.params;
   const { uid, fmContent } = req.body;
-  const createTime = moment().format("YYYY-MM-DD HH:mm:ss"); // 取得當前時間
+  // 取得當前時間
+  const createTime = moment().format("YYYY-MM-DD HH:mm:ss");
   // 檢查 uid 是否存在於 req.body
   if (!uid) {
     return res.status(400).json({ error: "缺少 uid" });
@@ -72,6 +74,51 @@ app.post("/messages/:faid", (req, res) => {
   } else {
     // 會員未登入,返回錯誤訊息
     return res.status(401).json({ error: "未登入,無法成功留言" });
+  }
+});
+
+// 編輯留言
+app.post("/messages/edit/:fmid", (req, res) => {
+  const { fmid } = req.params;
+  const { fmContent } = req.body;
+  // 檢查是否有登入會員
+  // 根據登入狀態決定是否授權編輯留言
+  const isAuthenticated = true;
+
+  if (isAuthenticated) {
+    const sql = "Update `MessageContent` SET `fmContent`=? WHERE `fmid`=?";
+    connToDBHelper.query(sql, [fmContent, fmid], (err, data) => {
+      if (err) {
+        console.log(err);
+        return res.status(500).json({ error: "無法編輯留言" });
+      }
+      return res.status(500).json({ success: true, message: "留言編輯成功" });
+    });
+  } else {
+    //會員未登入,返回錯誤訊息
+    return res.status(401).json({ error: "未登入,無法編輯留言" });
+  }
+});
+
+// 刪除留言
+app.delete("/messages/delete/:fmid", (req, res) => {
+  const { fmid } = req.params;
+  // 檢查是否有登入會員
+  // 根據登入狀態決定是否授權編輯留言
+  const isAuthenticated = true;
+
+  if (isAuthenticated) {
+    const sql = "DELETE FROM `MessageContent` WHERE `fmid`=?";
+    connToDBHelper.query(sql, [fmid], (err, data) => {
+      if (err) {
+        console.log(err);
+        return res.status(500).json({ error: "無法刪除留言" });
+      }
+      return res.status(200).json({ success: true, message: "留言刪除成功" });
+    });
+  } else {
+    //會員未登入,返回錯誤訊息
+    return res.status(401).json({ error: "未登入,無法刪除留言" });
   }
 });
 

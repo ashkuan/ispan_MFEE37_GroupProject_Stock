@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import AddMessage from "./AddMessage";
 
@@ -6,6 +6,7 @@ const SmallHotMessage = (props) => {
   const faid = props.data;
   const [messages, setMessages] = useState([]);
   const uid = sessionStorage.getItem("uid");
+  // console.log(uid);
   const name = sessionStorage.getItem("name");
   const email = sessionStorage.getItem("email");
   const photopath = sessionStorage.getItem("photopath");
@@ -17,6 +18,7 @@ const SmallHotMessage = (props) => {
     try {
       const res = await axios.get(`http://localhost:5052/messages/${faid}`);
       setMessages(res.data);
+      console.log(res.data);
     } catch (err) {
       console.log(err);
     }
@@ -37,7 +39,7 @@ const SmallHotMessage = (props) => {
   const handleEditMessage = async (fmid, editedContent) => {
     console.log(editedContent);
     try {
-      await axios.post(`http://localhost:5052/messages/${fmid}/edit`, {
+      await axios.post(`http://localhost:5052/messages//edit/${fmid}`, {
         fmContent: editedContent,
       });
 
@@ -48,6 +50,14 @@ const SmallHotMessage = (props) => {
     }
   };
 
+  // 處理 createTime，只保留 T 之前的部分
+  const formatCreateTime = (createTime) => {
+    if (createTime && typeof createTime === "string") {
+      return createTime.split("T")[0];
+    }
+    return createTime;
+  };
+
   return (
     <>
       {messages.map((message) => (
@@ -56,11 +66,11 @@ const SmallHotMessage = (props) => {
             <div className="d-flex align-items-center">
               <img src={photopath} alt="" />
               <span className="ms-3 text-IronGray-Deep fs-5">
-                {name} · {formatCreateTime(message.createTime)}
+                {message.name} · {formatCreateTime(message.createTime)}
               </span>
             </div>
             <div>
-              <img src={message.likeImageUrl} alt="" />
+              <img src={message.likeImageUrl} alt="" className="useImg" />
               <span className="fs-5 fw-normal ms-2">{message.likeCount}</span>
             </div>
           </div>
@@ -70,17 +80,17 @@ const SmallHotMessage = (props) => {
             </a>
             <span className="fs-5 fw-normal">{message.fmContent}</span>
             {/* 只有留言作者能夠看到編輯和刪除按鈕 */}
-            {uid === message.uid && (
+            {uid == message.uid && (
               <div className="d-flex justify-content-end">
                 {" "}
                 {/* 將按鈕放在右側 */}
-                {/* <button
+                <button
                   onClick={() =>
                     handleEditMessage(message.fmid, message.editedContent)
                   }
                 >
                   編輯
-                </button> */}
+                </button>
                 <button onClick={() => handleDeleteMessage(message.fmid)}>
                   刪除
                 </button>
