@@ -66,7 +66,7 @@ const Loginpage = () => {
           onSubmit={handleSubmit}
           className="card p-4 rounded-4 drop-shadow-20"
         >
-          <div className="card-body px-5 text-IronGray-Deep">
+          <div className="card-body fw-bold px-5 text-IronGray-Deep">
             <div className="">
               <label
                 htmlFor="email"
@@ -111,7 +111,7 @@ const Loginpage = () => {
               <button type="submit" className="btn btn-login py-2 mb-4">
                 登 入
               </button>
-              <Link to="/register" className="notYetRegister py-2 fs-5">
+              <Link to="/register" className="notYetRegister fw-normal py-2 fs-5">
                 尚未註冊嗎？請點此
               </Link>
             </div>

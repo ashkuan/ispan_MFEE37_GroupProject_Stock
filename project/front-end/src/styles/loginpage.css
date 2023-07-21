@@ -9,24 +9,28 @@
 #memberLogin .btn-login {
   font-size: 1.5rem;
   color: var(--White);
-  background-color: var(--Red);
+  background-color: var(--IronGray-Deep);
 }
 
 #memberLogin .btn-login:hover {
-  background-color: rgb(233, 79, 65);
+  background-color: var(--IronGray);
 }
 
 #memberLogin .btn-login:active {
   color: var(--White);
-  background-color: var(--Red);
+  background-color: var(--IronGray-Deep);
 }
 
 #memberLogin .notYetRegister {
   text-align: center;
-  color: var(--IronGray-Light);
+  color: var(--IronGray);
 }
 
 #memberLogin .notYetRegister:hover {
+  color: var(--IronGray-Light);
+}
+
+#memberLogin .notYetRegister:active {
   color: var(--IronGray);
 }
 
