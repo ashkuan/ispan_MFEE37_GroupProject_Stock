@@ -1,10 +1,10 @@
 import React from "react";
 import Sidebar from "../components/Sidebar";
 import "../styles/member.css";
-const Member = () => {
+const MemberEdit = () => {
   return (
     <>
-      <Sidebar></Sidebar>
+      <Sidebar />
       <div className="main-content flex-grow-1 p-3 ">
         <p className="mt-5 member-info">會員資訊</p>
         <hr />
@@ -40,4 +40,4 @@ const Member = () => {
   );
 };
 
-export default Member;
+export default MemberEdit;

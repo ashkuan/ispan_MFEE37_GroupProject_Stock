@@ -13,7 +13,7 @@ import Member from "./pages/Member";
 import MemberEdit from "./pages/MemberEdit";
 import MemberMail from "./pages/memberMail";
 import MemberArtical from "./pages/MemberArtical";
-import MemberCol from "./pages/Membercol";
+import MemberCol from "./pages/MemberCol";
 import Myproduct from "./pages/Myproduct";
 import { ShopContextProvider } from "../context/ShopContext";
 import Chats from "../src/components/Forum/Chats";

@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
 import Sidebar from "../components/Sidebar";
-import "../styles/member.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import "../styles/member.css";
+import "../styles/forum_main.css";
 
 const Member = () => {
   const uid = sessionStorage.getItem("uid");

@@ -1,6 +1,6 @@
 import React from "react";
-import "../styles/Membercol.css";
 import Sidebar from "../components/Sidebar";
+import "../styles/memberCol.css";
 
 const MemberCol = () => {
   return (
