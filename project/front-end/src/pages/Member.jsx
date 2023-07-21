@@ -9,13 +9,19 @@ const Member = () => {
   const name = sessionStorage.getItem("name");
   const email = sessionStorage.getItem("email");
   const photopath = sessionStorage.getItem("photopath");
-  const [password, setPassword] = useState("");
+  const password = sessionStorage.getItem("password");
+
+  // const [password, setPassword] = useState("");
 
   useEffect(() => {
     axios
       .get("http://localhost:3000/member", { withCredentials: true })
       .then((res) => {
-        setPassword(res.data.password);
+        // setUid(res.data.uid);
+        // setName(res.data.name);
+        // setEmail(res.data.email);
+        // setPassword(res.data.password);
+        // setPhotopath(res.data.photopath);
       })
       .catch((err) => console.log(err));
   }, []);
