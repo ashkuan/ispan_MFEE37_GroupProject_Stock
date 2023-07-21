@@ -1,7 +1,10 @@
 import React from 'react';
 import Chart from 'react-apexcharts';
+import { useEffect, useState } from "react";
 
 const ComputerChart = () => {
+
+  
   const options = {
     chart: {
       type: 'area',

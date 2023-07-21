@@ -25,13 +25,6 @@
   margin-right: 10px;
 }
 
-.articleBtn {
-  border: none;
-  border-radius: 0.375rem;
-  background: var(--IronGray-Light);
-  color: white;
-}
-
 .drop-shadow-20 {
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
 }
@@ -83,10 +76,11 @@
 }
 
 .board .icon {
-  margin-bottom: 5px; /* 调整图标和标签之间的间距 */
+  margin-bottom: 5px;
+  /* 调整图标和标签之间的间距 */
 }
 
-.articleCont{
+.articleCont {
   cursor: pointer;
 }
 
@@ -97,32 +91,20 @@
 } */
 
 .nav-pills .nav-link.active,
-.nav-pills .show > .nav-link {
+.nav-pills .show>.nav-link {
   color: var(--bs-nav-pills-link-active-color);
   background-color: var(--IronGray-Deep);
 }
 
-.baBtn{
-  border: none;
-  border-radius: 0.375rem;
-  background: var(--IronGray-Light);
-  color: white;
+.backBtn,.articleBtn {
+  letter-spacing: 0.175rem;
+  transition: .3s;
 }
 
-.baBtn:hover{
-  border: none;
-  border-radius: 0.375rem;
-  background: var(--IronGray-Light);
-  color:var(--IronGray);
+.backBtn:hover,.articleBtn:hover {
+  scale: 1.01;
 }
 
-.baBtn:focus{
-  border: none;
-  border-radius: 0.375rem;
-  background: var(--IronGray-Deep);
-  color:white;
-}
-
-.baf{
-  color:var(--IronGray-Deep);
+.backBtn:focus,.articleBtn:focus {
+  scale: 0.98;
 }

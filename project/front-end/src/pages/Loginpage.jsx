@@ -83,11 +83,11 @@ const Loginpage = () => {
           onSubmit={handleSubmit}
           className="card p-4 rounded-4 drop-shadow-20"
         >
-          <div className="card-body px-5 text-IronGray-Deep">
+          <div className="card-body fw-bold px-5 text-IronGray-Deep">
             <div className="">
               <label
                 htmlFor="email"
-                className="d-flex justify-content-center m-auto py-3 fs-2"
+                className="d-flex justify-content-center m-auto py-3 fs-3"
               >
                 會員信箱
               </label>
@@ -107,7 +107,7 @@ const Loginpage = () => {
             <div className="mt-3 mb-5">
               <label
                 htmlFor="password"
-                className="d-flex justify-content-center m-auto py-3 fs-2"
+                className="d-flex justify-content-center m-auto py-3 fs-3"
               >
                 會員密碼
               </label>
@@ -135,7 +135,7 @@ const Loginpage = () => {
               <button type="submit" className="btn btn-login py-2 mb-4">
                 登 入
               </button>
-              <Link to="/register" className="notYetRegister py-2 fs-5">
+              <Link to="/register" className="notYetRegister fw-normal py-2 fs-5">
                 尚未註冊嗎？請點此
               </Link>
             </div>

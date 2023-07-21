@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap');
 
 :root {
-    --IronGray-Deep: #2C3E50;
+    --IronGray-Deep: #2c3e50;
     --IronGray: #57687C;
     --IronGray-Light: #B4C7DD;
     --Pink: #F7CAC9;
@@ -138,6 +138,14 @@ body {
     color: var(--Green);
 }
 
+.text-Primary-Gray {
+    color: var(--bg-Primary-Gray);
+}
+
+.text-Second-Gray {
+    color: var(--bg-Second-Gray);
+}
+
 .IronGray-Deep {
     background-color: var(--IronGray-Deep);
 }
@@ -162,6 +170,18 @@ body {
     background-color: var(--bg-Primary-Gray);
 }
 
+.fill-IronGray-Deep {
+    fill: var(--IronGray-Deep);
+}
+
+.fill-IronGray {
+    fill: var(--IronGray);
+}
+
+.fill-IronGray-Light {
+    fill: var(--IronGray-Light);
+}
+
 .bg-cover {
     background-size: cover;
     background-position: center;
@@ -180,6 +200,10 @@ body {
 
 .overflow-y-hidden {
     overflow-y: hidden;
+}
+
+.drop-shadow-10 {
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
 }
 
 .drop-shadow-20 {
@@ -203,6 +227,10 @@ body {
 
 .bottom-outSide {
     bottom: -3.2rem;
+}
+
+.h-3rem {
+    height: 3rem;
 }
 
 .rounded-top-2xl {

@@ -1,0 +1,31 @@
+:root {
+  --IronGray-Deep: #2c3e50;
+  --IronGray: #57687c;
+  --IronGray-Light: #b4c7dd;
+  --Pink: #f7cac9;
+  --Pink-Deep: #f58b82;
+  --Brown: #926b6a;
+  --Red: #f17064;
+  --Green: #77be6b;
+  --Green-Light: #d1faca;
+  --White: #ffffff;
+  --bg-Primary-Gray: #f3f3f3;
+  --bg-Second-Gray: #dddddd;
+  --black-Word: #333333;
+  --border-radius-big: 20px;
+  --border-radius-med: 10px;
+  --border-radius-small: 6px;
+}
+.twiibtn{
+  padding: 10px;
+  font-size: 22px;
+  margin-left: 10px;
+  border: none;
+  border-radius: 10px;
+  background-color:#2c3e50;
+  color: white;
+}
+.twiibtn:hover{
+  background-color:#b4c7dd;
+  color: #333333;
+}

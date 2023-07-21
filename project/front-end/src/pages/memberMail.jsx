@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Sidebar from "../components/Sidebar";
-import "../styles/mail.css";
 import axios from "axios";
 import MessageModal from "../components/MessageModal";
+import "../styles/memberMail.css";
+import "../styles/forum_main.css";
 
 const MemberMail = () => {
   const [messages, setMessages] = useState([]);

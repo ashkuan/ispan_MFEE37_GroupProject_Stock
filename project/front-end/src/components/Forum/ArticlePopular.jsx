@@ -65,6 +65,7 @@ function ArticlePopular() {
                     {new Date(post.createTime).toLocaleDateString("en-US", {
                       month: "2-digit",
                       day: "2-digit",
+                   
                     })}
                   </span>
                 </div>
@@ -80,7 +81,7 @@ function ArticlePopular() {
                 }}
                 //  style={{ backgroundColor: "black" }}
               >
-                <div className="col-9">
+                <div className="col-8">
                   <p
                     className="ellipsis fs-4 fw-bold mt-2 text-IronGray-Deep"
                     id={post.faid}
@@ -94,9 +95,22 @@ function ArticlePopular() {
                     {post.farticle}
                   </p>
                 </div>
-                <div className="col-2 d-flex align-items-center">
+
+                <div
+                  className="col-4 d-flex align-items-center"
+                  id={post.faid}
+                  onClick={(e) => {
+                    console.log(e.target.id);
+                    setFaid(e.target.id);
+                    handleArticleClick();
+                  }}
+                >
                   <div className="rounded-4">
-                    {/* <img src={post.faimage} alt="" /> */}
+                    <img
+                      className="object-fit-cover"
+                      src={`/img/forum/post/${post.faimage}`}
+                      alt=""
+                    />
                   </div>
                 </div>
               </div>
@@ -110,18 +124,18 @@ function ArticlePopular() {
                 </div>
                 {/* messageCount */}
                 <div className="me-1">
-                  <img src="../public/img/forum/chat-left-fill.svg" alt="" />
+                  <img
+                    src="../public/img/forum/chat-left-fill.svg"
+                    alt=""
+                    id={post.faid}
+                    onClick={(e) => {
+                      console.log(e.target.id);
+                      setFaid(e.target.id);
+                      handleArticleClick();
+                    }}
+                  />
                   <span className="fz-3 fw-normal px-3">25</span>
                 </div>
-                {/* collectCount */}
-                {/* <div className="me-1" onClick={collectClick}>
-                  <img src={
-                    collects !== 0
-                      ? "public/img/forum/collect.svg"
-                      : "public/img/forum/collect-Article.svg"
-                  } />
-                  <span className="fz-3 fw-normal px-3">3</span>
-                </div> */}
               </div>
             </div>
             <hr />
@@ -154,9 +168,6 @@ function ArticlePopular() {
                 </div>
                 <div className="text-secondary fs-5 p-4 d-flex justify-content-between">
                   <div className="d-flex align-items-center">
-                    {/* <Emoji /> */}
-                    {/* <img src="public/img/forum/likeClick.svg" alt="" /> */}
-                    {/* <EmojiCount data={faid} /> */}
                     <EmojiButton data={faid} />
                     <MessageQuantity />
                   </div>

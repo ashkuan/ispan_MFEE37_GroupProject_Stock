@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import "../styles/MemberArtical.css";
 import Sidebar from "../components/Sidebar";
 import axios from "axios";
+import "../styles/memberArtical.css";
 
 const MemberArtical = () => {
   const [articles, setArticles] = useState([]);

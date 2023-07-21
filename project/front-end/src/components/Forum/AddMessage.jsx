@@ -33,10 +33,10 @@ const AddMessage = (props) => {
         fmContent,
       });
 
-      // 成功提交留言后，重新获取留言列表以显示新的留言
-      props.fetchAllMessages(); // 从 ArticlePopular 元件传递 fetchAllMessages 函数
-
-      setFmContent(""); // 清空留言內容
+      // 成功提交留言後,重新獲取留言列表以顯示新的留言
+      props.fetchAllMessages();
+      // 清空留言內容
+      setFmContent("");
     } catch (err) {
       console.log(err);
     }
@@ -75,15 +75,3 @@ const AddMessage = (props) => {
 };
 
 export default AddMessage;
-// import React, { useState } from 'react';
-
-// const AddMessage = () => {
-//     return (
-//         <div className="d-flex align-items-center">
-//             <img src="./img/forum/user-chicken.svg" alt="" />
-//             <input type="text" className="form-control ms-3 fs-5" placeholder="留言..." />
-//         </div>
-//     )
-// }
-
-// export default AddMessage

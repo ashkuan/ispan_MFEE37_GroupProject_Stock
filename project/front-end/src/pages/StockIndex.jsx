@@ -1,128 +1,72 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/stockindex.css";
 import LineChart from "../components/linechart";
 import Doughnut from "../components/DoughnutCharts";
 import StockIndexAcc from "../components/StockindexAcc";
-import FinanceChart from "../components/stockindex/finance";
+import Tw0050 from "../components/stockindex/tw0050";
 import ComputerChart from "../components/stockindex/computer";
-import SemiChart from "../components/stockindex/semiconductor";
+import Twoo878 from "../components/stockindex/tw00878";
 import ElecChart from "../components/stockindex/electronic";
-import TextileChart from "../components/stockindex/Textile";
-import CarChart from "../components/stockindex/car";
-import FoodChart from "../components/stockindex/food";
-import ChemicalChart from "../components/stockindex/chemical";
-import GlassChart from "../components/stockindex/glass";
+import Tw0056 from "../components/stockindex/tw0056";
+import Tw00881 from "../components/stockindex/tw00881";
+import Tw00692 from "../components/stockindex/tw00692";
+import Tw00713 from "../components/stockindex/tw00713";
+import Tw00891 from "../components/stockindex/tw00891";
 import Footer from "../components/Footer";
+import DoughnutTwii from "../components/DoughnutTwii";
+import TwindexPrice from "../components/stockindex/twindexprice";
+import Frmsa from "../components/stockindex/frmsa";
+import IndexAmount from "../components/stockindex/indexamount";
 
 const IndStock = () => {
+  const [lineChart, setLineChart] = useState([]);
+
+  const [returnedData, setReturnedData] = useState(null);
+  const handleLineChartDataChange = (data) => {
+    setLineChart(data);
+  };
+
   return (
     <>
-      <div className="container">
+      <div className="container1">
         <div className="part1-text-container">
           <p className="part1-text">大盤指數</p>
         </div>
-        <div className="d-flex">
+        
+        <div className="d-flex container2">
           <div className="inchart">
-            <LineChart></LineChart>
-            <div className="text-end ">
-              
-            </div>
+            <LineChart
+              onChartDataChange={handleLineChartDataChange}
+            ></LineChart>
+            <div className="text-end "></div>
           </div>
           <div className="part1-row ">
-            <div className="d-flex first-row">
-              <div className=" part1-card ">
-                <div className="part1-card-text">加權指數</div>
-              </div>
-              <div className="part1-chart-container">
-                <Doughnut></Doughnut>
-              </div>
-              <div className="part1-row-number">
-                <p>17,140.77</p>
-              </div>
-            </div>
-            <div className="d-flex first-row">
-              <div className=" part1-card ">
-                <div className="part1-card-text">櫃買指數</div>
-              </div>
-              <div className="part1-chart-container">
-                <Doughnut></Doughnut>
-              </div>
-              <div className="part1-row-number">
-                <p>226.15</p>
-              </div>
-            </div>
-            <div className="d-flex first-row">
-              <div className=" part1-card ">
-                <div className="part1-card-text">台股成交</div>
-              </div>
-              <div className="part1-chart-container">
-                <Doughnut></Doughnut>
-              </div>
-              <div className="part1-row-number">
-                <p>2,747,477</p>
-              </div>
-            </div>
+            <IndexAmount></IndexAmount>
+            <TwindexPrice></TwindexPrice>
+            <Frmsa></Frmsa>
+            {/* <DoughnutTwii lineChart={lineChart}></DoughnutTwii> */}
           </div>
         </div>
       </div>
       <StockIndexAcc></StockIndexAcc>
       <div className="container">
-        <div className="part1-text-container ">
-          <p className="part1-text">產業指數</p>
+        <div className="part1-text-container">
+          <p className="part1-text">台灣熱門ETF</p>
         </div>
-        <div className="d-flex">
-          <div className="finance-text-area">
-            <a href="./industrypage.html">
-              {" "}
-              <p className="industry-title text-center">金融科技</p>
-            </a>
-            <div className="finance-stats">
-              <p>近三個月漲跌幅</p>
-              <div className="d-flex">
-                <div className="svgcontainer">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    color="white"
-                    width={30}
-                    height={30}
-                    fill="currentColor"
-                    className="bi bi-arrow-up"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"
-                    />
-                  </svg>
-                </div>
-                <p className="stock-prescent">16.3%</p>
-              </div>
-            </div>
-            <div className="stock-content">
-              金融股是指從事金融業務的公司股票。金融股包括銀行、保險公司、證券公司和其他金融機構。
-              這些公司在金融體系中扮演關鍵角色，提供貸款、儲蓄、投資、風險管理和其他金融產品和服務。
-              金融股通常受到經濟狀況、利率變動、監管政策和市場情緒等因素的影響，
-              並對整個股市的表現和穩定性產生重要影響。
-            </div>
-          </div>
-          <div className="finance-canvas">
-            <FinanceChart></FinanceChart>
-          </div>
+        <div className="show-etf">
+          <Tw0050 />
         </div>
       </div>
-      <div className="stock-rows">
-        <div className="d-flex">
-          <ComputerChart></ComputerChart>
-          <SemiChart></SemiChart>
-          <ElecChart></ElecChart>
-          <TextileChart></TextileChart>
-        </div>
-        <div className="d-flex">
-          <CarChart></CarChart>
-          <FoodChart></FoodChart>
-          <ChemicalChart></ChemicalChart>
-          <GlassChart></GlassChart>
-        </div>
+
+      <div className="d-flex" style={{ width: "95%", marginLeft: 20 }}>
+        <Tw0056></Tw0056>
+        <Twoo878></Twoo878>
+        <Tw00891></Tw00891>
+      </div>
+      <div className="d-flex" style={{ width: "95%", marginLeft: 20 }}>
+        <Tw00692></Tw00692>
+        <Tw00881></Tw00881>
+        <Tw00713></Tw00713>
       </div>
       <Footer></Footer>
     </>

@@ -159,10 +159,15 @@ function PostBtn() {
         <button className="postBtn px-4 fz-3" onClick={handleShow}>
           <div className="d-flex justify-content-between align-items-center py-3">
             <img src={`http://localhost:3000/${photopath}`} className="user-img bg-cover"></img>
-            <div className="w-75 rounded-3 bg-white d-flex align-items-center px-3 py-2">
+            <div
+              className="w-75 rounded-3 bg-white text-IronGray d-flex align-items-center px-3 py-2"
+              style={{ letterSpacing: "0.12rem" }}>
               想和大家分享...
             </div>
-            <div className="articleBtn px-3 py-2">發文</div>
+            <div
+              className="articleBtn border-0 rounded-3 IronGray-Light text-white px-3 py-2">
+              發文
+            </div>
           </div>
         </button>
         <Modal
