@@ -1,8 +1,6 @@
 // 看板輪播
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../../styles/forum_main_right.css";
-import "../../styles/forum_main.css";
 import QuestionAnswerIcon from "@mui/icons-material/QuestionAnswer";
 import NewspaperIcon from "@mui/icons-material/Newspaper";
 import AdsClickIcon from "@mui/icons-material/AdsClick";
@@ -11,6 +9,8 @@ import QueryStatsIcon from "@mui/icons-material/QueryStats";
 import TipsAndUpdatesIcon from "@mui/icons-material/TipsAndUpdates";
 import ReadMoreIcon from "@mui/icons-material/ReadMore";
 import { Button, CardHeader } from "@mui/material";
+import "../../styles/forum_main_right.css";
+import "../../styles/forum_main.css";
 
 const Billboard = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
