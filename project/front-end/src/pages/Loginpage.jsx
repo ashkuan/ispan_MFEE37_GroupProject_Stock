@@ -5,6 +5,9 @@ import NavSearch from "../components/IndStock/NavSearch";
 import { useContext, useState } from "react";
 import "../styles/loginpage.css";
 import "../styles/forum_main.css";
+import { Icon } from "react-icons-kit";
+import { eyeOff } from "react-icons-kit/feather/eyeOff";
+import { eye } from "react-icons-kit/feather/eye";
 
 const Loginpage = () => {
   const uid = sessionStorage.getItem("uid");
@@ -12,6 +15,9 @@ const Loginpage = () => {
   const email = sessionStorage.getItem("email");
   const photopath = sessionStorage.getItem("photopath");
   const [userIsLogin, setUserIsLogin] = useState(false);
+  const [password, setPassword] = useState("");
+  const [type, setType] = useState("password");
+  const [icon, setIcon] = useState(eyeOff);
 
   // 會員
   // const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -58,6 +64,16 @@ const Loginpage = () => {
         .catch((err) => console.log(err));
     }
   };
+  const handleToggle = () => {
+    if (type==='password'){
+       setIcon(eye);
+       setType('text')
+    } else {
+       setIcon(eyeOff)
+       setType('password')
+    }
+ }
+
   return (
     <>
       <div className="mt-8rem d-flex align-items-center justify-content-center">
@@ -96,16 +112,21 @@ const Loginpage = () => {
               </label>
               <input
                 onChange={handleInput}
-                type="password"
+                type={type}
                 name="password"
                 className="member-inp"
                 placeholder="請輸入您的密碼"
               />
+               <span className="flex justify-around items-center" onClick={handleToggle}>
+                  <Icon className="absolute mr-10" icon={icon} size={25}/>
+              </span>
+
               <div>
                 {errors.password && (
                   <p className="text-Red ps-3 fz-3">{errors.password}</p>
                 )}
               </div>
+             
             </div>
             <div className="d-flex flex-column justify-content-around">
               <button type="submit" className="btn btn-login py-2 mb-4">
