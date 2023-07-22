@@ -14,6 +14,8 @@ const IndStockChart = () => {
   const [stockDate, setStockDate] = useState([]);
   // console.log(stockInfo.inputValue);
   const inputValue = stockInfo.inputValue;
+  const [dataFetched, setDataFetched] = useState(false);
+
   // console.log(inputValue);
   useEffect(() => {
     if (inputValue !== "") {
@@ -45,6 +47,7 @@ const IndStockChart = () => {
             myStockPrice.push(price.toFixed(2));
             // console.log(myStockPrice);
             setStockPrice(myStockPrice);
+            setDataFetched(true); // 資料已經被獲取
           });
         })
         .catch((err) => {
@@ -60,7 +63,6 @@ const IndStockChart = () => {
       toolbar: {
         dataLabels: {
           show: true,
-          // style: { fontSize: "1rem" },
         },
       },
     },
@@ -76,7 +78,7 @@ const IndStockChart = () => {
         style: { fontSize: "1rem" },
       }, // 時間
       categories: stockDate,
-      tickAmount: 6,
+      tickAmount: 7,
     },
     fill: {
       colors: ["#f17064"],
@@ -91,6 +93,7 @@ const IndStockChart = () => {
         show: true,
         style: { fontSize: "1rem" },
       },
+      tickAmount: 10,
     },
     dataLabels: {
       enabled: false,
@@ -99,68 +102,73 @@ const IndStockChart = () => {
 
   return (
     <>
-      <div className="time-zone mb-3 fz-3">
-        <button
-          onClick={() => {
-            setPerRange("1d"), setRange("7d");
-          }}
-        >
-          週
-        </button>
-        <button
-          onClick={() => {
-            setPerRange("1d"), setRange("30d");
-          }}
-        >
-          月
-        </button>
-        <button
-          onClick={() => {
-            setPerRange("1d"), setRange("3mo");
-          }}
-        >
-          季
-        </button>
-        <button
-          onClick={() => {
-            setPerRange("1d"), setRange("6mo");
-          }}
-        >
-          半年
-        </button>
-        <button
-          onClick={() => {
-            setPerRange("1d"), setRange("1y");
-          }}
-        >
-          1年
-        </button>
-        <button
-          onClick={() => {
-            setPerRange("1d"), setRange("5y");
-          }}
-        >
-          5年
-        </button>
-        <button
-          onClick={() => {
-            setPerRange("1d"), setRange("10y");
-          }}
-        >
-          10年
-        </button>
-      </div>
-      <div className="drop-shadow-20">
-        <Chart
-          options={options}
-          series={options.series}
-          type="area"
-          width={600}
-          height={400}
-        />
-      </div>
+      {dataFetched ? (
+        <>
+          <div className="time-zone mb-3 fz-3">
+            <button
+              onClick={() => {
+                setPerRange("1d"), setRange("7d");
+              }}
+            >
+              週
+            </button>
+            <button
+              onClick={() => {
+                setPerRange("1d"), setRange("30d");
+              }}
+            >
+              月
+            </button>
+            <button
+              onClick={() => {
+                setPerRange("1d"), setRange("3mo");
+              }}
+            >
+              季
+            </button>
+            <button
+              onClick={() => {
+                setPerRange("1d"), setRange("6mo");
+              }}
+            >
+              半年
+            </button>
+            <button
+              onClick={() => {
+                setPerRange("1d"), setRange("1y");
+              }}
+            >
+              1年
+            </button>
+            <button
+              onClick={() => {
+                setPerRange("1d"), setRange("5y");
+              }}
+            >
+              5年
+            </button>
+            {/* <button
+              onClick={() => {
+                setPerRange("1d"), setRange("10y");
+              }}
+            >
+              10年
+            </button> */}
+          </div>
+          <div className="drop-shadow-20">
+            <Chart
+              options={options}
+              series={options.series}
+              type="area"
+              width={600}
+              height={600}
+            />
+          </div>
+        </>
+      ) : (
+        "Loading"
+      )}
     </>
   );
 };
-
 export default IndStockChart;

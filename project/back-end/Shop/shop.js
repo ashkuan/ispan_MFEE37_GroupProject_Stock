@@ -205,7 +205,7 @@ app.get("/coupon", async (req, res) => {
         console.log(err);
       } else {
         // console.log("這是coupon");
-        // console.log(data);
+        console.log(data);
         return res.json(data);
       }
     });

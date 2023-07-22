@@ -20,20 +20,16 @@
 .container {
   margin-top: 180px;
 }
-.container .name {
+.container .stockName {
   margin-bottom: 80px;
   font-size: 2.5rem;
   font-weight: bold;
   color: var(--IronGray-Deep);
 }
-.container .name span {
+.container .stockName span {
   font-size: 2.5rem;
   font-weight: bold;
   color: var(--IronGray-Deep);
-}
-.container .name a {
-  font-size: 2.5rem;
-  color: var(--black-Word);
 }
 .container .time-zone {
   display: flex;

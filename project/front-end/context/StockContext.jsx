@@ -6,7 +6,7 @@ export const StockContextProvider = (props) => {
   const [stockInfo, setStockInfo] = useState({
     inputValue: "",
     shortname: "",
-    website: "",
+    // website: "",
     regularMarketOpen: "",
     regularMarketDayHigh: "",
     regularMarketDayLow: "",

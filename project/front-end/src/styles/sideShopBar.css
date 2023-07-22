@@ -29,6 +29,7 @@
 }
 .right .name {
   font-size: 1.5rem;
+  font-weight: 600;
 }
 .right .email {
   font-size: 1rem;

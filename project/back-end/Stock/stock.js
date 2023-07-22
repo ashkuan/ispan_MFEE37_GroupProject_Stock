@@ -1,6 +1,12 @@
 import express from "express";
 import cors from "cors";
 import axios from "axios";
+import fs from "fs";
+
+let rawdata = fs.readFileSync("./t187ap03_L.json");
+let StockData = JSON.parse(rawdata);
+// console.log(StockData);
+
 var app = express();
 app.use(cors());
 app.use(express.json());
@@ -78,24 +84,28 @@ app.post("/stockChart", async function (req, res) {
 });
 
 app.post("/stockName", async function (req, res) {
+  const inputValue = req.body.data;
   try {
-    const inputValue = req.body.data;
     console.log(inputValue);
-    axios
-      .get("https://openapi.twse.com.tw/v1/exchangeReport/BWIBBU_ALL")
-      .then((response) => {
-        console.log(response.data);
-        const stockData = response.data;
-        const stockName = stockData.find(
-          (item) => item.Code === inputValue
-        )?.Name;
-        console.log(stockName);
-        res.send(stockName);
-      })
-      .catch((error) => {
-        console.log(error);
-        res.status(500).send("Error occurred while fetching stock data.");
-      });
+    const stockInfo = StockData.find((item) => item.公司代號 == inputValue);
+    const stockName = stockInfo ? stockInfo.公司名稱 : "未找到公司名稱";
+    console.log(stockName);
+    res.send(stockName);
+    // axios
+    //   .get("https://openapi.twse.com.tw/v1/exchangeReport/BWIBBU_ALL")
+    //   .then((response) => {
+    //     console.log(response.data);
+    //     const stockData = response.data;
+    //     const stockName = stockData.find(
+    //       (item) => item.Code === inputValue
+    //     )?.Name;
+    //     console.log(stockName);
+    // res.send(stockName);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //     res.status(500).send("Error occurred while fetching stock data.");
+    //   });
   } catch (err) {
     console.log(err);
   }

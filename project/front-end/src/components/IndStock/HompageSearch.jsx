@@ -42,7 +42,7 @@ const HomepageSearch = (props) => {
           setRedirectToIndStock(true);
           // console.log(res.data);
           const shortname = res.data.price.shortName;
-          const website = res.data.summaryProfile.website;
+          // const website = res.data.summaryProfile.website;
           const regularMarketOpen = res.data.price.regularMarketOpen.fmt; // 開盤
           const regularMarketDayHigh = res.data.price.regularMarketDayHigh.fmt; // 最高
           const regularMarketDayLow = res.data.price.regularMarketDayLow.fmt; // 最低
@@ -61,7 +61,7 @@ const HomepageSearch = (props) => {
           setStockInfo({
             inputValue,
             shortname,
-            website,
+            // website,
             regularMarketOpen,
             regularMarketDayHigh,
             regularMarketDayLow,
