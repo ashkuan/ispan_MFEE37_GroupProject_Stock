@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Pagination from 'react-bootstrap/Pagination';
-import "../../styles/memberCol.css";
 import "../../styles/member.css";
 import "../../styles/forum_main.css";
 
@@ -22,7 +20,7 @@ const MemberCollect = () => {
     // 顯示當前頁數
     const [currentPage, setCurrentPage] = useState(1);
     // 每頁顯示幾則內容
-    const [messagesPerPage] = useState(2);
+    const [messagesPerPage] = useState(3);
 
     useEffect(() => {
         axios
@@ -110,22 +108,21 @@ const MemberCollect = () => {
                 <p className="text-IronGray-Deep fs-3 fw-bold pb-2 border-bottom">我的收藏</p>
                 <div className="mt-3">
                     <div className="row mb-2 fw-bold fs-5 IronGray-Light rounded-3">
-                        <div className="col-1 px-4 py-2 text-center">
+                        <div className="col-1 py-2 text-center">
                             #
                         </div>
-                        <div className="col-6 px-4 py-2 text-center">
+                        <div className="col-6 py-2 text-center">
                             文章標題
                         </div>
-                        <div className="col-3 px-4 py-2 text-center">
+                        <div className="col-3 py-2 text-center">
                             作者
                         </div>
-                        <div className="col-2 px-4 py-2 text-center">
-                            #
-                        </div>
+                        <div className="col-2" />
                     </div>
+                    {/* 收藏的文章 */}
                     <div className="row mb-2 fz-3 bg-white rounded-3">
                         <div className="col-1 px-4 py-2 text-center">
-                            #
+                            1
                         </div>
                         <div className="col-6 px-4 py-2 text-truncate">
                             除息前一天買陽明是不是穩賺
@@ -134,69 +131,37 @@ const MemberCollect = () => {
                             阿ben
                         </div>
                         <div className="col-2 px-4 py-2 text-center">
-                            <button className="deleteBtn text-IronGray-Deep IronGray-Light rounded-3 border-0 px-3 py-2">取消</button>
+                            <button className="deleteBtn text-IronGray-Deep IronGray-Light rounded-2 border-0 px-2 py-1 fz-4">取消</button>
                         </div>
                     </div>
-                    {/* <Table striped hover>
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th
-                                    className="py-3 d-inline-block text-truncate"
-                                    style={{ width: "25rem" }}
-                                >文章標題</th>
-                                <th
-                                    className="py-3 d-inline-block text-truncate"
-                                    style={{ width: "10rem" }}
-                                >作者</th>
-                                <th className="col-blank" />
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td
-                                    className="py-3 d-inline-block text-truncate"
-                                    style={{ width: "25rem" }}
-                                >除息前一天買陽明是不是穩賺</td>
-                                <td
-                                    className="py-3 d-inline-block text-truncate"
-                                    style={{ width: "10rem" }}
-                                >阿ben</td>
-                                <td>
-                                    <button className="deleteBtn text-IronGray-Deep IronGray-Light rounded-3 border-0 px-3 py-2">取消</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td
-                                    className="py-3 d-block text-truncate"
-                                    style={{ width: "25rem" }}
-                                >外資高割離席,台股萬七進場做空</td>
-                                <td
-                                    className="py-3 d-block text-truncate"
-                                    style={{ width: "10rem" }}
-                                >ASF999</td>
-                                <td>
-                                    <button className="deleteBtn text-IronGray-Deep IronGray-Light rounded-3 border-0 px-3 py-2">取消</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td
-                                    className="py-3 d-inline-block text-truncate"
-                                    style={{ width: "25rem" }}
-                                >台股太強了吧,我一路抱一路抱一路抱一路抱一路抱一路抱一路抱一路抱一路抱一路抱</td>
-                                <td
-                                    className="py-3 d-inline-block text-truncate"
-                                    style={{ width: "10rem" }}
-                                >SharonHsu888</td>
-                                <td>
-                                    <button className="deleteBtn text-IronGray-Deep IronGray-Light rounded-3 border-0 px-3 py-2">取消</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </Table> */}
+                    <div className="row mb-2 fz-3 bg-white rounded-3">
+                        <div className="col-1 px-4 py-2 text-center">
+                            2
+                        </div>
+                        <div className="col-6 px-4 py-2 text-truncate">
+                        外資高割離席,台股萬七進場做空
+                        </div>
+                        <div className="col-3 px-4 py-2 text-center text-truncate">
+                            ASF999
+                        </div>
+                        <div className="col-2 px-4 py-2 text-center">
+                            <button className="deleteBtn text-IronGray-Deep IronGray-Light rounded-2 border-0 px-2 py-1 fz-4">取消</button>
+                        </div>
+                    </div>
+                    <div className="row mb-2 fz-3 bg-white rounded-3">
+                        <div className="col-1 px-4 py-2 text-center">
+                            3
+                        </div>
+                        <div className="col-6 px-4 py-2 text-truncate">
+                        台股太強了吧,我一路抱一路抱一路抱一路抱一路抱一路抱一路抱一路抱一路抱一路抱
+                        </div>
+                        <div className="col-3 px-4 py-2 text-center text-truncate">
+                            SharonHsu888
+                        </div>
+                        <div className="col-2 px-4 py-2 text-center">
+                            <button className="deleteBtn text-IronGray-Deep IronGray-Light rounded-2 border-0 px-2 py-1 fz-4">取消</button>
+                        </div>
+                    </div>
                     {/* 切換頁面 */}
                     <div className="mt-3 d-flex justify-content-center">
                         <Pagination>

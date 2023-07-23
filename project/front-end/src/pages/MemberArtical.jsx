@@ -4,7 +4,6 @@ import MyArticle from "../components/member/MyArticle";
 import axios from "axios";
 import Form from 'react-bootstrap/Form';
 import "../styles/member.css";
-import "../styles/memberArtical.css";
 import "../styles/forum_main.css";
 
 const MemberArticle = () => {

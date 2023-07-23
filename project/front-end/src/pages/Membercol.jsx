@@ -4,7 +4,6 @@ import MemberCollect from "../components/member/MemberCollect";
 import axios from "axios";
 import Form from 'react-bootstrap/Form';
 import "../styles/member.css";
-import "../styles/memberCol.css";
 import "../styles/forum_main.css";
 
 const MemberCol = () => {
