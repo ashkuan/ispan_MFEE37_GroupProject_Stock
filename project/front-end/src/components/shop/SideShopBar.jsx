@@ -76,8 +76,8 @@ const SideShopBar = () => {
             <Link to="/shop/history">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="49"
-                height="49"
+                width="53"
+                height="53"
                 fill="currentColor"
                 className="bi bi-bag"
                 viewBox="0 0 27 20"
@@ -91,8 +91,8 @@ const SideShopBar = () => {
             <Link to="/member">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="52"
-                height="52"
+                width="57"
+                height="57"
                 fill="currentColor"
                 className="bi bi-person-circle"
                 viewBox="0 0 25 19"
@@ -110,8 +110,8 @@ const SideShopBar = () => {
             <Link to="/" onClick={handleLogout}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="45"
-                height="45"
+                width="55"
+                height="55"
                 fill="currentColor"
                 className="bi bi-box-arrow-right"
                 viewBox="0 0 23 18"
