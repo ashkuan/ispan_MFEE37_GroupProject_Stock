@@ -141,7 +141,7 @@ const Register = () => {
                   <Form.Group
                     as={Row}
                     className="mb-4"
-                    controlId="formHorizontalEmail">
+                    controlId="formHorizontalName">
                     <Form.Label
                       column
                       sm={4}
@@ -162,7 +162,7 @@ const Register = () => {
                   <Form.Group
                     as={Row}
                     className="mb-2"
-                    controlId="formHorizontalEmail">
+                    controlId="formHorizontalSex">
                     <Form.Label
                       column
                       sm={4}
@@ -278,7 +278,7 @@ const Register = () => {
                   <Form.Group
                     as={Row}
                     className="mb-4 d-none"
-                    controlId="formHorizontalEmail">
+                    controlId="formHorizontalUid">
                     <Form.Label
                       column
                       sm={4}
