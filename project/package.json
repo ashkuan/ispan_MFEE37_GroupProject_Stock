@@ -44,8 +44,10 @@
     "react-icons-kit": "^2.0.0",
     "react-modal": "^3.16.1",
     "react-router-dom": "^6.14.1",
+    "react-twzipcode": "^3.0.1",
     "react-uuid": "^2.0.0",
-    "socket.io": "^4.7.1"
+    "socket.io": "^4.7.1",
+    "uuid4": "^2.0.3"
   },
   "devDependencies": {
     "@types/react": "^18.0.37",
