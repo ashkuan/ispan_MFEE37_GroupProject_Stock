@@ -170,6 +170,10 @@ body {
     background-color: var(--bg-Primary-Gray);
 }
 
+.bg-Second-Gray {
+    background-color: var(--bg-Second-Gray);
+}
+
 .fill-IronGray-Deep {
     fill: var(--IronGray-Deep);
 }
@@ -284,5 +288,8 @@ body {
     position: fixed;
     bottom: 20px;
     right: 40px;;
- 
+}
+
+.letter-spacing-0_2 {
+    letter-spacing: 0.2rem;
 }

@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
-import "../styles/ModalStyles.css"; // 引入自定义的样式文件
+import "../styles/ModalStyles.css";
+import "../styles/forum_main.css";
 
 const MessageModal = ({ isOpen, onClose, message }) => {
   return (
@@ -8,7 +9,7 @@ const MessageModal = ({ isOpen, onClose, message }) => {
       isOpen={isOpen}
       onRequestClose={onClose}
       className="custom-modal-content" 
-      portalClassName="custom-modal-portal"
+      // portalClassName="custom-modal-portal"
     >
       <div>
         <p className="mailcontent">{message}</p>

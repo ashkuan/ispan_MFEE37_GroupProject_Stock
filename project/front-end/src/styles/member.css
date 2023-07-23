@@ -1,58 +1,54 @@
-.replacemember{
-  margin-top: 100px;
-  margin-left: 310px;
+.vh-83 {
+  height: 83vh;
 }
-.member-info {
-  margin-left: 100px;
-  font-size: 2.5rem;
-  font-weight: bold;
-}
-.memberpage-info {
-  /* margin-left: 100px; */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+
+#changeBgColor {
+  width: 100%;
+  height: 10rem;
 }
 
 .memberpic {
-  width: 150px;
-  height: 150px;
-  border-radius: 80px;
-  background-color: rgba(216, 211, 211, 1);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.memberpic img {
-  width: 124px;
-}
-.memberpage-info span {
-  font-size: 2rem;
-  font-weight: bold;
-  margin-right: 20px;
-  columns: var(--black-Word);
-  
-}
-.memberpage-info input {
-  width: 550px;
-  height: 67px;
-  border-style: none;
-  border-radius: 20px;
-  font-size: 2rem;
-  background-color: rgba(216, 211, 211, 1);
-  padding-left: 20px;
+  position: relative;
+  width: 10.5rem;
+  height: 10.5rem;
+  background-color: var(--White);
+  border-radius: 50%;
+  margin-top: -6.5rem;
+  margin-left: 3.5rem;
 }
 
-.edit-btn {
-  display: flex;
-  justify-content: space-around;
+.memberpic img {
+  position: absolute;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center center;
 }
-.edit-btn button {
-  font-size: 1.5rem;
-  width: 175px;
-  height: 40px;
-  border-radius: 50px;
-  border-style: none;
-  background-color: rgba(180, 199, 221, 1);
+
+main .memberInfoEdit {
+  transition: .5s;
+}
+
+main .memberInfoEdit:hover {
+  scale: 1.01;
+}
+
+main .memberInfoEdit:active {
+  scale: 0.98;
+}
+
+.memberInfoEdit span {
+  letter-spacing: 0.25rem;
+}
+
+.deleteBtn {
+  letter-spacing: 0.2rem;
+  transition: .5s;
+}
+.deleteBtn:hover {
+scale: 1.02;
+}
+.deleteBtn:active {
+scale: 0.98;
 }
