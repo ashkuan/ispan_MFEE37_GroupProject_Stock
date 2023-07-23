@@ -91,7 +91,8 @@
   color: gray;
   font-weight: 500;
 }
-.shop-main-content #shop .shopSidebar .shopType .shopTypeBtn button:hover, .shop-main-content #shop .shopSidebar .shopType .shopTypeBtn button:focus {
+.shop-main-content #shop .shopSidebar .shopType .shopTypeBtn button:hover,
+.shop-main-content #shop .shopSidebar .shopType .shopTypeBtn button:focus {
   color: var(--IronGray-Deep);
 }
 .shop-main-content #shop .row {
@@ -165,46 +166,107 @@
 .shop-main-content #shop .row .card .modal .modal-dialog .modal-content {
   height: 800px;
 }
-.shop-main-content #shop .row .card .modal .modal-dialog .modal-content .modal-body .card {
+.shop-main-content
+  #shop
+  .row
+  .card
+  .modal
+  .modal-dialog
+  .modal-content
+  .modal-body
+  .card {
   height: 100%;
 }
-.shop-main-content #shop .row .card .modal .modal-dialog .modal-content .modal-body .card .card-img-top {
+.shop-main-content
+  #shop
+  .row
+  .card
+  .modal
+  .modal-dialog
+  .modal-content
+  .modal-body
+  .card
+  .card-img-top {
   width: 280px;
   height: 280px;
 }
-.shop-main-content #shop .row .card .modal .modal-dialog .modal-content .modal-body .card .card-body .card-title {
+.shop-main-content
+  #shop
+  .row
+  .card
+  .modal
+  .modal-dialog
+  .modal-content
+  .modal-body
+  .card
+  .card-body
+  .card-title {
   font-size: 2rem;
   padding: 15px 0 20px 0;
 }
-.shop-main-content #shop .row .card .modal .modal-dialog .modal-content .modal-body .card .card-body .card-text {
+.shop-main-content
+  #shop
+  .row
+  .card
+  .modal
+  .modal-dialog
+  .modal-content
+  .modal-body
+  .card
+  .card-body
+  .card-text {
   height: 100%;
   max-height: 800px;
   overflow-y: auto;
 }
-.shop-main-content #shop .row .card .modal .modal-dialog .modal-content .modal-footer .addInCartRedBtn {
+.shop-main-content
+  #shop
+  .row
+  .card
+  .modal
+  .modal-dialog
+  .modal-content
+  .modal-footer
+  .addInCartRedBtn {
   background-color: var(--Pink-Deep);
   font-size: 1.4rem;
 }
-.shop-main-content #shop .row .card .modal .modal-dialog .modal-content .modal-footer .addInCartRedBtn:hover {
+.shop-main-content
+  #shop
+  .row
+  .card
+  .modal
+  .modal-dialog
+  .modal-content
+  .modal-footer
+  .addInCartRedBtn:hover {
   background-color: var(--Red);
 }
-.shop-main-content #shop .row .card .modal .modal-dialog .modal-content .modal-footer .btnGray {
+.shop-main-content
+  #shop
+  .row
+  .card
+  .modal
+  .modal-dialog
+  .modal-content
+  .modal-footer
+  .btnGray {
   font-size: 1.4rem;
 }
 .shop-main-content #shop .page {
   cursor: pointer;
 }
 .shop-main-content #shop .page .pagination {
-  margin-top: 30px;
+  margin-top: 50px;
+  margin-left: 200px;
   color: var(--IronGray-Deep) !important;
   --bs-pagination-color: var(--IronGray-Deep);
 }
 .shop-main-content #shop .page .pagination .page-link {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   border: none;
-  margin: 0;
   background-color: var(--bg-Second-Gray);
-  padding: 6px 15px;
+  padding: 10px 15px;
 }
 .shop-main-content #shop .page .pagination .page-link span {
   display: flex;
@@ -263,7 +325,12 @@
   border: 2px solid var(--bg-Second-Gray);
   cursor: pointer;
 }
-#myproductContainer #myproduct #myproductLeft #myproductLeftSmall .imageBox img {
+#myproductContainer
+  #myproduct
+  #myproductLeft
+  #myproductLeftSmall
+  .imageBox
+  img {
   width: 130px;
   height: 150px;
 }
@@ -323,4 +390,4 @@
 
 #hoverImg:hover {
   transform: scale(1.1);
-}/*# sourceMappingURL=shop.css.map */
+} /*# sourceMappingURL=shop.css.map */
