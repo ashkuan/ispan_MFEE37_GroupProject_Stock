@@ -122,7 +122,7 @@ const Checkout = () => {
       <Navbar></Navbar>
       {/* 主要內容 */}
       <form action="http://localhost:5566/sendOrder" method="post">
-        <div className="container checkoutContainer">
+        <div className="checkoutContainer">
           {/* 結帳左邊 */}
           <div id="left" className="px-5 py-4">
             <div id="user" className="fw-bold">

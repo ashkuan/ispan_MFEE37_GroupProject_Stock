@@ -91,7 +91,7 @@ const HistoryProducts = () => {
                 <div className="row my-5 px-2" key={index}>
                   <div className="col-7 card">
                     {firstPimg[index] && (
-                      <img src={firstPimg[index]} className="card-img-top" />
+                      <img src={firstPimg[index]} className="cardImg" />
                     )}
 
                     <div className="card-body">

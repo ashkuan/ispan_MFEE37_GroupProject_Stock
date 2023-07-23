@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import "../styles/homepage.css";
 import HomepageSearch from "../components/IndStock/HompageSearch";
@@ -10,6 +10,11 @@ const Homepage = () => {
     console.log(index);
     setInput(index);
   }
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
+
   return (
     <>
       {/* 首頁內容 */}
