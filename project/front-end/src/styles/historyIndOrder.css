@@ -29,9 +29,11 @@
 }
 .historyIndOrder_container .bread {
   color: gray;
+  font-size: 1.5rem;
 }
 .historyIndOrder_container .bread a {
   color: gray;
+  font-size: 1.5rem;
 }
 .historyIndOrder_container .bread a:hover {
   text-decoration: underline;
@@ -39,6 +41,7 @@
 .historyIndOrder_container .main_container {
   display: flex;
   gap: 30px;
+  margin-top: 80px;
 }
 .historyIndOrder_container .main_container .left {
   width: 75%;
@@ -47,16 +50,16 @@
   display: flex;
   font-size: 1.8rem;
   font-weight: 600;
-  justify-content: center;
   background-color: var(--bg-Second-Gray);
   padding: 30px 0px;
   color: var(--black-Word);
 }
 .historyIndOrder_container .main_container .left .historyTitle2 {
   display: flex;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   align-items: center;
   background-color: white;
   padding: 30px 0px;
   color: var(--black-Word);
-}/*# sourceMappingURL=HistoryIndOrder.css.map */
+  font-weight: 500;
+} /*# sourceMappingURL=HistoryIndOrder.css.map */

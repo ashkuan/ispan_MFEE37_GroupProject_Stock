@@ -86,8 +86,8 @@ export const Product = () => {
           <p className="mb-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="28"
-              height="28"
+              width="30"
+              height="30"
               fill="currentColor"
               className="bi bi-search"
               viewBox="0 0 16 19"
@@ -110,11 +110,11 @@ export const Product = () => {
           <p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="45"
-              height="45"
+              width="48"
+              height="48"
               fill="currentColor"
               className="bi bi-filter-left"
-              viewBox="0 0 16 19"
+              viewBox="0 0 15 20"
             >
               <path d="M2 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
             </svg>
@@ -144,8 +144,8 @@ export const Product = () => {
           <p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="25"
-              height="25"
+              width="28"
+              height="28"
               fill="currentColor"
               className="bi bi-tag-fill"
               viewBox="0 0 16 16"
@@ -189,7 +189,7 @@ export const Product = () => {
           style={{
             textAlign: "left",
             margin: "0 0 20px 10%",
-            fontSize: "1.5rem",
+            fontSize: "1.7rem",
             color: "gray",
             fontWeight: "450",
           }}

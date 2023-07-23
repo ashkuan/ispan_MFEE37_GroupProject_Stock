@@ -26,7 +26,7 @@ import Modal from "react-modal";
 import LoginButton from "./components/loginbtn";
 import OrderSuccess from "./pages/OrderSuccess";
 import Loginpage from "./pages/Loginpage";
-import HistoryIndOrder from "./components/shop/HistoryIndOrder";
+import HistoryIndOrder from "./pages/HistoryIndOrder";
 
 function App() {
   Modal.setAppElement("#root"); // 设置 appElement

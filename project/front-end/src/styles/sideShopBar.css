@@ -28,11 +28,11 @@
   margin-top: 50px;
 }
 .right .name {
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 600;
 }
 .right .email {
-  font-size: 1rem;
+  font-size: 1.3rem;
   padding: 10px;
   color: gray;
   margin: 5px 0 30px 0;
@@ -40,9 +40,12 @@
 .right .side {
   padding: 30px;
   margin-top: 10px;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
+  font-weight: 500;
 }
-.right .side:hover, .right .side:focus, .right .side:active {
+.right .side:hover,
+.right .side:focus,
+.right .side:active {
   background-color: var(--bg-Second-Gray);
 }
 .right .side a {
@@ -50,4 +53,4 @@
 }
 .right .side-main {
   background-color: var(--bg-Second-Gray);
-}/*# sourceMappingURL=sideShopBar.css.map */
+} /*# sourceMappingURL=sideShopBar.css.map */

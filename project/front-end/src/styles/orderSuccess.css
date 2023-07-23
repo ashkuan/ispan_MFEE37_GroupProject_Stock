@@ -34,15 +34,17 @@
   font-size: 1.4rem;
   letter-spacing: 10px;
   border: 3px solid black;
+  transition-duration: 0.3s;
   display: flex;
   align-items: center;
   gap: 20px;
 }
-.orderSuccessContainer button:hover, .orderSuccessContainer button:hover > a {
+.orderSuccessContainer button:hover {
   background-color: black;
   color: white;
 }
 .orderSuccessContainer button a {
+  transition-duration: 0.3s;
   color: black;
 }
 .orderSuccessContainer button a:hover {

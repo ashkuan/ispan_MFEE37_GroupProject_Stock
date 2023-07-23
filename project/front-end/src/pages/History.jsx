@@ -33,10 +33,10 @@ const History = () => {
       {/* <!-- 主要內容 --> */}
       <div className="history_container">
         <div>
-          <p className="fs-5 pb-3 bread">
+          <div className="bread">
             <Link to="/shop">商城</Link> &gt; <Link to="#">歷史訂單</Link>
-          </p>
-          <p className="title">歷史訂單</p>
+          </div>
+          <div className="title">歷史訂單</div>
         </div>
         <div className="mainContent">
           <div className="left">
