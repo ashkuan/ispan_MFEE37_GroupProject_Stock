@@ -19,7 +19,7 @@ const MemberEdit = () => {
     axios
       .get("http://localhost:3000/member", { withCredentials: true })
       .then((res) => {
-        // setUid(res.data.uid);
+        setUid(res.data.uid);
         // setName(res.data.name);
         // setEmail(res.data.email);
         // setPassword(res.data.password);
