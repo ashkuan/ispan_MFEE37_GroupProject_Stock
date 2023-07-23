@@ -1,13 +1,31 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import "../styles/orderSuccess.css";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const OrderSuccess = () => {
   const uid = sessionStorage.getItem("uid");
   const name = sessionStorage.getItem("name");
   const email = sessionStorage.getItem("email");
   const photopath = sessionStorage.getItem("photopath");
+
+  useEffect(() => {
+    const fetchOid = async () => {
+      try {
+        const res = await axios.post("/shop/orderSuccess", { oid });
+        // console.log(oid);
+        console.log(res.data);
+      } catch (err) {
+        console.log("Error response data:", err.response.data);
+        console.log("Error status code:", err.response.status);
+        console.log("Error headers:", err.response.headers);
+        console.log(err);
+      }
+    };
+    fetchOid();
+  }, []);
+
   return (
     <>
       <div className="container orderSuccessContainer">

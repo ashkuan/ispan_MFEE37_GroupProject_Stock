@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import db from "../DB/DBconfig.js";
+import axios from "axios";
 
 var app = express();
 app.use(cors());
@@ -91,7 +92,6 @@ app.post("/sendOrder", async (req, res) => {
       coupon,
       totalAmount,
     } = req.body;
-    // console.log(req.body);
 
     const orderData = [
       oid,
@@ -136,6 +136,11 @@ app.post("/sendOrder", async (req, res) => {
         console.log("購物車已經清空");
       }
     });
+
+    const res = await axios.post("/shop/orderSuccess", {
+      oid,
+    });
+    res.json(response);
   } catch (err) {
     console.log("接收失敗");
     console.log(err);
@@ -205,7 +210,7 @@ app.get("/coupon", async (req, res) => {
         console.log(err);
       } else {
         // console.log("這是coupon");
-        console.log(data);
+        // console.log(data);
         return res.json(data);
       }
     });
