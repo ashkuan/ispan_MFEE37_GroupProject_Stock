@@ -53,21 +53,26 @@ const AddMessage = (props) => {
             </Alert>
           )}
         </Stack>
-        <div className="d-flex align-items-center">
-          <img src={`http://localhost:3000/${photopath}`} className="useImg" />
-          <p>{name}</p>
-          <input
-            type="text"
-            className="form-control ms-3 fs-5"
-            name="fmContent"
-            placeholder="留言..."
-            value={fmContent}
-            onChange={(e) => setFmContent(e.target.value)}
-          />
-
-          <button type="submit" className="btn btn-primary ms-3">
-            送出留言
-          </button>
+        <div className="row d-flex align-items-center">
+          <div className="col-1">
+            <img src={`http://localhost:3000/${photopath}`} className="useImg" />
+            {/* <p>{name}</p> */}
+          </div>
+          <div className="col-8 ps-4">
+            <input
+              type="text"
+              className="form-control ms-3 fs-5"
+              name="fmContent"
+              placeholder="留言..."
+              value={fmContent}
+              onChange={(e) => setFmContent(e.target.value)}
+            />
+          </div>
+          <div className="col-3 ps-5">
+            <button type="submit" className="border-0 IronGray text-white px-2 rounded-2 py-1 ms-3 fz-3 letter-spacing-0_2">
+              留言
+            </button>
+          </div>
         </div>
       </form>
     </>

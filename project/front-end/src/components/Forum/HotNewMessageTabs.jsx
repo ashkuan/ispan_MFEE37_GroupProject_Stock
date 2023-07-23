@@ -6,13 +6,13 @@ const HotNewMessageTabs = (props) => {
   const faid = props.data;
   return (
     <>
-      <div className="text-secondary fs-5 px-4 d-flex justify-content-end align-items-center">
+      <div className="text-secondary fs-5 d-flex justify-content-end align-items-center">
         <ul className="nav" id="tabSelected" role="tablist">
           {/* hotTabs */}
           <li className="nav-item" role="presentation">
             <a
-              className="nav-link me-2 text-decoration-none 
-                                IronGray-Deep text-white fz-3 rounded-5 px-3 py-2"
+              className="nav-link me-2 text-decoration-none IronGray-Deep
+              text-white fz-3 rounded-3 px-3 py-1 me-3"
               href="#"
               id="tab01"
               data-bs-toggle="pill"
@@ -28,8 +28,8 @@ const HotNewMessageTabs = (props) => {
           {/* newTabs */}
           <li className="nav-item" role="presentation">
             <a
-              className="nav-link text-decoration-none IronGray-Light text-white 
-                                fz-3 rounded-5 px-3 py-2"
+              className="nav-link text-decoration-none IronGray-Light 
+              text-white fz-3 rounded-3 px-3 py-1 me-2"
               href="#"
               id="tab02"
               data-bs-toggle="pill"

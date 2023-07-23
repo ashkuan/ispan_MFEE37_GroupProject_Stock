@@ -25,17 +25,26 @@ const PostUser = (props) => {
   return (
     <>
       {users.map((user, index) => (
-        <div key={index} className="d-flex">
+        <div
+          key={index}
+          className="d-flex align-items-center">
           {/* <div className="user-img-circle bg-cover me-3"></div> */}
-          <img className="userImg me-3" src={`http://localhost:3000/${user.userimg}`} alt="" />
+          <img
+            className="userImg me-3"
+            src={`http://localhost:3000/${user.userimg}`}
+          />
           <div className="pt-4">
             <div className="fz-2 me-3 mb-1">{user.name}</div>
-            <div className="fz-3 ms-6 text-IronGray">{new Date(user.createTime).toLocaleDateString("en-US", {
-                      month: "2-digit",
-                      day: "2-digit",
-                    })}</div>
+            <div
+              className="fz-3 text-IronGray">
+              {new Date(user.createTime).toLocaleDateString("en-US",
+                {
+                  month: "2-digit",
+                  day: "2-digit",
+                })}
+            </div>
           </div>
-       
+
         </div>
       ))}
     </>

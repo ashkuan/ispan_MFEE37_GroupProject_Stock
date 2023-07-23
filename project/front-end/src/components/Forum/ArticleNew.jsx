@@ -397,7 +397,7 @@ function ArticleNew() {
               <div className="text-secondary fs-5 p-4 d-flex justify-content-between">
                 <div className="d-flex align-items-center">
                   <EmojiButton data={faid} />
-                  <MessageQuantity />
+                  {/* <MessageQuantity /> */}
                 </div>
                 <div className="d-flex">
                   <KeepButton data={faid} />
