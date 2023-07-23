@@ -107,7 +107,7 @@ const HistoryIndOrder = () => {
                           <div className="d-flex col-6 justify-content-start ps-5">
                             <img
                               src={indProducts[index].pimage1}
-                              style={{ width: "15%" }}
+                              style={{ width: "20%" }}
                             />
                             <div
                               style={{
