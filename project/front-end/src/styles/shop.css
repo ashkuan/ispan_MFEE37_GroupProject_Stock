@@ -39,10 +39,11 @@
 }
 .shop-main-content #shop .shopSidebar .shopSidebarSearch {
   text-align: left;
-  font-size: 1.7rem;
+  font-size: 1.8rem;
   font-weight: bold;
 }
 .shop-main-content #shop .shopSidebar .shopSidebarSearch input {
+  font-size: 1.5rem;
   border-radius: 5px;
   border: none;
   width: 100%;
@@ -54,13 +55,13 @@
   color: var(--IronGray-Deep);
 }
 .shop-main-content #shop .shopSidebar .shopSorting p span {
-  font-size: 1.7rem;
+  font-size: 1.8rem;
 }
 .shop-main-content #shop .shopSidebar .shopSorting select {
   margin-top: 20px;
   border: 1px solid white;
   border-radius: 5px;
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   border: none;
   width: 100%;
   font-size: 1.3rem;
