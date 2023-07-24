@@ -197,7 +197,7 @@ app.get("/member/mail", (req, res) => {
 app.put("/member/mail/updateStats", (req, res) => {
   const message = req.body.message;
   const mid = req.body.mid;
-  console.log("hihi");
+  // console.log("hihi");
   const sql = "UPDATE membermessage SET stats = 1 WHERE mid = ?";
   db.query(sql, [mid], (err, result) => {
     if (err) {
@@ -254,6 +254,64 @@ app.delete("/member/artical/:faid", (req, res) => {
       return res.status(500).json("Internal Server Error");
     }
     console.log("發文已成功刪除");
+    return res.json("Success");
+  });
+});
+
+
+// 更改會員資訊
+app.put('/member/edit', (req, res) => {
+  const uid = req.session.user.uid; // 取得目前登入會員的 uid
+  const newName = req.body.name; // 取得從前端送來的新名稱
+  const newEmail = req.body.email;
+  const newPwd = req.body.password;
+  const photopath = req.body.photopath;
+
+  // 執行 SQL 更新語句
+  const sql = "UPDATE login SET name = ?, email = ?, password = ?, photopath = ? WHERE uid = ?";
+  const values = [newName,newEmail,newPwd,photopath,uid];
+
+  db.query(sql, values, (err, result) => {
+    if (err) {
+      console.log(err);
+      return res.status(500).json("Internal Server Error");
+    }
+    console.log("會員資料更新成功");
+    return res.json("Success");
+  });
+});
+//取得收藏
+app.get("/member/col", (req, res) => {
+  if (!req.session.user) {
+    console.log("User session not found");
+    return res.status(401).json("Unauthorized");
+  }
+
+  const uid = req.session.user.uid;
+  const sql = "SELECT *FROM `ForumArticle`LEFT JOIN login ON `ForumArticle`.`uid` = `login`.`uid` where collect = 1";
+
+  db.query(sql, [uid], (err, data) => {
+    if (err) {
+      console.log(err);
+      return res.status(500).json("Internal Server Error");
+    }
+
+    return res.json(data);
+  });
+});
+
+//取消追蹤
+app.put("/member/col/cancel", (req, res) => {
+  // const message = req.body.message;
+  const faid = req.body.faid;
+  // console.log("hihi");
+  const sql = "UPDATE ForumArticle SET collect = 0 WHERE faid = ?";
+  db.query(sql, [faid], (err, result) => {
+    if (err) {
+      console.log(err);
+      return res.status(500).json("Internal Server Error");
+    }
+    console.log("資料庫中的collect已成功更新");
     return res.json("Success");
   });
 });

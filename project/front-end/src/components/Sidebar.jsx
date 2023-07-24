@@ -18,8 +18,8 @@ const Sidebar = () => {
     axios
       .get("http://localhost:3000/member", { withCredentials: true })
       .then((res) => {
-        setName(res.data.name);
-        setPhotopath(res.data.photopath);
+        // setName(res.data.name);
+        // setPhotopath(res.data.photopath);
       })
       .catch((err) => console.log(err));
   }, []);
