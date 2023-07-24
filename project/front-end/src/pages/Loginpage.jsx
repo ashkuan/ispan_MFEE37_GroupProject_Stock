@@ -118,10 +118,7 @@ const Loginpage = () => {
                 className="member-inp border-1 rounded-2"
                 placeholder="請輸入密碼"
               />
-              <span
-                className=""
-                onClick={handleToggle}
-              >
+              <span className="" onClick={handleToggle}>
                 <Icon className="ps-2" icon={icon} size={25} />
               </span>
 
@@ -135,7 +132,10 @@ const Loginpage = () => {
               <button type="submit" className="btn btn-login py-2 mb-4">
                 登 入
               </button>
-              <Link to="/register" className="notYetRegister fw-normal py-2 fs-5">
+              <Link
+                to="/register"
+                className="notYetRegister fw-normal py-2 fs-5"
+              >
                 尚未註冊嗎？請點此
               </Link>
             </div>
