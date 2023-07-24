@@ -35,6 +35,7 @@ const EnterCode = () => {
     const value = input.value;
     input.value = value.replace(/[^0-9]/g, "");
   };
+
   return (
     <div
       style={{
@@ -43,6 +44,8 @@ const EnterCode = () => {
       }}
     >
       <form
+        action="http://localhost:3333/sendCode"
+        method="post"
         id="enterCode"
         className="card rounded-4 drop-shadow-20"
         style={{ padding: "60px" }}
@@ -64,6 +67,7 @@ const EnterCode = () => {
               autoFocus
               style={{ width: "50px" }}
               className="py-2 fs-1 text-center"
+              name="certi1"
             />
             <input
               ref={(ref) => (inputRefs.current[1] = ref)}
@@ -77,6 +81,7 @@ const EnterCode = () => {
               autoFocus
               style={{ width: "50px" }}
               className="py-2 fs-1 text-center"
+              name="certi2"
             />
             <input
               ref={(ref) => (inputRefs.current[2] = ref)}
@@ -90,6 +95,7 @@ const EnterCode = () => {
               autoFocus
               style={{ width: "50px" }}
               className="py-2 fs-1 text-center"
+              name="certi3"
             />
             <input
               ref={(ref) => (inputRefs.current[3] = ref)}
@@ -103,6 +109,7 @@ const EnterCode = () => {
               autoFocus
               style={{ width: "50px" }}
               className="py-2 fs-1 text-center"
+              name="certi4"
             />
             <input
               ref={(ref) => (inputRefs.current[4] = ref)}
@@ -116,6 +123,7 @@ const EnterCode = () => {
               autoFocus
               style={{ width: "50px" }}
               className="py-2 fs-1 text-center"
+              name="certi5"
             />
             <input
               ref={(ref) => (inputRefs.current[5] = ref)}
@@ -129,6 +137,7 @@ const EnterCode = () => {
               autoFocus
               style={{ width: "50px" }}
               className="py-2 fs-1 text-center"
+              name="certi6"
             />
           </div>
         </div>

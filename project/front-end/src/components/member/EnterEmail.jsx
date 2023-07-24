@@ -1,12 +1,9 @@
-import { Link, useNavigate } from "react-router-dom";
-import Validation from "../../pages/loginValidation";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
 import "../../styles/loginpage.css";
 import "../../styles/forum_main.css";
-import { Icon } from "react-icons-kit";
 import { eyeOff } from "react-icons-kit/feather/eyeOff";
-import { eye } from "react-icons-kit/feather/eye";
 
 const EnterEmail = () => {
   const uid = sessionStorage.getItem("uid");
@@ -17,19 +14,19 @@ const EnterEmail = () => {
   const [icon, setIcon] = useState(eyeOff);
   const [emailSent, setEmailSent] = useState(false);
   const navigate = useNavigate();
-  const handlePass= ()=> {
-    
-    setEmailSent(true);
-  }
+  const [errors, setErrors] = useState({});
 
-  const handleClose = () => {
-    navigate("/loginpage");
-  };
+const handleClose =()=>{
+  navigate('/loginpage')
+}
   return (
     <>
-     {!emailSent ? (
-      <div className="mt-10_5rem d-flex align-items-center justify-content-center">
-        <form id="memberLogin" className="card p-4 rounded-4 drop-shadow-20">
+      <div className="mt-10_5rem d-flex align-items-center justify-content-center" >
+        <form
+          id="memberLogin"
+         
+          className="card p-4 rounded-4 drop-shadow-20"
+        >
           <div className="card-body fw-bold px-5 text-IronGray-Deep">
             <div className="">
               <label

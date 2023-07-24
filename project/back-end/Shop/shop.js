@@ -5,8 +5,6 @@ import axios from "axios";
 
 var app = express();
 app.use(cors());
-app.use(express.json()); // 將接收到的JSON格式的資料轉換為JS物件
-app.use(express.urlencoded({ extended: true }));
 
 app.get("/", function (req, res) {
   res.send("select連接成功");
