@@ -1,5 +1,8 @@
 import { createTransport } from "nodemailer";
+
 const transporter = createTransport({
+  host: "http://localhost",
+  port: 5173,
   service: "gmail",
   auth: {
     user: "allyoucaneat0923@gmail.com",
@@ -20,13 +23,19 @@ const mailOptions = {
   from: "allyoucaneat0923@gmail.com",
   to: "pcsara0923@gmail.com",
   subject: "恭喜收到驗證信",
-  text: "你的驗證碼為" + code,
+  text: `你的驗證碼為「${code}」`,
 };
 
 transporter.sendMail(mailOptions, (err, data) => {
   if (err) {
-    console.log(error);
+    console.log(err);
   } else {
     console.log("email 寄送成功" + data.response);
   }
+});
+
+app.listen(3333, () => {
+  console.log(
+    "忘記密碼 的 port 3333 連接完成 " + new Date().toLocaleTimeString()
+  );
 });
