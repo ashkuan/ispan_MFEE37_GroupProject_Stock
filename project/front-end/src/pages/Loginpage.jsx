@@ -7,6 +7,7 @@ import "../styles/forum_main.css";
 import { Icon } from "react-icons-kit";
 import { eyeOff } from "react-icons-kit/feather/eyeOff";
 import { eye } from "react-icons-kit/feather/eye";
+import EnterEmail from "../components/member/EnterEmail";
 
 const Loginpage = () => {
   const uid = sessionStorage.getItem("uid");
@@ -137,6 +138,11 @@ const Loginpage = () => {
                 className="notYetRegister fw-normal py-2 fs-5"
               >
                 尚未註冊嗎？請點此
+              </Link>
+              <Link
+              to="/forgetpassword"
+               className="notYetRegister fw-normal py-2 fs-5">
+                忘記密碼嗎？請點此
               </Link>
             </div>
           </div>
