@@ -10,7 +10,7 @@ import Article from "./Article";
 import Billboard from "./Billboard.jsx";
 import PostBtn from "./PostBtn";
 import { useNavigate } from "react-router-dom";
-import ChartArticle from "./ChatArticle";
+import ChatArticle from "./ChatArticle";
 import "bootstrap/dist/css/bootstrap.css";
 import "../../styles/forum_main_right.css";
 import "../../styles/forum_individual.css";
@@ -34,7 +34,7 @@ const Chats = () => {
               <PostBtn className="mt-4" />
               <div className="fs-3 fw-bolder px-3 pt-2 pb-1 my-3 text-IronGray-Deep">閒聊版</div>
               <div className="BArticle">
-                <ChartArticle />
+                <ChatArticle />
               </div>
             </div>
             <div className="col-3">
