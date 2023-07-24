@@ -6,12 +6,14 @@ import EditPassword from "../components/member/EditPassword";
 const ForgetPassword = () => {
   return (
     <div style={{ marginTop: "120px" }}>
-     
-      <div  style={{display:""}}>
+      <div style={{ display: "" }}>
         <EnterEmail />
       </div>
-      <div  style={{display:""}}>
+      <div style={{ display: "" }}>
         <EnterCode />
+      </div>
+      <div>
+        <EditPassword></EditPassword>
       </div>
     </div>
   );
