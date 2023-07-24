@@ -20,7 +20,6 @@ function ChatArticle() {
   const [showModal, setShowModal] = useState(false);
   const [posts, setPosts] = useState([]);
   const [faid, setFaid] = useState([]);
-  const [userPhotoPath, setUserPhotoPath] = useState([]);
   const [collects, setCollects] = useState(0);
 
   useEffect(() => {
@@ -35,19 +34,6 @@ function ChatArticle() {
     };
     fetchAllPost();
   }, [posts]);
-
-  // useEffect(() => {
-  //   const fetchUserPhotoPath = async () => {
-  //     try {
-  //       const res = await axios.get(`http://localhost:3000/photopath/${photopath}`);
-  //       setUserPhotoPath(res);
-  //     } catch (err) {
-  //       console.log("我是res.data")
-  //       console.log(err);
-  //     }
-  //   };
-  //   fetchUserPhotoPath();
-  // }, []);
 
   const handleArticleClick = () => {
     setShowModal(true);
@@ -79,6 +65,7 @@ function ChatArticle() {
                     {new Date(post.createTime).toLocaleDateString("en-US", {
                       month: "2-digit",
                       day: "2-digit",
+                   
                     })}
                   </span>
                 </div>
@@ -94,7 +81,7 @@ function ChatArticle() {
                 }}
                 //  style={{ backgroundColor: "black" }}
               >
-                <div className="col-9">
+                <div className="col-8">
                   <p
                     className="ellipsis fs-4 fw-bold mt-2 text-IronGray-Deep"
                     id={post.faid}
@@ -108,9 +95,23 @@ function ChatArticle() {
                     {post.farticle}
                   </p>
                 </div>
-                <div className="col-2 d-flex align-items-center">
+
+                <div
+                  className="col-4 d-flex align-items-center"
+                  id={post.faid}
+                  onClick={(e) => {
+                    console.log(e.target.id);
+                    setFaid(e.target.id);
+                    handleArticleClick();
+                  }}
+                >
                   <div className="rounded-4">
-                    {/* <img src={post.faimage} alt="" /> */}
+                    <img
+                      className="object-fit-cover"
+                      src={`http://localhost:5789/${post.faimage}`}
+                      // src={`/img/forum/post/${post.faimage}`}
+                      alt=""
+                    />
                   </div>
                 </div>
               </div>
@@ -119,23 +120,23 @@ function ChatArticle() {
                 <div className="d-flex me-1">
                   <img src="../public/img/forum/likeClick.svg" alt="" />
                   <span className="fz-3 fw-normal px-3 d-flex align-content-center">
-                    {post.likeCount}
+                    {post.totalLikes}
                   </span>
                 </div>
                 {/* messageCount */}
                 <div className="me-1">
-                  <img src="../public/img/forum/chat-left-fill.svg" alt="" />
+                  <img
+                    src="../public/img/forum/chat-left-fill.svg"
+                    alt=""
+                    id={post.faid}
+                    onClick={(e) => {
+                      console.log(e.target.id);
+                      setFaid(e.target.id);
+                      handleArticleClick();
+                    }}
+                  />
                   <span className="fz-3 fw-normal px-3">25</span>
                 </div>
-                {/* collectCount */}
-                {/* <div className="me-1" onClick={collectClick}>
-                  <img src={
-                    collects !== 0
-                      ? "public/img/forum/collect.svg"
-                      : "public/img/forum/collect-Article.svg"
-                  } />
-                  <span className="fz-3 fw-normal px-3">3</span>
-                </div> */}
               </div>
             </div>
             <hr />
@@ -168,11 +169,8 @@ function ChatArticle() {
                 </div>
                 <div className="text-secondary fs-5 p-4 d-flex justify-content-between">
                   <div className="d-flex align-items-center">
-                    {/* <Emoji /> */}
-                    {/* <img src="public/img/forum/likeClick.svg" alt="" /> */}
-                    {/* <EmojiCount data={faid} /> */}
                     <EmojiButton data={faid} />
-                    <MessageQuantity />
+                    {/* <MessageQuantity /> */}
                   </div>
                   <div className="d-flex">
                     <KeepButton data={faid} />
@@ -182,9 +180,6 @@ function ChatArticle() {
                 <HotNewMessageTabs data={faid} />
               </div>
             </Modal.Body>
-            <Modal.Footer className="p-4 d-flex justify-content-between align-items-center">
-              <AddMessage data={faid} />
-            </Modal.Footer>
           </div>
         </Modal>
       </div>

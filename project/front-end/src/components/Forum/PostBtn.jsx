@@ -22,6 +22,8 @@ function PostBtn() {
 
   const handleClose = () => {
     setLgShow(false);
+    setPosts((prev) => ({ ...prev, faimage: null })); // 重置 faimage 為 null
+    setImage(null); // 清除預覽的圖片
   };
   const handleShow = () => setLgShow(true);
   const v4Id = uuid();
@@ -263,7 +265,7 @@ function PostBtn() {
                     </label>
                     {/* 顯示選擇的圖片 */}
                     {image && (
-                      <img className="showimg" src={image} alt="請上傳圖片" />
+                      <img className="showimg me-2" style={{width:"250px",height:"100px"}} src={image} alt="請上傳圖片" />
                     )}
                   </div>
                   {/* 取消鈕 & 發文鈕 */}

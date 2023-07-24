@@ -52,3 +52,10 @@ scale: 1.02;
 .deleteBtn:active {
 scale: 0.98;
 }
+.savebtn{
+  background-color: crimson;
+}
+.photoedit{
+  width: 100px;
+  border: 1px solid black;
+}
