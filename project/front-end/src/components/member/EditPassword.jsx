@@ -5,7 +5,7 @@ const EditPassword = () => {
     <>
       <div className="mt-10_5rem d-flex align-items-center justify-content-center">
         <form
-          action="http://localhost:3333/sendEmail"
+          action="http://localhost:3333/sendNewPassword"
           method="post"
           id="memberLogin"
           className="card p-4 rounded-4 drop-shadow-20"

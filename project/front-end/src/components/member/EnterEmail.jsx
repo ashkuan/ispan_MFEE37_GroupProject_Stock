@@ -6,15 +6,8 @@ import "../../styles/forum_main.css";
 import { eyeOff } from "react-icons-kit/feather/eyeOff";
 
 const EnterEmail = () => {
-  const uid = sessionStorage.getItem("uid");
-  const name = sessionStorage.getItem("name");
-  const email = sessionStorage.getItem("email");
-  const photopath = sessionStorage.getItem("photopath");
-  const [type, setType] = useState("password");
-  const [icon, setIcon] = useState(eyeOff);
   const [emailSent, setEmailSent] = useState(false);
   const navigate = useNavigate();
-  const [errors, setErrors] = useState({});
 
   const handleClose = () => {
     navigate("/loginpage");
