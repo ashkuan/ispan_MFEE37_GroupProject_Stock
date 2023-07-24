@@ -1,14 +1,8 @@
 import { createTransport } from "nodemailer";
-
-const transporter = createTransport({
-  host: "http://localhost",
-  port: 5173,
-  service: "gmail",
-  auth: {
-    user: "allyoucaneat0923@gmail.com",
-    pass: "gujmtebtqktclnho",
-  },
-});
+import express from "express";
+var app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 const createSixNum = () => {
   var Num = "";
@@ -17,20 +11,40 @@ const createSixNum = () => {
   }
   return Num;
 };
-var code = createSixNum();
 
-const mailOptions = {
-  from: "allyoucaneat0923@gmail.com",
-  to: "pcsara0923@gmail.com",
-  subject: "恭喜收到驗證信",
-  text: `你的驗證碼為「${code}」`,
-};
+const transporter = createTransport({
+  port: 5173,
+  service: "gmail",
+  auth: {
+    user: "allyoucaneat0923@gmail.com",
+    pass: "gujmtebtqktclnho",
+  },
+});
 
-transporter.sendMail(mailOptions, (err, data) => {
-  if (err) {
-    console.log(err);
-  } else {
-    console.log("email 寄送成功" + data.response);
+let code = "";
+app.post("/sendEmail", async (req, res) => {
+  code = createSixNum();
+  const { email } = req.body;
+  console.log(email);
+  const mailOptions = {
+    from: "allyoucaneat0923@gmail.com",
+    to: email,
+    subject: "股估績忘記密碼驗證信",
+    text: `你的驗證碼為「${code}」`,
+  };
+  transporter.sendMail(mailOptions, (err, data) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("email 寄送成功" + data.response);
+    }
+  });
+});
+
+app.post("/sendCode", async (req, res) => {
+  const { certi1, certi2, certi3, certi4, certi5, certi6 } = req.body;
+  if (`${certi1}${certi2}${certi3}${certi4}${certi5}${certi6}` == code) {
+    console.log("密碼匹配成功");
   }
 });
 
