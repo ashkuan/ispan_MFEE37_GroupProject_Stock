@@ -1,7 +1,7 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../styles/orderSuccess.css";
 import Footer from "../components/Footer";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 
 const OrderSuccess = () => {
@@ -10,20 +10,33 @@ const OrderSuccess = () => {
   const email = sessionStorage.getItem("email");
   const photopath = sessionStorage.getItem("photopath");
 
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const oid = searchParams.get("oid");
+
+  const [MyOrder, setMyOrder] = useState();
+
   useEffect(() => {
-    const fetchOid = async () => {
-      try {
-        const res = await axios.post("/shop/orderSuccess", { oid });
-        // console.log(oid);
-        console.log(res.data);
-      } catch (err) {
-        console.log("Error response data:", err.response.data);
-        console.log("Error status code:", err.response.status);
-        console.log("Error headers:", err.response.headers);
-        console.log(err);
-      }
-    };
-    fetchOid();
+    if (oid) {
+      console.log(oid);
+      const fetchOid = async () => {
+        try {
+          const res = await axios.post(
+            "http://localhost:5566/shop/orderSuccess/oid",
+            {
+              oid,
+            }
+          );
+          // console.log(oid);
+          console.log(res.data);
+          setMyOrder(res.data[0]);
+        } catch (err) {
+          console.log("Error response data:", err.response.data);
+          console.log(err);
+        }
+      };
+      fetchOid();
+    }
   }, []);
 
   return (
@@ -60,38 +73,56 @@ const OrderSuccess = () => {
             訂單尚未進入物流程序，我們會在寄送之後以email通知您。
           </p>
         </div>
-        <button>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="40"
-            height="40"
-            fill="currentColor"
-            className="bi bi-card-checklist"
-            viewBox="0 0 16 16"
-          >
-            <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
-            <path d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0zM7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z" />
-          </svg>
-          <Link to="">查看或管理訂單資訊</Link>
-        </button>
-        <div className="orderList">
-          <div>
-            <p className="orderTitle">訂單編號</p>
-            <p className="orderContent"> 253346453</p>
-          </div>
-          <div>
-            <p className="orderTitle">訂單日期</p>
-            <p className="orderContent">2023-07-19</p>
-          </div>
-          <div>
-            <p className="orderTitle">總計</p>
-            <p className="orderContent">NT$ 1950</p>
-          </div>
-          <div>
-            <p className="orderTitle">送貨地址</p>
-            <p className="orderContent">台中市南屯區公益路二段51號18樓</p>
-          </div>
-        </div>
+        {MyOrder && (
+          <>
+            <button>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="40"
+                height="40"
+                fill="currentColor"
+                className="bi bi-card-checklist"
+                viewBox="0 0 16 16"
+              >
+                <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
+                <path d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0zM7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z" />
+              </svg>
+              <Link
+                to={`http://localhost:5173/shop/historyIndOrder/?indOrder=${MyOrder.oid}`}
+              >
+                查看或管理訂單資訊
+              </Link>
+            </button>
+
+            <div className="orderList">
+              <div>
+                <p className="orderTitle">訂單編號</p>
+                <p className="orderContent">{MyOrder.oid}</p>
+              </div>
+              <div>
+                <p className="orderTitle">訂單日期</p>
+                <p className="orderContent">
+                  {MyOrder.merchantTradeDate.slice(
+                    0,
+                    MyOrder.merchantTradeDate.length - 13
+                  )}
+                </p>
+              </div>
+              <div>
+                <p className="orderTitle">總計</p>
+                <p className="orderContent">NT$ {MyOrder.totalAmount}</p>
+              </div>
+              <div>
+                <p className="orderTitle">送貨地址</p>
+                <p className="orderContent">
+                  {MyOrder.userCountry}
+                  {MyOrder.userDistrict}
+                  {MyOrder.userAddress}
+                </p>
+              </div>
+            </div>
+          </>
+        )}
       </div>
       <Footer></Footer>
     </>

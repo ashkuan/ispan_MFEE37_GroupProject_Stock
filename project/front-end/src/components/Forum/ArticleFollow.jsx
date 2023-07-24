@@ -52,8 +52,8 @@ function ArticleFollow() {
 
   if (!uid) {
     return (
-      <div className="drop-shadow-20 rounded-4 bg-white mt-4">
-        <p> 請先登入才可查看收藏</p>
+      <div className="text-center drop-shadow-20 rounded-4 bg-white mt-4 py-5">
+        <p className="fs-3 text-IronGray-Light fw-bold mb-4"> 請先登入才可查看收藏</p>
         <LoginButton />
       </div>
     );
@@ -182,7 +182,7 @@ function ArticleFollow() {
                 <div className="text-secondary fs-5 p-4 d-flex justify-content-between">
                   <div className="d-flex align-items-center">
                     <EmojiButton data={faid} />
-                    <MessageQuantity />
+                    {/* <MessageQuantity /> */}
                   </div>
                   <div className="d-flex">
                     <KeepButton data={faid} />

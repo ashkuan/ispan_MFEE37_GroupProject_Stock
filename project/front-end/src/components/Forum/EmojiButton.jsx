@@ -79,7 +79,9 @@ const EmojiButton = (props) => {
   return (
     <>
       {keeps.map((keep, index) => (
-        <div key={index}>
+        <div 
+        key={index}
+        className="d-flex align-items-center">
           <a className="text-decoration-none ms-2" href="#">
             <div onClick={collectClick}>
               {keep.likedByUser === 0 ? (
@@ -89,7 +91,7 @@ const EmojiButton = (props) => {
               )}
             </div>
           </a>
-          <span className="hello">{keep.totalLikes}</span>
+          <span className="hello ms-3 text-IronGray-Deep">{keep.totalLikes}</span>
         </div>
       ))}
     </>

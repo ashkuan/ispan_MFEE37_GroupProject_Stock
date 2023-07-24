@@ -122,32 +122,16 @@ function PostBtn() {
           </div>
         </button>
         <Modal
-          size="lg"
+          size="md"
           show={lgShow}
           onHide={handleClose}
           backdrop="static"
           keyboard={false}
-          className="top-5"
-        >
-          <div className="container mt-0">
-            <div className="p-2 d-flex flex-column justify-content-between">
-              <Modal.Header closeButton className="fs-4">
-                請先登入才可發文
-              </Modal.Header>
-              <Modal.Body className="px-4 py-2  ">
-                <div className="m-4  row">
-                  <LoginButton className="" />
-                  <Button
-                    className=" mt-3  fs-3 bg-secondary"
-                    variant="secondary"
-                    onClick={handleClose}
-                  >
-                    取消
-                  </Button>
-                </div>
-              </Modal.Body>
-            </div>
-          </div>
+          className="top-15">
+          <Modal.Body className="text-center p-5">
+            <p className="fs-3 fw-bold text-IronGray-Light mb-4">請先登入才可發文</p>
+            <LoginButton />
+          </Modal.Body>
         </Modal>
       </>
     );

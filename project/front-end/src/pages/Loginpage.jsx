@@ -7,6 +7,7 @@ import "../styles/forum_main.css";
 import { Icon } from "react-icons-kit";
 import { eyeOff } from "react-icons-kit/feather/eyeOff";
 import { eye } from "react-icons-kit/feather/eye";
+import EnterEmail from "../components/member/EnterEmail";
 
 const Loginpage = () => {
   const uid = sessionStorage.getItem("uid");
@@ -77,7 +78,7 @@ const Loginpage = () => {
 
   return (
     <>
-      <div className="mt-8rem d-flex align-items-center justify-content-center">
+      <div className="mt-10_5rem d-flex align-items-center justify-content-center">
         <form
           id="memberLogin"
           onSubmit={handleSubmit}
@@ -89,14 +90,14 @@ const Loginpage = () => {
                 htmlFor="email"
                 className="d-flex justify-content-center m-auto py-3 fs-3"
               >
-                會員信箱
+                會員帳號
               </label>
               <input
                 onChange={handleInput}
                 type="email"
                 name="email"
-                className="member-inp"
-                placeholder="請輸入您的信箱"
+                className="member-inp border-1 rounded-2"
+                placeholder="請輸入 Email"
               />
             </div>
             <div>
@@ -115,14 +116,11 @@ const Loginpage = () => {
                 onChange={handleInput}
                 type={type}
                 name="password"
-                className="member-inp"
-                placeholder="請輸入您的密碼"
+                className="member-inp border-1 rounded-2"
+                placeholder="請輸入密碼"
               />
-              <span
-                className="flex justify-around items-center"
-                onClick={handleToggle}
-              >
-                <Icon className="absolute mr-10" icon={icon} size={25} />
+              <span className="" onClick={handleToggle}>
+                <Icon className="ps-2" icon={icon} size={25} />
               </span>
 
               <div>
@@ -135,8 +133,16 @@ const Loginpage = () => {
               <button type="submit" className="btn btn-login py-2 mb-4">
                 登 入
               </button>
-              <Link to="/register" className="notYetRegister fw-normal py-2 fs-5">
+              <Link
+                to="/register"
+                className="notYetRegister fw-normal py-2 fs-5"
+              >
                 尚未註冊嗎？請點此
+              </Link>
+              <Link
+              to="/forgetpassword"
+               className="notYetRegister fw-normal py-2 fs-5">
+                忘記密碼嗎？請點此
               </Link>
             </div>
           </div>

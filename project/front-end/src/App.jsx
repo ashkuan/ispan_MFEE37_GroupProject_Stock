@@ -26,7 +26,8 @@ import Modal from "react-modal";
 import LoginButton from "./components/loginbtn";
 import OrderSuccess from "./pages/OrderSuccess";
 import Loginpage from "./pages/Loginpage";
-import HistoryIndOrder from "./components/shop/HistoryIndOrder";
+import HistoryIndOrder from "./pages/HistoryIndOrder";
+import ForgetPassword from "./pages/ForgetPassword";
 
 function App() {
   Modal.setAppElement("#root"); // 设置 appElement
@@ -52,6 +53,7 @@ function App() {
 
             <Route path="/Loginbutton" element={<LoginButton />}></Route>
             <Route path="/loginpage" element={<Loginpage />}></Route>
+            <Route path="/forgetPassword" element={<ForgetPassword />}></Route>
 
             <Route path="/register" element={<Register />} />
             <Route path="/member" element={<Member />} />

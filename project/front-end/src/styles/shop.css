@@ -22,11 +22,12 @@
 }
 .shop-main-content #title {
   margin-top: 30px;
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: bold;
   color: var(--IronGray-Deep);
   margin-left: 11% !important;
   margin-bottom: 30px !important;
+  letter-spacing: 8px;
 }
 .shop-main-content #shop {
   display: flex;
@@ -47,7 +48,7 @@
   border-radius: 5px;
   border: none;
   width: 100%;
-  padding: 3px 0px 5px 7px;
+  padding: 3px 0px 5px 15px;
 }
 .shop-main-content #shop .shopSidebar .shopSorting {
   text-align: left;
@@ -61,7 +62,7 @@
   margin-top: 20px;
   border: 1px solid white;
   border-radius: 5px;
-  font-size: 1.8rem;
+  font-size: 1.5rem !important;
   border: none;
   width: 100%;
   font-size: 1.3rem;
@@ -70,7 +71,7 @@
 }
 .shop-main-content #shop .shopSidebar .shopType {
   text-align: left;
-  font-size: 1.7rem;
+  font-size: 1.8rem;
   font-weight: bold;
   color: var(--IronGray-Deep);
 }
@@ -83,14 +84,15 @@
   padding-left: 20px;
 }
 .shop-main-content #shop .shopSidebar .shopType .shopTypeBtn button {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   border: none;
   background-color: transparent;
   text-align: left;
   color: gray;
   font-weight: 500;
 }
-.shop-main-content #shop .shopSidebar .shopType .shopTypeBtn button:hover, .shop-main-content #shop .shopSidebar .shopType .shopTypeBtn button:focus {
+.shop-main-content #shop .shopSidebar .shopType .shopTypeBtn button:hover,
+.shop-main-content #shop .shopSidebar .shopType .shopTypeBtn button:focus {
   color: var(--IronGray-Deep);
 }
 .shop-main-content #shop .row {
@@ -164,51 +166,113 @@
 .shop-main-content #shop .row .card .modal .modal-dialog .modal-content {
   height: 800px;
 }
-.shop-main-content #shop .row .card .modal .modal-dialog .modal-content .modal-body .card {
+.shop-main-content
+  #shop
+  .row
+  .card
+  .modal
+  .modal-dialog
+  .modal-content
+  .modal-body
+  .card {
   height: 100%;
 }
-.shop-main-content #shop .row .card .modal .modal-dialog .modal-content .modal-body .card .card-img-top {
+.shop-main-content
+  #shop
+  .row
+  .card
+  .modal
+  .modal-dialog
+  .modal-content
+  .modal-body
+  .card
+  .card-img-top {
   width: 280px;
   height: 280px;
 }
-.shop-main-content #shop .row .card .modal .modal-dialog .modal-content .modal-body .card .card-body .card-title {
+.shop-main-content
+  #shop
+  .row
+  .card
+  .modal
+  .modal-dialog
+  .modal-content
+  .modal-body
+  .card
+  .card-body
+  .card-title {
   font-size: 2rem;
   padding: 15px 0 20px 0;
 }
-.shop-main-content #shop .row .card .modal .modal-dialog .modal-content .modal-body .card .card-body .card-text {
+.shop-main-content
+  #shop
+  .row
+  .card
+  .modal
+  .modal-dialog
+  .modal-content
+  .modal-body
+  .card
+  .card-body
+  .card-text {
   height: 100%;
   max-height: 800px;
   overflow-y: auto;
 }
-.shop-main-content #shop .row .card .modal .modal-dialog .modal-content .modal-footer .addInCartRedBtn {
+.shop-main-content
+  #shop
+  .row
+  .card
+  .modal
+  .modal-dialog
+  .modal-content
+  .modal-footer
+  .addInCartRedBtn {
   background-color: var(--Pink-Deep);
   font-size: 1.4rem;
 }
-.shop-main-content #shop .row .card .modal .modal-dialog .modal-content .modal-footer .addInCartRedBtn:hover {
+.shop-main-content
+  #shop
+  .row
+  .card
+  .modal
+  .modal-dialog
+  .modal-content
+  .modal-footer
+  .addInCartRedBtn:hover {
   background-color: var(--Red);
 }
-.shop-main-content #shop .row .card .modal .modal-dialog .modal-content .modal-footer .btnGray {
+.shop-main-content
+  #shop
+  .row
+  .card
+  .modal
+  .modal-dialog
+  .modal-content
+  .modal-footer
+  .btnGray {
   font-size: 1.4rem;
 }
 .shop-main-content #shop .page {
   cursor: pointer;
 }
 .shop-main-content #shop .page .pagination {
-  margin-top: 30px;
+  margin-top: 50px;
+  margin-left: 200px;
   color: var(--IronGray-Deep) !important;
   --bs-pagination-color: var(--IronGray-Deep);
 }
 .shop-main-content #shop .page .pagination .page-link {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   border: none;
-  margin: 0;
   background-color: var(--bg-Second-Gray);
-  padding: 6px 15px;
+  padding: 10px 15px;
 }
 .shop-main-content #shop .page .pagination .page-link span {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-right: 0px;
 }
 .shop-main-content #shop .page .pagination .page-link:hover {
   color: var(--White);
@@ -261,7 +325,12 @@
   border: 2px solid var(--bg-Second-Gray);
   cursor: pointer;
 }
-#myproductContainer #myproduct #myproductLeft #myproductLeftSmall .imageBox img {
+#myproductContainer
+  #myproduct
+  #myproductLeft
+  #myproductLeftSmall
+  .imageBox
+  img {
   width: 130px;
   height: 150px;
 }
@@ -321,4 +390,4 @@
 
 #hoverImg:hover {
   transform: scale(1.1);
-}/*# sourceMappingURL=shop.css.map */
+} /*# sourceMappingURL=shop.css.map */

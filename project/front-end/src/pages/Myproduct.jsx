@@ -3,6 +3,7 @@ import Footer from "../components/Footer";
 import { ShopContext } from "../../context/ShopContext";
 import { Toast } from "react-bootstrap";
 import uuid4 from "uuid4";
+import { useLocation } from "react-router-dom";
 
 const Myproduct = () => {
   const { products, addToCart } = useContext(ShopContext);
@@ -28,6 +29,12 @@ const Myproduct = () => {
 
   // 找出與資料庫products pid相符的資料
   const filteredProducts = products.filter((product) => product.pid == URLpid);
+
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
 
   return (
     <div>

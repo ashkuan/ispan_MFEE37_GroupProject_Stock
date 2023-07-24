@@ -11,50 +11,48 @@ import "../../styles/member.css";
 import "../../styles/forum_main.css";
 
 const MemberCollect = () => {
-  const [messages, setMessages] = useState([]);
-  const [uid, setUid] = useState("");
-  const [mid, setMid] = useState("");
-  const [stats, setStats] = useState("");
-  const [dataFromDB, setDataFromDB] = useState([]);
-  // 顯示彈跳視窗
-  const [modalOpen, setModalOpen] = useState(false);
-  // 顯示我選的message
-  const [selectedMessage, setSelectedMessage] = useState("");
-  // 顯示當前頁數
-  const [currentPage, setCurrentPage] = useState(1);
-  // 每頁顯示幾則內容
-  const [messagesPerPage] = useState(4);
-  useEffect(() => {
-    axios
-      .get("http://localhost:3000/member/col", { withCredentials: true })
-      .then((res) => {
-        console.log(res.data);
-        setDataFromDB(res.data);
-        // setUid(res.data.uid);
-        // setMid(res.data.mid);
-        setMessages(res.data);
-        // // 更新stats的值
-        // setStats(res.data.stats);
-      })
-      .catch((err) => console.log(err));
-  }, []);
-//取消按鈕功能
-  const handleCancel = (faid) => {
-    axios
-      .put("http://localhost:3000/member/col/cancel", { faid })
-      .then((res) => {
-        console.log("資料庫中的collect已成功更新");
-        // 更新前端的資料，將對應的消息的 collect 設為 0
-        setDataFromDB((prevData) =>
-          prevData.map((item) =>
-            item.faid === faid ? { ...item, collect: 0 } : item
-          )
-        );
-      })
-      .catch((err) => console.log(err));
-  };
-
-
+    const [messages, setMessages] = useState([]);
+    const [uid, setUid] = useState("");
+    const [mid, setMid] = useState("");
+    const [stats, setStats] = useState("");
+    const [dataFromDB, setDataFromDB] = useState([]);
+    // 顯示彈跳視窗
+    const [modalOpen, setModalOpen] = useState(false);
+    // 顯示我選的message
+    const [selectedMessage, setSelectedMessage] = useState("");
+    // 顯示當前頁數
+    const [currentPage, setCurrentPage] = useState(1);
+    // 每頁顯示幾則內容
+    const [messagesPerPage] = useState(4);
+    useEffect(() => {
+      axios
+        .get("http://localhost:3000/member/col", { withCredentials: true })
+        .then((res) => {
+          console.log(res.data);
+          setDataFromDB(res.data);
+          // setUid(res.data.uid);
+          // setMid(res.data.mid);
+          setMessages(res.data);
+          // // 更新stats的值
+          // setStats(res.data.stats);
+        })
+        .catch((err) => console.log(err));
+    }, []);
+  //取消按鈕功能
+    const handleCancel = (faid) => {
+      axios
+        .put("http://localhost:3000/member/col/cancel", { faid })
+        .then((res) => {
+          console.log("資料庫中的collect已成功更新");
+          // 更新前端的資料，將對應的消息的 collect 設為 0
+          setDataFromDB((prevData) =>
+            prevData.map((item) =>
+              item.faid === faid ? { ...item, collect: 0 } : item
+            )
+          );
+        })
+        .catch((err) => console.log(err));
+    };
 
   // 顯示彈跳視窗內容
   const handleOpenModal = (message) => {

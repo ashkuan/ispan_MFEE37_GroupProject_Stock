@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Link, redirect } from "react-router-dom";
-import "../../styles/historyIndOrder.css";
+import { Link } from "react-router-dom";
+import "../styles/historyIndOrder.css";
 import axios from "axios";
-import SideShopBar from "../shop/SideShopBar";
-import Footer from "../Footer";
+import SideShopBar from "../components/shop/SideShopBar";
+import Footer from "../components/Footer";
 
 const HistoryIndOrder = () => {
   // 抓出url，找到oid參數的值
@@ -12,9 +12,6 @@ const HistoryIndOrder = () => {
   //   console.log(URLoid);
   const [indOrderData, setIndOrderData] = useState("");
   const [indProducts, setIndProducts] = useState([]);
-  const [userCountry, setUserCountry] = useState("");
-  const [userDistrict, setUserDistrict] = useState("");
-  const [userAddress, setUserAddress] = useState("");
 
   useEffect(() => {
     let myIndProducts = [];
@@ -58,7 +55,7 @@ const HistoryIndOrder = () => {
   return (
     <>
       <div className="historyIndOrder_container">
-        <p className="fs-5 pb-3 bread">
+        <p className="pb-5 bread">
           <Link to="/shop">商城</Link> &gt;{" "}
           <Link to="/shop/history">歷史訂單</Link> &gt; <a>訂單編號-{URLoid}</a>
         </p>
@@ -75,15 +72,18 @@ const HistoryIndOrder = () => {
                 marginTop: "-30px",
               }}
             >
-              訂單#{URLoid} 已於
+              訂單 #{URLoid} 已於 <span></span>
               {indOrderData.merchantTradeDate.slice(
                 0,
                 indOrderData.merchantTradeDate.length - 4
               )}
-              訂購完成
-              <div style={{ fontSize: "1.2rem", marginTop: "10px" }}>
+              <span> </span>訂購完成
+              <div style={{ fontSize: "1.3rem", marginTop: "10px" }}>
                 如果有任何問題，請儘速
-                <a href="" style={{ color: "#f58b82" }}>
+                <a
+                  href="mailto:mfee37_no2@gmail.com"
+                  style={{ color: "#f58b82" }}
+                >
                   聯繫我們
                 </a>
                 ，謝謝！
@@ -107,7 +107,7 @@ const HistoryIndOrder = () => {
                           <div className="d-flex col-6 justify-content-start ps-5">
                             <img
                               src={indProducts[index].pimage1}
-                              style={{ width: "15%" }}
+                              style={{ width: "20%" }}
                             />
                             <div
                               style={{
@@ -132,11 +132,11 @@ const HistoryIndOrder = () => {
                 })}
 
                 <br />
-                <div className="historyTitle">
+                <div className="historyTitle mt-5">
                   <div className="col-5 ps-5">地址</div>
-                  <div className="col-3">訂單時間</div>
-                  <div className="col-2">付款方式</div>
-                  <div className="col-2 ms-2">總金額</div>
+                  <div className="col-2">訂單時間</div>
+                  <div className="col-2  mx-5">手機</div>
+                  <div className="col-2">總金額</div>
                 </div>
                 <div className="historyTitle2">
                   <div className="col-5 ps-5">
@@ -144,16 +144,14 @@ const HistoryIndOrder = () => {
                       indOrderData.userDistrict +
                       indOrderData.userAddress}
                   </div>
-                  <div className="col-3">
+                  <div className="col-2">
                     {indOrderData.merchantTradeDate.slice(
                       0,
                       indOrderData.merchantTradeDate.length - 13
                     )}
                   </div>
-                  <div className="col-2">{indOrderData.payment}</div>
-                  <div className="col-2 ms-2">
-                    NT$ {indOrderData.totalAmount}
-                  </div>
+                  <div className="col-2 mx-5">{indOrderData.userPhone}</div>
+                  <div className="col-2">NT$ {indOrderData.totalAmount}</div>
                 </div>
               </div>
               <div className="right">

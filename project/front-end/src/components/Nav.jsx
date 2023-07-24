@@ -127,9 +127,7 @@ const Navbar = () => {
                   aria-labelledby="navbarDropdownMenuLink"
                 >
                   <li>
-                    <Link
-                      className="dropdown-item fs-4 fw-light"
-                      to="/shop">
+                    <Link className="dropdown-item fs-4 fw-light" to="/shop">
                       購物商城
                     </Link>
                   </li>
@@ -201,7 +199,7 @@ const Navbar = () => {
                         src={`public/img/memberimg/member/${photopath}`}
                         style={{
                           width: "3.2rem",
-                          borderRadius: "50%"
+                          borderRadius: "50%",
                         }}
                       />
                     </>
@@ -260,13 +258,28 @@ const Navbar = () => {
                   >
                     關閉
                   </button>
-                  <button id="payBtn" type="button" className="btn mx-3">
-                    <Link
-                      to="/shop/checkout"
-                      style={{ color: "white", textDecoration: "none" }}
-                    >
-                      結帳 →
-                    </Link>
+                  <button
+                    id="payBtn"
+                    type="button"
+                    className="btn mx-3"
+                    data-bs-dismiss="modal"
+                  >
+                    {totalCartItemAmount ? (
+                      <Link
+                        to="/shop/checkout"
+                        style={{ color: "white", textDecoration: "none" }}
+                      >
+                        結帳 →
+                      </Link>
+                    ) : (
+                      <Link
+                        to="#"
+                        style={{ color: "white", textDecoration: "none" }}
+                        onClick={() => alert("購物車是空的哦！")}
+                      >
+                        結帳 →
+                      </Link>
+                    )}
                   </button>
                 </div>
               </>

@@ -60,12 +60,13 @@ const SmallHotMessage = (props) => {
 
   return (
     <>
+      <AddMessage data={faid} fetchAllMessages={fetchMessages} />
       {messages.map((message) => (
         <div className="border-top border-2 py-4 mt-4" key={message.fmid}>
           <div className="black-Word d-flex justify-content-between align-items-center">
             <div className="d-flex align-items-center">
               <img src={photopath} alt="" />
-              <span className="ms-3 text-IronGray-Deep fs-5">
+              <span className="ms-3 text-IronGray-Deep fz-3">
                 {message.name} · {formatCreateTime(message.createTime)}
               </span>
             </div>
@@ -74,28 +75,33 @@ const SmallHotMessage = (props) => {
               <span className="fs-5 fw-normal ms-2">{message.likeCount}</span>
             </div>
           </div>
-          <div className="fs-5 pt-3">
-            <a href="#" className="text-decoration-none text-IronGray mx-2">
-              {message.ranking}
-            </a>
-            <span className="fs-5 fw-normal">{message.fmContent}</span>
-            {/* 只有留言作者能夠看到編輯和刪除按鈕 */}
-            {uid == message.uid && (
-              <div className="d-flex justify-content-end">
-                {" "}
-                {/* 將按鈕放在右側 */}
-                <button
-                  onClick={() =>
-                    handleEditMessage(message.fmid, message.editedContent)
-                  }
-                >
-                  編輯
-                </button>
-                <button onClick={() => handleDeleteMessage(message.fmid)}>
-                  刪除
-                </button>
-              </div>
-            )}
+          <div className="fs-5 pt-3 d-flex justify-content-between align-items-center">
+            <div className="d-flex">
+              <a href="#" className="text-decoration-none text-IronGray mx-2">
+                {message.ranking}
+                B10
+              </a>
+              <div>{message.fmContent}</div>
+            </div>
+            <div className="d-flex">
+              {/* 只有留言作者能夠看到編輯和刪除按鈕 */}
+              {uid == message.uid && (
+                <>
+                  {/* 將按鈕放在右側 */}
+                  <button
+                    onClick={() =>
+                      handleEditMessage(message.fmid, message.editedContent)}
+                    className="rounded-2 border-0 IronGray-Light text-white fz-3 letter-spacing-0_2 px-2 py-1 me-3">
+                    編輯
+                  </button>
+                  <button onClick={() =>
+                    handleDeleteMessage(message.fmid)}
+                    className="rounded-2 border-0 IronGray-Light text-white fz-3 letter-spacing-0_2 px-2 py-1">
+                    刪除
+                  </button>
+                </>
+              )}
+            </div>
           </div>
         </div>
       ))}

@@ -9,6 +9,7 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import "../styles/register.css";
+import "../styles/loginpage.css";
 import "../styles/forum_main.css";
 import { Icon } from "react-icons-kit";
 import { eyeOff } from "react-icons-kit/feather/eyeOff";
@@ -126,7 +127,7 @@ const Register = () => {
 
   return (
     <>
-      <div className="mt-8rem d-flex align-items-center justify-content-center">
+      <div className="mt-7rem d-flex align-items-center justify-content-center">
         <Form
           id="registerForm"
           onSubmit={handleSubmit}
@@ -206,22 +207,24 @@ const Register = () => {
                       htmlFor="password">
                       密碼：
                     </Form.Label>
-                    <Col sm={8}>
+                    <Col sm={7}>
                       <Form.Control
                         onChange={handleInput}
                         name="password"
                         type={type}
                         className="h-3rem"
-                        placeholder="至少 8 碼 ( 含大小寫英文 + 數字 )" />
+                        placeholder="至少 8 碼 (含大小寫英文 + 數字)" />
                       {errors.password && (
                         <div className="fz-3 fw-normal mt-1 ms-3 text-Red">{errors.password}</div>
                       )}
+                    </Col>
+                    <Col sm={1}>
                       <span
-                        className="flex justify-around items-center"
+                        className=""
                         onClick={handleToggle}
                       >
                         <Icon
-                          className="absolute mr-10"
+                          className=""
                           icon={icon}
                           size={25}
                         />
@@ -239,7 +242,7 @@ const Register = () => {
                       htmlFor="password">
                       確認密碼：
                     </Form.Label>
-                    <Col sm={8}>
+                    <Col sm={7}>
                       <Form.Control
                         onChange={handleInput}
                         name="password"
@@ -249,9 +252,20 @@ const Register = () => {
                       {/* {errors.password && (
                         <div className="fz-3 fw-normal mt-1 ms-3 text-Red">{errors.password}</div>
                       )} */}
-                      
                     </Col>
-                   
+                    <Col sm={1}>
+                      <span
+                        className=""
+                        onClick={handleToggle}
+                      >
+                        <Icon
+                          className=""
+                          icon={icon}
+                          size={25}
+                        />
+                      </span>
+                    </Col>
+
                   </Form.Group>
                   {/* 電子信箱 */}
                   <Form.Group
@@ -270,7 +284,7 @@ const Register = () => {
                         name="email"
                         type="email"
                         className="h-3rem"
-                        placeholder="請輸入 Email ( eg.xx@gmail.com )" />
+                        placeholder="請輸入信箱 ( eg. xx123@gmail.com )" />
                       {errors.email && <div className="fz-3 fw-normal mt-1 ms-3 text-Red">{errors.email}</div>}
                     </Col>
                   </Form.Group>
@@ -333,7 +347,7 @@ const Register = () => {
                 </div>
                 {/* 快速註冊 */}
                 <div className="">
-                  <div className="fs-4 text-IronGray-Deep px-2 mt-3">
+                  <div className="fs-4 text-IronGray-Deep px-2">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       height="1.5rem"
@@ -397,7 +411,7 @@ const Register = () => {
                 onChange={handleInput}
                 // variant="primary"
                 type="submit"
-                className="ms-5 px-4 py-2 fs-3 rounded-4"
+                className="ms-5 px-4 py-2 fs-4 rounded-4"
               >
                 註&nbsp;&nbsp;&nbsp;冊
               </Button>

@@ -20,18 +20,23 @@
 .container {
   margin-top: 180px;
 }
-.container .stockName {
+.container .name {
   margin-bottom: 80px;
   font-size: 2.5rem;
   font-weight: bold;
   color: var(--IronGray-Deep);
 }
-.container .stockName span {
+.container .name span {
   font-size: 2.5rem;
   font-weight: bold;
   color: var(--IronGray-Deep);
 }
+.container .name a {
+  font-size: 2.5rem;
+  color: var(--black-Word);
+}
 .container .time-zone {
+  margin-top: 30px;
   display: flex;
   justify-content: end;
   margin-right: 20px;
@@ -40,11 +45,10 @@
   border: none;
   background-color: transparent;
   letter-spacing: 0.2rem;
-  padding-left: 10px;
+  padding-left: 15px;
   display: inline;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   color: var(--black-Word);
-  margin-top: -50px;
 }
 .container .time-zone button:hover {
   transform: scale(1.1);
