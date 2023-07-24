@@ -5,7 +5,6 @@ import axios from "axios";
 const KeepButton = (props) => {
   const [keeps, setKeeps] = useState([]);
   const [collects, setCollects] = useState(null);
-  const [icoStatus, setIcoStatus] = useState(true);
 
   const faid = props.data;
 
