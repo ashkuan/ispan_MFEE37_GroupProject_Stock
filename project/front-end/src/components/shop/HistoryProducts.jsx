@@ -8,12 +8,17 @@ const HistoryProducts = () => {
   const [firstPimg, setFirstPimg] = useState([]);
   const [firstPname, setFirstPname] = useState([]);
   const navigate = useNavigate();
-  const [currentPage, setCurrentPage] = useState();
+  const [currentPage, setCurrentPage] = useState(1);
 
   const handleHistoryIndOrder = (e) => {
     console.log(e.currentTarget.id);
     navigate(`/shop/historyIndOrder/?indOrder=${e.currentTarget.id}`);
   };
+
+    const moreOrder =async()=>{
+      console.log("目前是"+currentPage)
+    }
+
 
   // 載入歷史訂單
   useEffect(() => {
@@ -130,7 +135,7 @@ const HistoryProducts = () => {
             );
           })}
           <div className="moreBtnDiv">
-            <button className="moreBtn">查看更多</button>
+            <button className="moreBtn" onClick={moreOrder}>查看更多</button>
           </div>
         </>
       )}

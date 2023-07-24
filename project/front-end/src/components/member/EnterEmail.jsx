@@ -15,22 +15,21 @@ const EnterEmail = () => {
   const photopath = sessionStorage.getItem("photopath");
   const [type, setType] = useState("password");
   const [icon, setIcon] = useState(eyeOff);
-
-
+  const [emailSent, setEmailSent] = useState(false);
   const navigate = useNavigate();
-  const [errors, setErrors] = useState({});
+  const handlePass= ()=> {
+    
+    setEmailSent(true);
+  }
 
-const handleClose =()=>{
-  navigate('/loginpage')
-}
+  const handleClose = () => {
+    navigate("/loginpage");
+  };
   return (
     <>
-      <div className="mt-10_5rem d-flex align-items-center justify-content-center" >
-        <form
-          id="memberLogin"
-         
-          className="card p-4 rounded-4 drop-shadow-20"
-        >
+     {!emailSent ? (
+      <div className="mt-10_5rem d-flex align-items-center justify-content-center">
+        <form id="memberLogin" className="card p-4 rounded-4 drop-shadow-20">
           <div className="card-body fw-bold px-5 text-IronGray-Deep">
             <div className="">
               <label
@@ -40,30 +39,30 @@ const handleClose =()=>{
                 忘記密碼
               </label>
               <input
-               
                 type="email"
                 name="email"
                 className="member-inp border-1 rounded-2"
                 placeholder="請輸入 Email"
               />
             </div>
- 
-      
+
             <div className="d-flex flex-column justify-content-around">
-              <button type="submit" className="btn btn-login py-2 mb-4 mt-4">
+              <button
+                onClick={handlePass}
+                className="btn btn-login py-2 mb-4 mt-4"
+              >
                 發送驗證信
               </button>
-              <button  onClick={handleClose} className="btn btn-login py-2 mb-4">
+              <button onClick={handleClose} className="btn btn-login py-2 mb-4">
                 取消
               </button>
-       
             </div>
           </div>
         </form>
       </div>
+       ) : null}
     </>
   );
 };
 
 export default EnterEmail;
-

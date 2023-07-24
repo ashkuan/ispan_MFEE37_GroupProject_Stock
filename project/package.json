@@ -47,6 +47,7 @@
     "react-twzipcode": "^3.0.1",
     "react-uuid": "^2.0.0",
     "socket.io": "^4.7.1",
+    "styled-components": "^6.0.5",
     "uuid4": "^2.0.3"
   },
   "devDependencies": {
