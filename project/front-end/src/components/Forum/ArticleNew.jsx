@@ -336,7 +336,8 @@ function ArticleNew() {
                 <div className="rounded-4">
                   <img
                     className="object-fit-cover"
-                    src={`/img/forum/post/${post.faimage}`}
+                    // src={`/img/forum/post/${post.faimage}`}
+                    src={`http://localhost:5789/${post.faimage}`}
                     alt=""
                   />
                 </div>

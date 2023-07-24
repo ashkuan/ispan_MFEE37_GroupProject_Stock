@@ -1,40 +1,40 @@
 import React from "react";
-import "bootstrap/dist/css/bootstrap.css";
 import Footer from "../Footer";
-import "../../styles/forum_individual.css";
 import SidebarTag from "../Forum/SidebarTag.jsx";
 import SidebarNews from "../Forum/SidebarNews.jsx";
-import Post from "../Forum/Post.jsx";
-import ArticleSort from "../Forum/ArticleSort.jsx";
-import LineChart from "../linechart";
-import Article from "./Article";
+import Billboard from "./Billboard.jsx";
 import PostBtn from "./PostBtn";
 import { useNavigate } from "react-router-dom";
+import QuestionArticle from "./QuestionArticle";
+import "bootstrap/dist/css/bootstrap.css";
+import "../../styles/forum_main_right.css";
+import "../../styles/forum_individual.css";
 
-const Questions = () => {
+const Chats = () => {
   let navigate = useNavigate();
   return (
     <>
-      <div className="forum" style={{ paddingTop: "180px" }}>
+      <div className="forum" style={{ paddingTop: "9rem" }}>
         <div className="container mt-4">
-          <div className="row d-flex justify-content-between">
+          <div className="row g-5">
+            <div className="col-2 text-center">
+              <button
+                className="backBtn border-0 rounded-3 IronGray text-white px-3 py-2 fs-5 mb-4"
+                onClick={() => navigate("/forum")}>
+                返回討論主頁
+              </button>
+              <Billboard />
+            </div>
+            <div className="col-7">
+              <PostBtn className="mt-4" />
+              <div className="fs-3 fw-bolder px-3 pt-2 pb-1 my-3 text-IronGray-Deep">請益版</div>
+              <div className="BArticle">
+                <QuestionArticle />
+              </div>
+            </div>
             <div className="col-3">
               <SidebarTag />
               <SidebarNews />
-            </div>
-            <div className="col-8">
-              <div className="d-flex justify-content-between mb-3">
-                <p className="baf fz-2 pt-2 fw-bolder">請益版</p>
-                <button
-                  className="baBtn fz-3 p-2 px-3"
-                  onClick={() => navigate("/forum")}
-                >
-                  回討論區
-                </button>
-              </div>
-
-              <PostBtn className="mt-4" />
-              <Article />
             </div>
           </div>
         </div>
@@ -44,4 +44,4 @@ const Questions = () => {
   );
 };
 
-export default Questions;
+export default Chats;

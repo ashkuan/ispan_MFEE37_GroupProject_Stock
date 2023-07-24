@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import "../../styles/forum_main_right.css";
 import "../../styles/forum_main.css";
-import Emoji from "./Emoji";
-import { Button, Modal } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import PostUser from "./PostUser";
 import BoardTag from "./BoardTag";
 import ArticleContent from "./ArticleContent";
@@ -16,16 +15,15 @@ import AddMessage from "./AddMessage";
 import ArticleTitle from "./ArticleTitle";
 import axios from "axios";
 
-function ArticlePopular() {
+function TargetArticle() {
   const [showModal, setShowModal] = useState(false);
   const [posts, setPosts] = useState([]);
   const [faid, setFaid] = useState([]);
-  const [collects, setCollects] = useState(0);
 
   useEffect(() => {
     const fetchAllPost = async () => {
       try {
-        const res = await axios.get("http://localhost:5789/posts/popular");
+        const res = await axios.get("http://localhost:5789/targets");
         // console.log(res.data)
         setPosts(res.data);
       } catch (err) {
@@ -79,7 +77,6 @@ function ArticlePopular() {
                   setFaid(e.target.id);
                   handleArticleClick();
                 }}
-                //  style={{ backgroundColor: "black" }}
               >
                 <div className="col-8">
                   <p
@@ -187,4 +184,4 @@ function ArticlePopular() {
   );
 }
 
-export default ArticlePopular;
+export default TargetArticle;

@@ -21,8 +21,8 @@ app.get("/", (req, res) => {
 //上傳圖片為path
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    // cb(null, "img");
-    cb(null, "D:/GGIITT/allyoucaneat/project/public/img/forum/post");
+    cb(null, "img");
+    // cb(null, "D:/GGIITT/allyoucaneat/project/public/img/forum/post");
   },
   filename: (req, file, cb) => {
     const fileName =
@@ -142,50 +142,6 @@ app.post("/getFaid", (req, res) => {
   });
 });
 
-// 獲取文章按讚數和使用者按讚狀態
-// app.get("/posts/:faid", (req, res) => {
-//   const faid = req.params.faid;
-//   const sql = "SELECT likeCount, likedByUser FROM ForumArticle WHERE faid = ?";
-//   connToDBHelper.query(sql, [faid], (err, data) => {
-//     if (err) {
-//       console.log(err);
-//       return res.json(err);
-//     } else {
-//       return res.json(data[0]);
-//     }
-//   });
-// });
-
-// 更新使用者對文章的按讚狀態和愛心數
-// app.put("/posts/:faid/like", (req, res) => {
-//   const faid = req.body.faid;
-//   const likedByUser = req.body.likedByUser;
-
-//   // 更新使用者按讚狀態
-//   const updateLikeSql =
-//     "UPDATE ForumArticle SET likedByUser = ? WHERE faid = ?";
-//   connToDBHelper.query(updateLikeSql, [likedByUser, faid], (err, data) => {
-//     if (err) {
-//       console.log("按讚狀態更新失敗"+err);
-//       // return res.status(500).json({ error: "按讚狀態更新失敗" });
-//     }else{
-//       console.log("按讚狀態成功");
-//       return res.json(data);
-
-//     }
-
-//     // 更新愛心數
-//     const updateLikeCountSql =
-//       "UPDATE ForumArticle SET totalLikes = likeCount + likedByUser WHERE faid = ?";
-//     connToDBHelper.query(updateLikeCountSql,  (err, data) => {
-//       if (err) {
-//         console.log(err);
-//         return res.status(500).json({ error: "愛心數更新失敗" });
-//       }
-
-//     });
-//   });
-// });
 
 app.put("/posts/:faid/like", (req, res) => {
   const updateSql = "UPDATE ForumArticle SET likedByUser = ? WHERE faid = ?";
@@ -233,31 +189,6 @@ app.put("/posts/:faid/like", (req, res) => {
   });
 });
 
-// 更新 ForumArticle 表和 LikeCount 表的按讚紀錄
-// app.put("/posts/:faid/like", async (req, res) => {
-//   const likeId = req.body.faid;
-//   const newLikeStatus = req.body.likedByUser === 0 ? 1 : 0;
-
-//   try {
-//     // 更新 ForumArticle 表的 likedByUser 和 totalLikes
-//     const updateForumArticleSql = "UPDATE ForumArticle SET likedByUser = ?, totalLikes = (likes + ?) WHERE faid = ?";
-//     await connToDBHelper.query(updateForumArticleSql, [newLikeStatus, newLikeStatus, likeId]);
-
-//     // 更新 LikeCount 表的 likedByUser 和 totalLikes
-//     const updateLikeCountSql = "UPDATE LikeCount SET likedByUser = ?, totalLikes = ? WHERE faid = ? AND uid = ?";
-//     await connToDBHelper.query(updateLikeCountSql, [newLikeStatus, totalLikes, likeId, userId]);
-
-//     // 回傳更新後的按讚數量
-//     const getTotalLikesSql = "SELECT likeCount, likedByUser, (likes + likedByUser) as totalLikes FROM ForumArticle WHERE faid = ?";
-//     const result = await connToDBHelper.query(getTotalLikesSql, [likeId]);
-//     const totalLikes = result[0].totalLikes || 0;
-
-//     return res.json({ totalLikes });
-//   } catch (err) {
-//     console.log("Error in updating like status: ", err);
-//     return res.status(500).json({ error: "按讚更新失敗" });
-//   }
-// });
 
 // //收藏存入
 // app.put("/posts/:faid/like", (req, res) => {
@@ -465,10 +396,39 @@ app.get("/chats", (req, res) => {
 //新聞
 app.get("/news", (req, res) => {
   const sql =
-    'SELECT `faid`,  `fatitle`, `farticle`, `faimage`, `likeCount`, `fboard`, `fhashtag`, `createTime`, `updateTime` FROM `ForumArticle` WHERE fboard = "新聞"';
+    ' SELECT *FROM `ForumArticle`LEFT JOIN `login` ON `ForumArticle`.`uid` = `login`.`uid`WHERE fboard = "新聞" ORDER BY `createTime` DESC';
+
   connToDBHelper.query(sql, (err, data) => {
     if (err) {
       return "新聞版連接錯誤";
+    } else {
+      return res.json(data);
+    }
+  });
+});
+
+//標的
+app.get("/targets", (req, res) => {
+  const sql =
+    ' SELECT *FROM `ForumArticle`LEFT JOIN `login` ON `ForumArticle`.`uid` = `login`.`uid`WHERE fboard = "標的" ORDER BY `createTime` DESC';
+
+  connToDBHelper.query(sql, (err, data) => {
+    if (err) {
+      return "標的版連接錯誤";
+    } else {
+      return res.json(data);
+    }
+  });
+});
+
+//請益
+app.get("/questions", (req, res) => {
+  const sql =
+    ' SELECT *FROM `ForumArticle`LEFT JOIN `login` ON `ForumArticle`.`uid` = `login`.`uid`WHERE fboard = "請益" ORDER BY `createTime` DESC';
+
+  connToDBHelper.query(sql, (err, data) => {
+    if (err) {
+      return "請益版連接錯誤";
     } else {
       return res.json(data);
     }
