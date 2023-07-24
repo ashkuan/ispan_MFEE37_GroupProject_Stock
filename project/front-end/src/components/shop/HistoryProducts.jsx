@@ -7,12 +7,8 @@ const HistoryProducts = () => {
   const [totalAccount, setTotalAccount] = useState([]);
   const [firstPimg, setFirstPimg] = useState([]);
   const [firstPname, setFirstPname] = useState([]);
-  //   const [indOrder, setIndOrder] = useState("");
-  const uid = sessionStorage.getItem("uid");
-  const name = sessionStorage.getItem("name");
-  const email = sessionStorage.getItem("email");
-  const photopath = sessionStorage.getItem("photopath");
   const navigate = useNavigate();
+  const [currentPage, setCurrentPage] = useState();
 
   const handleHistoryIndOrder = (e) => {
     console.log(e.currentTarget.id);
@@ -78,7 +74,7 @@ const HistoryProducts = () => {
   return (
     <>
       {historyData !== "" && (
-        <div>
+        <>
           <div className="historyTitle">
             <div className="d-flex col-7 justify-content-start ps-5">商品</div>
             <div className="col-1">數量</div>
@@ -133,7 +129,10 @@ const HistoryProducts = () => {
               </>
             );
           })}
-        </div>
+          <div className="moreBtnDiv">
+            <button className="moreBtn">查看更多</button>
+          </div>
+        </>
       )}
     </>
   );

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../styles/historyIndOrder.css";
 import axios from "axios";
 import SideShopBar from "../components/shop/SideShopBar";
@@ -134,9 +134,9 @@ const HistoryIndOrder = () => {
                 <br />
                 <div className="historyTitle mt-5">
                   <div className="col-5 ps-5">地址</div>
-                  <div className="col-3">訂單時間</div>
-                  <div className="col-2">付款方式</div>
-                  <div className="col-2 ms-2">總金額</div>
+                  <div className="col-2">訂單時間</div>
+                  <div className="col-2  mx-5">手機</div>
+                  <div className="col-2">總金額</div>
                 </div>
                 <div className="historyTitle2">
                   <div className="col-5 ps-5">
@@ -144,16 +144,14 @@ const HistoryIndOrder = () => {
                       indOrderData.userDistrict +
                       indOrderData.userAddress}
                   </div>
-                  <div className="col-3">
+                  <div className="col-2">
                     {indOrderData.merchantTradeDate.slice(
                       0,
                       indOrderData.merchantTradeDate.length - 13
                     )}
                   </div>
-                  <div className="col-2">{indOrderData.payment}</div>
-                  <div className="col-2 ms-2">
-                    NT$ {indOrderData.totalAmount}
-                  </div>
+                  <div className="col-2 mx-5">{indOrderData.userPhone}</div>
+                  <div className="col-2">NT$ {indOrderData.totalAmount}</div>
                 </div>
               </div>
               <div className="right">

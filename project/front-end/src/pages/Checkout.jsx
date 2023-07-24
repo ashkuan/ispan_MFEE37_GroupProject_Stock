@@ -26,7 +26,7 @@ const Checkout = () => {
   } = useContext(ShopContext);
   const [address, setAddress] = useState("");
   const navigate = useNavigate();
-  const [toOrderSuccess, setToOrderSuccess] = useState(false);
+  // const [toOrderSuccess, setToOrderSuccess] = useState(false);
   const [coupon, setCoupon] = useState([]);
   const [discount, setDiscount] = useState(0);
   const [couponCorrect, setCouponCorrect] = useState(true);
@@ -92,12 +92,12 @@ const Checkout = () => {
   }
 
   // 訂單完成要跳轉畫面
-  useEffect(() => {
-    if (toOrderSuccess) {
-      setCartItems(getDefaultCart());
-      navigate("/shop/orderSuccess");
-    }
-  }, [toOrderSuccess]);
+  // useEffect(() => {
+  //   if (toOrderSuccess) {
+  //     setCartItems(getDefaultCart());
+  //     navigate("/shop/orderSuccess");
+  //   }
+  // }, [toOrderSuccess]);
 
   // 要把cartItems的paccount不為0的pid抓出來後，拿去找products中的所有資料
   const filteredCartItems = Object.entries(cartItems).filter(
@@ -340,10 +340,10 @@ const Checkout = () => {
               </div>
             )}
             {/* 付款方式 */}
-            <div className="mb-4">
-              <label className="form-label">付款方式</label>
-              {/* 刷卡 */}
-              <div className="form-check">
+            {/* <div className="mb-4">
+              <label className="form-label">付款方式</label> */}
+            {/* 刷卡 */}
+            {/* <div className="form-check">
                 <input
                   className="form-check-input mx-4"
                   type="radio"
@@ -356,9 +356,9 @@ const Checkout = () => {
                 <label className="form-check-label" htmlFor="flexRadioDefault3">
                   Line Pay
                 </label>
-              </div>
-              {/* PayPal */}
-              <div className="form-check my-3">
+              </div> */}
+            {/* PayPal */}
+            {/* <div className="form-check my-3">
                 <input
                   className="form-check-input mx-4"
                   type="radio"
@@ -370,8 +370,8 @@ const Checkout = () => {
                 <label className="form-check-label" htmlFor="flexRadioDefault4">
                   PayPal
                 </label>
-              </div>
-            </div>
+              </div> */}
+            {/* </div> */}
           </div>
           {/* 結帳右邊 */}
           <div id="right" className="my-5">
@@ -477,9 +477,9 @@ const Checkout = () => {
           </div>
         </div>
         <button
-          onClick={() => {
-            setToOrderSuccess(true);
-          }}
+          // onClick={() => {
+          //   setToOrderSuccess(true);
+          // }}
           id="sendOrderBtn"
           type="submit"
           className="btn fs-3 mt-5"

@@ -87,7 +87,6 @@ app.post("/sendOrder", async (req, res) => {
       donationCode,
       uniNumber,
       companyName,
-      ChoosePayment,
       pid,
       coupon,
       totalAmount,
@@ -106,7 +105,6 @@ app.post("/sendOrder", async (req, res) => {
       merchantTradeDate,
       totalAmount.slice(4, totalAmount.length),
       message,
-      ChoosePayment,
       coupon,
       invoiceType,
       invoiceType2,
@@ -118,7 +116,7 @@ app.post("/sendOrder", async (req, res) => {
     ];
 
     const url =
-      "INSERT INTO `MyOrder`(`oid`, `uid`, `userName`, `userPhone`, `userEmail`, `userCountry`, `userDistrict`, `userAddress`, `pid`, `merchantTradeDate`, `totalAmount`, `message`, `payment`, `coupon`, `invoiceType`, `invoiceType2`, `invoiceCode`, `naturalCode`, `donationCode`, `uniNumber`, `companyName`) VALUES  (?)";
+      "INSERT INTO `MyOrder`(`oid`, `uid`, `userName`, `userPhone`, `userEmail`, `userCountry`, `userDistrict`, `userAddress`, `pid`, `merchantTradeDate`, `totalAmount`, `message`, `coupon`, `invoiceType`, `invoiceType2`, `invoiceCode`, `naturalCode`, `donationCode`, `uniNumber`, `companyName`) VALUES  (?)";
     db.query(url, [orderData], function (err, data) {
       if (err) {
         console.log(err);
@@ -137,12 +135,28 @@ app.post("/sendOrder", async (req, res) => {
       }
     });
 
-    const res = await axios.post("/shop/orderSuccess", {
-      oid,
-    });
-    res.json(response);
+    res.redirect(`http://localhost:5173/shop/orderSuccess?oid=${oid}`);
+    // console.log(oid);
   } catch (err) {
     console.log("接收失敗");
+    console.log(err);
+  }
+});
+
+app.post("/shop/orderSuccess/oid", async (req, res) => {
+  const { oid } = req.body;
+  console.log(oid);
+  try {
+    const url = "SELECT * FROM MyOrder WHERE oid=?";
+    db.query(url, [oid], function (err, data) {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(data);
+        return res.json(data);
+      }
+    });
+  } catch (err) {
     console.log(err);
   }
 });
