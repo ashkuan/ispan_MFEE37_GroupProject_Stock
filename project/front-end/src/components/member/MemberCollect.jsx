@@ -6,7 +6,7 @@ import Modal from "react-bootstrap/Modal";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Pagination from "react-bootstrap/Pagination";
-import "../../styles/memberCol.css";
+// import "../../styles/MemberCol.css";
 import "../../styles/member.css";
 import "../../styles/forum_main.css";
 
