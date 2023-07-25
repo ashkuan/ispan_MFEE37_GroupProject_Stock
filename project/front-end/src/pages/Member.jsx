@@ -16,6 +16,7 @@ const Member = () => {
   const email = sessionStorage.getItem("email");
   const photopath = sessionStorage.getItem("photopath");
   const password = sessionStorage.getItem("password");
+  console.log(photopath)
 
   // const [password, setPassword] = useState("");
 

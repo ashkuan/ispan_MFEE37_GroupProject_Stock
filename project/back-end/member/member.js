@@ -158,7 +158,7 @@ app.get("/member", (req, res) => {
     };
     return res.json(user);
   } else {
-    return res.status(401).json("Unauthorized");
+    return res.status(401).json("未授權登入");
   }
 });
 app.get("/", (req, res) => {
@@ -243,6 +243,24 @@ app.get("/member/artical", (req, res) => {
     return res.json(data);
   });
 });
+//編輯我的文章
+app.put("/member/artical/:faid", (req, res) => {
+  const faid = req.params.faid; // 取得要編輯的文章 ID
+  const updatedArticle = req.body; // 取得更新後的文章內容
+
+  // 執行SQL 
+  const sql = "UPDATE ForumArticle SET fatitle = ?, farticle = ? WHERE faid = ?";
+  const values = [updatedArticle.fatitle, updatedArticle.farticle, faid];
+
+  db.query(sql, values, (err, result) => {
+    if (err) {
+      console.log(err);
+      return res.status(500).json("Internal Server Error");
+    }
+    console.log("文章更新成功");
+    return res.json("Success");
+  });
+});
 //刪除我的文章
 app.delete("/member/artical/:faid", (req, res) => {
   const faid = req.params.faid;
@@ -265,21 +283,32 @@ app.put('/member/edit', (req, res) => {
   const newName = req.body.name; // 取得從前端送來的新名稱
   const newEmail = req.body.email;
   const newPwd = req.body.password;
-  const photopath = req.body.photopath;
+  const newPhotoPath = req.body.photopath;
 
   // 執行 SQL 更新語句
   const sql = "UPDATE login SET name = ?, email = ?, password = ?, photopath = ? WHERE uid = ?";
-  const values = [newName,newEmail,newPwd,photopath,uid];
+  const values = [newName, newEmail, newPwd, newPhotoPath, uid];
 
   db.query(sql, values, (err, result) => {
     if (err) {
       console.log(err);
       return res.status(500).json("Internal Server Error");
     }
+
+    // 成功更新資料後，再次取得更新後的會員資料
+    const updatedMemberData = {
+      uid: uid,
+      name: newName,
+      email: newEmail,
+      password: newPwd,
+      photopath: newPhotoPath,
+    };
+
     console.log("會員資料更新成功");
-    return res.json("Success");
+    return res.json(updatedMemberData);
   });
 });
+
 //取得收藏
 app.get("/member/col", (req, res) => {
   if (!req.session.user) {

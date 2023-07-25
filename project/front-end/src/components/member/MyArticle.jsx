@@ -12,15 +12,39 @@ const MyArtical = () => {
   //編輯文章的彈跳
   const [showModal, setShowModal] = useState(false);
   const [inputValue, setInputValue] = useState();
-  const handleEdit = () => {
+  const [currentArticle, setCurrentArticle] = useState(null); // 追加
+  const [articleTitle, setArticleTitle] = useState("");
+  const handleEdit = (article) => {
+    setCurrentArticle(article);
+    setInputValue(article.farticle);
+    setArticleTitle(article.fatitle);
     setShowModal(true);
   };
+
   const handleCloseModal = () => {
     setShowModal(false);
   };
+
   const handleSave = () => {
-    console.log("Input value to be saved:", inputValue);
-    handleCloseModal();
+    console.log("要保存的输入值：", inputValue);
+    // 將編輯後的文章內容傳送到後端
+    const updatedArticle = {
+      ...currentArticle,
+      fatitle: articleTitle,
+      farticle: inputValue,
+    };
+
+    axios
+      .put(`http://localhost:3000/member/artical/${updatedArticle.faid}`, updatedArticle, { withCredentials: true })
+      .then((response) => {
+        console.log("文章已更新到資料庫:", response.data);
+        handleCloseModal();
+        // 重新載入文章列表，以顯示更新後的內容
+        fetchArticles();
+      })
+      .catch((error) => {
+        console.error("更新文章時發生錯誤:", error);
+      });
   };
   useEffect(() => {
     fetchArticles();
@@ -30,10 +54,10 @@ const MyArtical = () => {
     axios
       .get("http://localhost:3000/member/artical", { withCredentials: true })
       .then((response) => {
-        console.log(response.data[1])
+        // console.log(response.data[1]);
         setArticles(response.data);
 
-        setInputValue(response.data.farticle)
+        setInputValue(response.data.farticle);
         // setMessages(res.data.messages);
       })
       .catch((error) => {
@@ -42,7 +66,7 @@ const MyArtical = () => {
   };
 
   // 每頁顯示的文章數量
-  const articlesPerPage = 3;
+  const articlesPerPage = 4;
 
   // 計算總頁數
   const totalPages = Math.ceil(articles.length / articlesPerPage);
@@ -111,7 +135,7 @@ const MyArtical = () => {
               <div className="col-3 px-4 py-2">
                 <div className="d-flex justify-content-center">
                   <button
-                    onClick={handleEdit}
+                    onClick={() => handleEdit(article)}
                     className="deleteBtn text-IronGray-Deep IronGray-Light rounded-2 border-0 px-2 py-1 fz-4 me-4"
                   >
                     編輯
@@ -154,17 +178,23 @@ const MyArtical = () => {
           </div>
         </div>
       </div>
-            {/* 彈跳視窗 */}
-            <Modal show={showModal} onHide={handleCloseModal}>
+      {/* 彈跳視窗 */}
+      <Modal show={showModal} onHide={handleCloseModal}>
         <Modal.Header closeButton>
           <Modal.Title>編輯文章</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+        <h4>文章標題：</h4>
           <input
             type="text"
-            // value={inputValue}
-            defaultValue={inputValue}
-            style={{width:300,height:300}}
+            value={articleTitle}
+            style={{width:"100%"}}
+            onChange={(e) => setArticleTitle(e.target.value)}
+          />
+          <h4>文章內容：</h4>
+        <textarea
+            value={inputValue}
+            style={{ width: "100%", height: 300, resize: "vertical" }}
             onChange={(e) => setInputValue(e.target.value)}
           />
         </Modal.Body>

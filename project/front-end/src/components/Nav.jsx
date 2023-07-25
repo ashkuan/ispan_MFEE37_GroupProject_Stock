@@ -196,7 +196,7 @@ const Navbar = () => {
                   {uid ? (
                     <>
                       <img
-                        src={`public/img/memberimg/member/${photopath}`}
+                        src={`http://localhost:3000/${photopath}`}
                         style={{
                           width: "3.2rem",
                           borderRadius: "50%",
