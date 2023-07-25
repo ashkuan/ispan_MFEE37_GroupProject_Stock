@@ -56,13 +56,13 @@ const ChemChart = () => {
 
         //價錢
         const myIndexPrice = Prices
-        .filter((price) => price !== null) // 過濾掉 null 值
-        .map((price) => {
-          // 取到小數第二位
-          return price.toFixed(2);
-          // console.log(price);
-          // return price;
-        });
+          .filter((price) => price !== null) // 過濾掉 null 值
+          .map((price) => {
+            // 取到小數第二位
+            return price.toFixed(2);
+            // console.log(price);
+            // return price;
+          });
         // console.log(myIndexPrice)
         setIndexPrice(myIndexPrice);
       } catch (error) {
@@ -123,53 +123,52 @@ const ChemChart = () => {
   };
 
   return (
-    <div
-      className="container-fluid mt-3 mb-3 alltag
-    "
-    >
-      <div>
-
-      
-        <div  className={`d-flex flex-column eft-tooltip ${showTooltip ? "visible" : "hidden"}`}>
-          {/* <h2 className="text-center">測試</h2> */}
-          <div className="d-flex  p-2 ">
-            <p className="toolbartitle">近三個月漲幅</p>
-            
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              color="white"
-              width={30}
-              height={30}
-              fill="currentColor"
-              className="bi bi-arrow-up"
-              viewBox="0 0 16 16"
-              style={{ transform: rotate }}
-            >
-              <path
-                fillRule="evenodd"
-                color={color}
-                d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"
-              />
-            </svg>
-            <h4 style={{ color: color }}>{persentage}%</h4>
-          </div>
-          <div className="p-1 etf-dis2">
-          00713元大台灣高息低波是台灣股市上市的ETF，由元大投信管理，專注於高股息低波動的台灣股票投資組合。投資者可透過交易所買賣，追求穩定高息收益，風險相對較低。投資需謹慎，建議尋求專業建議。          </div>
+    <>
+      <div className="mt-7rem">
+        <button
+          className="fs-3 text-center IronGray text-white rounded-3 px-4 py-2 border-0"
+          onClick={toggleTooltip}>
+          00713 元大台灣高息低波
+        </button>
+        <Chart
+          options={options}
+          series={options.series}
+          type="area"
+          width={500}
+          height={300}
+          className="mt-3" />
+      </div>
+      <div className={
+        `w-550 text-IronGray-Deep ${showTooltip ? "visible" : "hidden"}`}>
+        <div className="d-flex align-items-center px-2 mb-2">
+          <p className="fs-4 me-3">
+            <span
+              style={{ color: color }}>
+              ▎
+            </span>
+            近三個月漲幅</p>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            color="white"
+            width={30}
+            height={30}
+            fill="currentColor"
+            className="me-2 bi bi-arrow-up"
+            viewBox="0 0 16 16"
+            style={{ transform: rotate }}>
+            <path fillRule="evenodd" color={color} d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
+          </svg>
+          <span
+            style={{ color: color }}
+            className="fs-3 fw-bold">
+            {persentage} %
+          </span>
         </div>
-        <div className="container-2">
-          <button className="stockname etfbutton" onClick={toggleTooltip} style={{color:"white",fontSize:28,backgroundColor:color}}
-          >00713元大台灣高息低波</button>
-          <Chart
-            options={options}
-            series={options.series}
-            type="area"
-            width={500}
-            height={340}
-            className="mt-4"
-          />
+        <div className="p-2 fs-5">
+          00713元大台灣高息低波是台灣股市上市的ETF，由元大投信管理，專注於高股息低波動的台灣股票投資組合。投資者可透過交易所買賣，追求穩定高息收益，風險相對較低。投資需謹慎，建議尋求專業建議。
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

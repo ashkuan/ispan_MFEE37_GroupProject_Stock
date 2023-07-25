@@ -195,7 +195,7 @@ const MemberInfoEdit = () => {
                 <div
                     className="d-flex ms-16rem">
                     <Link
-                        to="/member/edit">
+                        to="/member">
                         <button
                             className="memberInfoEdit border-0 d-flex justify-content-center align-items-center rounded-3 IronGray-Deep px-4 py-2"
                             onClick={handleUpdateMember}>
