@@ -15,6 +15,8 @@ app.use(
   })
 );
 app.use(express.json());
+//google用的
+// app.use(bodyParser.json())
 
 app.use(
   session({
@@ -27,6 +29,32 @@ app.use(
     },
   })
 );
+
+//這邊收到從Google的請求
+app.post('/api/saveUserData',(req,res)=>{
+  console.log("從GOOGLE前端傳來的資料:", req.body)
+  const name = req.body.name;
+  const email = req.body.email;
+  const password = 'Aa00000000'
+  const photopath = "memo-1690299356836-205341407.png"
+  const sql =
+    "INSERT INTO login (`name`,`email`,`password`,`photopath`) VALUES (?,?,?,?)";
+    const values = [
+      name,
+      email,
+      password,
+      photopath
+    ];
+    db.query(sql, values, (err, data) => {
+      if (err) {
+        console.log(err);
+        return res.json("Error");
+      }
+      // return res.json("註冊成功" ); 
+    });
+    res.json({ success: true, message: 'User data saved successfully' });
+})
+
 
 //將會員大頭照傳到設定好的資料夾
 const storage = multer.diskStorage({
