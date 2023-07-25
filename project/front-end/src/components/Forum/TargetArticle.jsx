@@ -14,6 +14,7 @@ import NotifyShareDropdown from "./NotifyShareDropdown";
 import AddMessage from "./AddMessage";
 import ArticleTitle from "./ArticleTitle";
 import axios from "axios";
+import BackToTop from "./BackToTop";
 
 function TargetArticle() {
   const [showModal, setShowModal] = useState(false);
@@ -57,7 +58,7 @@ function TargetArticle() {
                     alt=""
                   />
                   <span className="me-3 mb-1 fz-3">{post.name}</span>
-                  <span className="me-4 mb-1 fz-3">{post.fboard}</span>
+                  <span className="me-4 mb-1 fz-3 fw-bold">{post.fboard}</span>
                   <span className="me-3 mb-1 fz-4 fw-normal">
                     {" "}
                     {new Date(post.createTime).toLocaleDateString("en-US", {
@@ -180,6 +181,9 @@ function TargetArticle() {
           </div>
         </Modal>
       </div>
+      <a href="#top">
+        <BackToTop />
+      </a>
     </div>
   );
 }

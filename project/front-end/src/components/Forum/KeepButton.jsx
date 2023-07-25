@@ -5,7 +5,10 @@ import axios from "axios";
 const KeepButton = (props) => {
   const [keeps, setKeeps] = useState([]);
   const [collects, setCollects] = useState(null);
-
+  const uid = sessionStorage.getItem("uid");
+  const name = sessionStorage.getItem("name");
+  const email = sessionStorage.getItem("email");
+  const photopath = sessionStorage.getItem("photopath");
   const faid = props.data;
 
   useEffect(() => {
@@ -72,9 +75,9 @@ const KeepButton = (props) => {
         <a className="text-decoration-none ms-2" href="#" key={index}>
           <div onClick={collectClick}>
             {keep.collect === 0 ? (
-              <img src="./img/forum/collect-Article.svg" alt="" />
+              <img src="public/img/forum/collect-Article.svg" alt="" />
             ) : (
-              <img src="./img/forum/collect.svg" alt="" />
+              <img src="public/img/forum/collect.svg" alt="" />
             )}
           </div>
         </a>
