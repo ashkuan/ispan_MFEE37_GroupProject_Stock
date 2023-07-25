@@ -1,6 +1,9 @@
 import { createTransport } from "nodemailer";
 import express from "express";
+import db from "../DB/DBconfig.js";
+import cors from "cors";
 var app = express();
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -21,31 +24,54 @@ const transporter = createTransport({
   },
 });
 
-let code = "";
+let BackendCode = "";
+let BackendEmail = "";
 app.post("/sendEmail", async (req, res) => {
-  code = createSixNum();
+  BackendCode = createSixNum();
   const { email } = req.body;
   console.log(email);
+  BackendEmail = email;
   const mailOptions = {
     from: "allyoucaneat0923@gmail.com",
     to: email,
     subject: "股估績忘記密碼驗證信",
-    text: `你的驗證碼為「${code}」`,
+    text: `你的驗證碼為「${BackendCode}」`,
   };
   transporter.sendMail(mailOptions, (err, data) => {
     if (err) {
       console.log(err);
     } else {
-      console.log("email 寄送成功" + data.response);
+      console.log("email寄送成功");
+      return res.json({ message: "email寄送成功" });
     }
   });
 });
 
 app.post("/sendCode", async (req, res) => {
-  const { certi1, certi2, certi3, certi4, certi5, certi6 } = req.body;
-  if (`${certi1}${certi2}${certi3}${certi4}${certi5}${certi6}` == code) {
-    console.log("密碼匹配成功");
+  const { code } = req.body;
+  if (code == BackendCode) {
+    console.log("驗證碼匹配成功");
+    return res.json({ message: "驗證碼匹配成功" });
+  } else {
+    console.log("驗證碼匹配失敗");
+    return res.json({ message: "驗證碼匹配失敗" });
   }
+});
+
+app.post("/sendNewPassword", async (req, res) => {
+  const { pwd1 } = req.body;
+  console.log(pwd1);
+  const url = "UPDATE `login` SET `password`=? WHERE `email`=?";
+  db.query(url, [pwd1, BackendEmail], function (err, data) {
+    if (err) {
+      console.log(err);
+      console.log("密碼更新失敗");
+      return res.json({ message: "密碼更新失敗" });
+    } else {
+      console.log("密碼更新成功");
+      return res.json({ message: "密碼更新成功" });
+    }
+  });
 });
 
 app.listen(3333, () => {
