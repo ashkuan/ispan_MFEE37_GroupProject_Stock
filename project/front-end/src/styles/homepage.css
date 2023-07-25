@@ -194,12 +194,15 @@
   transform: scale(1.1);
   color: var(--White);
 }
+.container .part2 .btn a {
+  color: var(--White);
+}
 .container .part3 {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: var(--Red);
+  color: var(--IronGray-Deep);
   margin-top: 350px;
 }
 .container .part3 svg {
@@ -218,7 +221,7 @@
   margin-top: 30px;
 }
 .container .part3 .btn {
-  background-color: var(--Red);
+  background-color: var(--IronGray-Deep);
   color: var(--White);
   font-size: 1.7rem;
   border-radius: var(--border-radius-big);
@@ -230,7 +233,9 @@
   transform: scale(1.1);
   color: var(--White);
 }
-
+.container .part3 .btn a {
+  color: var(--White);
+}
 .bg #backtothetop {
   width: 200px;
   position: fixed;
