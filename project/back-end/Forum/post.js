@@ -22,7 +22,7 @@ app.get("/", (req, res) => {
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "img");
-    // cb(null, "D:/GGIITT/allyoucaneat/project/public/img/forum/post");
+    // cb(null, "/STOCKPROJECT/allyoucaneat/project/public/img/forum/post");
   },
   filename: (req, file, cb) => {
     const fileName =
@@ -104,7 +104,7 @@ app.get("/posts/popular", (req, res) => {
   const sql =
     // "SELECT `faid`,  `fatitle`, `farticle`, `faimage`, `likeCount`, `fboard`, `fhashtag`, `createTime`, `updateTime` FROM `ForumArticle` innerjoin  ";
     "SELECT *FROM `ForumArticle`LEFT JOIN `login` ON `ForumArticle`.`uid` = `login`.`uid`ORDER BY `totalLikes` DESC";
-    // "SELECT f.*, l.likes, l.likedByUser, l.totalLikes, login.name FROM ForumArticle f LEFT JOIN LikeCount l ON f.faid = l.faid LEFT JOIN login ON f.uid = login.uid ORDER BY l.totalLikes DESC;";
+  // "SELECT f.*, l.likes, l.likedByUser, l.totalLikes, login.name FROM ForumArticle f LEFT JOIN LikeCount l ON f.faid = l.faid LEFT JOIN login ON f.uid = login.uid ORDER BY l.totalLikes DESC;";
   connToDBHelper.query(sql, [], (err, data) => {
     if (err) {
       return "無法成功顯示發文";
@@ -141,7 +141,6 @@ app.post("/getFaid", (req, res) => {
     }
   });
 });
-
 
 app.put("/posts/:faid/like", (req, res) => {
   const updateSql = "UPDATE ForumArticle SET likedByUser = ? WHERE faid = ?";
@@ -188,7 +187,6 @@ app.put("/posts/:faid/like", (req, res) => {
     });
   });
 });
-
 
 // //收藏存入
 // app.put("/posts/:faid/like", (req, res) => {

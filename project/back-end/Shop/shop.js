@@ -23,12 +23,12 @@ app.get("/shop", function (req, res) {
 
 let myuid = "";
 app.post("/postUid", function (req, res) {
-  console.log(req.body);
+  // console.log(req.body);
   const { uid } = req.body;
-  console.log("這是postUid的uid:" + uid);
+  // console.log("這是postUid的uid:" + uid);
   myuid = uid.toString();
-  console.log(myuid);
-  console.log("This is myUid from /postUid:" + myuid);
+  // console.log(myuid);
+  // console.log("This is myUid from /postUid:" + myuid);
 });
 
 app.get("/cart", function (req, res) {
@@ -44,10 +44,10 @@ app.get("/cart", function (req, res) {
 
 app.post("/cart/edit", function (req, res) {
   if (myuid) {
-    console.log(myuid);
+    // console.log(myuid);
     const items = req.body.data;
-    console.log("這是items");
-    console.log(items);
+    // console.log("這是items");
+    // console.log(items);
     const updateValues = Object.entries(items).map(([pid, paccount]) => [
       myuid + pid,
       pid,
@@ -146,7 +146,7 @@ app.post("/sendOrder", async (req, res) => {
 
 app.post("/shop/orderSuccess/oid", async (req, res) => {
   const { oid } = req.body;
-  console.log(oid);
+  // console.log(oid);
   try {
     const url = "SELECT * FROM MyOrder WHERE oid=?";
     db.query(url, [oid], function (err, data) {
@@ -163,8 +163,8 @@ app.post("/shop/orderSuccess/oid", async (req, res) => {
 });
 
 app.get("/shop/history", async (req, res) => {
-  console.log("這是歷史訂單的uid");
-  console.log(myuid);
+  // console.log("這是歷史訂單的uid");
+  // console.log(myuid);
   const url =
     "SELECT * FROM `MyOrder` WHERE uid = ? ORDER BY merchantTradeDate DESC";
   db.query(url, [myuid], function (err, data) {
@@ -238,7 +238,7 @@ app.get("/coupon", async (req, res) => {
 
 app.post("/shop/historyIndOrder", async (req, res) => {
   const { URLoid } = req.body;
-  console.log(URLoid);
+  // console.log(URLoid);
   const url = "SELECT * FROM MyOrder WHERE oid=?";
   db.query(url, [URLoid], function (err, data) {
     if (err) {
