@@ -22,7 +22,7 @@ app.post("/messages/:faid", (req, res) => {
   if (uid) {
     // 會員登入 出現所有所有留言
     const sql =
-      " SELECT * FROM MessageContent LEFT JOIN login ON MessageContent.uid = login.uid  WHERE faid=?";
+      " SELECT * FROM MessageContent LEFT JOIN login ON MessageContent.uid = login.uid WHERE faid=?";
     connToDBHelper.query(sql, [faid], (err, data) => {
       if (err) {
         console.log(err);
@@ -33,8 +33,8 @@ app.post("/messages/:faid", (req, res) => {
   } else {
     // 如果會員未登入,限制返回前三條留言
     const sql =
-      "SELECT * FROM MessageContent LEFT JOIN login ON MessageContent.uid = login.uid LIMIT 3";
-    connToDBHelper.query(sql, (err, data) => {
+      "SELECT * FROM MessageContent LEFT JOIN login ON MessageContent.uid = login.uid WHERE faid = ? LIMIT 3 ";
+    connToDBHelper.query(sql, [faid], (err, data) => {
       if (err) {
         console.log(err);
         return res.status(500).json({ error: "無法檢視留言" });
