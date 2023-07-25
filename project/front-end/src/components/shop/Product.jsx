@@ -6,7 +6,7 @@ export const Product = () => {
   const { products, totalAmount } = useContext(ShopContext);
   const [pages, setPages] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 16;
+  const itemsPerPage = 9;
   const totalPages = Math.ceil(totalAmount / itemsPerPage);
   const [sortOption, setSortOption] = useState("預設");
   const [searchKeyword, setSearchKeyword] = useState("");
@@ -83,7 +83,7 @@ export const Product = () => {
     <div id="shop">
       <div className="shopSidebar">
         <div className="shopSidebarSearch">
-          <p className="mb-4">
+          <p className="mb-3 shopTitle">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="30"
@@ -105,16 +105,15 @@ export const Product = () => {
           />
           <hr />
         </div>
-        <br />
-        <div className="shopSorting mt-5">
+        <div className="shopSorting mt-2">
           <p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="48"
-              height="48"
+              width="40"
+              height="40"
               fill="currentColor"
-              className="bi bi-filter-left"
-              viewBox="0 0 15 20"
+              className="bi bi-filter-left mb-2"
+              viewBox="0 0 15 15"
             >
               <path d="M2 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
             </svg>
@@ -135,13 +134,8 @@ export const Product = () => {
           </select>
         </div>
         <hr />
-        {/* <div>
-          <p>價格區間</p>
-          <div>Line</div>
-        </div> */}
-        <br />
-        <div className="shopType mt-5">
-          <p>
+        <div className="shopType mt-2">
+          <p className="shopTitle">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="28"
@@ -188,8 +182,8 @@ export const Product = () => {
         <div
           style={{
             textAlign: "left",
-            margin: "0 0 20px 10%",
-            fontSize: "1.7rem",
+            margin: "0 0 20px 0",
+            fontSize: "1.5rem",
             color: "gray",
             fontWeight: "450",
           }}

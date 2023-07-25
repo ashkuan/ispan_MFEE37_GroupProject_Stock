@@ -10,7 +10,7 @@ export const Shop = () => {
   return (
     <>
       <div className="container d-flex flex-column text-center shop-main-content">
-        <p id="title">商城</p>
+        {/* <p id="shopMainTitle">商城</p> */}
         <Product></Product>
       </div>
       <Footer></Footer>
