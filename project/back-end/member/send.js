@@ -54,6 +54,7 @@ app.post("/sendCode", async (req, res) => {
     return res.json({ message: "驗證碼匹配成功" });
   } else {
     console.log("驗證碼匹配失敗");
+    return res.json({ message: "驗證碼匹配失敗" });
   }
 });
 
@@ -65,6 +66,7 @@ app.post("/sendNewPassword", async (req, res) => {
     if (err) {
       console.log(err);
       console.log("密碼更新失敗");
+      return res.json({ message: "密碼更新失敗" });
     } else {
       console.log("密碼更新成功");
       return res.json({ message: "密碼更新成功" });

@@ -3,6 +3,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../styles/forgetPassword.css";
 import "animate.css";
+import { Alert } from "@mui/material";
+import { AlertTitle } from "@mui/material";
 
 const ForgetPassword = () => {
   const navigate = useNavigate();
@@ -11,6 +13,10 @@ const ForgetPassword = () => {
   const [email, setEmail] = useState("");
   const [pwd1, setPwd1] = useState("");
   const [pwd2, setPwd2] = useState("");
+  const [codeAlert, setCodeAlert] = useState(false);
+  const [pwdAlert, setPwdAlert] = useState(false);
+  const [pwdEmptyAlert, setPwdEmptyAlert] = useState(false);
+  const [pwdSuccess, setPwdSuccess] = useState(false);
 
   const handleClose = () => {
     navigate("/loginpage");
@@ -90,6 +96,8 @@ const ForgetPassword = () => {
       console.log(message);
       if (message == "驗證碼匹配成功") {
         setPwdMessage(message);
+      } else {
+        setCodeAlert(true);
       }
     } catch (error) {
       console.log("無法連接到伺服器", error);
@@ -107,7 +115,7 @@ const ForgetPassword = () => {
   };
   const handlePWDSubmit = async (e) => {
     e.preventDefault();
-    if (pwd1 == pwd2) {
+    if (pwd1 == pwd2 && pwd1 !== "") {
       console.log("密碼相符");
       const res = await axios.post("http://localhost:3333/sendNewPassword", {
         pwd1,
@@ -115,15 +123,57 @@ const ForgetPassword = () => {
       console.log(res.data.message);
       const message = res.data.message;
       if (message == "密碼更新成功") {
-        navigate("/loginpage");
+        setPwdSuccess(true);
+        setTimeout(() => {
+          navigate("/loginpage");
+        }, "3000");
       }
+    } else if (pwd1 == "") {
+      setPwdEmptyAlert(true);
+      setPwdAlert(false);
     } else {
-      alert("請輸入相符的密碼");
+      setPwdAlert(true);
+      setPwdEmptyAlert(false);
     }
   };
 
   return (
     <div style={{ marginTop: "120px" }}>
+      {pwdSuccess && (
+        <div
+          className="d-flex justify-content-center"
+          style={{ marginTop: "350px" }}
+        >
+          <Alert
+            className="py-3 "
+            icon={false}
+            style={{
+              backgroundColor: "rgba(40, 178, 79, 0.777)",
+              color: "white",
+              width: "50%",
+              zIndex: "100",
+            }}
+          >
+            <AlertTitle className="d-flex">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="40"
+                height="40"
+                fill="currentColor"
+                class="bi bi-check-circle"
+                viewBox="0 0 16 16"
+              >
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
+              </svg>
+              <span className="fs-3 ms-4">密碼已更新成功</span>
+            </AlertTitle>
+            <span className="fs-5" style={{ marginLeft: "65px" }}>
+              請重新登入 — <strong>跳轉至登入頁面中</strong>
+            </span>
+          </Alert>
+        </div>
+      )}
       <div
         className="emailBox 
            animate__animated animate__fadeInRight
@@ -275,6 +325,14 @@ const ForgetPassword = () => {
                   />
                 </div>
               </div>
+              {codeAlert && (
+                <p
+                  className="text-center fs-4"
+                  style={{ color: "red", fontWeight: "normal" }}
+                >
+                  驗證碼錯誤
+                </p>
+              )}
               <button
                 type="submit"
                 style={{
@@ -289,6 +347,13 @@ const ForgetPassword = () => {
               >
                 提交
               </button>
+              <button
+                className="btn btn-login py-2 mb-4 mt-4"
+                style={{ fontSize: "1.5rem", padding: "8px" }}
+                onClick={handleClose}
+              >
+                取消
+              </button>
             </form>
           </div>
         )}
@@ -300,7 +365,7 @@ const ForgetPassword = () => {
             : "animate__animated animate__fadeOutLeft"
         }`}
       >
-        {pwdMessage !== "" && (
+        {pwdMessage !== "" && !pwdSuccess && (
           <div className="d-flex align-items-center justify-content-center">
             <form
               onSubmit={handlePWDSubmit}
@@ -335,6 +400,22 @@ const ForgetPassword = () => {
                   onChange={handlecheckPWD2}
                   value={pwd2}
                 />
+                {pwdAlert && (
+                  <p
+                    className="text-center fs-4"
+                    style={{ color: "red", fontWeight: "normal" }}
+                  >
+                    密碼不相符
+                  </p>
+                )}
+                {pwdEmptyAlert && (
+                  <p
+                    className="text-center fs-4"
+                    style={{ color: "red", fontWeight: "normal" }}
+                  >
+                    密碼不可為空
+                  </p>
+                )}
                 <div className="d-flex flex-column justify-content-around">
                   <button
                     type="submit"
@@ -342,7 +423,12 @@ const ForgetPassword = () => {
                   >
                     送出
                   </button>
-                  <button className="btn btn-login py-2 mb-4">取消</button>
+                  <button
+                    className="btn btn-login py-2 mb-4"
+                    onClick={handleClose}
+                  >
+                    取消
+                  </button>
                 </div>
               </div>
             </form>
