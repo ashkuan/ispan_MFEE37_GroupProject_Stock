@@ -141,7 +141,7 @@ const Homepage = () => {
           <p className="content">
             觀察市場的整體走勢，可以幫助新手建立基礎知識、提升對整體市場的了解，在逐漸熟悉股市後更可以發展出自己的投資策略。
           </p>
-          <button className="btn">大盤走勢</button>
+          <button className="btn"><a href="/stock-index">大盤走勢</a></button>
         </div>
         <div className="part3" style={{ marginLeft: 600 }}>
           <svg
@@ -159,7 +159,7 @@ const Homepage = () => {
           <p className="content" style={{ width: "50vw" }}>
             投資者們可以交流對股市的看法、分享交易策略、討論最新的市場趨勢和新聞事件，並互相提供建議和觀點。
           </p>
-          <button className="btn">討論區</button>
+          <button className="btn"><a href="/forum">討論區</a></button>
         </div>
         <div className="part2">
           <svg
@@ -175,7 +175,7 @@ const Homepage = () => {
           <p className="content">
             作為新手，重要的是建立基本的投資知識，包括了解股票市場的基本概念、學習如何選擇股票、理解風險管理和制定合理的投資策略。
           </p>
-          <button className="btn">新手上路</button>
+          <button className="btn"><a href="/rookie">新手上路</a></button>
         </div>
         <div className="part3" style={{ marginRight: 600 }}>
           <svg
@@ -190,7 +190,7 @@ const Homepage = () => {
           <p className="content" style={{ width: "50vw" }}>
             在這個商城中，投資者可以找到各種股票投資相關的書籍、教材，幫助大家更好地學習和投資股票市場。
           </p>
-          <button className="btn">購物商城</button>
+          <button className="btn"><a href="/shop">購物商城</a></button>
         </div>
         <div className="part2">
           <svg
@@ -209,7 +209,7 @@ const Homepage = () => {
           <p className="content">
             我們提供會員專屬的收藏區，會員可收藏喜愛的個股，並在討論區與股估績們交流！
           </p>
-          <button className="btn">專屬會員</button>
+          <button className="btn"><a href="/loginpage">專屬會員</a></button>
         </div>
       </div>
       {/* 背景 */}
@@ -1905,7 +1905,107 @@ const Homepage = () => {
             />
           </defs>
         </svg>
-        <svg
+        <svg style={{
+            position: "absolute",
+            top: 1400,
+            zIndex: -1,
+            width: "100%",
+            opacity:"0.6"
+          }} width="1464" height="483" viewBox="0 0 1464 483" fill="none"
+        xmlns="http://www.w3.org/2000/svg">
+        <rect x="73" y="294" width="9" height="12" fill="#77BE6B" />
+        <rect width="9" height="13" transform="matrix(-1 0 0 1 428 329)" fill="#77BE6B" />
+        <rect x="1290" y="82" width="10" height="13" fill="#F24C00" />
+        <rect width="9" height="11" transform="matrix(-1 0 0 1 532 334)" fill="#F24C00" />
+        <rect x="906" y="276" width="9" height="11" fill="#F24C00" />
+        <rect x="108" y="294" width="9" height="12" fill="#F24C00" />
+        <rect x="958" y="329" width="8" height="13" fill="#F24C00" />
+        <rect width="10" height="13" transform="matrix(-1 0 0 1 394 329)" fill="#F24C00" />
+        <rect x="123" y="280" width="10" height="11" fill="#F24C00" />
+        <rect x="972" y="316" width="10" height="11" fill="#F24C00" />
+        <rect width="10" height="11" transform="matrix(-1 0 0 1 378 316)" fill="#F24C00" />
+        <rect x="139" y="264" width="8" height="12" fill="#F24C00" />
+        <rect x="988" y="300" width="9" height="11" fill="#F24C00" />
+        <rect width="9" height="11" transform="matrix(-1 0 0 1 363 300)" fill="#F24C00" />
+        <rect x="1182" y="95" width="8" height="24" fill="#77BE6B" />
+        <rect width="10" height="24" transform="matrix(-1 0 0 1 641 345)" fill="#77BE6B" />
+        <rect x="798" y="288" width="9" height="23" fill="#77BE6B" />
+        <rect x="1122" y="71" width="8" height="24" fill="#F24C00" />
+        <rect width="10" height="24" transform="matrix(-1 0 0 1 701 321)" fill="#F24C00" />
+        <rect width="9" height="23" transform="matrix(-1 0 0 1 1373 58)" fill="#F24C00" />
+        <rect x="739" y="264" width="8" height="23" fill="#F24C00" />
+        <rect x="1410" width="10" height="24" fill="#F24C00" />
+        <rect x="1166" y="83" width="9" height="23" fill="#F24C00" />
+        <rect width="10" height="24" transform="matrix(-1 0 0 1 657 334)" fill="#F24C00" />
+        <rect width="8" height="25" transform="matrix(-1 0 0 1 1328 69)" fill="#F24C00" />
+        <rect x="783" y="276" width="9" height="24" fill="#F24C00" />
+        <rect x="1455" y="12" width="9" height="24" fill="#F24C00" />
+        <rect x="88" y="306" width="10" height="36" fill="#77BE6B" />
+        <rect x="938" y="342" width="9" height="36" fill="#77BE6B" />
+        <rect width="9" height="36" transform="matrix(-1 0 0 1 412 342)" fill="#77BE6B" />
+        <rect x="1305" y="95" width="9" height="35" fill="#77BE6B" />
+        <rect width="10" height="36" transform="matrix(-1 0 0 1 518 345)" fill="#77BE6B" />
+        <rect x="921" y="287" width="9" height="37" fill="#77BE6B" />
+        <rect x="154" y="274" width="9" height="35" fill="#77BE6B" />
+        <rect x="1003" y="309" width="9" height="36" fill="#77BE6B" />
+        <rect width="9" height="36" transform="matrix(-1 0 0 1 347 309)" fill="#77BE6B" />
+        <rect x="1151" y="106" width="9" height="36" fill="#77BE6B" />
+        <rect width="9" height="36" transform="matrix(-1 0 0 1 671 358)" fill="#77BE6B" />
+        <rect width="10" height="35" transform="matrix(-1 0 0 1 1344 94)" fill="#77BE6B" />
+        <rect x="768" y="300" width="9" height="36" fill="#77BE6B" />
+        <rect x="1440" y="36" width="9" height="36" fill="#77BE6B" />
+        <rect x="1136" y="77" width="10" height="36" fill="#77BE6B" />
+        <rect width="9" height="36" transform="matrix(-1 0 0 1 686 327)" fill="#77BE6B" />
+        <rect width="9" height="37" transform="matrix(-1 0 0 1 1357 63)" fill="#77BE6B" />
+        <rect x="753" y="269" width="10" height="37" fill="#77BE6B" />
+        <rect x="1426" y="6" width="8" height="36" fill="#77BE6B" />
+        <rect x="172" y="238" width="9" height="36" fill="#F24C00" />
+        <rect x="1021" y="274" width="9" height="35" fill="#F24C00" />
+        <rect width="9" height="35" transform="matrix(-1 0 0 1 329 274)" fill="#F24C00" />
+        <rect x="239" y="112" width="8" height="35" fill="#F24C00" />
+        <rect x="1087" y="147" width="9" height="37" fill="#F24C00" />
+        <rect width="9" height="37" transform="matrix(-1 0 0 1 263 147)" fill="#F24C00" />
+        <rect x="44" y="294" width="10" height="35" fill="#F24C00" />
+        <rect width="9" height="36" transform="matrix(-1 0 0 1 457 329)" fill="#F24C00" />
+        <rect y="345" width="9" height="49" fill="#77BE6B" />
+        <rect width="10" height="48" transform="matrix(-1 0 0 1 501 381)" fill="#77BE6B" />
+        <rect x="1212" y="83" width="9" height="47" fill="#77BE6B" />
+        <rect width="9" height="47" transform="matrix(-1 0 0 1 610 334)" fill="#77BE6B" />
+        <rect x="828" y="276" width="10" height="48" fill="#77BE6B" />
+        <rect x="59" y="249" width="8" height="49" fill="#F24C00" />
+        <rect width="9" height="49" transform="matrix(-1 0 0 1 443 285)" fill="#F24C00" />
+        <rect x="1260" y="124" width="8" height="49" fill="#F24C00" />
+        <rect width="8" height="47" transform="matrix(-1 0 0 1 563 376)" fill="#F24C00" />
+        <rect x="876" y="318" width="9" height="47" fill="#F24C00" />
+        <rect x="1274" y="95" width="10" height="48" fill="#F24C00" />
+        <rect width="9" height="49" transform="matrix(-1 0 0 1 548 345)" fill="#F24C00" />
+        <rect x="890" y="288" width="10" height="48" fill="#F24C00" />
+        <rect x="16" y="387" width="8" height="60" fill="#77BE6B" />
+        <rect width="9" height="60" transform="matrix(-1 0 0 1 486 423)" fill="#77BE6B" />
+        <rect x="1244" y="148" width="9" height="60" fill="#77BE6B" />
+        <rect width="10" height="59" transform="matrix(-1 0 0 1 579 400)" fill="#77BE6B" />
+        <rect x="861" y="342" width="8" height="60" fill="#77BE6B" />
+        <rect x="31" y="329" width="9" height="60" fill="#F24C00" />
+        <rect width="8" height="60" transform="matrix(-1 0 0 1 470 365)" fill="#F24C00" />
+        <rect x="1196" y="71" width="10" height="59" fill="#F24C00" />
+        <rect width="9" height="60" transform="matrix(-1 0 0 1 626 321)" fill="#F24C00" />
+        <rect x="813" y="264" width="10" height="60" fill="#F24C00" />
+        <rect x="1106" y="95" width="9" height="60" fill="#F24C00" />
+        <rect width="10" height="60" transform="matrix(-1 0 0 1 717 345)" fill="#F24C00" />
+        <rect width="10" height="60" transform="matrix(-1 0 0 1 1388 81)" fill="#F24C00" />
+        <rect x="723" y="287" width="9" height="60" fill="#F24C00" />
+        <rect x="1395" y="24" width="9" height="60" fill="#F24C00" />
+        <rect x="1229" y="113" width="8" height="71" fill="#77BE6B" />
+        <rect width="8" height="73" transform="matrix(-1 0 0 1 593 363)" fill="#77BE6B" />
+        <rect x="845" y="306" width="9" height="72" fill="#77BE6B" />
+        <rect x="216" y="142" width="8" height="83" fill="#77BE6B" />
+        <rect x="1065" y="178" width="8" height="84" fill="#77BE6B" />
+        <rect width="9" height="84" transform="matrix(-1 0 0 1 286 178)" fill="#77BE6B" />
+        <rect x="193" y="129" width="8" height="109" fill="#F24C00" />
+        <rect x="1042" y="165" width="8" height="109" fill="#F24C00" />
+        <rect width="9" height="109" transform="matrix(-1 0 0 1 309 165)" fill="#F24C00" />
+    </svg>
+        {/* <svg
           viewBox="0 0 1440 736"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -1928,7 +2028,7 @@ const Homepage = () => {
             stroke="#57687C"
             strokeWidth={2}
           />
-        </svg>
+        </svg> */}
         <img
           src="/public/img/index/bg.svg"
           style={{

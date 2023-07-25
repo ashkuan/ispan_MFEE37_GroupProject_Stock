@@ -5,6 +5,9 @@ import "../styles/forgetPassword.css";
 import "animate.css";
 import { Alert } from "@mui/material";
 import { AlertTitle } from "@mui/material";
+import { Icon } from "react-icons-kit";
+import { eyeOff } from "react-icons-kit/feather/eyeOff";
+import { eye } from "react-icons-kit/feather/eye";
 
 const ForgetPassword = () => {
   const navigate = useNavigate();
@@ -134,6 +137,29 @@ const ForgetPassword = () => {
     } else {
       setPwdAlert(true);
       setPwdEmptyAlert(false);
+    }
+  };
+
+  const [type, setType] = useState("password");
+  const [icon, setIcon] = useState(eyeOff);
+  const [type2, setType2] = useState("password");
+  const [icon2, setIcon2] = useState(eyeOff);
+  const handleToggle = () => {
+    if (type === "password") {
+      setIcon(eye);
+      setType("text");
+    } else {
+      setIcon(eyeOff);
+      setType("password");
+    }
+  };
+  const handleToggle2 = () => {
+    if (type2 === "password") {
+      setIcon2(eye);
+      setType2("text");
+    } else {
+      setIcon2(eyeOff);
+      setType2("password");
     }
   };
 
@@ -380,13 +406,16 @@ const ForgetPassword = () => {
                   請輸入新密碼
                 </label>
                 <input
-                  type="password"
+                  type={type}
                   name="password"
                   className="member-inp border-1 rounded-2"
                   placeholder="請輸入新密碼"
                   onChange={handlecheckPWD1}
                   value={pwd1}
                 />
+                <span className="" onClick={handleToggle}>
+                  <Icon className="ps-2" icon={icon} size={25} />
+                </span>
                 <label
                   htmlFor="email"
                   className="d-flex justify-content-center m-auto py-3 fs-3"
@@ -394,12 +423,15 @@ const ForgetPassword = () => {
                   請再輸入一次新密碼
                 </label>
                 <input
-                  type="password"
+                  type={type2}
                   className="member-inp border-1 rounded-2"
                   placeholder="請再輸入一次新密碼"
                   onChange={handlecheckPWD2}
                   value={pwd2}
                 />
+                <span className="" onClick={handleToggle2}>
+                  <Icon className="ps-2" icon={icon2} size={25} />
+                </span>
                 {pwdAlert && (
                   <p
                     className="text-center fs-4"

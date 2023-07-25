@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import AddMessage from "./AddMessage";
+import KeepButton from "./KeepButton";
+import EmojiButton from "./EmojiButton";
 
 const SmallHotMessage = (props) => {
   const faid = props.data;
@@ -41,7 +43,7 @@ const SmallHotMessage = (props) => {
   const handleEditMessage = async (fmid, editedContent) => {
     console.log(editedContent);
     try {
-      await axios.post(`http://localhost:5052/messages//edit/${fmid}`, {
+      await axios.post(`http://localhost:5052/messages/edit/${fmid}`, {
         fmContent: editedContent,
       });
 
@@ -68,7 +70,7 @@ const SmallHotMessage = (props) => {
             <div className="d-flex align-items-center">
               <img
                 className="user-img"
-                src={`../img/memberimg/member/${message.photopath}`}
+                src={`http://localhost:3000/${message.photopath}`}
                 alt=""
               />
 
@@ -81,8 +83,7 @@ const SmallHotMessage = (props) => {
               </span>
             </div>
             <div>
-              <img src={message.likeImageUrl} alt="" className="useImg" />
-              <span className="fs-5 fw-normal ms-2">{message.likeCount}</span>
+              <EmojiButton />
             </div>
           </div>
           <div className="fs-5 pt-3 d-flex justify-content-between align-items-center">

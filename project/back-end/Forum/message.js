@@ -128,6 +128,52 @@ app.delete("/messages/delete/:fmid", (req, res) => {
   }
 });
 
+//留言按讚
+app.put("/messages/:faid/like", (req, res) => {
+  const updateSql = "UPDATE ForumArticle SET likedByUser = ? WHERE faid = ?";
+  const values = req.body.likedByUser;
+  const likeId = req.params.faid;
+
+  connToDBHelper.query(updateSql, [values, likeId], (err, data) => {
+    if (err) {
+      console.log(err);
+      return res.status(500).json({ error: "按讚更新失敗" });
+    }
+
+    console.log("按讚更新成功");
+
+    const getTotalLikesSql =
+      "SELECT likeCount, likedByUser, (likeCount + likedByUser) as totalLikes FROM ForumArticle WHERE faid = ?";
+    connToDBHelper.query(getTotalLikesSql, [likeId], (err, result) => {
+      if (err) {
+        console.log(err);
+        return res.status(500).json({ error: "按讚加總更新失敗" });
+      }
+
+      const totalLikes = result[0].totalLikes || 0;
+      console.log("總按讚數: " + totalLikes);
+
+      // Update the totalLikes value in the ForumArticle table
+      const updateTotalLikesSql =
+        "UPDATE ForumArticle SET totalLikes = ? WHERE faid = ?";
+      connToDBHelper.query(
+        updateTotalLikesSql,
+        [totalLikes, likeId],
+        (err, data) => {
+          if (err) {
+            console.log(err);
+            return res.status(500).json({ error: "總按讚數更新失敗" });
+          }
+
+          console.log("總按讚數更新成功");
+
+          return res.json({ totalLikes });
+        }
+      );
+    });
+  });
+});
+
 app.listen(5052, () => {
   console.log("5052 留言開始" + new Date().toLocaleTimeString());
 });
