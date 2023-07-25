@@ -1,10 +1,11 @@
 import express from "express";
 import cors from "cors";
 import db from "../DB/DBconfig.js";
-import axios from "axios";
 
 var app = express();
 app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.get("/", function (req, res) {
   res.send("select連接成功");
@@ -22,7 +23,9 @@ app.get("/shop", function (req, res) {
 
 let myuid = "";
 app.post("/postUid", function (req, res) {
+  console.log(req.body);
   const { uid } = req.body;
+  console.log("這是postUid的uid:" + uid);
   myuid = uid.toString();
   console.log(myuid);
   console.log("This is myUid from /postUid:" + myuid);

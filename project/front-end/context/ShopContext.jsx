@@ -33,9 +33,7 @@ export const ShopContextProvider = (props) => {
   const [stockData, setStockData] = useState({}); // 存個股資訊
   const [totalCartItemAmount, setTotalCartItemAmount] = useState(0); //計算購物車總數
   const uid = sessionStorage.getItem("uid");
-  const name = sessionStorage.getItem("name");
-  const email = sessionStorage.getItem("email");
-  const photopath = sessionStorage.getItem("photopath");
+  console.log(uid);
 
   // 載入所有書籍
   useEffect(() => {
@@ -58,10 +56,10 @@ export const ShopContextProvider = (props) => {
     const postUid = async () => {
       if (uid) {
         try {
+          console.log(uid);
           const res = await axios.post("http://localhost:5566/postUid", {
             uid,
           });
-          console.log(uid);
         } catch (err) {
           console.log(err);
         }

@@ -52,11 +52,11 @@ const Loginpage = () => {
             const email = sessionStorage.getItem("email");
             const password = sessionStorage.getItem("password");
             const photopath = sessionStorage.getItem("photopath");
-            console.log("session的uid:" + uid);
-            console.log("session的name:" + name);
-            console.log("session的email:" + email);
-            console.log("session的password:" + password);
-            console.log("session的photopath:" + photopath);
+            // console.log("session的uid:" + uid);
+            // console.log("session的name:" + name);
+            // console.log("session的email:" + email);
+            // console.log("session的password:" + password);
+            // console.log("session的photopath:" + photopath);
             navigate("/");
           } else {
             alert("此帳號不存在");
