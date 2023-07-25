@@ -68,7 +68,7 @@ const SmallHotMessage = (props) => {
             <div className="d-flex align-items-center">
               <img
                 className="user-img"
-                src={`img/memberimg/member/${message.photopath}`}
+                src={`../img/memberimg/member/${message.photopath}`}
                 alt=""
               />
 
@@ -89,7 +89,7 @@ const SmallHotMessage = (props) => {
             <div className="d-flex">
               <a href="#" className="text-decoration-none text-IronGray mx-2">
                 {message.ranking}
-                B10
+                B1
               </a>
               <div>{message.fmContent}</div>
             </div>

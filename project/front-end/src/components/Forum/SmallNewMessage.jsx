@@ -1,76 +1,126 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import AddMessage from "./AddMessage";
 
-const SmallNewMessage = () => {
-    const newMessages = [
-        {
-            fmid: 4,
-            userImageUrl: './img/forum/user-chicken.svg',
-            userName: '我要成為航海王',
-            time: '3小時前',
-            likeImageUrl: './img/forum/like.svg',
-            likeCount: 32,
-            ranking: 'B25',
-            fmContent: '其實還是要看外資的臉色，還有分檢的臉色尤其是有沒有當日沖在裡面，所以如果真的要投資股市的話很多面向都要考慮包括有無借卷或者是融資在裡面，或許有很多事情都需要多方面的思考才能夠看到答案所以一起努力，鼓勵大戶可以再多觀察大戶的籌碼'
-        },
-        {
-            fmid: 3,
-            userImageUrl: './img/forum/user-chicken.svg',
-            userName: 'Bob Dylan',
-            time: '17小時前',
-            likeImageUrl: './img/forum/like.svg',
-            likeCount: 36,
-            ranking: 'B20',
-            fmContent: '哈哈哈 韭菜gg'
-        },
-        {
-            fmid: 2,
-            userImageUrl: './img/forum/user-chicken.svg',
-            userName: '對帳單嚇死你',
-            time: '6/21',
-            likeImageUrl: './img/forum/like.svg',
-            likeCount: 60,
-            ranking: 'B1',
-            fmContent: '沒單沒真相，會問就是不要玩啦'
-        },
-        {
-            fmid: 1,
-            userImageUrl: './img/forum/user-chicken.svg',
-            userName: '今晚吃韭菜水餃',
-            time: '6/22',
-            likeImageUrl: './img/forum/like.svg',
-            likeCount: 1,
-            ranking: 'B2',
-            fmContent: '我知道你還有辦法弄到錢錢'
-        },
-    ]
+const SmallNewMessage = (props) => {
+  const faid = props.data;
+  const [messages, setMessages] = useState([]);
+  const uid = sessionStorage.getItem("uid");
+  // console.log(uid);
+  const name = sessionStorage.getItem("name");
+  const email = sessionStorage.getItem("email");
+  const photopath = sessionStorage.getItem("photopath");
+  useEffect(() => {
+    fetchMessages();
+  }, [faid]);
 
-    return (
-        <>
-            {
-                newMessages.map((newMessage, i) => (
-                    <div className="border-top border-2 py-4 mt-4" key={i}>
-                        <div className="black-Word d-flex justify-content-between align-items-center">
-                            {/* netizen 網友 & time */}
-                            <div className="d-flex align-items-center">
-                                <img src={newMessage.userImageUrl} alt="" />
-                                <span className="ms-3 text-IronGray-Deep fs-5">{newMessage.userName} · {newMessage.time}</span>
-                            </div>
-                            {/* like */}
-                            <div>
-                                <img src={newMessage.likeImageUrl} alt="" />
-                                <span className="fs-5 fw-normal ms-2">{newMessage.likeCount}</span>
-                            </div>
-                        </div>
-                        {/* message-content */}
-                        <div className="fs-5 pt-3">
-                            <a href="#" className="text-decoration-none text-IronGray mx-2">{newMessage.ranking}</a>
-                            <span className="fs-5 fw-normal">{newMessage.fmContent}</span>
-                        </div>
-                    </div>
-                ))
-            }
-        </>
-    )
-}
+  const fetchMessages = async () => {
+    try {
+      const res = await axios.post(`http://localhost:5052/messages/${faid}`, {
+        uid,
+      });
+      setMessages(res.data);
+      console.log(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleDeleteMessage = async (fmid) => {
+    console.log(fmid + "刪除囉");
+    try {
+      await axios.delete(`http://localhost:5052/messages/delete/${fmid}`);
+      setMessages(messages.filter((messages) => messages.fmid !== fmid));
+      // 刪除留言後重新獲取留言列表
+      fetchMessages();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleEditMessage = async (fmid, editedContent) => {
+    console.log(editedContent);
+    try {
+      await axios.post(`http://localhost:5052/messages//edit/${fmid}`, {
+        fmContent: editedContent,
+      });
+
+      // 編輯留言後重新獲取留言列表
+      fetchMessages();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  // 處理 createTime，只保留 T 之前的部分
+  const formatCreateTime = (createTime) => {
+    if (createTime && typeof createTime === "string") {
+      return createTime.split("T")[0];
+    }
+    return createTime;
+  };
+
+  return (
+    <>
+      {messages.map((message) => (
+        <div className="border-top border-2 py-4 mt-4" key={message.fmid}>
+          <div className="black-Word d-flex justify-content-between align-items-center">
+            <div className="d-flex align-items-center">
+              <img
+                className="user-img"
+                src={`img/memberimg/member/${message.photopath}`}
+                alt=""
+              />
+
+              <span className="ms-3 text-IronGray-Deep fz-3">
+                {message.name} ·{" "}
+                {new Date(message.createTime).toLocaleDateString("en-US", {
+                  month: "2-digit",
+                  day: "2-digit",
+                })}
+              </span>
+            </div>
+            <div>
+              <img src={message.likeImageUrl} alt="" className="useImg" />
+              <span className="fs-5 fw-normal ms-2">{message.likeCount}</span>
+            </div>
+          </div>
+          <div className="fs-5 pt-3 d-flex justify-content-between align-items-center">
+            <div className="d-flex">
+              <a href="#" className="text-decoration-none text-IronGray mx-2">
+                {message.ranking}
+                B1
+              </a>
+              <div>{message.fmContent}</div>
+            </div>
+            <div className="d-flex">
+              {/* 只有留言作者能夠看到編輯和刪除按鈕 */}
+              {uid == message.uid && (
+                <>
+                  {/* 將按鈕放在右側 */}
+                  <button
+                    onClick={() =>
+                      handleEditMessage(message.fmid, message.editedContent)
+                    }
+                    className="rounded-2 border-0 IronGray-Light text-white fz-3 letter-spacing-0_2 px-2 py-1 me-3"
+                  >
+                    編輯
+                  </button>
+                  <button
+                    onClick={() => handleDeleteMessage(message.fmid)}
+                    className="rounded-2 border-0 IronGray-Light text-white fz-3 letter-spacing-0_2 px-2 py-1"
+                  >
+                    刪除
+                  </button>
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+      ))}
+      <AddMessage data={faid} fetchAllMessages={fetchMessages} />
+    </>
+  );
+};
 
 export default SmallNewMessage;
