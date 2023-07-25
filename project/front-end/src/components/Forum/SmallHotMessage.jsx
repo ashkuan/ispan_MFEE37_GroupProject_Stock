@@ -105,7 +105,7 @@ const SmallHotMessage = (props) => {
           </div>
         </div>
       ))}
-      <AddMessage data={faid} fetchAllMessages={fetchMessages} />
+      {/* <AddMessage data={faid} fetchAllMessages={fetchMessages} /> */}
     </>
   );
 };

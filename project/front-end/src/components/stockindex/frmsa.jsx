@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Chart from "react-apexcharts";
 import axios from "axios";
-import "../../styles/twindexprice.css";
 
 const FrmsaPrice = () => {
   const [todayTradingAmount, setTodayTradingAmount] = useState("Loading...");
@@ -34,31 +33,33 @@ const FrmsaPrice = () => {
   }, []);
 
   return (
-    <div className="mt-3 mb-3 containerrow d-flex">
-      <div className="textcard">
-        <div className="textbox text-center">寶島指數</div>
-        <div className="textrow ">
-          今日指數
-          {showValue}
-          &nbsp;&nbsp;&nbsp;
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            color="white"
-            width={30}
-            height={30}
-            fill="currentColor"
-            className="bi bi-arrow-up"
-            viewBox="0 0 16 16"
-            style={{ transform: rotate }}
-          >
-            <path
-              fillRule="evenodd"
-              color={color}
-              d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"
-            />
-          </svg>
-          <span style={{ color: color }}>{updown}</span>
-        </div>
+    <div className="mb-4 text-center drop-shadow-20 bg-Primary-Gray rounded-4 p-4">
+      <div
+        className="fs-3 mb-2 text-IronGray-Deep">
+        今日寶島指數
+      </div>
+      <div
+        className="fs-2 fw-bold text-IronGray-Deep">
+        {showValue}
+      </div>
+      <div
+        className="d-flex justify-content-center align-items-center">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          color="white"
+          width={32}
+          height={32}
+          fill="currentColor"
+          className="me-4 bi bi-arrow-up"
+          viewBox="0 0 16 16"
+          style={{ transform: rotate }}>
+          <path fillRule="evenodd" color={color} d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
+        </svg>
+        <span
+          style={{ color: color }}
+          className="fs-2 fw-bold">
+          {updown}
+        </span>
       </div>
     </div>
   );

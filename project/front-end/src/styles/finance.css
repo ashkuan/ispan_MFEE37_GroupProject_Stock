@@ -1,35 +1,5 @@
-.apexcharts-tooltip {
-  /* width: 250px;  */
-  /* height: 75px;  */
-  font-size: 12px; /* 設定文字大小 */
-}
-.alltag{
-  position: relative;
-  width: 500px;
-  height: 500px;
-  
-}
-.chartscontainer{
-  position: relative;
-}
-.etf-dis{
-  font-size: 1.4rem;
-}
-.etf-dis2{
-  font-size: 1.3rem;
-}
-.eft-tooltip{
-  border:2px solid rgb(134, 133, 133);
-  border-radius: 20px;
-  width: 510px;
-  height: 300px;
-  
-  position: absolute;
-  top:100px;
-  left: 0px;
-  z-index: 10;
-  background-color: white;
-  
+.w-550{
+  width: 550px;
 }
 .toolbartitle{
   font-size: 24px;

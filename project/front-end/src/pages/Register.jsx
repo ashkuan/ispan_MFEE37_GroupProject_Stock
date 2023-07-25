@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import Navbar from "../components/Nav";
-import Sidebar from "../components/Sidebar";
 import { Link, useNavigate } from "react-router-dom";
 import Validation from "../components/registerValidation";
 import axios from "axios";

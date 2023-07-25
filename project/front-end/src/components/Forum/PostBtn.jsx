@@ -265,7 +265,7 @@ function PostBtn() {
                     </label>
                     {/* 顯示選擇的圖片 */}
                     {image && (
-                      <img className="showimg me-2" style={{width:"250px",height:"100px"}} src={image} alt="請上傳圖片" />
+                      <img className="showimg me-2 object-fit-contain" style={{width:"250px"}} src={image} alt="請上傳圖片" />
                     )}
                   </div>
                   {/* 取消鈕 & 發文鈕 */}

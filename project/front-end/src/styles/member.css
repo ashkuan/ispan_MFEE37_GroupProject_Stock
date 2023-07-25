@@ -26,16 +26,20 @@
   object-position: center center;
 }
 
-main .memberInfoEdit {
+#updateImgBtn, 
+.memberInfoEdit {
+  background-color: var(--IronGray-Deep);
   transition: .5s;
 }
 
-main .memberInfoEdit:hover {
+#updateImgBtn:hover, 
+.memberInfoEdit:hover {
   scale: 1.01;
 }
 
-main .memberInfoEdit:active {
-  scale: 0.98;
+#updateImgBtn:active, 
+.memberInfoEdit:active {
+  scale: 1;
 }
 
 .memberInfoEdit span {
@@ -46,17 +50,41 @@ main .memberInfoEdit:active {
   letter-spacing: 0.2rem;
   transition: .5s;
 }
+
 .deleteBtn:hover {
 scale: 1.02;
 }
+
 .deleteBtn:active {
 scale: 0.98;
 }
+
 .savebtn{
   background-color: crimson;
-  
 }
+
 .photoedit{
   width: 100px;
   border: 1px solid black;
+}
+
+.ms-16rem {
+  margin-left: 16rem;
+}
+
+#updateImg {
+  position: relative;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  background-color: var(--IronGray-Light);
+}
+
+#updateImg .showimg {
+  position: absolute;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center center;
 }

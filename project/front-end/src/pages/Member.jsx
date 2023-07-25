@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
-import Sidebar from "../components/Sidebar";
-import MemberInfo from "../components/member/MemberInfo";
+import MemberTitle from "../components/member/MemberTitle";
+import SidebarTabs from "../components/member/SidebarTabs";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Button from 'react-bootstrap/Button';
@@ -40,42 +40,8 @@ const Member = () => {
         <div
           className="vh-83 drop-shadow-20 position-fixed rounded-4 bg-Primary-Gray text-IronGray-Deep mt-3"
           style={{ width: "75rem" }}>
-          {/* 自選背景顏色 */}
-          <div>
-            <Form.Label
-              htmlFor="changeBgColor"
-              className="d-none">
-              更改背景顏色
-            </Form.Label>
-            <Form.Control
-              type="color"
-              id="changeBgColor"
-              defaultValue="#57687C"
-              title="Choose your color"
-              className="border-0 bg-Primary-Gray"
-            />
-          </div>
-          {/* 會員頭像 與 歡迎詞 */}
-          <div className="d-flex">
-            <div className="memberpic d-flex justify-content-center align-items-center">
-              <img src={`http://localhost:3000/${photopath}`} alt="大頭照" />
-            </div>
-            <div className="mt-2">
-              <span className="ps-4 py-3 fs-3 fw-bold text-Pink-Deep">{name}</span>
-              <span className="ps-4 py-3 fs-4">歡迎回來！</span>
-            </div>
-          </div>
-          {/* 側邊欄 與 內容 */}
-          <div className="row vh-100">
-            {/* 側邊欄 */}
-            <aside className="col-3">
-              <Sidebar />
-            </aside>
-            {/* 內容 */}
-            <main className="col-9">
-              <MemberInfo />
-            </main>
-          </div>
+          <MemberTitle />
+          <SidebarTabs />
         </div>
       </div>
     </>

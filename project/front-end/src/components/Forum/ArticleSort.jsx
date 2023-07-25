@@ -11,9 +11,9 @@ import {
 import "../../styles/forum_sidebar.css";
 import "../../styles/forum_main_right.css";
 import "../../styles/forum_individual.css";
-import ArticlePopular from "../Forum/ArticlePopular";
-import ArticleNew from "../Forum/ArticleNew";
-import ArticleFollow from "../Forum/ArticleFollow";
+import ArticlePopular from "./ArticlePopular";
+import ArticleNew from "./ArticleNew";
+import ArticleFollow from "./ArticleFollow";
 import PostBtn from "./PostBtn";
 
 export default function ArticleSort() {
