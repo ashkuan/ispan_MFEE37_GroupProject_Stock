@@ -82,6 +82,7 @@ const TextChart = () => {
     },
     tooltip: {
       style: {},
+      
     },
     series: [
       {
@@ -97,9 +98,10 @@ const TextChart = () => {
         hideOverlappingLabels: true,
         showDuplicates: false,
         trim: false,
+        style:{fontSize:"1rem"}
       },
       categories: indexDate,
-      tickAmount: 10,
+      tickAmount: 7,
     },
 
     fill: {
@@ -113,9 +115,11 @@ const TextChart = () => {
     yaxis: {
       labels: {
         show: true,
+        style:{fontSize:"1rem"}
       },
       min: yrange - yrange * 0.1,
       max: yrange + yrange * 0.4,
+      tickAmount: 5,
     },
     dataLabels: {
       enabled: false,
@@ -134,8 +138,8 @@ const TextChart = () => {
           options={options}
           series={options.series}
           type="area"
-          width={500}
-          height={300}
+          width={550}
+          height={400}
           className="mt-3" />
       </div>
       <div className={
