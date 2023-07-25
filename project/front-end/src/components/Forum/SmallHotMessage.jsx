@@ -16,7 +16,9 @@ const SmallHotMessage = (props) => {
 
   const fetchMessages = async () => {
     try {
-      const res = await axios.get(`http://localhost:5052/messages/${faid}`);
+      const res = await axios.post(`http://localhost:5052/messages/${faid}`, {
+        uid,
+      });
       setMessages(res.data);
       console.log(res.data);
     } catch (err) {
@@ -60,14 +62,22 @@ const SmallHotMessage = (props) => {
 
   return (
     <>
-      <AddMessage data={faid} fetchAllMessages={fetchMessages} />
       {messages.map((message) => (
         <div className="border-top border-2 py-4 mt-4" key={message.fmid}>
           <div className="black-Word d-flex justify-content-between align-items-center">
             <div className="d-flex align-items-center">
-              <img src={photopath} alt="" />
+              <img
+                className="user-img"
+                src={`img/memberimg/member/${message.photopath}`}
+                alt=""
+              />
+
               <span className="ms-3 text-IronGray-Deep fz-3">
-                {message.name} · {formatCreateTime(message.createTime)}
+                {message.name} ·{" "}
+                {new Date(message.createTime).toLocaleDateString("en-US", {
+                  month: "2-digit",
+                  day: "2-digit",
+                })}
               </span>
             </div>
             <div>
@@ -90,13 +100,16 @@ const SmallHotMessage = (props) => {
                   {/* 將按鈕放在右側 */}
                   <button
                     onClick={() =>
-                      handleEditMessage(message.fmid, message.editedContent)}
-                    className="rounded-2 border-0 IronGray-Light text-white fz-3 letter-spacing-0_2 px-2 py-1 me-3">
+                      handleEditMessage(message.fmid, message.editedContent)
+                    }
+                    className="rounded-2 border-0 IronGray-Light text-white fz-3 letter-spacing-0_2 px-2 py-1 me-3"
+                  >
                     編輯
                   </button>
-                  <button onClick={() =>
-                    handleDeleteMessage(message.fmid)}
-                    className="rounded-2 border-0 IronGray-Light text-white fz-3 letter-spacing-0_2 px-2 py-1">
+                  <button
+                    onClick={() => handleDeleteMessage(message.fmid)}
+                    className="rounded-2 border-0 IronGray-Light text-white fz-3 letter-spacing-0_2 px-2 py-1"
+                  >
                     刪除
                   </button>
                 </>
@@ -105,7 +118,7 @@ const SmallHotMessage = (props) => {
           </div>
         </div>
       ))}
-      {/* <AddMessage data={faid} fetchAllMessages={fetchMessages} /> */}
+      <AddMessage data={faid} fetchAllMessages={fetchMessages} />
     </>
   );
 };

@@ -26,13 +26,11 @@ const AddMessage = (props) => {
       setAlertSeverity("error");
       return;
     }
-
     try {
-      await axios.post(`http://localhost:5052/messages/${faid}`, {
+      await axios.post(`http://localhost:5052/insertmessages/${faid}`, {
         uid,
         fmContent,
       });
-
       // 成功提交留言後,重新獲取留言列表以顯示新的留言
       props.fetchAllMessages();
       // 清空留言內容
@@ -55,7 +53,10 @@ const AddMessage = (props) => {
         </Stack>
         <div className="row d-flex align-items-center">
           <div className="col-1">
-            <img src={`http://localhost:3000/${photopath}`} className="useImg" />
+            <img
+              src={`http://localhost:3000/${photopath}`}
+              className="useImg"
+            />
             {/* <p>{name}</p> */}
           </div>
           <div className="col-8 ps-4">
@@ -65,11 +66,17 @@ const AddMessage = (props) => {
               name="fmContent"
               placeholder="留言..."
               value={fmContent}
-              onChange={(e) => setFmContent(e.target.value)}
+              onChange={(e) => {
+                setFmContent(e.target.value);
+                console.log(e.target.value);
+              }}
             />
           </div>
           <div className="col-3 ps-5">
-            <button type="submit" className="border-0 IronGray text-white px-2 rounded-2 py-1 ms-3 fz-3 letter-spacing-0_2">
+            <button
+              type="submit"
+              className="border-0 IronGray text-white px-2 rounded-2 py-1 ms-3 fz-3 letter-spacing-0_2"
+            >
               留言
             </button>
           </div>
