@@ -11,9 +11,6 @@ import Rookie from "./pages/Rookie";
 import Register from "./pages/Register";
 import Member from "./pages/Member";
 import MemberEdit from "./pages/MemberEdit";
-import MemberMail from "./pages/memberMail";
-import MemberArtical from "./pages/MemberArtical";
-import MemberCol from "./pages/MemberCol";
 import Myproduct from "./pages/Myproduct";
 import { ShopContextProvider } from "../context/ShopContext";
 import Chats from "../src/components/Forum/Chats";
@@ -58,9 +55,6 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/member" element={<Member />} />
             <Route path="/member/edit" element={<MemberEdit />} />
-            <Route path="/member/mail" element={<MemberMail />} />
-            <Route path="/member/col" element={<MemberCol />} />
-            <Route path="/member/artical" element={<MemberArtical />} />
             <Route path="/shop">
               <Route index element={<Shop />} />
               <Route path="/shop/myproduct" element={<Myproduct />} />

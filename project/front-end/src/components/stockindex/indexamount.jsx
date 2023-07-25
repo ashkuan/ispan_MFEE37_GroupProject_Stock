@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "../../styles/twindexprice.css";
 
 const IndexAmount = () => {
   const [todayTradingAmount, setTodayTradingAmount] = useState("Loading...");
@@ -28,10 +27,15 @@ const IndexAmount = () => {
   }, []);
 
   return (
-    <div className=" mt-3 mb-3 containerrow d-flex">
-      <div className="textcard">
-        <div className="textbox text-center">加權指數</div>
-        <div className="textrow ">今日加權指數: <span style={{color:color}}>{lastPrice}</span> </div>
+    <div className="mb-4 text-center drop-shadow-20 bg-Primary-Gray rounded-4 p-4">
+      <div
+        className="fs-3 mb-2 text-IronGray-Deep">
+        今日加權指數
+      </div>
+      <div
+        style={{ color: color }}
+        className="fs-2 fw-bold">
+        {lastPrice}
       </div>
     </div>
   );

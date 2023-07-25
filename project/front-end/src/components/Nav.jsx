@@ -97,7 +97,7 @@ const Navbar = () => {
               </li>
               <li className="nav-item">
                 <Link to="/stock-index" className="nav-link pagetitle" href="#">
-                  大盤產業
+                  大盤ETF
                 </Link>
               </li>
               <li className="nav-item">

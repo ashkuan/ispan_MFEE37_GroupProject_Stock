@@ -9,7 +9,7 @@ import axios from "axios";
 const IndStockChart = () => {
   const { stockInfo } = useContext(StockContext);
   const [perRange, setPerRange] = useState("1d");
-  const [range, setRange] = useState("30d");
+  const [range, setRange] = useState("5d");
   const [stockPrice, setStockPrice] = useState([]);
   const [stockDate, setStockDate] = useState([]);
   // console.log(stockInfo.inputValue);
@@ -107,7 +107,7 @@ const IndStockChart = () => {
           <div className="time-zone mb-3 fz-3">
             <button
               onClick={() => {
-                setPerRange("1d"), setRange("7d");
+                setPerRange("1d"), setRange("5d");
               }}
             >
               週
@@ -155,13 +155,13 @@ const IndStockChart = () => {
               10年
             </button> */}
           </div>
-          <div className="drop-shadow-20">
+          <div className="drop-shadow-20 d-flex justify-content-center rounded-3">
             <Chart
               options={options}
               series={options.series}
               type="area"
-              width={600}
-              height={500}
+              width={540}
+              height={450}
             />
           </div>
         </>

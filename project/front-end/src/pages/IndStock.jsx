@@ -87,7 +87,7 @@ const IndStock = () => {
                             </div>
                           </div>
                           <hr />
-                          <div className="d-flex justify-content-between px-3 py-2">
+                          <div className="d-flex justify-content-between px-3">
                             <div className="card-title">最低</div>
                             <div className="card-text">
                               {stockInfo.regularMarketDayLow}
@@ -174,7 +174,7 @@ const IndStock = () => {
                             </div>
                           </div>
                           <hr />
-                          <div className="d-flex justify-content-between px-3 py-2">
+                          <div className="d-flex justify-content-between px-3">
                             <div className="card-title">振幅</div>
                             {/* <div className="card-text">3.14%</div> */}
                             <div className="card-text">
@@ -185,8 +185,8 @@ const IndStock = () => {
                         <hr />
                         <div className="col-12">
                           <div className="d-flex justify-content-between align-items-center px-3">
-                            <div className="card-title pt-2">單日股價範圍</div>
-                            <div className="card-tex pb-2">
+                            <div className="card-title">單日股價範圍</div>
+                            <div className="card-text">
                               {stockInfo.regularMarketDayLow}
                               <span> -</span>
                               {stockInfo.regularMarketDayHigh}

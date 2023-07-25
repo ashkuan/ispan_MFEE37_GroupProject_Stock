@@ -1,18 +1,4 @@
-.part1-text-container{
-  margin-top: -40px;
-}
-.container1{
-  margin-top: 160px;
-  /* display: flex; */
-  /* justify-content: space-between; */
-}
-.container2{
-  justify-content: space-between;
-  margin-left: 60px;
-}
-.inchart{
-  width: 65%;
-}
+/* 
 .part1-text{
   text-align: center;
   font-size: 3rem;
@@ -28,13 +14,6 @@
   margin-bottom: 80px;
   
 }
-.part1-row{
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  margin-left: -0px;
-  margin-top: 40px;
-}
 .first-row{
   margin-top: 20px;
   margin-left: 20px;
@@ -45,7 +24,7 @@
   width: 100px;
   height: 100px;
   background-color: rgba(87, 104, 124, 1);
-  /* width: 25%; */
+  width: 25%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -53,7 +32,7 @@
   margin-right: 20px;
 }
 .part1-card-text{
-  /* padding: 0px; */
+  padding: 0px;
   text-align: center;
   font-size: 2rem;
   color: white;
@@ -76,19 +55,19 @@
 }
 .finance-text-area{
   width: 60%;
-  /* background-color: #77BE6B; */
+  background-color: #77BE6B;
 }
 .finance-canvas{
   width: 40%;
-  /* display: flex;
+  display: flex;
   justify-content: center;
-  align-items: center; */
-  /* background-color: #F17064; */
+  align-items: center;
+  background-color: #F17064;
   margin-top: 100px;
 }
 .industry-title{
   font-size: 2.5rem;
-  /* margin-bottom: 40px; */
+  margin-bottom: 40px;
 }
 .finance-stats{
   display: flex;
@@ -119,4 +98,5 @@
   width: 50%;
   margin-left: -20px;
   
-}
+} 
+*/

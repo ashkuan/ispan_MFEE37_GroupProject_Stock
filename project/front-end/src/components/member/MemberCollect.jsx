@@ -6,73 +6,72 @@ import Modal from "react-bootstrap/Modal";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Pagination from "react-bootstrap/Pagination";
-// import "../../styles/MemberCol.css";
 import "../../styles/member.css";
 import "../../styles/forum_main.css";
 
 const MemberCollect = () => {
-  // const uid = sessionStorage.getItem("uid");
-  const name = sessionStorage.getItem("name");
-  const email = sessionStorage.getItem("email");
-  const photopath = sessionStorage.getItem("photopath");
-  const password = sessionStorage.getItem("password");
-  console.log(photopath);
-  const [messages, setMessages] = useState([]);
-  const [uid, setUid] = useState("");
-  const [mid, setMid] = useState("");
-  const [stats, setStats] = useState("");
-  const [dataFromDB, setDataFromDB] = useState([]);
-  // 顯示彈跳視窗
-  const [modalOpen, setModalOpen] = useState(false);
-  // 顯示我選的message
-  const [selectedMessage, setSelectedMessage] = useState("");
-  // 顯示當前頁數
-  const [currentPage, setCurrentPage] = useState(1);
-  // 每頁顯示幾則內容
-  const [messagesPerPage] = useState(4);
+    // const uid = sessionStorage.getItem("uid");
+    const name = sessionStorage.getItem("name");
+    const email = sessionStorage.getItem("email");
+    const photopath = sessionStorage.getItem("photopath");
+    const password = sessionStorage.getItem("password");
+    console.log(photopath);
+    const [messages, setMessages] = useState([]);
+    const [uid, setUid] = useState("");
+    const [mid, setMid] = useState("");
+    const [stats, setStats] = useState("");
+    const [dataFromDB, setDataFromDB] = useState([]);
+    // 顯示彈跳視窗
+    const [modalOpen, setModalOpen] = useState(false);
+    // 顯示我選的message
+    const [selectedMessage, setSelectedMessage] = useState("");
+    // 顯示當前頁數
+    const [currentPage, setCurrentPage] = useState(1);
+    // 每頁顯示幾則內容
+    const [messagesPerPage] = useState(3);
 
   // 重新渲染組件的函數
   const forceUpdate = () => {
     setCurrentPage(1); // 重新設置當前頁數為第一頁
   };
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:3000/member/col", { withCredentials: true })
-      .then((res) => {
-        console.log(res.data);
-        setDataFromDB(res.data);
-        // setUid(res.data.uid);
-        // setMid(res.data.mid);
-        setMessages(res.data);
-        // // 更新stats的值
-        // setStats(res.data.stats);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+    useEffect(() => {
+      axios
+        .get("http://localhost:3000/member/col", { withCredentials: true })
+        .then((res) => {
+          console.log(res.data);
+          setDataFromDB(res.data);
+          // setUid(res.data.uid);
+          // setMid(res.data.mid);
+          setMessages(res.data);
+          // // 更新stats的值
+          // setStats(res.data.stats);
+        })
+        .catch((err) => console.log(err));
+    }, []);
 
-//取消按鈕功能
-const handleCancel = (faid) => {
-    axios
-      .put("http://localhost:3000/member/col/cancel", { faid })
-      .then((res) => {
-        console.log("資料庫中的collect已成功更新");
+  //取消按鈕功能
+    const handleCancel = (faid) => {
+      axios
+        .put("http://localhost:3000/member/col/cancel", { faid })
+        .then((res) => {
+          console.log("資料庫中的collect已成功更新");
         // 在資料庫更新成功後，重新取得最新的資料
         axios
-          .get("http://localhost:3000/member/col", { withCredentials: true })
-          .then((res) => {
-            console.log(res.data);
-            setDataFromDB(res.data);
-          })
-          .catch((err) => console.log(err));
-      })
-      .catch((err) => console.log(err));
-  };
+        .get("http://localhost:3000/member/col", { withCredentials: true })
+        .then((res) => {
+          console.log(res.data);
+          setDataFromDB(res.data);
+        })
+        .catch((err) => console.log(err));
+    })
+    .catch((err) => console.log(err));
+};
 
-  useEffect(() => {
-    // 在 dataFromDB 改變時觸發重新渲染
-    setCurrentPage(1); // 重新設置當前頁數為第一頁
-  }, [dataFromDB]);
+useEffect(() => {
+  // 在 dataFromDB 改變時觸發重新渲染
+  setCurrentPage(1); // 重新設置當前頁數為第一頁
+}, [dataFromDB]);
 
   // 顯示彈跳視窗內容
   const handleOpenModal = (message) => {
@@ -141,7 +140,7 @@ const handleCancel = (faid) => {
             <div className="col-1 px-4 py-2 text-center">#</div>
             <div className="col-6 px-4 py-2 text-center">文章標題</div>
             <div className="col-3 px-4 py-2 text-center">作者</div>
-            <div className="col-2 px-4 py-2 text-center">#</div>
+            <div className="col-2 px-4 py-2 text-center"></div>
           </div>
           {currentMessages.map((item, index) => (
             <div className="row mb-2 fz-3 bg-white rounded-3" key={item.faid}>

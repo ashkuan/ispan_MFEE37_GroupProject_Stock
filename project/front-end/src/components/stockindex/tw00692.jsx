@@ -56,13 +56,13 @@ const FoodChart = () => {
 
         //價錢
         const myIndexPrice = Prices
-        .filter((price) => price !== null) // 過濾掉 null 值
-        .map((price) => {
-          // 取到小數第二位
-          return price.toFixed(2);
-          // console.log(price);
-          // return price;
-        });
+          .filter((price) => price !== null) // 過濾掉 null 值
+          .map((price) => {
+            // 取到小數第二位
+            return price.toFixed(2);
+            // console.log(price);
+            // return price;
+          });
         // console.log(myIndexPrice)
         setIndexPrice(myIndexPrice);
       } catch (error) {
@@ -124,17 +124,13 @@ const FoodChart = () => {
 
   return (
     <div
-      className="container-fluid mt-3 mb-3 alltag
-    "
-    >
+      className="container-fluid mt-3 mb-3 alltag">
       <div>
-
-      
-        <div  className={`d-flex flex-column eft-tooltip ${showTooltip ? "visible" : "hidden"}`}>
+        <div
+          className={`d-flex flex-column eft-tooltip ${showTooltip ? "visible" : "hidden"}`}>
           {/* <h2 className="text-center">測試</h2> */}
           <div className="d-flex  p-2 ">
             <p className="toolbartitle">近三個月漲幅</p>
-            
             <svg
               xmlns="http://www.w3.org/2000/svg"
               color="white"
@@ -143,30 +139,35 @@ const FoodChart = () => {
               fill="currentColor"
               className="bi bi-arrow-up"
               viewBox="0 0 16 16"
-              style={{ transform: rotate }}
-            >
-              <path
-                fillRule="evenodd"
-                color={color}
-                d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"
-              />
+              style={{ transform: rotate }}>
+              <path fillRule="evenodd" color={color} d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
             </svg>
-            <h4 style={{ color: color }}>{persentage}%</h4>
+            <h4
+              style={{ color: color }}>
+              {persentage}%
+            </h4>
           </div>
           <div className="p-1 etf-dis2">
-          00692富邦公司治理是台灣股市上市的股票基金，由富邦投信管理，投資於公司治理良好的企業。著重高品質股票，長期穩健投資。投資者可透過交易所買賣，受益於公司治理優良企業的成長與價值。需留意市場波動，建議尋求專業建議。          </div>
+            00692富邦公司治理是台灣股市上市的股票基金，由富邦投信管理，投資於公司治理良好的企業。著重高品質股票，長期穩健投資。投資者可透過交易所買賣，受益於公司治理優良企業的成長與價值。需留意市場波動，建議尋求專業建議。          </div>
         </div>
         <div className="container-2">
-          <button className="stockname etfbutton" onClick={toggleTooltip} style={{color:"white",fontSize:28,backgroundColor:color}}
-          >00692富邦公司治理</button>
+          <button
+            className="stockname etfbutton"
+            onClick={toggleTooltip}
+            style={{
+              color: "white",
+              fontSize: 28,
+              backgroundColor: color
+            }}>
+            00692富邦公司治理
+          </button>
           <Chart
             options={options}
             series={options.series}
             type="area"
-            width={500}
-            height={340}
-            className="mt-4"
-          />
+            width={550}
+            height={400}
+            className="mt-4" />
         </div>
       </div>
     </div>

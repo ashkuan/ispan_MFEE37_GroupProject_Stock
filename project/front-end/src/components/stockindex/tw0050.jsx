@@ -4,6 +4,8 @@ import Chart from "react-apexcharts";
 import "../../styles/finance.css";
 
 const FinanceChart = () => {
+  const [perRange, setPerRange] = useState("1d");
+  const [range, setRange] = useState("5d");
   const [indexPrice, setIndexPrice] = useState([]);
   const [indexDate, setIndexDate] = useState([]);
   const [color, setColor] = useState();
@@ -15,6 +17,12 @@ const FinanceChart = () => {
     // 更新showContainer1狀態，切換要顯示的零件
     setShowContainer1(!showContainer1);
   };
+
+  const handleButtonClick = (newPerRange, newRange) => {
+    setPerRange(newPerRange);
+    setRange(newRange);
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -53,28 +61,27 @@ const FinanceChart = () => {
 
         //價錢
         const myIndexPrice = Prices
-        .filter((price) => price !== null) // 過濾掉 null 值
-        .map((price) => {
-          // 取到小數第二位
-          return price.toFixed(2);
-          // console.log(price);
-          // return price;
-        });
+          .filter((price) => price !== null) // 過濾掉 null 值
+          .map((price) => {
+            // 取到小數第二位
+            return price.toFixed(2);
+            // console.log(price);
+            // return price;
+          });
         // console.log(myIndexPrice)
         setIndexPrice(myIndexPrice);
       } catch (error) {
         console.log(error);
       }
     };
-
     fetchData();
-  }, []);
+  }, [perRange, range]);
 
   const options = {
     chart: {
       type: "area",
       toolbar: {
-        show: true,
+        show: false,
       },
     },
     tooltip: {
@@ -94,6 +101,7 @@ const FinanceChart = () => {
         hideOverlappingLabels: true,
         showDuplicates: false,
         trim: false,
+        style: { fontSize: "1rem" },
       },
       categories: indexDate,
       tickAmount: 10,
@@ -105,11 +113,12 @@ const FinanceChart = () => {
     stroke: {
       curve: "smooth",
       colors: color,
-      width: 5,
+      width: 2,
     },
     yaxis: {
       labels: {
         show: true,
+        style: { fontSize: "1rem" },
       },
       min: yrange - yrange * 0.1,
       max: yrange + yrange * 0.2,
@@ -121,50 +130,85 @@ const FinanceChart = () => {
 
   return (
     <div
-      className="container-fluid mt-3 mb-3
-    d-flex "
-    >
-      <div className="container-1 d-flex flex-column chartscontainer">
-        <h2 className="text-center">台灣元大50</h2>
-        <div className="d-flex justify-content-center  ">
-          <h3>近三個月漲幅</h3>
+      className="row mt-5">
+      <div className="col">
+        <span className="me-4 mb-3 fs-3 text-center IronGray text-white rounded-3 px-4 py-2">
+          0050 元大台灣 50
+        </span>
+        <div className="d-flex justify-content-end align-items-center my-3 px-3">
+          <div className="fs-4 text-IronGray-Deep">
+            近三個月漲幅
+          </div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            color= "white"
+            color="white"
             width={30}
             height={30}
             fill="currentColor"
-            className="bi bi-arrow-up"
+            className="mx-2 bi bi-arrow-up"
             viewBox="0 0 16 16"
-            style={{ transform: rotate }} 
-            
-          >
-            <path
-              fillRule="evenodd"
-              color= {color}
-              d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"
-            />
+            style={{ transform: rotate }}>
+            <path fillRule="evenodd" color={color} d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
           </svg>
-          <h3 style={{color:color}}>{persentage}%</h3>
+          <div
+            style={{ color: color }}
+            className="fs-3 fw-bold">
+            {persentage} %
+          </div>
         </div>
-        <div className="etf-dis" >
+        <div
+          className="fs-4 text-IronGray-Deep me-3 px-5 py-4 drop-shadow-20 rounded-3">
           台灣0050是一個追踪台灣股市表現的指數基金。它包含台灣股市中具有高市值和流動性的50家
           大型公司股票。這個指數基金在金融市場中扮演關鍵角色，讓投資者能夠分散風險並參與台灣
           經濟的成長。台灣0050的表現受到經濟景氣、政策變化、全球市場情勢等因素的影響，對台灣
           股市的穩定性和漲跌起伏具有重要影響。投資者通常將台灣0050視為追求穩健增長的一個重要選擇。
         </div>
       </div>
-      <div className="container-2">
-        
-        
-        <Chart
-          options={options}
-          series={options.series}
-          type="area"
-          width={550}
-          height={340}
-          className="mt-4"
-        />
+      <div className="col position-relative d-flex justify-content-center">
+        <div className="position-absolute bottom-0">
+          <div className="time-zone mb-3 fz-3">
+            <button
+              className=""
+              onClick={() => handleButtonClick("1d", "5d")}>
+              週
+            </button>
+            <button
+              className=""
+              onClick={() => handleButtonClick("1d", "30d")}>
+              月
+            </button>
+            <button
+              className=""
+              onClick={() => handleButtonClick("1d", "3mo")}>
+              季
+            </button>
+            <button
+              className=""
+              onClick={() => handleButtonClick("1d", "6mo")}>
+              半年
+            </button>
+            <button
+              className=""
+              onClick={() => handleButtonClick("1d", "1y")}>
+              1年
+            </button>
+            <button
+              className=""
+              onClick={() => handleButtonClick("1d", "5y")}>
+              5年
+            </button>
+          </div>
+          <div className="drop-shadow-20 d-flex justify-content-center rounded-3">
+            <Chart
+              options={options}
+              series={options.series}
+              type="area"
+              width={560}
+              height={395}
+              className=""
+            />
+          </div>
+        </div>
       </div>
     </div>
   );

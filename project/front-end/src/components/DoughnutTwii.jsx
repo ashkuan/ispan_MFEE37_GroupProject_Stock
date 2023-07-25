@@ -1,6 +1,5 @@
 import React from 'react';
 import Chart from 'react-apexcharts';
-import "../styles/twindexprice.css"
 const ApexChart = (lineChart) => {
 
   // console.log('圓餅圖渲染',lineChart)
