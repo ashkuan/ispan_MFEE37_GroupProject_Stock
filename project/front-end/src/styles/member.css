@@ -88,3 +88,16 @@ scale: 0.98;
   object-fit: cover;
   object-position: center center;
 }
+.modalop{
+  height: 500px;
+ 
+}
+.modlatext{
+  padding: 10px 30px;
+  width: 100%;
+  height: 600px;
+  /* position: relative; */
+  /* overflow: hidden; */
+  /* overflow:scroll; */
+  overflow-y: auto;
+}

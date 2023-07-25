@@ -10,96 +10,96 @@ import "../../styles/member.css";
 import "../../styles/forum_main.css";
 
 const MemberCollect = () => {
-    // const uid = sessionStorage.getItem("uid");
-    const name = sessionStorage.getItem("name");
-    const email = sessionStorage.getItem("email");
-    const photopath = sessionStorage.getItem("photopath");
-    const password = sessionStorage.getItem("password");
-    console.log(photopath);
-    const [messages, setMessages] = useState([]);
-    const [uid, setUid] = useState("");
-    const [mid, setMid] = useState("");
-    const [stats, setStats] = useState("");
-    const [dataFromDB, setDataFromDB] = useState([]);
-    // 顯示彈跳視窗
-    const [modalOpen, setModalOpen] = useState(false);
-    // 顯示我選的message
-    const [selectedMessage, setSelectedMessage] = useState("");
-    // 顯示當前頁數
-    const [currentPage, setCurrentPage] = useState(1);
-    // 每頁顯示幾則內容
-    const [messagesPerPage] = useState(3);
+  // const uid = sessionStorage.getItem("uid");
+  const name = sessionStorage.getItem("name");
+  const email = sessionStorage.getItem("email");
+  const photopath = sessionStorage.getItem("photopath");
+  const password = sessionStorage.getItem("password");
+  console.log(photopath);
+  const [messages, setMessages] = useState([]);
+  const [uid, setUid] = useState("");
+  const [mid, setMid] = useState("");
+  const [stats, setStats] = useState("");
+  const [dataFromDB, setDataFromDB] = useState([]);
+  // 顯示彈跳視窗
+  const [modalOpen, setModalOpen] = useState(false);
+  // 顯示我選的message
+  const [selectedMessage, setSelectedMessage] = useState("");
+  // 顯示當前頁數
+  const [currentPage, setCurrentPage] = useState(1);
+  // 每頁顯示幾則內容
+  const [messagesPerPage] = useState(3);
 
   // 重新渲染組件的函數
   const forceUpdate = () => {
     setCurrentPage(1); // 重新設置當前頁數為第一頁
   };
 
-    useEffect(() => {
-      axios
-        .get("http://localhost:3000/member/col", { withCredentials: true })
-        .then((res) => {
-          console.log(res.data);
-          setDataFromDB(res.data);
-          // setUid(res.data.uid);
-          // setMid(res.data.mid);
-          setMessages(res.data);
-          // // 更新stats的值
-          // setStats(res.data.stats);
-        })
-        .catch((err) => console.log(err));
-    }, []);
+  useEffect(() => {
+    axios
+      .get("http://localhost:3000/member/col", { withCredentials: true })
+      .then((res) => {
+        console.log(res.data);
+        setDataFromDB(res.data);
+        // setUid(res.data.uid);
+        // setMid(res.data.mid);
+        setMessages(res.data);
+        // // 更新stats的值
+        // setStats(res.data.stats);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   //取消按鈕功能
-    const handleCancel = (faid) => {
-      axios
-        .put("http://localhost:3000/member/col/cancel", { faid })
-        .then((res) => {
-          console.log("資料庫中的collect已成功更新");
+  const handleCancel = (faid) => {
+    axios
+      .put("http://localhost:3000/member/col/cancel", { faid })
+      .then((res) => {
+        console.log("資料庫中的collect已成功更新");
         // 在資料庫更新成功後，重新取得最新的資料
         axios
-        .get("http://localhost:3000/member/col", { withCredentials: true })
-        .then((res) => {
-          console.log(res.data);
-          setDataFromDB(res.data);
-        })
-        .catch((err) => console.log(err));
-    })
-    .catch((err) => console.log(err));
-};
+          .get("http://localhost:3000/member/col", { withCredentials: true })
+          .then((res) => {
+            console.log(res.data);
+            setDataFromDB(res.data);
+          })
+          .catch((err) => console.log(err));
+      })
+      .catch((err) => console.log(err));
+  };
 
-useEffect(() => {
-  // 在 dataFromDB 改變時觸發重新渲染
-  setCurrentPage(1); // 重新設置當前頁數為第一頁
-}, [dataFromDB]);
+  useEffect(() => {
+    // 在 dataFromDB 改變時觸發重新渲染
+    setCurrentPage(1); // 重新設置當前頁數為第一頁
+  }, [dataFromDB]);
 
   // 顯示彈跳視窗內容
-  const handleOpenModal = (message) => {
-    setSelectedMessage(message);
+  const handleOpenModal = (item) => {
+    setSelectedMessage(item);
     setModalOpen(true);
 
-    if (message.stats === null) {
-      const updatedStats = 1;
+    // if (message.stats === null) {
+    //   const updatedStats = 1;
 
-      axios
-        .put("http://localhost:3000/member/mail/updateStats", {
-          mid: message.mid,
-        })
-        .then((res) => {
-          console.log("資料庫中的stats已成功更新");
-          // 更新前端的stats狀態值
-          setMessages((prevMessages) =>
-            prevMessages.map((prevMessage) =>
-              prevMessage.mid === message.mid
-                ? { ...prevMessage, stats: 1 }
-                : prevMessage
-            )
-          );
-        })
-        .catch((err) => console.log(err));
-    } else {
-      console.log("message.stats不是null");
-    }
+    //   axios
+    //     .put("http://localhost:3000/member/mail/updateStats", {
+    //       mid: message.mid,
+    //     })
+    //     .then((res) => {
+    //       console.log("資料庫中的stats已成功更新");
+    //       // 更新前端的stats狀態值
+    //       setMessages((prevMessages) =>
+    //         prevMessages.map((prevMessage) =>
+    //           prevMessage.mid === message.mid
+    //             ? { ...prevMessage, stats: 1 }
+    //             : prevMessage
+    //         )
+    //       );
+    //     })
+    //     .catch((err) => console.log(err));
+    // } else {
+    //   console.log("message.stats不是null");
+    // }
   };
 
   // 關閉彈跳視窗
@@ -145,9 +145,17 @@ useEffect(() => {
           {currentMessages.map((item, index) => (
             <div className="row mb-2 fz-3 bg-white rounded-3" key={item.faid}>
               <div className="col-1 px-4 py-2 text-center">{index + 1}</div>
-              <div className="col-6 px-4 py-2 text-truncate">
-                {item.fatitle}
-              </div>
+              <Col sm={6} className="p-3">
+                <a
+                  key={index}
+                  href="#"
+                  onClick={() => handleOpenModal(item)}
+                  className={`line-cut-2 border-0 text-IronGray-Deep text-IronGray-Light 
+                  }`}
+                >
+                  {item.fatitle}
+                </a>
+              </Col>
               <div className="col-3 px-4 py-2 text-center text-truncate">
                 {item.name}
               </div>
@@ -161,6 +169,28 @@ useEffect(() => {
               </div>
             </div>
           ))}
+          {/* 彈跳視窗 Modal */}
+          <Modal
+            show={modalOpen}
+            onHide={handleCloseModal}
+            backdrop="static"
+            keyboard={false}
+            className="top-20 fs-4 text-IronGray-Deep modalop"
+          >
+            <Modal.Body>
+              <h3 className="px-4 py-3">{selectedMessage.fatitle}</h3>
+              {/* 在這裡顯示內文 */}
+              <p className="px-4 py-3 modlatext">{selectedMessage.farticle}</p>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button
+                onClick={handleCloseModal}
+                className="letter-spacing-0_2 fs-5 px-3 py-2"
+              >
+                關閉
+              </Button>
+            </Modal.Footer>
+          </Modal>
 
           {/* 切換頁面 */}
           <div className="mt-3 d-flex justify-content-center">

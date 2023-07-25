@@ -144,7 +144,7 @@ const MemberNotice = () => {
                     onHide={handleCloseModal}
                     backdrop="static"
                     keyboard={false}
-                    className="top-20 fs-4 text-IronGray-Deep"
+                    className="top-20 fs-4 text-IronGray-Deep "
                 >
                     <Modal.Body>
                         <p className="px-4 py-3">
