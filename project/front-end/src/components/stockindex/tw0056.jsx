@@ -128,7 +128,7 @@ const TextChart = () => {
         <button
           className="fs-3 text-center IronGray text-white rounded-3 px-4 py-2 border-0"
           onClick={toggleTooltip}>
-          0056元大高股息
+          0056 元大高股息
         </button>
         <Chart
           options={options}
@@ -139,7 +139,7 @@ const TextChart = () => {
           className="mt-3" />
       </div>
       <div className={
-        `w-550 text-IronGray-Deep ${showTooltip ? "visible" : "hidden"}`}>
+        `w-600 text-IronGray-Deep ${showTooltip ? "visible" : "hidden"}`}>
         <div className="d-flex align-items-center px-2 mb-2">
           <p className="fs-4 me-3">
             <span

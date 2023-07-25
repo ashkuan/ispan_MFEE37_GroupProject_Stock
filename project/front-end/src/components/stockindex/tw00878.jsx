@@ -56,13 +56,13 @@ const SemiChart = () => {
 
         //價錢
         const myIndexPrice = Prices
-        .filter((price) => price !== null) // 過濾掉 null 值
-        .map((price) => {
-          // 取到小數第二位
-          return price.toFixed(2);
-          // console.log(price);
-          // return price;
-        });
+          .filter((price) => price !== null) // 過濾掉 null 值
+          .map((price) => {
+            // 取到小數第二位
+            return price.toFixed(2);
+            // console.log(price);
+            // return price;
+          });
         // console.log(myIndexPrice)
         setIndexPrice(myIndexPrice);
       } catch (error) {
@@ -123,54 +123,52 @@ const SemiChart = () => {
   };
 
   return (
-    <div
-      className="container-fluid mt-3 mb-3 alltag
-    "
-    >
-      <div>
-
-      
-        <div  className={`d-flex flex-column eft-tooltip ${showTooltip ? "visible" : "hidden"}`}>
-          {/* <h2 className="text-center">測試</h2> */}
-          <div className="d-flex  p-2 ">
-            <p className="toolbartitle">近三個月漲幅</p>
-            
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              color="white"
-              width={30}
-              height={30}
-              fill="currentColor"
-              className="bi bi-arrow-up"
-              viewBox="0 0 16 16"
-              style={{ transform: rotate }}
-            >
-              <path
-                fillRule="evenodd"
-                color={color}
-                d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"
-              />
-            </svg>
-            <h4 style={{ color: color }}>{persentage}%</h4>
-          </div>
-          <div className="p-1 etf-dis2">
-
-          00878國泰永續高股息是一支台灣股市上市的股票基金，由國泰證券管理，該基金的主要投資策略是追踪台灣高股息公司，並著重於穩健的盈利能力和高股息支付。投資者可以透過交易所買賣這支基金，享受穩定的長期收益和股息分紅，但投資也涉及風險，建議在進行投資前諮詢專業的金融顧問。          </div>
+    <>
+      <div className="">
+        <button
+          className="fs-3 text-center IronGray text-white rounded-3 px-4 py-2 border-0"
+          onClick={toggleTooltip}>
+          00878 國泰永續高股息
+        </button>
+        <Chart
+          options={options}
+          series={options.series}
+          type="area"
+          width={500}
+          height={300}
+          className="mt-3" />
+      </div>
+      <div className={
+        `w-600 text-IronGray-Deep ${showTooltip ? "visible" : "hidden"}`}>
+        <div className="d-flex align-items-center px-2 mb-2">
+          <p className="fs-4 me-3">
+            <span
+              style={{ color: color }}>
+              ▎
+            </span>
+            近三個月漲幅</p>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            color="white"
+            width={30}
+            height={30}
+            fill="currentColor"
+            className="me-2 bi bi-arrow-up"
+            viewBox="0 0 16 16"
+            style={{ transform: rotate }}>
+            <path fillRule="evenodd" color={color} d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
+          </svg>
+          <span
+            style={{ color: color }}
+            className="fs-3 fw-bold">
+            {persentage} %
+          </span>
         </div>
-        <div className="container-2">
-          <button className="stockname etfbutton" onClick={toggleTooltip} style={{color:"white",fontSize:28,backgroundColor:color}}
-          >00878國泰永續高股息</button>
-          <Chart
-            options={options}
-            series={options.series}
-            type="area"
-            width={500}
-            height={340}
-            className="mt-4"
-          />
+        <div className="p-2 fs-5">
+          00878國泰永續高股息是一支台灣股市上市的股票基金，由國泰證券管理，該基金的主要投資策略是追踪台灣高股息公司，並著重於穩健的盈利能力和高股息支付。投資者可以透過交易所買賣這支基金，享受穩定的長期收益和股息分紅，但投資也涉及風險，建議在進行投資前諮詢專業的金融顧問。
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

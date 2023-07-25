@@ -1,6 +1,11 @@
-.w-550{
-  width: 550px;
+.w-600 {
+  width: 600px;
 }
+
+.mt-7rem {
+  margin-top: 7rem;
+}
+
 .toolbartitle{
   font-size: 24px;
 }
