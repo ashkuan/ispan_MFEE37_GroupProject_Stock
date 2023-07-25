@@ -15,11 +15,6 @@ const HistoryProducts = () => {
     navigate(`/shop/historyIndOrder/?indOrder=${e.currentTarget.id}`);
   };
 
-    const moreOrder =async()=>{
-      console.log("目前是"+currentPage)
-    }
-
-
   // 載入歷史訂單
   useEffect(() => {
     let total = [];
@@ -134,9 +129,6 @@ const HistoryProducts = () => {
               </>
             );
           })}
-          <div className="moreBtnDiv">
-            <button className="moreBtn" onClick={moreOrder}>查看更多</button>
-          </div>
         </>
       )}
     </>

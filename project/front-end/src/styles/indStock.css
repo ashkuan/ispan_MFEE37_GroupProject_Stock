@@ -18,7 +18,7 @@
 }
 
 .container {
-  margin-top: 9rem;
+  margin-top: 180px;
 }
 .container .name {
   margin-bottom: 80px;
@@ -36,7 +36,7 @@
   color: var(--black-Word);
 }
 .container .time-zone {
-  margin-top: 1rem;
+  margin-top: 30px;
   display: flex;
   justify-content: end;
   margin-right: 20px;
@@ -49,18 +49,17 @@
   display: inline;
   font-size: 1.3rem;
   color: var(--black-Word);
-  transition: .5s;
 }
 .container .time-zone button:hover {
-  transform: scale(1.03);
+  transform: scale(1.1);
 }
 .container .time-zone button:active {
-  transform: scale(0.98);
+  transform: scale(0.9);
 }
 
 #indStocksIndex {
-  background-color: var(--bg-Primary-Gray);
-  padding: 2.5rem 0;
+  background-color: var(--bg-Second-Gray);
+  padding: 40px 0;
   border-radius: var(--border-radius-big);
 }
 #indStocksIndex .row {

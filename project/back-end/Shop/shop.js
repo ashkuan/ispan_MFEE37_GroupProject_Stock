@@ -165,7 +165,8 @@ app.post("/shop/orderSuccess/oid", async (req, res) => {
 app.get("/shop/history", async (req, res) => {
   console.log("這是歷史訂單的uid");
   console.log(myuid);
-  const url = "SELECT * FROM `MyOrder` WHERE uid = ?";
+  const url =
+    "SELECT * FROM `MyOrder` WHERE uid = ? ORDER BY merchantTradeDate DESC";
   db.query(url, [myuid], function (err, data) {
     if (err) {
       return "查無資料";
