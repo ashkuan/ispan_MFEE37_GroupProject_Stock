@@ -131,7 +131,7 @@ app.post("/", (req, res) => {
     if (err) {
       return res.json("Error");
     }
-    if (data.length > 0) {
+    if (data.length !== "") {
       // 登入成功,儲存用戶訊息
       req.session.user = data[0];
       console.log(
@@ -143,6 +143,7 @@ app.post("/", (req, res) => {
       console.log(req.session.user);
       return res.json(req.session.user);
     } else {
+      alert("帳號密碼錯誤");
       return res.json("fail");
     }
   });
@@ -248,8 +249,9 @@ app.put("/member/artical/:faid", (req, res) => {
   const faid = req.params.faid; // 取得要編輯的文章 ID
   const updatedArticle = req.body; // 取得更新後的文章內容
 
-  // 執行SQL 
-  const sql = "UPDATE ForumArticle SET fatitle = ?, farticle = ? WHERE faid = ?";
+  // 執行SQL
+  const sql =
+    "UPDATE ForumArticle SET fatitle = ?, farticle = ? WHERE faid = ?";
   const values = [updatedArticle.fatitle, updatedArticle.farticle, faid];
 
   db.query(sql, values, (err, result) => {
@@ -276,9 +278,8 @@ app.delete("/member/artical/:faid", (req, res) => {
   });
 });
 
-
 // 更改會員資訊
-app.put('/member/edit', (req, res) => {
+app.put("/member/edit", (req, res) => {
   const uid = req.session.user.uid; // 取得目前登入會員的 uid
   const newName = req.body.name; // 取得從前端送來的新名稱
   const newEmail = req.body.email;
@@ -286,7 +287,8 @@ app.put('/member/edit', (req, res) => {
   const newPhotoPath = req.body.photopath;
 
   // 執行 SQL 更新語句
-  const sql = "UPDATE login SET name = ?, email = ?, password = ?, photopath = ? WHERE uid = ?";
+  const sql =
+    "UPDATE login SET name = ?, email = ?, password = ?, photopath = ? WHERE uid = ?";
   const values = [newName, newEmail, newPwd, newPhotoPath, uid];
 
   db.query(sql, values, (err, result) => {
@@ -317,7 +319,8 @@ app.get("/member/col", (req, res) => {
   }
 
   const uid = req.session.user.uid;
-  const sql = "SELECT *FROM `ForumArticle`LEFT JOIN login ON `ForumArticle`.`uid` = `login`.`uid` where collect = 1";
+  const sql =
+    "SELECT *FROM `ForumArticle`LEFT JOIN login ON `ForumArticle`.`uid` = `login`.`uid` where collect = 1";
 
   db.query(sql, [uid], (err, data) => {
     if (err) {
