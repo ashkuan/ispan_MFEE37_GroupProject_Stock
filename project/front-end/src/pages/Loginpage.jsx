@@ -9,12 +9,6 @@ import { eyeOff } from "react-icons-kit/feather/eyeOff";
 import { eye } from "react-icons-kit/feather/eye";
 import ForgetPassword from "./ForgetPassword";
 const Loginpage = () => {
-  const uid = sessionStorage.getItem("uid");
-  const name = sessionStorage.getItem("name");
-  const email = sessionStorage.getItem("email");
-  const photopath = sessionStorage.getItem("photopath");
-  const [userIsLogin, setUserIsLogin] = useState(false);
-  const [password, setPassword] = useState("");
   const [type, setType] = useState("password");
   const [icon, setIcon] = useState(eyeOff);
 
@@ -52,11 +46,6 @@ const Loginpage = () => {
             const email = sessionStorage.getItem("email");
             const password = sessionStorage.getItem("password");
             const photopath = sessionStorage.getItem("photopath");
-            // console.log("session的uid:" + uid);
-            // console.log("session的name:" + name);
-            // console.log("session的email:" + email);
-            // console.log("session的password:" + password);
-            // console.log("session的photopath:" + photopath);
             navigate("/");
           } else {
             alert("此帳號不存在");
