@@ -17,69 +17,86 @@
   --border-radius-small: 6px;
 }
 
-.shop-main-content #title {
+.shop-main-content {
+  margin-top: 150px !important;
+  margin-bottom: -100px;
+}
+.shop-main-content #shopMainTitle {
   font-size: 3rem;
   font-weight: bold;
   color: var(--IronGray-Deep);
-  margin-left: 11% !important;
-  margin-bottom: 30px !important;
+  margin-left: 22% !important;
   letter-spacing: 8px;
 }
 .shop-main-content #shop {
   display: flex;
+  gap: 50px;
 }
 .shop-main-content #shop .shopSidebar {
   align-items: center;
-  color: var(--IronGray-Deep);
-  width: 350px;
+  margin-top: 57px;
 }
 .shop-main-content #shop .shopSidebar .shopSidebarSearch {
   text-align: left;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: bold;
+  border-radius: 2px;
+}
+.shop-main-content #shop .shopSidebar .shopSidebarSearch .shopTitle {
+  background-color: var(--IronGray-Deep);
+  color: white;
+  padding: 8px 60px 8px 15px;
+  border-radius: 2px;
 }
 .shop-main-content #shop .shopSidebar .shopSidebarSearch input {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   border-radius: 5px;
   border: none;
-  width: 100%;
   padding: 3px 0px 5px 15px;
 }
 .shop-main-content #shop .shopSidebar .shopSorting {
   text-align: left;
   font-weight: bold;
-  color: var(--IronGray-Deep);
+}
+.shop-main-content #shop .shopSidebar .shopSorting p {
+  background-color: var(--IronGray-Deep);
+  color: white;
+  padding: 8px 60px 0px 15px;
+  border-radius: 2px;
 }
 .shop-main-content #shop .shopSidebar .shopSorting p span {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
 }
 .shop-main-content #shop .shopSidebar .shopSorting select {
   margin-top: 20px;
   border: 1px solid white;
   border-radius: 5px;
-  font-size: 1.5rem !important;
+  font-size: 1.3rem !important;
   border: none;
   width: 100%;
-  font-size: 1.3rem;
   color: gray;
   padding: 5px 10px;
 }
 .shop-main-content #shop .shopSidebar .shopType {
   text-align: left;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: bold;
-  color: var(--IronGray-Deep);
+}
+.shop-main-content #shop .shopSidebar .shopType .shopTitle {
+  background-color: var(--IronGray-Deep);
+  color: white;
+  padding: 8px 60px 8px 15px;
+  border-radius: 2px;
 }
 .shop-main-content #shop .shopSidebar .shopType .shopTypeBtn {
   margin: 30px 0 50px 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
   width: 200px;
   padding-left: 20px;
 }
 .shop-main-content #shop .shopSidebar .shopType .shopTypeBtn button {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   border: none;
   background-color: transparent;
   text-align: left;
@@ -89,39 +106,31 @@
 .shop-main-content #shop .shopSidebar .shopType .shopTypeBtn button:hover, .shop-main-content #shop .shopSidebar .shopType .shopTypeBtn button:focus {
   color: var(--IronGray-Deep);
 }
-.shop-main-content #shop .row {
-  margin-bottom: 15px;
-  margin-left: 8%;
-}
 .shop-main-content #shop .row .card {
-  height: 280px;
-  background-color: var(--bg-Second-Gray);
+  background-color: var(--bg-Primary-Gray);
   border: none;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  padding-top: 15px;
-  border-radius: 5px;
-  margin-bottom: 25px;
 }
 .shop-main-content #shop .row .card:hover .toggleBtn {
   animation: slideUp 0.5s ease forwards;
   display: flex;
 }
 .shop-main-content #shop .row .card .book-title {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: bold;
-  width: 215px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 .shop-main-content #shop .row .card .card-text {
   font-size: 1.3rem;
+  color: gray;
 }
 .shop-main-content #shop .row .card img {
-  width: 140px;
-  height: 170px;
+  width: 100%;
+  height: 250px;
+  background-color: var(--bg-Second-Gray);
+  padding: 20px 80px;
+  border-radius: 1px;
 }
 .shop-main-content #shop .row .card .toggleBtn {
   position: absolute;
@@ -136,9 +145,9 @@
   align-items: center;
 }
 .shop-main-content #shop .row .card .toggleBtn .seeMoreBtn {
-  width: 90%;
+  width: 100%;
   font-size: 1.2rem;
-  background-color: white;
+  background-color: var(--IronGray-Deep);
   border-radius: 5px;
   padding: 15px 12px;
 }
@@ -146,7 +155,7 @@
   transform: scale(1.05);
 }
 .shop-main-content #shop .row .card .toggleBtn .seeMoreBtn a {
-  color: var(--IronGray-Deep);
+  color: white;
   font-weight: bold;
 }
 .shop-main-content #shop .row .card .btnGray {
@@ -155,35 +164,6 @@
 }
 .shop-main-content #shop .row .card .btnGray:hover {
   background-color: rgb(114, 114, 114);
-}
-.shop-main-content #shop .row .card .modal .modal-dialog .modal-content {
-  height: 800px;
-}
-.shop-main-content #shop .row .card .modal .modal-dialog .modal-content .modal-body .card {
-  height: 100%;
-}
-.shop-main-content #shop .row .card .modal .modal-dialog .modal-content .modal-body .card .card-img-top {
-  width: 280px;
-  height: 280px;
-}
-.shop-main-content #shop .row .card .modal .modal-dialog .modal-content .modal-body .card .card-body .card-title {
-  font-size: 2rem;
-  padding: 15px 0 20px 0;
-}
-.shop-main-content #shop .row .card .modal .modal-dialog .modal-content .modal-body .card .card-body .card-text {
-  height: 100%;
-  max-height: 800px;
-  overflow-y: auto;
-}
-.shop-main-content #shop .row .card .modal .modal-dialog .modal-content .modal-footer .addInCartRedBtn {
-  background-color: var(--Pink-Deep);
-  font-size: 1.4rem;
-}
-.shop-main-content #shop .row .card .modal .modal-dialog .modal-content .modal-footer .addInCartRedBtn:hover {
-  background-color: var(--Red);
-}
-.shop-main-content #shop .row .card .modal .modal-dialog .modal-content .modal-footer .btnGray {
-  font-size: 1.4rem;
 }
 .shop-main-content #shop .page {
   cursor: pointer;
@@ -317,4 +297,10 @@
 
 #hoverImg:hover {
   transform: scale(1.1);
+}
+
+@media (min-width: 768px) {
+  .row-cols-md-4 > * {
+    width: 33% !important;
+  }
 }/*# sourceMappingURL=shop.css.map */

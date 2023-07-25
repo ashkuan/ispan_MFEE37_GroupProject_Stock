@@ -8,7 +8,7 @@ import axios from "axios";
 
 const IndStock = () => {
   const { stockInfo } = useContext(StockContext);
-  const [stockName, setStockName] = useState("");
+  const [stockAll, setStockAll] = useState({});
   const inputValue = stockInfo.inputValue;
   if (inputValue !== "") {
     const fetchName = async () => {
@@ -16,8 +16,7 @@ const IndStock = () => {
         .post("http://localhost:5678/stockName", { data: inputValue })
         .then((res) => {
           console.log(res.data);
-          const name = res.data;
-          setStockName(name);
+          setStockAll(res.data);
         })
         .catch((error) => {
           console.log(error);
@@ -30,12 +29,12 @@ const IndStock = () => {
     <>
       {stockInfo.inputValue !== "" &&
       stockInfo.regularMarketPrice &&
-      stockName != "" ? ( // 檢查 stockInfo 是否已獲取
+      stockAll.stockName != "" ? ( // 檢查 stockInfo 是否已獲取
         <>
           <div className="container">
             {/* 個股名稱 */}
             <div className="stockName text-IronGray-Deep fw-bold fs-1">
-              {stockName}
+              {stockAll.stockName}
               <span
                 className="text-IronGray-Deep fw-bold fs-2 ms-3"
                 id="indStocksNumber"
@@ -199,7 +198,86 @@ const IndStock = () => {
                 </div>
               </div>
             </div>
+            <div className="info">
+              <div className="row fs-3 d-flex">
+                <div className="stockTitle col-2">公司名稱</div>
+                <div className="stockContent col-4">{stockAll.stockName}</div>
+                <div className="stockTitle col-2">英文名稱</div>
+                <div className="stockContent col-4">
+                  {stockAll.stockEnglishName}
+                </div>
+              </div>
+              <div className="row fs-3">
+                <div className="stockTitle col-2">成立日期</div>
+                <div className="stockContent col-4">
+                  {stockAll.stockBuildDate}
+                </div>
+                <div className="stockTitle col-2">上市日期</div>
+                <div className="stockContent col-4">{stockAll.stockDate}</div>
+              </div>
+              <div className="row fs-3">
+                <div className="stockTitle col-2">實收資本額</div>
+                <div className="stockContent col-4">{stockAll.stockPrice}</div>
+                <div className="stockTitle col-2">已發行股數</div>
+                <div className="stockContent col-4">{stockAll.stockAmount}</div>
+              </div>
+              <div className="row fs-3">
+                <div className="stockTitle col-2">董事長</div>
+                <div className="stockContent col-4">
+                  {stockAll.stockPeople1}
+                </div>
+                <div className="stockTitle col-2">總經理</div>
+                <div className="stockContent col-4">
+                  {stockAll.stockPeople2}
+                </div>
+              </div>
+              <div className="row fs-3">
+                <div className="stockTitle col-2">發言人</div>
+                <div className="stockContent col-4">
+                  {stockAll.stockPeople3}
+                </div>
+                <div className="stockTitle col-2">代理發言人</div>
+                <div className="stockContent col-4">
+                  {stockAll.stockPeople4}
+                </div>
+              </div>
+              <div className="row fs-3">
+                <div className="stockTitle col-2">總機電話</div>
+                <div className="stockContent col-4">{stockAll.stockPhone}</div>
+                <div className="stockTitle col-2">傳真機號碼</div>
+                <div className="stockContent col-4">{stockAll.stockTax}</div>
+              </div>
+              <div className="row fs-3">
+                <div className="stockTitle col-2">統一編號</div>
+                <div className="stockContent col-4">{stockAll.stockUni}</div>
+                <div className="stockTitle col-2">公司網站</div>
+                <div className="stockContent col-4">
+                  {stockAll.stockWebsite}
+                </div>
+              </div>
+              <div className="row fs-3">
+                <div className="stockTitle col-2">公司地址</div>
+                <div className="stockContent col-4">
+                  {stockAll.stockAddress}
+                </div>
+
+                <div className="stockTitle col-2">電子郵件</div>
+                <div className="stockContent col-4">{stockAll.stockEmail}</div>
+              </div>
+              <div className="row fs-3">
+                <div className="stockTitle"> 英文通訊地址</div>
+                <div
+                  className="stockContent"
+                  style={{
+                    borderBottom: " 2px solid rgba(128, 128, 128, 0.2)",
+                  }}
+                >
+                  {stockAll.stockEnglishAddress}
+                </div>
+              </div>
+            </div>
           </div>
+
           <Footer />
         </>
       ) : (

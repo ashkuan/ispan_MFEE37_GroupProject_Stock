@@ -142,9 +142,11 @@ function PostBtn() {
           onHide={handleClose}
           backdrop="static"
           keyboard={false}
-          className="top-15">
-          <Modal.Body className="text-center p-5">
-            <p className="fs-3 fw-bold text-IronGray-Light mb-4">請先登入才可發文</p>
+          className="top-15"
+          >
+          <Modal.Header closeButton></Modal.Header>
+          <Modal.Body   className="text-center p-5"  >
+            <p className="fs-3 fw-bold text-IronGray-Light mb-4" >請先登入才可發文</p>
             <LoginButton />
           </Modal.Body>
         </Modal>

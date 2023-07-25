@@ -1,0 +1,149 @@
+:root {
+  --IronGray-Deep: #2c3e50;
+  --IronGray: #57687c;
+  --IronGray-Light: #b4c7dd;
+  --Pink: #f7cac9;
+  --Pink-Deep: #f58b82;
+  --Brown: #926b6a;
+  --Red: #f17064;
+  --Green: #77be6b;
+  --Green-Light: #d1faca;
+  --White: #ffffff;
+  --bg-Primary-Gray: #f3f3f3;
+  --bg-Second-Gray: #dddddd;
+  --black-Word: #333333;
+  --border-radius-big: 20px;
+  --border-radius-med: 10px;
+  --border-radius-small: 6px;
+}
+
+form {
+  .custom-select {
+    .row {
+      select,
+      input {
+        font-size: 1.4rem;
+        border: 1px solid rgb(223, 223, 223);
+        margin: 5px 20px 5px 0px;
+        border-radius: 5px;
+        padding: 10px 22px 10px 15px;
+      }
+      .address2 {
+        margin-left: 12px;
+      }
+    }
+  }
+
+  #sendOrderBtn {
+    background-color: #f17064;
+    width: 90%;
+    margin-left: 5%;
+    a {
+      color: white;
+    }
+  }
+  .checkoutContainer {
+    // width: 100%;
+    // height: 100%;
+    display: flex;
+    margin-top: 107px;
+    flex-direction: row;
+    margin: 150px 120px 0px 120px;
+    #left {
+      width: 45%;
+      #user {
+        text-align: center;
+        font-size: 2.2rem;
+        margin-bottom: 40px;
+        .sidebar-userphoto {
+          background-color: #ccc;
+          padding: 15px;
+          border-radius: 50%;
+        }
+      }
+      .form-label {
+        font-size: 2.3rem;
+        font-weight: bold;
+      }
+      .form-check-label {
+        font-size: 1.8rem;
+      }
+      .form-select {
+        font-size: 1.7rem;
+      }
+      input,
+      .form-control {
+        font-size: 1.4rem;
+      }
+    }
+    #right {
+      margin-top: 50px;
+      width: 55%;
+      background: var(--bg-Second-Gray);
+      padding: 5px;
+      border-radius: var(--border-radius-big);
+      .card {
+        background: var(--bg-Second-Gray);
+        border: none;
+        padding: 30px;
+        .card-img-top {
+          width: 25%;
+        }
+        .card-body {
+          width: 50%;
+          .card-title {
+            font-size: 1.7rem;
+          }
+          .card-text {
+            font-size: 1.2rem;
+          }
+        }
+        .count {
+          font-size: 1.5rem;
+        }
+        .total {
+          font-size: 2rem;
+        }
+      }
+      .price {
+        padding: 10px 30px;
+        display: flex;
+        justify-content: space-between;
+        font-size: 1.8rem;
+      }
+      #discount {
+        margin-bottom: 20px;
+        padding: 0px 10px 0 30px;
+        // display: /flex;
+        align-items: center;
+        .coupon {
+          input {
+            font-size: 1.3rem;
+            width: 50%;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 10px;
+            margin-right: 12.5%;
+            margin-left: 15px;
+          }
+          span {
+            font-size: 1.8rem;
+            font-weight: normal;
+            width: 100%;
+          }
+        }
+      }
+      .alert {
+        letter-spacing: 2.8px;
+        font-size: 1.2rem;
+        color: red;
+        margin: -30px 0 0 130px;
+      }
+      #finalSum {
+        font-weight: bold;
+        font-size: 2.2rem;
+        margin-top: 0px;
+      }
+    }
+  }
+}

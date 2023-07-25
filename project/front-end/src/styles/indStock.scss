@@ -1,0 +1,92 @@
+:root {
+  --IronGray-Deep: #2c3e50;
+  --IronGray: #57687c;
+  --IronGray-Light: #b4c7dd;
+  --Pink: rgb(247, 202, 201);
+  --Pink-Deep: #f58b82;
+  --Brown: #926b6a;
+  --Red: #f17064;
+  --Green: #77be6b;
+  --Green-Light: #d1faca;
+  --White: #ffffff;
+  --bg-Primary-Gray: #f3f3f3;
+  --bg-Second-Gray: #dddddd;
+  --black-Word: #333333;
+  --border-radius-big: 20px;
+  --border-radius-med: 10px;
+  --border-radius-small: 6px;
+}
+.container {
+  margin-top: 180px;
+  .time-zone {
+    margin-top: 30px;
+    display: flex;
+    justify-content: end;
+    margin-right: 20px;
+    button {
+      border: none;
+      background-color: transparent;
+      letter-spacing: 0.2rem;
+      padding-left: 15px;
+      display: inline;
+      font-size: 1.3rem;
+      color: var(--black-Word);
+      &:hover {
+        transform: scale(1.1);
+      }
+      &:active {
+        transform: scale(0.9);
+      }
+    }
+  }
+  .info {
+    margin-top: 100px;
+    // box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+    .row {
+      color: var(--IronGray-Deep);
+      border: 2px solid rgba(128, 128, 128, 0.15);
+      border-radius: 5px;
+      .stockTitle {
+        background-color: var(--bg-Primary-Gray);
+        // border: 2px solid rgba(128, 128, 128, 0.15);
+        font-size: 1.4rem;
+        padding: 20px;
+        border-radius: 5px 0 0 5px;
+      }
+      .stockContent {
+        font-size: 1.4rem;
+        // border: 2px solid rgba(128, 128, 128, 0.2);
+        padding: 20px;
+        border-radius: 0 5px 5px 0;
+      }
+    }
+  }
+}
+#indStocksIndex {
+  background-color: var(--bg-Primary-Gray);
+  padding: 40px 0;
+  border-radius: var(--border-radius-big);
+  .row {
+    display: flex;
+    justify-content: space-evenly;
+    .card {
+      border: none;
+      .card-body {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .card-text {
+          font-weight: bold;
+          font-size: 1.7rem;
+          color: var(--IronGray-Deep);
+        }
+        .card-title {
+          font-size: 1.6rem;
+          padding: 10px 15px;
+          border-radius: var(--border-radius-small);
+          text-align: center;
+        }
+      }
+    }
+  }
+}

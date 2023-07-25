@@ -20,21 +20,6 @@
 .container {
   margin-top: 180px;
 }
-.container .name {
-  margin-bottom: 80px;
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: var(--IronGray-Deep);
-}
-.container .name span {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: var(--IronGray-Deep);
-}
-.container .name a {
-  font-size: 2.5rem;
-  color: var(--black-Word);
-}
 .container .time-zone {
   margin-top: 30px;
   display: flex;
@@ -56,9 +41,28 @@
 .container .time-zone button:active {
   transform: scale(0.9);
 }
+.container .info {
+  margin-top: 100px;
+}
+.container .info .row {
+  color: var(--IronGray-Deep);
+  border: 2px solid rgba(128, 128, 128, 0.15);
+  border-radius: 5px;
+}
+.container .info .row .stockTitle {
+  background-color: var(--bg-Primary-Gray);
+  font-size: 1.4rem;
+  padding: 20px;
+  border-radius: 5px 0 0 5px;
+}
+.container .info .row .stockContent {
+  font-size: 1.4rem;
+  padding: 20px;
+  border-radius: 0 5px 5px 0;
+}
 
 #indStocksIndex {
-  background-color: var(--bg-Second-Gray);
+  background-color: var(--bg-Primary-Gray);
   padding: 40px 0;
   border-radius: var(--border-radius-big);
 }
