@@ -64,6 +64,12 @@ const Myproduct = () => {
               <div key={pid}>
                 <div className="d-flex" id="myproduct" key={pid}>
                   <div id="myproductLeft" className="d-flex">
+                    <img
+                      id="bigImg"
+                      src={currentImage}
+                      width="400px"
+                      height="450px"
+                    />
                     <div id="myproductLeftSmall">
                       <div className="imageBox">
                         <img
@@ -98,7 +104,6 @@ const Myproduct = () => {
                         />
                       </div>
                     </div>
-                    <img src={currentImage} width="500px" height="550px" />
                   </div>
                   <div id="myproductRight">
                     <p className="title fw-bold">{pname}</p>
