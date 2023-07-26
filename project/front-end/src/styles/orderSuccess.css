@@ -51,7 +51,7 @@
 .orderSuccessContainer .orderList {
   background-color: var(--bg-Second-Gray);
   padding: 50px 20px;
-  margin-top: 150px;
+  margin-top: 80px;
   display: flex;
   justify-content: space-around;
 }
