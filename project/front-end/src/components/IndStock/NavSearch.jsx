@@ -82,7 +82,7 @@ const NavSearch = () => {
       <input
         type="text"
         className="search__input px-3"
-        placeholder="搜尋台股代號/名稱"
+        placeholder="搜尋台股代號"
         value={inputValue}
         onChange={handleInputChange}
       />
