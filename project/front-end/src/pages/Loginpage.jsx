@@ -7,7 +7,6 @@ import "../styles/forum_main.css";
 import { Icon } from "react-icons-kit";
 import { eyeOff } from "react-icons-kit/feather/eyeOff";
 import { eye } from "react-icons-kit/feather/eye";
-import ForgetPassword from "./ForgetPassword";
 const Loginpage = () => {
   const [type, setType] = useState("password");
   const [icon, setIcon] = useState(eyeOff);
@@ -41,12 +40,7 @@ const Loginpage = () => {
             sessionStorage.setItem("email", res.data.email);
             sessionStorage.setItem("password", res.data.password);
             sessionStorage.setItem("photopath", res.data.photopath);
-            const uid = sessionStorage.getItem("uid");
-            const name = sessionStorage.getItem("name");
-            const email = sessionStorage.getItem("email");
-            const password = sessionStorage.getItem("password");
-            const photopath = sessionStorage.getItem("photopath");
-            navigate("/");
+            window.history.back();
           } else {
             alert("此帳號不存在");
           }
