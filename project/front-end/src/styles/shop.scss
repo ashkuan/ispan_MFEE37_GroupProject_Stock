@@ -219,31 +219,36 @@
   margin-top: 180px;
   #myproduct {
     display: flex;
-    gap: 100px;
+    gap: 120px;
     margin-bottom: 50px;
     #myproductLeft {
-      width: 50%;
+      width: 45%;
       align-items: center;
-      gap: 30px;
+      gap: 70px;
+      display: flex;
+      flex-direction: column;
       #myproductLeftSmall {
         display: flex;
-        flex-direction: column;
-        gap: 30px;
+        gap: 10px;
         .imageBox {
           background-color: var(--bg-Second-Gray);
-          border-radius: var(--border-radius-med);
-          padding: 10px 25px;
+          border-radius: 2px;
+          padding: 10px 20px;
           border: 2px solid var(--bg-Second-Gray);
           cursor: pointer;
           img {
-            width: 130px;
-            height: 150px;
+            width: 120px;
+            height: 130px;
           }
         }
       }
+      #bigImg {
+        margin-top: 20px;
+        // width: 500px;
+        // height: 400px;
+      }
     }
     #myproductRight {
-      width: 50%;
       display: flex;
       flex-direction: column;
       justify-content: space-around;
