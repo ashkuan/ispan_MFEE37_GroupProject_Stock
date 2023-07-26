@@ -14,11 +14,25 @@ app.get("/", (req, res) => {
   res.json("hi this is backend");
 });
 
+// 獲取全部留言數
+app.get("/messages/count/:faid", (req, res) => {
+  const { faid } = req.params;
+  const sql =
+    "SELECT COUNT(*) AS totalMessages FROM MessageContent WHERE faid=?";
+  connToDBHelper.query(sql, [faid], (err, data) => {
+    if (err) {
+      console.log(err);
+      return res.status(500).json({ error: "無法獲取留言數" });
+    }
+    return res.json(data[0].totalMessages);
+  });
+});
+
 // 獲取留言
 app.post("/messages/:faid", (req, res) => {
   const { faid } = req.params;
   const { uid } = req.body;
-  console.log(uid);
+
   if (uid) {
     // 會員登入 出現所有所有留言
     const sql =

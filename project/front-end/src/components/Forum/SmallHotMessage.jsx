@@ -24,6 +24,8 @@ const SmallHotMessage = (props) => {
   // 留言陣列倒序排列
   const reversedMessages = [...messages].reverse();
   useEffect(() => {
+    // 抓留言數量
+    fetchTotalMessages();
     fetchMessages();
   }, [faid]);
 
@@ -34,8 +36,19 @@ const SmallHotMessage = (props) => {
       });
       setMessages(res.data);
       // 設置留言總數
-      setTotalMessages(res.data.length);
+      setTotalMessages(res.data.totalMessages);
       console.log(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const fetchTotalMessages = async () => {
+    try {
+      const res = await axios.get(
+        `http://localhost:5052/messages/count/${faid}`
+      );
+      setTotalMessages(res.data);
     } catch (err) {
       console.log(err);
     }
