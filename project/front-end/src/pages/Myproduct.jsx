@@ -3,23 +3,31 @@ import Footer from "../components/Footer";
 import { ShopContext } from "../../context/ShopContext";
 import { Toast } from "react-bootstrap";
 import uuid4 from "uuid4";
-import { useLocation } from "react-router-dom";
+import { Alert } from "@mui/material";
+import { AlertTitle } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const Myproduct = () => {
+  const navigate = useNavigate();
   const { products, addToCart } = useContext(ShopContext);
   const uid = sessionStorage.getItem("uid");
-  const name = sessionStorage.getItem("name");
-  const email = sessionStorage.getItem("email");
-  const photopath = sessionStorage.getItem("photopath");
   const [quantity, setQuantity] = useState(1);
   // const [inputValue, setInputValue] = useState("");
   const [showToast, setShowToast] = useState(false);
+  const [pwdSuccess, setPwdSuccess] = useState(false);
 
   const handleButtonClick = () => {
     setShowToast(true);
     setTimeout(() => {
       setShowToast(false);
     }, 5000);
+  };
+
+  const handleButtonClick2 = () => {
+    setPwdSuccess(true);
+    setTimeout(() => {
+      navigate("/loginpage");
+    }, 3000);
   };
 
   // 抓出url，找到pid參數的值
@@ -30,8 +38,6 @@ const Myproduct = () => {
   // 找出與資料庫products pid相符的資料
   const filteredProducts = products.filter((product) => product.pid == URLpid);
 
-  const { pathname } = useLocation();
-
   useEffect(() => {
     window.scrollTo(0, 0);
   });
@@ -39,6 +45,41 @@ const Myproduct = () => {
   return (
     <div>
       <div id="myproductContainer" key={uuid4()} className="container">
+        {pwdSuccess && (
+          <div className="d-flex justify-content-center">
+            <Alert
+              className="py-3 "
+              icon={false}
+              style={{
+                backgroundColor: "rgba(40, 178, 79, 0.777)",
+                color: "white",
+                width: "50%",
+                zIndex: "100",
+                position: "fixed",
+                top: "300px",
+              }}
+            >
+              <AlertTitle className="d-flex">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="40"
+                  height="40"
+                  fill="currentColor"
+                  class="bi bi-check-circle"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                  <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
+                </svg>
+                <span className="fs-3 ms-4">請先登入會員</span>
+              </AlertTitle>
+              <span className="fs-5" style={{ marginLeft: "65px" }}>
+                登入後才可加入購物車 — <strong>跳轉至登入頁面中</strong>
+              </span>
+            </Alert>
+          </div>
+        )}
+
         {filteredProducts.map((product) => {
           const {
             pid,
@@ -158,7 +199,7 @@ const Myproduct = () => {
                             addToCart(pid, Number(quantity));
                             handleButtonClick();
                           } else {
-                            alert("請先登入會員");
+                            handleButtonClick2();
                           }
                         }}
                       >
