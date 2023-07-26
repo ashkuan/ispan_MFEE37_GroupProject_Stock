@@ -64,7 +64,6 @@ function TargetArticle() {
                     {new Date(post.createTime).toLocaleDateString("en-US", {
                       month: "2-digit",
                       day: "2-digit",
-                   
                     })}
                   </span>
                 </div>

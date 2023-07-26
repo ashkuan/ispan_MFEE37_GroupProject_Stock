@@ -9,7 +9,7 @@ const AddMessage = (props) => {
   const email = sessionStorage.getItem("email");
   const photopath = sessionStorage.getItem("photopath");
 
-  const faid = props.data;
+  const { data: faid, fetchAllMessages } = props;
   const [fmContent, setFmContent] = useState("");
   const [alertMessage, setAlertMessage] = useState("");
   const [alertSeverity, setAlertSeverity] = useState("info");

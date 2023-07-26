@@ -6,7 +6,7 @@ import EmojiButton from "./EmojiButton";
 import { Hidden } from "@mui/material";
 
 const SmallHotMessage = (props) => {
-  const faid = props.data;
+  const { data: faid } = props;
   // 顯示留言
   const [messages, setMessages] = useState([]);
   // 追蹤正在編輯的留言的fmid
@@ -15,11 +15,14 @@ const SmallHotMessage = (props) => {
   const [editedContent, setEditedContent] = useState("");
   // 留言總數
   const [totalMessages, setTotalMessages] = useState(0);
+  // 追蹤要提及的樓層
+  const [mentionFloor, setMentionFloor] = useState(null);
   const uid = sessionStorage.getItem("uid");
-  // console.log(uid);
   const name = sessionStorage.getItem("name");
   const email = sessionStorage.getItem("email");
   const photopath = sessionStorage.getItem("photopath");
+  // 留言陣列倒序排列
+  const reversedMessages = [...messages].reverse();
   useEffect(() => {
     fetchMessages();
   }, [faid]);
@@ -93,12 +96,41 @@ const SmallHotMessage = (props) => {
     }
   };
 
-  let messageCount = 1;
+  // 解析並標記提及的樓層
+  const parseMentionedFloors = (content) => {
+    const mentionedFloors = content.match(/@B(\d+)/g);
+    if (mentionedFloors) {
+      return content.split(/@B(\d+)/g).map((part, index) => {
+        if (index % 2 === 1) {
+          const floorNumber = parseInt(part);
+          return (
+            <a
+              key={index}
+              href={`#message-${floorNumber}`} // 跳轉到被提及的樓層
+              className="text-decoration-none text-IronGray mx-2"
+            >
+              @{part}
+            </a>
+          );
+        } else {
+          return part;
+        }
+      });
+    }
+    return content;
+  };
 
   return (
     <>
-      {messages.map((message, index) => (
-        <div className="border-top border-2 py-4 mt-4" key={message.fmid}>
+      <br />
+      <div className="mb-3 fs-4">共 {totalMessages} 則留言</div>
+      <AddMessage data={faid} fetchAllMessages={fetchMessages} />
+      {reversedMessages.map((message, index) => (
+        <div
+          className="border-top border-2 py-4 mt-4"
+          key={message.fmid}
+          id={`message-${messages.length - index}`} // 設定樓層的 id，用於跳轉錨點
+        >
           <div className="black-Word d-flex justify-content-between align-items-center">
             <div className="d-flex align-items-center">
               <img
@@ -170,13 +202,12 @@ const SmallHotMessage = (props) => {
                     </button>
                   </div>
                 )}
+                {`B${messages.length - index}`}
               </>
             )}
-            {`${messageCount++}F`}
           </div>
         </div>
       ))}
-      <AddMessage data={faid} fetchAllMessages={fetchMessages} />
     </>
   );
 };
