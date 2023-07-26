@@ -8,15 +8,8 @@ import Footer from "../components/Footer";
 import HistoryProducts from "../components/shop/HistoryProducts";
 
 const History = () => {
-  const [historyData, setHistoryData] = useState("");
-  const [totalAccount, setTotalAccount] = useState([]);
-  const [firstPimg, setFirstPimg] = useState([]);
-  const [firstPname, setFirstPname] = useState([]);
   const navigate = useNavigate();
   const uid = sessionStorage.getItem("uid");
-  const name = sessionStorage.getItem("name");
-  const email = sessionStorage.getItem("email");
-  const photopath = sessionStorage.getItem("photopath");
 
   // 檢查是否有登入會員
   useEffect(() => {

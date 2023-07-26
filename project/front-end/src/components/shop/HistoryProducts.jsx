@@ -8,7 +8,6 @@ const HistoryProducts = () => {
   const [firstPimg, setFirstPimg] = useState([]);
   const [firstPname, setFirstPname] = useState([]);
   const navigate = useNavigate();
-  const [currentPage, setCurrentPage] = useState(1);
 
   const handleHistoryIndOrder = (e) => {
     console.log(e.currentTarget.id);
