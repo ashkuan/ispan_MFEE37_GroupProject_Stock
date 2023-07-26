@@ -66,7 +66,7 @@ const MyArtical = () => {
   };
 
   // 每頁顯示的文章數量
-  const articlesPerPage = 4;
+  const articlesPerPage = 3;
 
   // 計算總頁數
   const totalPages = Math.ceil(articles.length / articlesPerPage);
