@@ -57,7 +57,7 @@ export default function ArticleSort() {
               onClick={() => handleBasicClick("tab3")}
               active={basicActive === "tab3"}
             >
-              追蹤中
+              收藏
             </MDBTabsLink>
           </MDBTabsItem>
         </MDBTabs>

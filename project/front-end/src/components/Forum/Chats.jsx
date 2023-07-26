@@ -1,12 +1,8 @@
 import React from "react";
 import Footer from "../Footer";
-import ForumIndividual from "../Forum/ForumIndividual";
 import SidebarTag from "../Forum/SidebarTag.jsx";
 import SidebarNews from "../Forum/SidebarNews.jsx";
-import Post from "../Forum/Post.jsx";
 import ArticleSort from "../Forum/ArticleSort.jsx";
-import LineChart from "../linechart";
-import Article from "./Article";
 import Billboard from "./Billboard.jsx";
 import PostBtn from "./PostBtn";
 import { useNavigate } from "react-router-dom";

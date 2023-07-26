@@ -1,13 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
 import "../../styles/forum_main_right.css";
 import "../../styles/forum_main.css";
-import Emoji from "./Emoji";
 import { Button, Modal } from "react-bootstrap";
 import PostUser from "./PostUser";
 import BoardTag from "./BoardTag";
 import ArticleContent from "./ArticleContent";
 import HitoHashTags from "./HitoHashTags";
-import MessageQuantity from "./MessageQuantity";
 import EmojiButton from "./EmojiButton";
 import KeepButton from "./KeepButton";
 import HotNewMessageTabs from "./HotNewMessageTabs";
