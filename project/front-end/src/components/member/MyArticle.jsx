@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Pagination from "react-bootstrap/Pagination";
-import "../../styles/member.css";
-import "../../styles/forum_main.css";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import "../../styles/member.css";
+import "../../styles/forum_main.css";
 
 const MyArtical = () => {
   const [articles, setArticles] = useState([]);
@@ -66,7 +66,7 @@ const MyArtical = () => {
   };
 
   // 每頁顯示的文章數量
-  const articlesPerPage = 4;
+  const articlesPerPage = 3;
 
   // 計算總頁數
   const totalPages = Math.ceil(articles.length / articlesPerPage);
@@ -179,30 +179,56 @@ const MyArtical = () => {
         </div>
       </div>
       {/* 彈跳視窗 */}
-      <Modal show={showModal} onHide={handleCloseModal}>
-        <Modal.Header closeButton>
-          <Modal.Title>編輯文章</Modal.Title>
+      <Modal
+        show={showModal}
+        onHide={handleCloseModal}
+        className="top-5">
+        <Modal.Header
+          className="IronGray text-white"
+          closeButton>
+          <Modal.Title
+            className="fs-3 px-3 py-2">
+            編輯文章
+          </Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-        <h4>文章標題：</h4>
-          <input
-            type="text"
-            value={articleTitle}
-            style={{width:"100%"}}
-            onChange={(e) => setArticleTitle(e.target.value)}
-          />
-          <h4>文章內容：</h4>
-        <textarea
+        <Modal.Body
+          className="px-5 py-4 fs-4">
+          <div>
+            <div
+              className="fw-bold mb-2">
+              文章標題
+            </div>
+            <input
+              type="text"
+              value={articleTitle}
+              style={{ width: "100%" }}
+              onChange={(e) => setArticleTitle(e.target.value)}
+              className="border-0 rounded-2 px-3 py-2 fs-5"
+            />
+          </div>
+          <div
+            className="fw-bold mb-2 mt-4">
+            文章內容
+          </div>
+          <textarea
             value={inputValue}
             style={{ width: "100%", height: 300, resize: "vertical" }}
             onChange={(e) => setInputValue(e.target.value)}
+            className="border-0 px-3 py-2 rounded-1 fs-5"
           />
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleCloseModal}>
+        <Modal.Footer
+          className="px-5 py-4">
+          <Button
+            variant="secondary"
+            onClick={handleCloseModal}
+            className="px-3 py-2 letter-spacing-0_2 fz-3 me-3">
             取消
           </Button>
-          <Button variant="primary" onClick={handleSave}>
+          <Button
+            variant="primary"
+            onClick={handleSave}
+            className="px-3 py-2 letter-spacing-0_2 fz-3">
             儲存
           </Button>
         </Modal.Footer>
