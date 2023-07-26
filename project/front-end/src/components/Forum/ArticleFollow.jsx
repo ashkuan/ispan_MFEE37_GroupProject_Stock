@@ -64,7 +64,7 @@ function ArticleFollow() {
     return (
       <div className="drop-shadow-20 rounded-4 bg-white mt-4">
         <div className="px-5 py-4">
-          {posts.length === 0 ? (
+          {posts.length == 0 ? (
             <div className="text-center fs-4 text-IronGray-Deep">
               尚無收藏文章
             </div>
@@ -158,7 +158,7 @@ function ArticleFollow() {
                           handleArticleClick();
                         }}
                       />
-                      <span className="fz-3 fw-normal px-3">25</span>
+                      <span className="fz-3 fw-normal px-3">{post.fmContentCount}</span>
                     </div>
                   </div>
                 </div>

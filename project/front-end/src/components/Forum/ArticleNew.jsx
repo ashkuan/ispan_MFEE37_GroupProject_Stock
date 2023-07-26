@@ -148,7 +148,7 @@ function ArticleNew() {
                     handleArticleClick();
                   }}
                 />
-                <span className="fz-3 fw-normal px-3">25</span>
+                <span className="fz-3 fw-normal px-3">{post.fmContentCount}</span>
               </div>
             </div>
           </div>

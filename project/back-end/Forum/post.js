@@ -89,7 +89,13 @@ app.get("/posts", (req, res) => {
 app.get("/posts/new", (req, res) => {
   const sql =
     // "SELECT `faid`,  `fatitle`, `farticle`, `faimage`, `likeCount`, `fboard`, `fhashtag`, `createTime`, `updateTime` FROM `ForumArticle` innerjoin  ";
-    "SELECT * FROM `ForumArticle` LEFT JOIN  login on ForumArticle.uid = login.uid ORDER BY `createTime` DESC";
+    // "SELECT * FROM `ForumArticle` LEFT JOIN  login on ForumArticle.uid = login.uid ORDER BY `createTime` DESC";
+    "SELECT ForumArticle.*, login.*, COUNT(MessageContent.faid) AS fmContentCount " +
+    "FROM ForumArticle " +
+    "LEFT JOIN login ON ForumArticle.uid = login.uid " +
+    "LEFT JOIN MessageContent ON ForumArticle.faid = MessageContent.faid " +
+    "GROUP BY ForumArticle.faid " +
+    "ORDER BY createTime DESC";
   connToDBHelper.query(sql, [], (err, data) => {
     if (err) {
       return "無法成功顯示發文";
@@ -103,8 +109,14 @@ app.get("/posts/new", (req, res) => {
 app.get("/posts/popular", (req, res) => {
   const sql =
     // "SELECT `faid`,  `fatitle`, `farticle`, `faimage`, `likeCount`, `fboard`, `fhashtag`, `createTime`, `updateTime` FROM `ForumArticle` innerjoin  ";
-    "SELECT *FROM `ForumArticle`LEFT JOIN `login` ON `ForumArticle`.`uid` = `login`.`uid`ORDER BY `totalLikes` DESC";
-  // "SELECT f.*, l.likes, l.likedByUser, l.totalLikes, login.name FROM ForumArticle f LEFT JOIN LikeCount l ON f.faid = l.faid LEFT JOIN login ON f.uid = login.uid ORDER BY l.totalLikes DESC;";
+    // "SELECT *FROM `ForumArticle`LEFT JOIN `login` ON `ForumArticle`.`uid` = `login`.`uid`ORDER BY `totalLikes` DESC";
+    // "SELECT ForumArticle.*, login.*, COUNT(MessageContent.faid) AS fmContentCount FROM ForumArticle LEFT JOIN login ON ForumArticle.uid = login.uid LEFT JOIN MessageContent ON ForumArticle.faid = MessageContent.faid GROUP BY ForumArticle.faid ORDER BY totalLikes DESC;"
+    "SELECT ForumArticle.*, login.*, COUNT(MessageContent.faid) AS fmContentCount " +
+    "FROM ForumArticle " +
+    "LEFT JOIN login ON ForumArticle.uid = login.uid " +
+    "LEFT JOIN MessageContent ON ForumArticle.faid = MessageContent.faid " +
+    "GROUP BY ForumArticle.faid " +
+    "ORDER BY totalLikes DESC";
   connToDBHelper.query(sql, [], (err, data) => {
     if (err) {
       return "無法成功顯示發文";
@@ -114,10 +126,17 @@ app.get("/posts/popular", (req, res) => {
   });
 });
 
-//選擇收藏文章
+//選擇收藏文章where `collect` = 1 order by `updateTime`DESC
 app.get("/posts/keep", (req, res) => {
   const sql =
-    "SELECT *FROM `ForumArticle`LEFT JOIN `login` ON `ForumArticle`.`uid` = `login`.`uid` where `collect` = 1 order by `updateTime`DESC";
+    "SELECT ForumArticle.*, login.*, COUNT(MessageContent.faid) AS fmContentCount " +
+    "FROM ForumArticle " +
+    "LEFT JOIN login ON ForumArticle.uid = login.uid " +
+    "LEFT JOIN MessageContent ON ForumArticle.faid = MessageContent.faid " +
+    "WHERE ForumArticle.collect = 1 " + // 加入條件 where collect = 1
+    "GROUP BY ForumArticle.faid " +
+    "ORDER BY ForumArticle.updateTime DESC"; // 根據 updateTime 進行遞減排序
+  // "SELECT *FROM `ForumArticle`LEFT JOIN `login` ON `ForumArticle`.`uid` = `login`.`uid` where `collect` = 1 order by `updateTime`DESC";
   connToDBHelper.query(sql, [], (err, data) => {
     if (err) {
       return "無法成功顯示發文";
@@ -188,8 +207,6 @@ app.put("/posts/:faid/like", (req, res) => {
   });
 });
 
-
-
 //收藏
 app.put("/collect/:faid", (req, res) => {
   const sql = "UPDATE `ForumArticle` SET `collect` = ? WHERE `faid` = ?";
@@ -259,8 +276,13 @@ app.post("/messages", (req, res) => {
 //閒聊
 app.get("/chats", (req, res) => {
   const sql =
-    // 'SELECT `faid`,  `fatitle`, `farticle`, `faimage`, `likeCount`, `fboard`, `fhashtag`, `createTime`, `updateTime` FROM `ForumArticle` WHERE fboard = "閒聊"';
-    ' SELECT *FROM `ForumArticle`LEFT JOIN `login` ON `ForumArticle`.`uid` = `login`.`uid`WHERE fboard = "閒聊" ORDER BY `createTime` DESC';
+    "SELECT ForumArticle.*, login.*, COUNT(MessageContent.faid) AS fmContentCount " +
+    "FROM ForumArticle " +
+    "LEFT JOIN login ON ForumArticle.uid = login.uid " +
+    "LEFT JOIN MessageContent ON ForumArticle.faid = MessageContent.faid " +
+    "WHERE ForumArticle.fboard = '閒聊'" +
+    "GROUP BY ForumArticle.faid " +
+    "ORDER BY ForumArticle.updateTime DESC";
   connToDBHelper.query(sql, (err, data) => {
     if (err) {
       return "閒聊版連接錯誤";
@@ -273,8 +295,14 @@ app.get("/chats", (req, res) => {
 //新聞
 app.get("/news", (req, res) => {
   const sql =
-    ' SELECT *FROM `ForumArticle`LEFT JOIN `login` ON `ForumArticle`.`uid` = `login`.`uid`WHERE fboard = "新聞" ORDER BY `createTime` DESC';
-
+    // ' SELECT *FROM `ForumArticle`LEFT JOIN `login` ON `ForumArticle`.`uid` = `login`.`uid`WHERE fboard = "新聞" ORDER BY `createTime` DESC';
+    "SELECT ForumArticle.*, login.*, COUNT(MessageContent.faid) AS fmContentCount " +
+    "FROM ForumArticle " +
+    "LEFT JOIN login ON ForumArticle.uid = login.uid " +
+    "LEFT JOIN MessageContent ON ForumArticle.faid = MessageContent.faid " +
+    "WHERE ForumArticle.fboard = '新聞'" +
+    "GROUP BY ForumArticle.faid " +
+    "ORDER BY ForumArticle.updateTime DESC";
   connToDBHelper.query(sql, (err, data) => {
     if (err) {
       return "新聞版連接錯誤";
@@ -287,8 +315,14 @@ app.get("/news", (req, res) => {
 //標的
 app.get("/targets", (req, res) => {
   const sql =
-    ' SELECT *FROM `ForumArticle`LEFT JOIN `login` ON `ForumArticle`.`uid` = `login`.`uid`WHERE fboard = "標的" ORDER BY `createTime` DESC';
-
+    // ' SELECT *FROM `ForumArticle`LEFT JOIN `login` ON `ForumArticle`.`uid` = `login`.`uid`WHERE fboard = "標的" ORDER BY `createTime` DESC';
+    "SELECT ForumArticle.*, login.*, COUNT(MessageContent.faid) AS fmContentCount " +
+    "FROM ForumArticle " +
+    "LEFT JOIN login ON ForumArticle.uid = login.uid " +
+    "LEFT JOIN MessageContent ON ForumArticle.faid = MessageContent.faid " +
+    "WHERE ForumArticle.fboard = '標的'" +
+    "GROUP BY ForumArticle.faid " +
+    "ORDER BY ForumArticle.updateTime DESC";
   connToDBHelper.query(sql, (err, data) => {
     if (err) {
       return "標的版連接錯誤";
@@ -301,8 +335,14 @@ app.get("/targets", (req, res) => {
 //請益
 app.get("/questions", (req, res) => {
   const sql =
-    ' SELECT *FROM `ForumArticle`LEFT JOIN `login` ON `ForumArticle`.`uid` = `login`.`uid`WHERE fboard = "請益" ORDER BY `createTime` DESC';
-
+    // ' SELECT *FROM `ForumArticle`LEFT JOIN `login` ON `ForumArticle`.`uid` = `login`.`uid`WHERE fboard = "請益" ORDER BY `createTime` DESC';
+    "SELECT ForumArticle.*, login.*, COUNT(MessageContent.faid) AS fmContentCount " +
+    "FROM ForumArticle " +
+    "LEFT JOIN login ON ForumArticle.uid = login.uid " +
+    "LEFT JOIN MessageContent ON ForumArticle.faid = MessageContent.faid " +
+    "WHERE ForumArticle.fboard = '請益'" +
+    "GROUP BY ForumArticle.faid " +
+    "ORDER BY ForumArticle.updateTime DESC";
   connToDBHelper.query(sql, (err, data) => {
     if (err) {
       return "請益版連接錯誤";
