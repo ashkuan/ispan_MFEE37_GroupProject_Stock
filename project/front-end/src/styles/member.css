@@ -89,13 +89,13 @@ scale: 0.98;
   object-position: center center;
 }
 .modalop{
-  height: 500px;
+  height: 550px;
  
 }
 .modlatext{
   padding: 10px 30px;
   width: 100%;
-  height: 600px;
+  height: 300px;
   /* position: relative; */
   /* overflow: hidden; */
   /* overflow:scroll; */
