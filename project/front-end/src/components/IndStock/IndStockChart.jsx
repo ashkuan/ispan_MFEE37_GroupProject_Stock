@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import Chart from "react-apexcharts";
 import { StockContext } from "../../../context/StockContext";
-import "../../styles/indStockChart.css";
 import "../../styles/forum_main.css";
 import axios from "axios";
 

@@ -158,20 +158,20 @@ export const Product = () => {
               所有商品
             </button>
             <hr />
-            <button
-              onClick={() => {
-                handleCategoryClick("股估績推薦");
-              }}
-            >
-              股估績推薦
+            <button onClick={() => handleCategoryClick("K線圖分析")}>
+              K線圖分析
             </button>
             <hr />
             <button onClick={() => handleCategoryClick("新手推薦")}>
               新手推薦
             </button>
             <hr />
-            <button onClick={() => handleCategoryClick("K線圖分析")}>
-              K線圖分析
+            <button
+              onClick={() => {
+                handleCategoryClick("股估績推薦");
+              }}
+            >
+              股估績推薦
             </button>
             <hr />
           </div>
