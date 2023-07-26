@@ -134,7 +134,8 @@ const Checkout = () => {
               />
               <img
                 className="sidebar-userphoto"
-                src="/public/img/memberimg/Mask Group.svg"
+                src={`/img/memberimg/member/${photopath}`}
+                style={{ width: "200px" }}
               />
               <p id="userName">{name}</p>
             </div>
