@@ -112,7 +112,12 @@ const HistoryIndOrder = () => {
                             <div
                               style={{
                                 width: "75%",
-                                padding: "20px 0 0 30px",
+                                height: "100px",
+                                padding: "0 0 0 30px",
+                                overflow: "hidden",
+                                display: "-webkit-box",
+                                WebkitBoxOrient: "vertical",
+                                WebkitLineClamp: 3,
                               }}
                             >
                               {indProducts[index].pname}
