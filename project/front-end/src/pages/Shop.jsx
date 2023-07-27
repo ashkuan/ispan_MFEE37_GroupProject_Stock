@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import "../styles/shop.css";
 import { Product } from "../components/shop/Product";
 import Footer from "../components/Footer";

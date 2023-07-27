@@ -91,25 +91,25 @@
       }
       .editBtn {
         padding: 10px;
-        border: 2px solid black;
+        border: 2px solid #2c3e50;
         font-size: 1.3rem;
         &:hover {
-          background-color: black;
+          background-color: var(--IronGray-Deep);
           color: white;
         }
       }
     }
-    .moreBtn {
-      width: 100%;
-      text-align: center;
-      font-size: 1.7rem;
-      border: 3px solid black;
-      padding: 10px 12px;
-      margin-top: 20px;
-      &:hover {
-        background-color: black;
-        color: white;
-      }
-    }
+    // .moreBtn {
+    //   width: 100%;
+    //   text-align: center;
+    //   font-size: 1.7rem;
+    //   border: 3px solid #2c3e50;
+    //   padding: 10px 12px;
+    //   margin-top: 20px;
+    //   &:hover {
+    //     background-color: var(--IronGray-Deep) s;
+    //     color: white;
+    //   }
+    // }
   }
 }

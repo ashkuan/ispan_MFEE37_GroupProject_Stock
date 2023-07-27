@@ -17,7 +17,6 @@
   --border-radius-small: 6px;
 }
 .shop-main-content {
-  // margin-top: 150px !important;
   margin-bottom: -100px;
   #shopMainTitle {
     font-size: 3rem;
@@ -29,6 +28,7 @@
   #shop {
     display: flex;
     gap: 30px;
+    margin-top: -50px;
     .shopSidebar {
       align-items: center;
       margin-top: 57px;
@@ -108,6 +108,7 @@
       .card {
         background-color: var(--bg-Primary-Gray);
         border: none;
+        color: var(--IronGray-Deep);
         &:hover .toggleBtn {
           animation: slideUp 0.5s ease forwards;
           display: flex;

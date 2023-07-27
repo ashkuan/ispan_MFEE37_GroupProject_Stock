@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ShopContext } from "../../../context/ShopContext";
 import { Link } from "react-router-dom";
+import SimpleSlider from "./SimpleSlider";
 
 export const Product = () => {
-  const { products, totalAmount } = useContext(ShopContext);
+  const { products } = useContext(ShopContext);
   const [pages, setPages] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 9;
-  const totalPages = Math.ceil(totalAmount / itemsPerPage);
   const [sortOption, setSortOption] = useState("預設");
   const [searchKeyword, setSearchKeyword] = useState("");
   const [filteredProducts, setFilteredProducts] = useState([]); //過濾後的商品列表存儲在filteredProducts中
@@ -18,13 +18,28 @@ export const Product = () => {
     ? filteredProducts.filter((product) => product.ptype === selectedCategory)
     : filteredProducts;
 
+  const totalPages = Math.ceil(filteredByCategory.length / itemsPerPage);
+
   // 查詢商品，如果searchKeyword沒有輸入內容，filtered的值就是原本的products，因為空字串會被視為包含在任何字串中
-  useEffect(() => {
+  const searchBtn = () => {
     const filtered = products.filter((product) =>
       product.pname.includes(searchKeyword)
     );
     setFilteredProducts(filtered);
-  }, [products, searchKeyword]);
+  };
+
+  // 頁籤
+  useEffect(() => {
+    let pageNumbers = [];
+    for (let i = 0; i < totalPages; i++) {
+      pageNumbers.push(i + 1);
+    }
+    setPages(pageNumbers);
+  }, [filteredByCategory, itemsPerPage]);
+
+  useEffect(() => {
+    searchBtn();
+  }, []);
 
   // 排列方式
   function sortProducts(products) {
@@ -57,26 +72,7 @@ export const Product = () => {
 
   // 分類
   const handleCategoryClick = (category) => {
-    updatePageNumbers(filteredByCategory);
     setSelectedCategory(category);
-  };
-
-  // 頁籤
-  useEffect(() => {
-    let pageNumbers = [];
-    for (let i = 0; i < totalPages; i++) {
-      pageNumbers.push(i + 1);
-    }
-    setPages(pageNumbers);
-  }, [totalPages]);
-
-  const updatePageNumbers = (filteredProducts) => {
-    const newTotalPages = Math.ceil(filteredProducts.length / itemsPerPage);
-    let pageNumbers = [];
-    for (let i = 0; i < newTotalPages; i++) {
-      pageNumbers.push(i + 1);
-    }
-    setPages(pageNumbers);
   };
 
   return (
@@ -91,7 +87,7 @@ export const Product = () => {
               fill="currentColor"
               className="bi bi-search"
               viewBox="0 0 16 19"
-              style={{ marginRight: "12px" }}
+              style={{ marginRight: "15px" }}
             >
               <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
             </svg>
@@ -102,7 +98,26 @@ export const Product = () => {
             placeholder="搜尋書籍"
             value={searchKeyword}
             onInput={(e) => setSearchKeyword(e.target.value)}
+            onBlur={searchBtn}
           />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="23"
+            height="23"
+            fill="currentColor"
+            className="bi bi-search"
+            viewBox="0 0 16 16"
+            style={{
+              position: "relative",
+              top: "-40px",
+              left: "88%",
+              color: "#2c3e50",
+              cursor: "pointer",
+            }}
+            onClick={searchBtn}
+          >
+            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+          </svg>
           <hr />
         </div>
         <div className="shopSorting mt-2">
@@ -113,7 +128,8 @@ export const Product = () => {
               height="35"
               fill="currentColor"
               className="bi bi-filter-left mb-2"
-              viewBox="0 0 15 15"
+              viewBox="0 0 16 16"
+              style={{ marginRight: "2px" }}
             >
               <path d="M2 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
             </svg>
@@ -123,7 +139,6 @@ export const Product = () => {
             className="sortBtn"
             onChange={(e) => {
               setSortOption(e.target.value);
-              updatePageNumbers(filteredByCategory);
             }}
           >
             <option value="預設">預設</option>
@@ -143,7 +158,7 @@ export const Product = () => {
               fill="currentColor"
               className="bi bi-tag-fill"
               viewBox="0 0 16 16"
-              style={{ marginRight: "10px" }}
+              style={{ marginRight: "20px" }}
             >
               <path d="M2 1a1 1 0 0 0-1 1v4.586a1 1 0 0 0 .293.707l7 7a1 1 0 0 0 1.414 0l4.586-4.586a1 1 0 0 0 0-1.414l-7-7A1 1 0 0 0 6.586 1H2zm4 3.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
             </svg>
@@ -177,7 +192,6 @@ export const Product = () => {
           </div>
         </div>
       </div>
-
       <div>
         <div
           style={{
@@ -190,6 +204,9 @@ export const Product = () => {
         >
           商城 {sortOption !== "預設" ? ` > ${sortOption} ` : null}
           {selectedCategory ? `> ${selectedCategory}` : null}
+        </div>{" "}
+        <div style={{ marginBottom: "20px" }}>
+          <SimpleSlider></SimpleSlider>
         </div>
         <div className="row row-cols-1 row-cols-md-4 g-4">
           {/* 從陣列中選出頁面要顯示的商品資料範圍, 上一頁的商品數～這頁的商品數 */}
