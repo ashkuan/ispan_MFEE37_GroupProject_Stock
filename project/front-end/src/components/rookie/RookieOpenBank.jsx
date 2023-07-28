@@ -28,7 +28,7 @@ const RookieOpenBank = () => {
             backgroundRepeat: "no-repeat",
             backgroundColor: "transparent",
             backgroundPosition: "center",
-            cursor: "pointer"
+            cursor: "pointer",
           }}
         />
       </div>
@@ -42,7 +42,10 @@ const RookieOpenBank = () => {
         <div className="modal-dialog modal-lg modal-dialog-centered top-15">
           <div className="modal-content rounded-3">
             <div className="modal-header px-5">
-              <div className="modal-title fw-bold py-4 text-IronGray-Deep fs-3" id="bankrecommend">
+              <div
+                className="modal-title fw-bold py-4 text-IronGray-Deep fs-3"
+                id="bankrecommend"
+              >
                 9間推薦證券銀行
               </div>
               <button

@@ -11,10 +11,10 @@ const SimpleSlider = () => {
       >
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="/img/shop/商城圖片2.svg" class="d-block w-100" />
+            <img src="/img/shop/商城圖片1.svg" class="d-block w-100" />
           </div>
           <div class="carousel-item">
-            <img src="/img/shop/商城圖片1.svg" class="d-block w-100" />
+            <img src="/img/shop/商城圖片2.svg" class="d-block w-100" />
           </div>
           <div class="carousel-item">
             <img src="/img/shop/商城圖片3.svg" class="d-block w-100" />
