@@ -251,6 +251,15 @@ body {
     border-bottom-right-radius: var(--bs-border-radius-2xl);
 }
 
+/* 文字截斷(一行) */
+.line-cut-1 {
+    width: 100%;
+    -webkit-line-clamp: 1;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
 /* 文字截斷(兩行) */
 .line-cut-2 {
     width: 100%;
