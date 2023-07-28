@@ -4,6 +4,7 @@ import AddMessage from "./AddMessage";
 import KeepButton from "./KeepButton";
 import EmojiButton from "./EmojiButton";
 import { Hidden } from "@mui/material";
+import LoginbtnMessage from "./loginbtnMessage";
 
 const SmallHotMessage = (props) => {
   const { data: faid } = props;
@@ -15,8 +16,7 @@ const SmallHotMessage = (props) => {
   const [editedContent, setEditedContent] = useState("");
   // 留言總數
   const [totalMessages, setTotalMessages] = useState(0);
-  // 追蹤要提及的樓層
-  const [mentionFloor, setMentionFloor] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const uid = sessionStorage.getItem("uid");
   const name = sessionStorage.getItem("name");
   const email = sessionStorage.getItem("email");
@@ -27,6 +27,8 @@ const SmallHotMessage = (props) => {
     // 抓留言數量
     fetchTotalMessages();
     fetchMessages();
+    const uid = sessionStorage.getItem("uid");
+    setIsLoggedIn(!!uid);
   }, [faid]);
 
   const fetchMessages = async () => {
@@ -113,17 +115,28 @@ const SmallHotMessage = (props) => {
   const parseMentionedFloors = (content) => {
     const mentionedFloors = content.match(/@B(\d+)/g);
     if (mentionedFloors) {
-      return content.split(/@B(\d+)/g).map((part, index) => {
-        if (index % 2 === 1) {
-          const floorNumber = parseInt(part);
+      return content.split(/(@B\d+)/g).map((part, index) => {
+        const floorNumber = mentionedFloors.indexOf(part);
+        if (index % 2 === 1 && floorNumber !== -1) {
           return (
-            <a
-              key={index}
-              href={`#message-${floorNumber}`} // 跳轉到被提及的樓層
-              className="text-decoration-none text-IronGray mx-2"
-            >
-              @{part}
-            </a>
+            <div key={index} className="dropdown">
+              <a
+                href="#"
+                className="text-decoration-none text-IronGray mx-2 dropdown-toggle"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                {part}
+              </a>
+              <ul className="dropdown-menu">
+                <li>
+                  <div className="dropdown-item">
+                    {messages[floorNumber].fmContent}
+                  </div>
+                </li>
+              </ul>
+            </div>
           );
         } else {
           return part;
@@ -138,6 +151,18 @@ const SmallHotMessage = (props) => {
       <br />
       <div className="mb-3 fs-4">共 {totalMessages} 則留言</div>
       <AddMessage data={faid} fetchAllMessages={fetchMessages} />
+      {!isLoggedIn && (
+        <>
+          <hr className="px-2" />
+          <div
+            className="d-flex justify-content-between custom-alert"
+            role="alert"
+          >
+            <span>尚未登入，只顯示三則留言</span>
+            <LoginbtnMessage />
+          </div>
+        </>
+      )}
       {reversedMessages.map((message, index) => (
         <div
           className="border-top border-2 py-4 mt-4"
@@ -193,7 +218,8 @@ const SmallHotMessage = (props) => {
               <>
                 <div className="d-flex align-items-start">
                   {editingFmid !== message.fmid && (
-                    <div>{message.fmContent}</div>
+                    // 在這裡使用parseMetionedFloors處理留言內容
+                    <div>{parseMentionedFloors(message.fmContent)}</div>
                   )}
                 </div>
                 {/* 只有留言作者能夠看到編輯和刪除按鈕 */}
@@ -215,7 +241,9 @@ const SmallHotMessage = (props) => {
                     </button>
                   </div>
                 )}
-                {`B${messages.length - index}`}
+                <div className="fs-4 floor">{`B${
+                  messages.length - index
+                }`}</div>
               </>
             )}
           </div>

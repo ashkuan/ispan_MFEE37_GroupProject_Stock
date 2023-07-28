@@ -42,7 +42,7 @@ const AddMessage = (props) => {
   const isLoggedIn = !uid;
   return (
     <>
-      <hr />
+      <hr className="px-2" />
       <form onSubmit={handleSubmit}>
         <Stack sx={{ width: "100%" }} spacing={2}>
           {alertMessage && (

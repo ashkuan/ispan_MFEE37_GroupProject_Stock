@@ -68,3 +68,16 @@
     --bs-dropdown-link-disabled-color: #adb5bd;
     --bs-dropdown-header-color: #adb5bd;
   }
+  
+/* 自定義 Alert 的樣式 */
+.custom-alert {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: #f8d7da; /* 改變 Alert 的背景顏色 */
+    border-color: #f5c6cb; /* 改變 Alert 的邊框顏色 */
+    color: #721c24; /* 改變 Alert 的文字顏色 */
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+  }
+  

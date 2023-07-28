@@ -316,4 +316,8 @@ body {
     height: 50%;
     border-radius: 50%;
   }
-  
+
+
+  .floor{
+    color: var(--IronGray);
+  }
