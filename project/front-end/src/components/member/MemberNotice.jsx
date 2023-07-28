@@ -121,14 +121,14 @@ const MemberNotice = () => {
   return (
     <>
       <div className="px-4 py-3 me-5">
-        <div className="d-flex ">
-          <p className="text-IronGray-Deep fs-3 fw-bold pb-2 border-bottom">
+          <div className="d-flex text-IronGray-Deep fs-3 fw-bold pb-2 border-bottom">
             會員公告
-          </p>
           {/* 顯示符合條件的資料數量 */}
-          <div className="text-IronGray-Deep fs-5 noreadbtn ">
-            <div>{statsCount}</div>
+          <span className="text-IronGray-Deep fs-5 Red noreadbtn ">
+            {statsCount}
+          </span>
           </div>
+        <div className="d-flex">
         </div>
 
         {/* 會員公告信件 */}

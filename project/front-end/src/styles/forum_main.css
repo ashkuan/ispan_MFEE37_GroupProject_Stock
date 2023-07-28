@@ -166,6 +166,10 @@ body {
     background-color: var(--Pink);
 }
 
+.Red {
+    background-color: var(--Red);
+}
+
 .bg-Primary-Gray {
     background-color: var(--bg-Primary-Gray);
 }
