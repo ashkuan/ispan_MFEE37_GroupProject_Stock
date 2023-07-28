@@ -206,7 +206,7 @@ app.get("/member/mail", (req, res) => {
 
   if (req.session.user) {
     const uid = req.session.user.uid;
-    console.log(uid);
+    // console.log(uid);
     const sql = "SELECT * FROM membermessage where uid = ? ";
     db.query(sql, [uid], (err, data) => {
       if (err) {

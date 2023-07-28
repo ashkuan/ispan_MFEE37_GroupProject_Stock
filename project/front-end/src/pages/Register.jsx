@@ -13,9 +13,6 @@ import "../styles/forum_main.css";
 import { Icon } from "react-icons-kit";
 import { eyeOff } from "react-icons-kit/feather/eyeOff";
 import { eye } from "react-icons-kit/feather/eye";
-import Glogin from "../components/glogin";
-import { gapi } from 'gapi-script';
-const clientId = "604786847308-qoj7mq9u9j3spdt0kbl0u1flgoe509p6.apps.googleusercontent.com"
 
 const Register = () => {
   const [values, setValues] = useState({
@@ -40,18 +37,7 @@ const Register = () => {
       }
     }
   }, [values.avatar]);
-  useEffect(() => {
-    function start() {
-      gapi.load('client:auth2', () => {
-        gapi.client.init({
-          clientId: clientId,
-          scope: '',
-        });
-      });
-    }
   
-    start();
-  }, []);
 
   const handleInput = (event) => {
     if (event.target.name === "avatar") {
@@ -361,7 +347,7 @@ const Register = () => {
                 </div>
                 {/* 快速註冊 */}
                 <div className="">
-                  <div className="fs-4 text-IronGray-Deep px-2">
+                  {/* <div className="fs-4 text-IronGray-Deep px-2">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       height="1.5rem"
@@ -371,9 +357,9 @@ const Register = () => {
                     </svg>
                     快速註冊
                   </div>
-                  <hr />
+                  <hr /> */}
                   <div className="d-flex justify-content-around">
-                    <Glogin></Glogin>
+                   
                     {/* <a href="#">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
