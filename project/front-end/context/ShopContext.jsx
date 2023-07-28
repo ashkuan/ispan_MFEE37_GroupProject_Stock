@@ -14,7 +14,7 @@ const getDefaultCart = () => {
 
 // 更新資料到資料庫
 const updateCartItemsToDB = async (cartItems) => {
-  console.log(cartItems);
+  // console.log(cartItems);
   try {
     const res = await axios.post("http://localhost:5566/cart/edit", {
       data: cartItems,
@@ -33,7 +33,7 @@ export const ShopContextProvider = (props) => {
   const [stockData, setStockData] = useState({}); // 存個股資訊
   const [totalCartItemAmount, setTotalCartItemAmount] = useState(0); //計算購物車總數
   const uid = sessionStorage.getItem("uid");
-  console.log(uid);
+  // console.log(uid);
 
   // 載入所有書籍
   useEffect(() => {
@@ -56,7 +56,7 @@ export const ShopContextProvider = (props) => {
     const postUid = async () => {
       if (uid) {
         try {
-          console.log(uid);
+          // console.log(uid);
           const res = await axios.post("http://localhost:5566/postUid", {
             uid,
           });
@@ -98,8 +98,8 @@ export const ShopContextProvider = (props) => {
   }, [uid]);
 
   const addToCart = (pid, quantity) => {
-    console.log(quantity);
-    console.log("新增cartItems");
+    // console.log(quantity);
+    // console.log("新增cartItems");
     // 找到cartItems目前的值(預設為0) => 1. 顯示出所有cartItems  2. [將點擊的id]:原本的[商品]數量+1
     // 這是前端網頁要先減掉，會透過react傳送到其他地方，前端會即時更新
     setCartItems((cartItems) => ({
@@ -115,7 +115,7 @@ export const ShopContextProvider = (props) => {
   };
 
   const removeFromCart = (pid) => {
-    console.log("刪除cartItems");
+    // console.log("刪除cartItems");
     setCartItems((cartItems) => ({ ...cartItems, [pid]: cartItems[pid] - 1 }));
     const updatedCartItems = { ...cartItems, [pid]: cartItems[pid] - 1 };
     updateCartItemsToDB(updatedCartItems);
