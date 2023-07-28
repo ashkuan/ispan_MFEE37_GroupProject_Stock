@@ -2,7 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import "../styles/homepage.css";
 import HomepageSearch from "../components/IndStock/HompageSearch";
-import "animate.css";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Homepage = () => {
   const [input, setInput] = useState("");
@@ -12,9 +13,14 @@ const Homepage = () => {
     setInput(index);
   }
 
+
+
   useEffect(() => {
     window.scrollTo(0, 0);
-  });
+    AOS.init(
+      {duration:700}
+    );
+  }, [])
 
   return (
     <>
@@ -129,7 +135,7 @@ const Homepage = () => {
             </div>
           </div>
         </div>
-        <div className="part2 animate__animated animate__bounce">
+        <div className="part2 "  data-aos="fade-right" >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
@@ -138,7 +144,7 @@ const Homepage = () => {
           >
             <path d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1V2z" />
           </svg>
-          <p className="title">一目了然的大盤走勢</p>
+          <p className="title" >一目了然的大盤走勢</p>
           <p className="content">
             觀察市場的整體走勢，可以幫助新手建立基礎知識、提升對整體市場的了解，在逐漸熟悉股市後更可以發展出自己的投資策略。
           </p>
@@ -146,7 +152,7 @@ const Homepage = () => {
             <a href="/stock-index">大盤走勢</a>
           </button>
         </div>
-        <div className="part3" style={{ marginLeft: 600 }}>
+        <div className="part3" style={{ marginLeft: 600 }} data-aos="flip-left">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
@@ -166,7 +172,7 @@ const Homepage = () => {
             <a href="/forum">討論區</a>
           </button>
         </div>
-        <div className="part2">
+        <div className="part2" data-aos="zoom-in">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
@@ -184,7 +190,7 @@ const Homepage = () => {
             <a href="/rookie">新手上路</a>
           </button>
         </div>
-        <div className="part3" style={{ marginRight: 600 }}>
+        <div className="part3" style={{ marginRight: 600 }} data-aos="zoom-out">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
@@ -201,7 +207,7 @@ const Homepage = () => {
             <a href="/shop">購物商城</a>
           </button>
         </div>
-        <div className="part2">
+        <div className="part2" data-aos="fade-down-left">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
