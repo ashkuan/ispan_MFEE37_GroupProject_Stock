@@ -34,8 +34,8 @@ app.post("/sendEmail", async (req, res) => {
   const mailOptions = {
     from: "allyoucaneat0923@gmail.com",
     to: email,
-    subject: "股估績忘記密碼驗證信",
-    text: `你的驗證碼為「${BackendCode}」`,
+    subject: "股估績驗證信",
+    text: `您好，您的驗證碼為「${BackendCode}」，請儘速完成驗證後更改密碼。`,
   };
   transporter.sendMail(mailOptions, (err, data) => {
     if (err) {
