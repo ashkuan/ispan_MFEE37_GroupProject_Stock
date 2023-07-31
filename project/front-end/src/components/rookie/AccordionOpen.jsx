@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Accordion } from "react-bootstrap";
-// import "../../styles/rookie.css";
 import axios from "axios";
 
 const AccordionOpen = () => {

@@ -22,7 +22,6 @@ app.get("/", (req, res) => {
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "img");
-    // cb(null, "/STOCKPROJECT/allyoucaneat/project/public/img/forum/post");
   },
   filename: (req, file, cb) => {
     const fileName =
@@ -38,7 +37,6 @@ app.use(express.static(path.join(__dirname, "img")));
 app.post("/posts", multer({ storage }).single("faimage"), (req, res) => {
   const file = req.file;
   const sql =
-    // "INSERT INTO `ForumArticle`(`uid`, `fatitle`, `farticle`, `faimage`, `faid`, `fboard`,`createTime`,`fhashtag`,`collect`) VALUES (?)";
     "INSERT INTO `ForumArticle`(`uid`,`userimg`, `fatitle`, `farticle`, `faimage`, `faid`, `fboard`,`createTime`,`fhashtag`,`likeCount`, `likedByUser`,`totalLikes`) VALUES (?)";
 
   const createTime = moment().format("YYYY-MM-DD HH:mm:ss");
@@ -74,7 +72,6 @@ app.post("/posts", multer({ storage }).single("faimage"), (req, res) => {
 //選擇文章
 app.get("/posts", (req, res) => {
   const sql =
-    // "SELECT `faid`,  `fatitle`, `farticle`, `faimage`, `likeCount`, `fboard`, `fhashtag`, `createTime`, `updateTime` FROM `ForumArticle` innerjoin  ";
     "SELECT * FROM `ForumArticle` inner join  login on ForumArticle.uid = login.uid";
   connToDBHelper.query(sql, [], (err, data) => {
     if (err) {
@@ -88,8 +85,6 @@ app.get("/posts", (req, res) => {
 //選擇最新文章
 app.get("/posts/new", (req, res) => {
   const sql =
-    // "SELECT `faid`,  `fatitle`, `farticle`, `faimage`, `likeCount`, `fboard`, `fhashtag`, `createTime`, `updateTime` FROM `ForumArticle` innerjoin  ";
-    // "SELECT * FROM `ForumArticle` LEFT JOIN  login on ForumArticle.uid = login.uid ORDER BY `createTime` DESC";
     "SELECT ForumArticle.*, login.*, COUNT(MessageContent.faid) AS fmContentCount " +
     "FROM ForumArticle " +
     "LEFT JOIN login ON ForumArticle.uid = login.uid " +
@@ -108,9 +103,6 @@ app.get("/posts/new", (req, res) => {
 //選擇熱門文章
 app.get("/posts/popular", (req, res) => {
   const sql =
-    // "SELECT `faid`,  `fatitle`, `farticle`, `faimage`, `likeCount`, `fboard`, `fhashtag`, `createTime`, `updateTime` FROM `ForumArticle` innerjoin  ";
-    // "SELECT *FROM `ForumArticle`LEFT JOIN `login` ON `ForumArticle`.`uid` = `login`.`uid`ORDER BY `totalLikes` DESC";
-    // "SELECT ForumArticle.*, login.*, COUNT(MessageContent.faid) AS fmContentCount FROM ForumArticle LEFT JOIN login ON ForumArticle.uid = login.uid LEFT JOIN MessageContent ON ForumArticle.faid = MessageContent.faid GROUP BY ForumArticle.faid ORDER BY totalLikes DESC;"
     "SELECT ForumArticle.*, login.*, COUNT(MessageContent.faid) AS fmContentCount " +
     "FROM ForumArticle " +
     "LEFT JOIN login ON ForumArticle.uid = login.uid " +
@@ -126,7 +118,7 @@ app.get("/posts/popular", (req, res) => {
   });
 });
 
-//選擇收藏文章where `collect` = 1 order by `updateTime`DESC
+//選擇收藏文章
 app.get("/posts/keep", (req, res) => {
   const sql =
     "SELECT ForumArticle.*, login.*, COUNT(MessageContent.faid) AS fmContentCount " +
@@ -136,7 +128,6 @@ app.get("/posts/keep", (req, res) => {
     "WHERE ForumArticle.collect = 1 " + // 加入條件 where collect = 1
     "GROUP BY ForumArticle.faid " +
     "ORDER BY ForumArticle.updateTime DESC"; // 根據 updateTime 進行遞減排序
-  // "SELECT *FROM `ForumArticle`LEFT JOIN `login` ON `ForumArticle`.`uid` = `login`.`uid` where `collect` = 1 order by `updateTime`DESC";
   connToDBHelper.query(sql, [], (err, data) => {
     if (err) {
       return "無法成功顯示發文";
@@ -150,10 +141,9 @@ app.get("/posts/keep", (req, res) => {
 app.post("/getFaid", (req, res) => {
   const sql =
     "SELECT ForumArticle.*, login.name FROM ForumArticle LEFT JOIN login ON ForumArticle.uid = login.uid WHERE ForumArticle.faid = ?";
-  // "SELECT `fatitle`, `farticle`, `faimage`, `likeCount`, `fboard`, `fhashtag`, `createTime` FROM ForumArticle where `faid` = ?";
   connToDBHelper.query(sql, [req.body.faid], (err, data) => {
     if (err) {
-      console.log("faid一直錯一直爽" + err);
+      console.log("faid抓取不到" + err);
     } else {
       // console.log(data)
       return res.json(data);
@@ -174,7 +164,6 @@ app.put("/posts/:faid/like", (req, res) => {
 
     console.log("按讚更新成功");
 
-    // Recalculate the total likes for the article
     const getTotalLikesSql =
       "SELECT likeCount, likedByUser, (likeCount + likedByUser) as totalLikes FROM ForumArticle WHERE faid = ?";
     connToDBHelper.query(getTotalLikesSql, [likeId], (err, result) => {
@@ -186,7 +175,6 @@ app.put("/posts/:faid/like", (req, res) => {
       const totalLikes = result[0].totalLikes || 0;
       console.log("總按讚數: " + totalLikes);
 
-      // Update the totalLikes value in the ForumArticle table
       const updateTotalLikesSql =
         "UPDATE ForumArticle SET totalLikes = ? WHERE faid = ?";
       connToDBHelper.query(
@@ -295,7 +283,6 @@ app.get("/chats", (req, res) => {
 //新聞
 app.get("/news", (req, res) => {
   const sql =
-    // ' SELECT *FROM `ForumArticle`LEFT JOIN `login` ON `ForumArticle`.`uid` = `login`.`uid`WHERE fboard = "新聞" ORDER BY `createTime` DESC';
     "SELECT ForumArticle.*, login.*, COUNT(MessageContent.faid) AS fmContentCount " +
     "FROM ForumArticle " +
     "LEFT JOIN login ON ForumArticle.uid = login.uid " +
@@ -315,7 +302,6 @@ app.get("/news", (req, res) => {
 //標的
 app.get("/targets", (req, res) => {
   const sql =
-    // ' SELECT *FROM `ForumArticle`LEFT JOIN `login` ON `ForumArticle`.`uid` = `login`.`uid`WHERE fboard = "標的" ORDER BY `createTime` DESC';
     "SELECT ForumArticle.*, login.*, COUNT(MessageContent.faid) AS fmContentCount " +
     "FROM ForumArticle " +
     "LEFT JOIN login ON ForumArticle.uid = login.uid " +
@@ -335,7 +321,6 @@ app.get("/targets", (req, res) => {
 //請益
 app.get("/questions", (req, res) => {
   const sql =
-    // ' SELECT *FROM `ForumArticle`LEFT JOIN `login` ON `ForumArticle`.`uid` = `login`.`uid`WHERE fboard = "請益" ORDER BY `createTime` DESC';
     "SELECT ForumArticle.*, login.*, COUNT(MessageContent.faid) AS fmContentCount " +
     "FROM ForumArticle " +
     "LEFT JOIN login ON ForumArticle.uid = login.uid " +
@@ -354,7 +339,6 @@ app.get("/questions", (req, res) => {
 
 //標籤雲
 app.get("/tags", (req, res) => {
-  // const sql = "SELECT fhashtag FROM `ForumArticle` "
   const sql =
     "SELECT fhashtag, COUNT(*) AS count FROM ForumArticle GROUP BY fhashtag";
   connToDBHelper.query(sql, [], (err, data) => {

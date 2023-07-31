@@ -9,7 +9,6 @@ import axios from "axios";
 import AccordionStock from "../components/rookie/AccordionStock.jsx";
 import AccordionEtf from "../components/rookie/AccordionEtf.jsx";
 import RookieQuiz from "../components/rookie/RookieQuiz.jsx";
-// import { useState } from "react";
 
 
 const Rookie = () => {

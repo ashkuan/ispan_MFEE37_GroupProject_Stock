@@ -79,7 +79,6 @@ function ArticlePopular() {
                   setFaid(e.target.id);
                   handleArticleClick();
                 }}
-                //  style={{ backgroundColor: "black" }}
               >
                 <div className="col-8">
                   <p
@@ -109,21 +108,17 @@ function ArticlePopular() {
                     <img
                       className="object-fit-cover"
                       src={`http://localhost:5789/${post.faimage}`}
-                      // src={`/img/forum/post/${post.faimage}`}
-                      alt=""
                     />
                   </div>
                 </div>
               </div>
               <div className="pe-4 mt-4 d-flex text-IronGray-Deep">
-                {/* likeCount */}
                 <div className="d-flex me-1">
                   <img src="../public/img/forum/likeClick.svg" alt="" />
                   <span className="fz-3 fw-normal px-3 d-flex align-content-center">
                     {post.totalLikes}
                   </span>
                 </div>
-                {/* messageCount */}
                 <div className="me-1">
                   <img
                     src="../public/img/forum/chat-left-fill.svg"

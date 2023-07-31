@@ -20,7 +20,7 @@ function ArticleFollow() {
   const uid = sessionStorage.getItem("uid");
   const name = sessionStorage.getItem("name");
   const email = sessionStorage.getItem("email");
-  const photopath = sessionStorage.getItem("photopath"); // console.log("我是follow裡面的uid");
+  const photopath = sessionStorage.getItem("photopath"); 
   // console.log(uid);
   const [showModal, setShowModal] = useState(false);
   const [posts, setPosts] = useState([]);
@@ -102,7 +102,6 @@ function ArticleFollow() {
                       setFaid(e.target.id);
                       handleArticleClick();
                     }}
-                    //  style={{ backgroundColor: "black" }}
                   >
                     <div className="col-8">
                       <p
@@ -131,7 +130,6 @@ function ArticleFollow() {
                       <div className="rounded-4">
                         <img
                           className="object-fit-cover"
-                          // src={`/img/forum/post/${post.faimage}`}
                           src={`http://localhost:5789/${post.faimage}`}
                           alt=""
                         />

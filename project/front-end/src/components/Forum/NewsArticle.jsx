@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import "../../styles/forum_main_right.css";
 import "../../styles/forum_main.css";
-import Emoji from "./Emoji";
 import { Button, Modal } from "react-bootstrap";
 import PostUser from "./PostUser";
 import BoardTag from "./BoardTag";
@@ -21,7 +20,6 @@ function NewsArticle() {
   const [showModal, setShowModal] = useState(false);
   const [posts, setPosts] = useState([]);
   const [faid, setFaid] = useState([]);
-  const [collects, setCollects] = useState(0);
 
   useEffect(() => {
     const fetchAllPost = async () => {
@@ -79,7 +77,6 @@ function NewsArticle() {
                   setFaid(e.target.id);
                   handleArticleClick();
                 }}
-                //  style={{ backgroundColor: "black" }}
               >
                 <div className="col-8">
                   <p
@@ -109,8 +106,6 @@ function NewsArticle() {
                     <img
                       className="object-fit-cover"
                       src={`http://localhost:5789/${post.faimage}`}
-                      // src={`/img/forum/post/${post.faimage}`}
-                      alt=""
                     />
                   </div>
                 </div>

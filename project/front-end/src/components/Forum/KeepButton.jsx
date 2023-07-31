@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -30,7 +29,7 @@ const KeepButton = (props) => {
   const collectClick = async (e) => {
     e.preventDefault();
 
-      if (!uid) {
+    if (!uid) {
       // 如果 uid 不存在，則不執行下面的程式碼
       return;
     }
@@ -44,7 +43,6 @@ const KeepButton = (props) => {
         collects: newCollects,
       });
 
-      // Update the keeps array with the new collect value
       setKeeps((prevKeeps) => {
         return prevKeeps.map((keep) => {
           if (keep.faid === faid) {
@@ -63,14 +61,6 @@ const KeepButton = (props) => {
 
   return (
     <>
-      {/* Render a single img tag based on the collects state */}
-      {/* {collects === 0 ? (
-        <img src="./img/forum/collect-Article.svg" alt="" onClick={collectClick} />
-      ) : (
-        <img src="./img/forum/collect.svg" alt="" onClick={collectClick} />
-      )} */}
-
-      {/* Render multiple keep buttons based on the keeps state */}
       {keeps.map((keep, index) => (
         <a className="text-decoration-none ms-2" href="#" key={index}>
           <div onClick={collectClick}>

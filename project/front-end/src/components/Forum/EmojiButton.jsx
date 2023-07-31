@@ -3,7 +3,7 @@ import axios from "axios";
 
 const EmojiButton = (props) => {
   const [keeps, setKeeps] = useState([]);
-  const [likeCount, setLikeCount] = useState(0); // Set initial state to 0
+  const [likeCount, setLikeCount] = useState(0); // 初始狀態0
   const [totalLikes, setTotalLikes] = useState(0);
   const uid = sessionStorage.getItem("uid");
   const name = sessionStorage.getItem("name");
@@ -20,10 +20,9 @@ const EmojiButton = (props) => {
         // console.log(res.data)
         setKeeps(res.data);
         setLikeCount(res.data[0].likedByUser);
-        // setTotalLikes(res.data[0].totalLikes);
-        console.log("愛" + res.data[0].likeCount);
-        console.log("愛心" + res.data[0].likedByUser);
-        console.log("心" + res.data[0].totalLikes);
+        // console.log("愛" + res.data[0].likeCount);
+        // console.log("愛心" + res.data[0].likedByUser);
+        // console.log("心" + res.data[0].totalLikes);
       } catch (err) {
         console.log("Error in fetchAllKeep: ", err);
       }
@@ -33,7 +32,7 @@ const EmojiButton = (props) => {
   }, [totalLikes]);
 
   useEffect(() => {
-    // Calculate the total likes whenever keeps or likeCount changes
+    // 計算總愛心
     const calculateTotalLikes = () => {
       const total = keeps.reduce((sum, keep) => sum + keep.likedByUser, 0);
       setTotalLikes(total);
