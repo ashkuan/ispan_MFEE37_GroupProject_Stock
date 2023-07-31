@@ -23,6 +23,7 @@ const HistoryIndOrder = () => {
         );
         // console.log(res.data[0]);
         setIndOrderData(res.data[0]);
+        //Promise.all()等到全部實現, 或一個拒絕
         const myIndProducts = await Promise.all(
           res.data[0].pid.split(",").map(async (data) => {
             //   console.log(data.split(":")[0]);
